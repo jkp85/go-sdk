@@ -26,6 +26,9 @@ type File struct {
 	// Required: true
 	Encoding *string `json:"encoding"`
 
+	// id
+	ID string `json:"id,omitempty"`
+
 	// path
 	// Required: true
 	Path *string `json:"path"`
@@ -36,6 +39,9 @@ type File struct {
 
 	// public
 	Public bool `json:"public,omitempty"`
+
+	// size
+	Size int64 `json:"size,omitempty"`
 }
 
 // Validate validates this file

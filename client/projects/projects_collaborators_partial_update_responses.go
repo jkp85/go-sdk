@@ -129,5 +129,5 @@ type ProjectsCollaboratorsPartialUpdateBody struct {
 	Owner bool `json:"owner,omitempty"`
 
 	// user
-	User interface{} `json:"user,omitempty"`
+	User *models.User `json:"user,omitempty"`
 }

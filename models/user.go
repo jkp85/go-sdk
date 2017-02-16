@@ -7,6 +7,7 @@ import (
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
@@ -20,6 +21,9 @@ type User struct {
 	// first name
 	FirstName string `json:"first_name,omitempty"`
 
+	// id
+	ID string `json:"id,omitempty"`
+
 	// last name
 	LastName string `json:"last_name,omitempty"`
 
@@ -28,8 +32,7 @@ type User struct {
 	Password *string `json:"password"`
 
 	// profile
-	// Required: true
-	Profile interface{} `json:"profile"`
+	Profile *UserProfile `json:"profile,omitempty"`
 
 	// Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
 	// Required: true
@@ -71,6 +74,20 @@ func (m *User) validatePassword(formats strfmt.Registry) error {
 }
 
 func (m *User) validateProfile(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Profile) { // not required
+		return nil
+	}
+
+	if m.Profile != nil {
+
+		if err := m.Profile.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("profile")
+			}
+			return err
+		}
+	}
 
 	return nil
 }

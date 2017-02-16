@@ -27,6 +27,9 @@ type Action struct {
 	// end date
 	EndDate string `json:"end_date,omitempty"`
 
+	// id
+	ID string `json:"id,omitempty"`
+
 	// ip
 	IP string `json:"ip,omitempty"`
 
@@ -37,12 +40,21 @@ type Action struct {
 	// Required: true
 	Method *string `json:"method"`
 
+	// object
+	Object string `json:"object,omitempty"`
+
 	// path
 	// Required: true
 	Path *string `json:"path"`
 
 	// payload
 	Payload string `json:"payload,omitempty"`
+
+	// resource uri
+	ResourceURI string `json:"resource_uri,omitempty"`
+
+	// start date
+	StartDate string `json:"start_date,omitempty"`
 
 	// state
 	// Required: true

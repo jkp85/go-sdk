@@ -7,6 +7,7 @@ import (
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
@@ -22,8 +23,10 @@ type Job struct {
 	Script *string `json:"script"`
 
 	// server
-	// Required: true
-	Server interface{} `json:"server"`
+	Server *Server `json:"server,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
 }
 
 // Validate validates this job
@@ -56,6 +59,20 @@ func (m *Job) validateScript(formats strfmt.Registry) error {
 }
 
 func (m *Job) validateServer(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Server) { // not required
+		return nil
+	}
+
+	if m.Server != nil {
+
+		if err := m.Server.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("server")
+			}
+			return err
+		}
+	}
 
 	return nil
 }

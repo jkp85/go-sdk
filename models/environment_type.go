@@ -23,6 +23,9 @@ type EnvironmentType struct {
 	// container port
 	ContainerPort int64 `json:"container_port,omitempty"`
 
+	// id
+	ID string `json:"id,omitempty"`
+
 	// image name
 	// Required: true
 	ImageName *string `json:"image_name"`

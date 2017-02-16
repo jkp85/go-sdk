@@ -132,5 +132,5 @@ type ProjectsModelsPartialUpdateBody struct {
 	Script string `json:"script,omitempty"`
 
 	// server
-	Server interface{} `json:"server,omitempty"`
+	Server *models.Server `json:"server,omitempty"`
 }

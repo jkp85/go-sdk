@@ -21,6 +21,9 @@ type EnvironmentResource struct {
 	// Required: true
 	CPU *int64 `json:"cpu"`
 
+	// id
+	ID string `json:"id,omitempty"`
+
 	// memory
 	// Required: true
 	Memory *int64 `json:"memory"`

@@ -138,7 +138,7 @@ type UsersPartialUpdateBody struct {
 	Password string `json:"password,omitempty"`
 
 	// profile
-	Profile interface{} `json:"profile,omitempty"`
+	Profile *models.UserProfile `json:"profile,omitempty"`
 
 	// Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
 	Username string `json:"username,omitempty"`

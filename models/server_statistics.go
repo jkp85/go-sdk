@@ -13,6 +13,9 @@ import (
 // swagger:model ServerStatistics
 type ServerStatistics struct {
 
+	// id
+	ID string `json:"id,omitempty"`
+
 	// size
 	Size int64 `json:"size,omitempty"`
 

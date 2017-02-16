@@ -126,5 +126,5 @@ swagger:model ProjectsDataSourcesPartialUpdateBody
 type ProjectsDataSourcesPartialUpdateBody struct {
 
 	// server
-	Server interface{} `json:"server,omitempty"`
+	Server *models.Server `json:"server,omitempty"`
 }

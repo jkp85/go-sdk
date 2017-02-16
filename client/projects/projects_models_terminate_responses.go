@@ -106,5 +106,5 @@ type ProjectsModelsTerminateBody struct {
 
 	// server
 	// Required: true
-	Server interface{} `json:"server"`
+	Server *models.Server `json:"server"`
 }

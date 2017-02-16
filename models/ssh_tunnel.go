@@ -22,6 +22,9 @@ type SSHTunnel struct {
 	// Required: true
 	Host *string `json:"host"`
 
+	// id
+	ID string `json:"id,omitempty"`
+
 	// local port
 	// Required: true
 	LocalPort *int64 `json:"local_port"`

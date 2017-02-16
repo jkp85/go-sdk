@@ -102,5 +102,5 @@ type ProjectsCollaboratorsUpdateBody struct {
 
 	// user
 	// Required: true
-	User interface{} `json:"user"`
+	User *models.User `json:"user"`
 }

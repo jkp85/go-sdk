@@ -16,6 +16,9 @@ type ServerRunStatistics struct {
 	// exit code
 	ExitCode int64 `json:"exit_code,omitempty"`
 
+	// id
+	ID string `json:"id,omitempty"`
+
 	// size
 	Size int64 `json:"size,omitempty"`
 

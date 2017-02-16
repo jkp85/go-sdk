@@ -17,6 +17,12 @@ type Project struct {
 	// description
 	Description string `json:"description,omitempty"`
 
+	// id
+	ID string `json:"id,omitempty"`
+
+	// last updated
+	LastUpdated string `json:"last_updated,omitempty"`
+
 	// name
 	// Required: true
 	Name *string `json:"name"`

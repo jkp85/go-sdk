@@ -14,6 +14,9 @@ import (
 // swagger:model Integration
 type Integration struct {
 
+	// id
+	ID string `json:"id,omitempty"`
+
 	// integration email
 	// Required: true
 	IntegrationEmail *string `json:"integration_email"`

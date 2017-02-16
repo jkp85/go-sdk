@@ -112,7 +112,7 @@ type UsersCreateBody struct {
 
 	// profile
 	// Required: true
-	Profile interface{} `json:"profile"`
+	Profile *models.UserProfile `json:"profile"`
 
 	// Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
 	// Required: true
