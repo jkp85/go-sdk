@@ -48,7 +48,7 @@ type Action struct {
 	Path *string `json:"path"`
 
 	// payload
-	Payload string `json:"payload,omitempty"`
+	Payload interface{} `json:"payload,omitempty"`
 
 	// resource uri
 	ResourceURI string `json:"resource_uri,omitempty"`

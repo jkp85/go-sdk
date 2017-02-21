@@ -14,6 +14,9 @@ import (
 // swagger:model Server
 type Server struct {
 
+	// config
+	Config interface{} `json:"config,omitempty"`
+
 	// created at
 	CreatedAt string `json:"created_at,omitempty"`
 
@@ -34,6 +37,10 @@ type Server struct {
 
 	// startup script
 	StartupScript string `json:"startup_script,omitempty"`
+
+	// status
+	// Required: true
+	Status *string `json:"status"`
 }
 
 // Validate validates this server
@@ -51,6 +58,11 @@ func (m *Server) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateName(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := m.validateStatus(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
@@ -82,6 +94,15 @@ func (m *Server) validateEnvironmentType(formats strfmt.Registry) error {
 func (m *Server) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Server) validateStatus(formats strfmt.Registry) error {
+
+	if err := validate.Required("status", "body", m.Status); err != nil {
 		return err
 	}
 

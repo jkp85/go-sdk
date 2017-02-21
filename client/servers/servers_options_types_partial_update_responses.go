@@ -140,9 +140,6 @@ type ServersOptionsTypesPartialUpdateBody struct {
 	// name
 	Name string `json:"name,omitempty"`
 
-	// type
-	Type string `json:"type,omitempty"`
-
 	// work dir
 	WorkDir string `json:"work_dir,omitempty"`
 }

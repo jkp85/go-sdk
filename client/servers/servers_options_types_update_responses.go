@@ -114,10 +114,6 @@ type ServersOptionsTypesUpdateBody struct {
 	// Required: true
 	Name *string `json:"name"`
 
-	// type
-	// Required: true
-	Type *string `json:"type"`
-
 	// work dir
 	WorkDir string `json:"work_dir,omitempty"`
 }
