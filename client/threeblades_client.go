@@ -9,10 +9,10 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/jkp85/go-sdk/client/actions"
-	"github.com/jkp85/go-sdk/client/projects"
-	"github.com/jkp85/go-sdk/client/servers"
-	"github.com/jkp85/go-sdk/client/users"
+	"github.com/3Blades/go-sdk/client/actions"
+	"github.com/3Blades/go-sdk/client/projects"
+	"github.com/3Blades/go-sdk/client/servers"
+	"github.com/3Blades/go-sdk/client/users"
 )
 
 // Default threeblades HTTP client.
