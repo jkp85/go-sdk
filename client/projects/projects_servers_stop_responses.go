@@ -11,7 +11,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/jkp85/go-sdk/models"
+	"github.com/3Blades/go-sdk/models"
 )
 
 // ProjectsServersStopReader is a Reader for the ProjectsServersStop structure.
@@ -100,6 +100,10 @@ type ProjectsServersStopBody struct {
 	// config
 	Config interface{} `json:"config,omitempty"`
 
+	// connected
+	// Required: true
+	Connected []string `json:"connected"`
+
 	// environment resources
 	// Required: true
 	EnvironmentResources *string `json:"environment_resources"`
@@ -116,6 +120,5 @@ type ProjectsServersStopBody struct {
 	StartupScript string `json:"startup_script,omitempty"`
 
 	// status
-	// Required: true
-	Status *string `json:"status"`
+	Status string `json:"status,omitempty"`
 }

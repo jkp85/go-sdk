@@ -11,7 +11,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/jkp85/go-sdk/models"
+	"github.com/3Blades/go-sdk/models"
 )
 
 // UsersIntegrationsPartialUpdateReader is a Reader for the UsersIntegrationsPartialUpdate structure.
@@ -125,12 +125,9 @@ swagger:model UsersIntegrationsPartialUpdateBody
 */
 type UsersIntegrationsPartialUpdateBody struct {
 
-	// integration email
-	IntegrationEmail string `json:"integration_email,omitempty"`
+	// extra data
+	ExtraData string `json:"extra_data,omitempty"`
 
 	// provider
 	Provider string `json:"provider,omitempty"`
-
-	// scopes
-	Scopes string `json:"scopes,omitempty"`
 }

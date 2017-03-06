@@ -10,6 +10,7 @@ import (
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/3Blades/go-sdk/client/actions"
+	"github.com/3Blades/go-sdk/client/auth"
 	"github.com/3Blades/go-sdk/client/projects"
 	"github.com/3Blades/go-sdk/client/servers"
 	"github.com/3Blades/go-sdk/client/users"
@@ -57,6 +58,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Threeblade
 	cli.Transport = transport
 
 	cli.Actions = actions.New(transport, formats)
+
+	cli.Auth = auth.New(transport, formats)
 
 	cli.Projects = projects.New(transport, formats)
 
@@ -110,6 +113,8 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 type Threeblades struct {
 	Actions *actions.Client
 
+	Auth *auth.Client
+
 	Projects *projects.Client
 
 	Servers *servers.Client
@@ -124,6 +129,8 @@ func (c *Threeblades) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
 
 	c.Actions.SetTransport(transport)
+
+	c.Auth.SetTransport(transport)
 
 	c.Projects.SetTransport(transport)
 

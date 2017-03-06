@@ -14,29 +14,17 @@ import (
 // swagger:model Integration
 type Integration struct {
 
-	// id
-	ID string `json:"id,omitempty"`
-
-	// integration email
-	// Required: true
-	IntegrationEmail *string `json:"integration_email"`
+	// extra data
+	ExtraData string `json:"extra_data,omitempty"`
 
 	// provider
 	// Required: true
 	Provider *string `json:"provider"`
-
-	// scopes
-	Scopes string `json:"scopes,omitempty"`
 }
 
 // Validate validates this integration
 func (m *Integration) Validate(formats strfmt.Registry) error {
 	var res []error
-
-	if err := m.validateIntegrationEmail(formats); err != nil {
-		// prop
-		res = append(res, err)
-	}
 
 	if err := m.validateProvider(formats); err != nil {
 		// prop
@@ -46,15 +34,6 @@ func (m *Integration) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *Integration) validateIntegrationEmail(formats strfmt.Registry) error {
-
-	if err := validate.Required("integration_email", "body", m.IntegrationEmail); err != nil {
-		return err
-	}
-
 	return nil
 }
 

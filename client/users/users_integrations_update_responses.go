@@ -11,7 +11,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/jkp85/go-sdk/models"
+	"github.com/3Blades/go-sdk/models"
 )
 
 // UsersIntegrationsUpdateReader is a Reader for the UsersIntegrationsUpdate structure.
@@ -97,14 +97,10 @@ swagger:model UsersIntegrationsUpdateBody
 */
 type UsersIntegrationsUpdateBody struct {
 
-	// integration email
-	// Required: true
-	IntegrationEmail *string `json:"integration_email"`
+	// extra data
+	ExtraData string `json:"extra_data,omitempty"`
 
 	// provider
 	// Required: true
 	Provider *string `json:"provider"`
-
-	// scopes
-	Scopes string `json:"scopes,omitempty"`
 }

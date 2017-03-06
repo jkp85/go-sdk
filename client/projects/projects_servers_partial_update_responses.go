@@ -11,7 +11,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/jkp85/go-sdk/models"
+	"github.com/3Blades/go-sdk/models"
 )
 
 // ProjectsServersPartialUpdateReader is a Reader for the ProjectsServersPartialUpdate structure.
@@ -127,6 +127,9 @@ type ProjectsServersPartialUpdateBody struct {
 
 	// config
 	Config interface{} `json:"config,omitempty"`
+
+	// connected
+	Connected []string `json:"connected"`
 
 	// environment resources
 	EnvironmentResources string `json:"environment_resources,omitempty"`

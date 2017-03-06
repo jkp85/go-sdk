@@ -1285,6 +1285,62 @@ func (a *Client) ProjectsServersUpdate(params *ProjectsServersUpdateParams) (*Pr
 }
 
 /*
+ProjectsSyncedResourcesCreate projects synced resources create API
+*/
+func (a *Client) ProjectsSyncedResourcesCreate(params *ProjectsSyncedResourcesCreateParams) (*ProjectsSyncedResourcesCreateCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsSyncedResourcesCreateParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_synced-resources_create",
+		Method:             "POST",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/synced-resources/",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsSyncedResourcesCreateReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsSyncedResourcesCreateCreated), nil
+
+}
+
+/*
+ProjectsSyncedResourcesList projects synced resources list API
+*/
+func (a *Client) ProjectsSyncedResourcesList(params *ProjectsSyncedResourcesListParams) (*ProjectsSyncedResourcesListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsSyncedResourcesListParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_synced-resources_list",
+		Method:             "GET",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/synced-resources/",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsSyncedResourcesListReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsSyncedResourcesListOK), nil
+
+}
+
+/*
 ProjectsUpdate projects update API
 */
 func (a *Client) ProjectsUpdate(params *ProjectsUpdateParams) (*ProjectsUpdateOK, error) {

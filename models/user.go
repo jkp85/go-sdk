@@ -27,10 +27,6 @@ type User struct {
 	// last name
 	LastName string `json:"last_name,omitempty"`
 
-	// password
-	// Required: true
-	Password *string `json:"password"`
-
 	// profile
 	Profile *UserProfile `json:"profile,omitempty"`
 
@@ -42,11 +38,6 @@ type User struct {
 // Validate validates this user
 func (m *User) Validate(formats strfmt.Registry) error {
 	var res []error
-
-	if err := m.validatePassword(formats); err != nil {
-		// prop
-		res = append(res, err)
-	}
 
 	if err := m.validateProfile(formats); err != nil {
 		// prop
@@ -61,15 +52,6 @@ func (m *User) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *User) validatePassword(formats strfmt.Registry) error {
-
-	if err := validate.Required("password", "body", m.Password); err != nil {
-		return err
-	}
-
 	return nil
 }
 
