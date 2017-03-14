@@ -11,7 +11,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/jkp85/go-sdk/models"
+	"github.com/3Blades/go-sdk/models"
 )
 
 // ServersOptionsTypesCreateReader is a Reader for the ServersOptionsTypesCreate structure.
@@ -113,10 +113,6 @@ type ServersOptionsTypesCreateBody struct {
 	// name
 	// Required: true
 	Name *string `json:"name"`
-
-	// type
-	// Required: true
-	Type *string `json:"type"`
 
 	// work dir
 	WorkDir string `json:"work_dir,omitempty"`

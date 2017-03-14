@@ -66,6 +66,10 @@ type ProjectsListParams struct {
 	Namespace string
 	/*Offset*/
 	Offset *string
+	/*Ordering*/
+	Ordering *string
+	/*Private*/
+	Private *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -138,6 +142,28 @@ func (o *ProjectsListParams) SetOffset(offset *string) {
 	o.Offset = offset
 }
 
+// WithOrdering adds the ordering to the projects list params
+func (o *ProjectsListParams) WithOrdering(ordering *string) *ProjectsListParams {
+	o.SetOrdering(ordering)
+	return o
+}
+
+// SetOrdering adds the ordering to the projects list params
+func (o *ProjectsListParams) SetOrdering(ordering *string) {
+	o.Ordering = ordering
+}
+
+// WithPrivate adds the private to the projects list params
+func (o *ProjectsListParams) WithPrivate(private *string) *ProjectsListParams {
+	o.SetPrivate(private)
+	return o
+}
+
+// SetPrivate adds the private to the projects list params
+func (o *ProjectsListParams) SetPrivate(private *string) {
+	o.Private = private
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ProjectsListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -175,6 +201,38 @@ func (o *ProjectsListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 		qOffset := qrOffset
 		if qOffset != "" {
 			if err := r.SetQueryParam("offset", qOffset); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.Ordering != nil {
+
+		// query param ordering
+		var qrOrdering string
+		if o.Ordering != nil {
+			qrOrdering = *o.Ordering
+		}
+		qOrdering := qrOrdering
+		if qOrdering != "" {
+			if err := r.SetQueryParam("ordering", qOrdering); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.Private != nil {
+
+		// query param private
+		var qrPrivate string
+		if o.Private != nil {
+			qrPrivate = *o.Private
+		}
+		qPrivate := qrPrivate
+		if qPrivate != "" {
+			if err := r.SetQueryParam("private", qPrivate); err != nil {
 				return err
 			}
 		}

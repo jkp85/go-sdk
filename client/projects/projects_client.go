@@ -219,258 +219,6 @@ func (a *Client) ProjectsCreate(params *ProjectsCreateParams) (*ProjectsCreateCr
 }
 
 /*
-ProjectsDataSourcesCreate projects data sources create API
-*/
-func (a *Client) ProjectsDataSourcesCreate(params *ProjectsDataSourcesCreateParams) (*ProjectsDataSourcesCreateCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsDataSourcesCreateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_data-sources_create",
-		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/data-sources/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsDataSourcesCreateReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsDataSourcesCreateCreated), nil
-
-}
-
-/*
-ProjectsDataSourcesDelete projects data sources delete API
-*/
-func (a *Client) ProjectsDataSourcesDelete(params *ProjectsDataSourcesDeleteParams) (*ProjectsDataSourcesDeleteNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsDataSourcesDeleteParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_data-sources_delete",
-		Method:             "DELETE",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/data-sources/{server}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsDataSourcesDeleteReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsDataSourcesDeleteNoContent), nil
-
-}
-
-/*
-ProjectsDataSourcesList projects data sources list API
-*/
-func (a *Client) ProjectsDataSourcesList(params *ProjectsDataSourcesListParams) (*ProjectsDataSourcesListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsDataSourcesListParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_data-sources_list",
-		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/data-sources/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsDataSourcesListReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsDataSourcesListOK), nil
-
-}
-
-/*
-ProjectsDataSourcesPartialUpdate projects data sources partial update API
-*/
-func (a *Client) ProjectsDataSourcesPartialUpdate(params *ProjectsDataSourcesPartialUpdateParams) (*ProjectsDataSourcesPartialUpdateOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsDataSourcesPartialUpdateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_data-sources_partial_update",
-		Method:             "PATCH",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/data-sources/{server}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsDataSourcesPartialUpdateReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsDataSourcesPartialUpdateOK), nil
-
-}
-
-/*
-ProjectsDataSourcesRead projects data sources read API
-*/
-func (a *Client) ProjectsDataSourcesRead(params *ProjectsDataSourcesReadParams) (*ProjectsDataSourcesReadOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsDataSourcesReadParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_data-sources_read",
-		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/data-sources/{server}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsDataSourcesReadReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsDataSourcesReadOK), nil
-
-}
-
-/*
-ProjectsDataSourcesStart projects data sources start API
-*/
-func (a *Client) ProjectsDataSourcesStart(params *ProjectsDataSourcesStartParams) (*ProjectsDataSourcesStartCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsDataSourcesStartParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_data-sources_start",
-		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/data-sources/{server}/start/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsDataSourcesStartReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsDataSourcesStartCreated), nil
-
-}
-
-/*
-ProjectsDataSourcesStop projects data sources stop API
-*/
-func (a *Client) ProjectsDataSourcesStop(params *ProjectsDataSourcesStopParams) (*ProjectsDataSourcesStopCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsDataSourcesStopParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_data-sources_stop",
-		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/data-sources/{server}/stop/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsDataSourcesStopReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsDataSourcesStopCreated), nil
-
-}
-
-/*
-ProjectsDataSourcesTerminate projects data sources terminate API
-*/
-func (a *Client) ProjectsDataSourcesTerminate(params *ProjectsDataSourcesTerminateParams) (*ProjectsDataSourcesTerminateCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsDataSourcesTerminateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_data-sources_terminate",
-		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/data-sources/{server}/terminate/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsDataSourcesTerminateReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsDataSourcesTerminateCreated), nil
-
-}
-
-/*
-ProjectsDataSourcesUpdate projects data sources update API
-*/
-func (a *Client) ProjectsDataSourcesUpdate(params *ProjectsDataSourcesUpdateParams) (*ProjectsDataSourcesUpdateOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsDataSourcesUpdateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_data-sources_update",
-		Method:             "PUT",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/data-sources/{server}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsDataSourcesUpdateReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsDataSourcesUpdateOK), nil
-
-}
-
-/*
 ProjectsDelete projects delete API
 */
 func (a *Client) ProjectsDelete(params *ProjectsDeleteParams) (*ProjectsDeleteNoContent, error) {
@@ -667,258 +415,6 @@ func (a *Client) ProjectsFilesUpdate(params *ProjectsFilesUpdateParams) (*Projec
 }
 
 /*
-ProjectsJobsCreate projects jobs create API
-*/
-func (a *Client) ProjectsJobsCreate(params *ProjectsJobsCreateParams) (*ProjectsJobsCreateCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsJobsCreateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_jobs_create",
-		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/jobs/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsJobsCreateReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsJobsCreateCreated), nil
-
-}
-
-/*
-ProjectsJobsDelete projects jobs delete API
-*/
-func (a *Client) ProjectsJobsDelete(params *ProjectsJobsDeleteParams) (*ProjectsJobsDeleteNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsJobsDeleteParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_jobs_delete",
-		Method:             "DELETE",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/jobs/{server}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsJobsDeleteReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsJobsDeleteNoContent), nil
-
-}
-
-/*
-ProjectsJobsList projects jobs list API
-*/
-func (a *Client) ProjectsJobsList(params *ProjectsJobsListParams) (*ProjectsJobsListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsJobsListParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_jobs_list",
-		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/jobs/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsJobsListReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsJobsListOK), nil
-
-}
-
-/*
-ProjectsJobsPartialUpdate projects jobs partial update API
-*/
-func (a *Client) ProjectsJobsPartialUpdate(params *ProjectsJobsPartialUpdateParams) (*ProjectsJobsPartialUpdateOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsJobsPartialUpdateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_jobs_partial_update",
-		Method:             "PATCH",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/jobs/{server}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsJobsPartialUpdateReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsJobsPartialUpdateOK), nil
-
-}
-
-/*
-ProjectsJobsRead projects jobs read API
-*/
-func (a *Client) ProjectsJobsRead(params *ProjectsJobsReadParams) (*ProjectsJobsReadOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsJobsReadParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_jobs_read",
-		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/jobs/{server}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsJobsReadReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsJobsReadOK), nil
-
-}
-
-/*
-ProjectsJobsStart projects jobs start API
-*/
-func (a *Client) ProjectsJobsStart(params *ProjectsJobsStartParams) (*ProjectsJobsStartCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsJobsStartParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_jobs_start",
-		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/jobs/{server}/start/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsJobsStartReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsJobsStartCreated), nil
-
-}
-
-/*
-ProjectsJobsStop projects jobs stop API
-*/
-func (a *Client) ProjectsJobsStop(params *ProjectsJobsStopParams) (*ProjectsJobsStopCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsJobsStopParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_jobs_stop",
-		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/jobs/{server}/stop/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsJobsStopReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsJobsStopCreated), nil
-
-}
-
-/*
-ProjectsJobsTerminate projects jobs terminate API
-*/
-func (a *Client) ProjectsJobsTerminate(params *ProjectsJobsTerminateParams) (*ProjectsJobsTerminateCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsJobsTerminateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_jobs_terminate",
-		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/jobs/{server}/terminate/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsJobsTerminateReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsJobsTerminateCreated), nil
-
-}
-
-/*
-ProjectsJobsUpdate projects jobs update API
-*/
-func (a *Client) ProjectsJobsUpdate(params *ProjectsJobsUpdateParams) (*ProjectsJobsUpdateOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsJobsUpdateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_jobs_update",
-		Method:             "PUT",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/jobs/{server}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsJobsUpdateReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsJobsUpdateOK), nil
-
-}
-
-/*
 ProjectsList projects list API
 */
 func (a *Client) ProjectsList(params *ProjectsListParams) (*ProjectsListOK, error) {
@@ -943,258 +439,6 @@ func (a *Client) ProjectsList(params *ProjectsListParams) (*ProjectsListOK, erro
 		return nil, err
 	}
 	return result.(*ProjectsListOK), nil
-
-}
-
-/*
-ProjectsModelsCreate projects models create API
-*/
-func (a *Client) ProjectsModelsCreate(params *ProjectsModelsCreateParams) (*ProjectsModelsCreateCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsModelsCreateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_models_create",
-		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/models/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsModelsCreateReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsModelsCreateCreated), nil
-
-}
-
-/*
-ProjectsModelsDelete projects models delete API
-*/
-func (a *Client) ProjectsModelsDelete(params *ProjectsModelsDeleteParams) (*ProjectsModelsDeleteNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsModelsDeleteParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_models_delete",
-		Method:             "DELETE",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/models/{server}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsModelsDeleteReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsModelsDeleteNoContent), nil
-
-}
-
-/*
-ProjectsModelsList projects models list API
-*/
-func (a *Client) ProjectsModelsList(params *ProjectsModelsListParams) (*ProjectsModelsListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsModelsListParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_models_list",
-		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/models/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsModelsListReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsModelsListOK), nil
-
-}
-
-/*
-ProjectsModelsPartialUpdate projects models partial update API
-*/
-func (a *Client) ProjectsModelsPartialUpdate(params *ProjectsModelsPartialUpdateParams) (*ProjectsModelsPartialUpdateOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsModelsPartialUpdateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_models_partial_update",
-		Method:             "PATCH",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/models/{server}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsModelsPartialUpdateReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsModelsPartialUpdateOK), nil
-
-}
-
-/*
-ProjectsModelsRead projects models read API
-*/
-func (a *Client) ProjectsModelsRead(params *ProjectsModelsReadParams) (*ProjectsModelsReadOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsModelsReadParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_models_read",
-		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/models/{server}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsModelsReadReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsModelsReadOK), nil
-
-}
-
-/*
-ProjectsModelsStart projects models start API
-*/
-func (a *Client) ProjectsModelsStart(params *ProjectsModelsStartParams) (*ProjectsModelsStartCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsModelsStartParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_models_start",
-		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/models/{server}/start/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsModelsStartReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsModelsStartCreated), nil
-
-}
-
-/*
-ProjectsModelsStop projects models stop API
-*/
-func (a *Client) ProjectsModelsStop(params *ProjectsModelsStopParams) (*ProjectsModelsStopCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsModelsStopParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_models_stop",
-		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/models/{server}/stop/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsModelsStopReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsModelsStopCreated), nil
-
-}
-
-/*
-ProjectsModelsTerminate projects models terminate API
-*/
-func (a *Client) ProjectsModelsTerminate(params *ProjectsModelsTerminateParams) (*ProjectsModelsTerminateCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsModelsTerminateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_models_terminate",
-		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/models/{server}/terminate/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsModelsTerminateReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsModelsTerminateCreated), nil
-
-}
-
-/*
-ProjectsModelsUpdate projects models update API
-*/
-func (a *Client) ProjectsModelsUpdate(params *ProjectsModelsUpdateParams) (*ProjectsModelsUpdateOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsModelsUpdateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_models_update",
-		Method:             "PUT",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/models/{server}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsModelsUpdateReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsModelsUpdateOK), nil
 
 }
 
@@ -1255,506 +499,844 @@ func (a *Client) ProjectsRead(params *ProjectsReadParams) (*ProjectsReadOK, erro
 }
 
 /*
-ProjectsRunStatsCreate projects run stats create API
+ProjectsServersCreate projects servers create API
 */
-func (a *Client) ProjectsRunStatsCreate(params *ProjectsRunStatsCreateParams) (*ProjectsRunStatsCreateCreated, error) {
+func (a *Client) ProjectsServersCreate(params *ProjectsServersCreateParams) (*ProjectsServersCreateCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewProjectsRunStatsCreateParams()
+		params = NewProjectsServersCreateParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_run-stats_create",
+		ID:                 "projects_servers_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/{server_type}/{server_pk}/run-stats/",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &ProjectsRunStatsCreateReader{formats: a.formats},
+		Reader:             &ProjectsServersCreateReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ProjectsRunStatsCreateCreated), nil
+	return result.(*ProjectsServersCreateCreated), nil
 
 }
 
 /*
-ProjectsRunStatsDelete projects run stats delete API
+ProjectsServersDelete projects servers delete API
 */
-func (a *Client) ProjectsRunStatsDelete(params *ProjectsRunStatsDeleteParams) (*ProjectsRunStatsDeleteNoContent, error) {
+func (a *Client) ProjectsServersDelete(params *ProjectsServersDeleteParams) (*ProjectsServersDeleteNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewProjectsRunStatsDeleteParams()
+		params = NewProjectsServersDeleteParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_run-stats_delete",
+		ID:                 "projects_servers_delete",
 		Method:             "DELETE",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/{server_type}/{server_pk}/run-stats/{id}/",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &ProjectsRunStatsDeleteReader{formats: a.formats},
+		Reader:             &ProjectsServersDeleteReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ProjectsRunStatsDeleteNoContent), nil
+	return result.(*ProjectsServersDeleteNoContent), nil
 
 }
 
 /*
-ProjectsRunStatsList projects run stats list API
+ProjectsServersIsAllowedList checks if user is allowed to access model server
+
+Checks if user is allowed to access model server
 */
-func (a *Client) ProjectsRunStatsList(params *ProjectsRunStatsListParams) (*ProjectsRunStatsListOK, error) {
+func (a *Client) ProjectsServersIsAllowedList(params *ProjectsServersIsAllowedListParams) (*ProjectsServersIsAllowedListOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewProjectsRunStatsListParams()
+		params = NewProjectsServersIsAllowedListParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_run-stats_list",
+		ID:                 "projects_servers_is-allowed_list",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/{server_type}/{server_pk}/run-stats/",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/is-allowed/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &ProjectsRunStatsListReader{formats: a.formats},
+		Reader:             &ProjectsServersIsAllowedListReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ProjectsRunStatsListOK), nil
+	return result.(*ProjectsServersIsAllowedListOK), nil
 
 }
 
 /*
-ProjectsRunStatsPartialUpdate projects run stats partial update API
+ProjectsServersList projects servers list API
 */
-func (a *Client) ProjectsRunStatsPartialUpdate(params *ProjectsRunStatsPartialUpdateParams) (*ProjectsRunStatsPartialUpdateOK, error) {
+func (a *Client) ProjectsServersList(params *ProjectsServersListParams) (*ProjectsServersListOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewProjectsRunStatsPartialUpdateParams()
+		params = NewProjectsServersListParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_run-stats_partial_update",
+		ID:                 "projects_servers_list",
+		Method:             "GET",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsServersListReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsServersListOK), nil
+
+}
+
+/*
+ProjectsServersPartialUpdate projects servers partial update API
+*/
+func (a *Client) ProjectsServersPartialUpdate(params *ProjectsServersPartialUpdateParams) (*ProjectsServersPartialUpdateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsServersPartialUpdateParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_servers_partial_update",
 		Method:             "PATCH",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/{server_type}/{server_pk}/run-stats/{id}/",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &ProjectsRunStatsPartialUpdateReader{formats: a.formats},
+		Reader:             &ProjectsServersPartialUpdateReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ProjectsRunStatsPartialUpdateOK), nil
+	return result.(*ProjectsServersPartialUpdateOK), nil
 
 }
 
 /*
-ProjectsRunStatsRead projects run stats read API
+ProjectsServersRead projects servers read API
 */
-func (a *Client) ProjectsRunStatsRead(params *ProjectsRunStatsReadParams) (*ProjectsRunStatsReadOK, error) {
+func (a *Client) ProjectsServersRead(params *ProjectsServersReadParams) (*ProjectsServersReadOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewProjectsRunStatsReadParams()
+		params = NewProjectsServersReadParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_run-stats_read",
+		ID:                 "projects_servers_read",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/{server_type}/{server_pk}/run-stats/{id}/",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &ProjectsRunStatsReadReader{formats: a.formats},
+		Reader:             &ProjectsServersReadReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ProjectsRunStatsReadOK), nil
+	return result.(*ProjectsServersReadOK), nil
 
 }
 
 /*
-ProjectsRunStatsUpdate projects run stats update API
+ProjectsServersRunStatsCreate projects servers run stats create API
 */
-func (a *Client) ProjectsRunStatsUpdate(params *ProjectsRunStatsUpdateParams) (*ProjectsRunStatsUpdateOK, error) {
+func (a *Client) ProjectsServersRunStatsCreate(params *ProjectsServersRunStatsCreateParams) (*ProjectsServersRunStatsCreateCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewProjectsRunStatsUpdateParams()
+		params = NewProjectsServersRunStatsCreateParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_run-stats_update",
-		Method:             "PUT",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/{server_type}/{server_pk}/run-stats/{id}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsRunStatsUpdateReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsRunStatsUpdateOK), nil
-
-}
-
-/*
-ProjectsSSHTunnelsCreate projects ssh tunnels create API
-*/
-func (a *Client) ProjectsSSHTunnelsCreate(params *ProjectsSSHTunnelsCreateParams) (*ProjectsSSHTunnelsCreateCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsSSHTunnelsCreateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_ssh-tunnels_create",
+		ID:                 "projects_servers_run-stats_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/{server_type}/{server_pk}/ssh-tunnels/",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &ProjectsSSHTunnelsCreateReader{formats: a.formats},
+		Reader:             &ProjectsServersRunStatsCreateReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ProjectsSSHTunnelsCreateCreated), nil
+	return result.(*ProjectsServersRunStatsCreateCreated), nil
 
 }
 
 /*
-ProjectsSSHTunnelsDelete projects ssh tunnels delete API
+ProjectsServersRunStatsDelete projects servers run stats delete API
 */
-func (a *Client) ProjectsSSHTunnelsDelete(params *ProjectsSSHTunnelsDeleteParams) (*ProjectsSSHTunnelsDeleteNoContent, error) {
+func (a *Client) ProjectsServersRunStatsDelete(params *ProjectsServersRunStatsDeleteParams) (*ProjectsServersRunStatsDeleteNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewProjectsSSHTunnelsDeleteParams()
+		params = NewProjectsServersRunStatsDeleteParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_ssh-tunnels_delete",
+		ID:                 "projects_servers_run-stats_delete",
 		Method:             "DELETE",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/{server_type}/{server_pk}/ssh-tunnels/{id}/",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &ProjectsSSHTunnelsDeleteReader{formats: a.formats},
+		Reader:             &ProjectsServersRunStatsDeleteReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ProjectsSSHTunnelsDeleteNoContent), nil
+	return result.(*ProjectsServersRunStatsDeleteNoContent), nil
 
 }
 
 /*
-ProjectsSSHTunnelsList projects ssh tunnels list API
+ProjectsServersRunStatsList projects servers run stats list API
 */
-func (a *Client) ProjectsSSHTunnelsList(params *ProjectsSSHTunnelsListParams) (*ProjectsSSHTunnelsListOK, error) {
+func (a *Client) ProjectsServersRunStatsList(params *ProjectsServersRunStatsListParams) (*ProjectsServersRunStatsListOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewProjectsSSHTunnelsListParams()
+		params = NewProjectsServersRunStatsListParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_ssh-tunnels_list",
+		ID:                 "projects_servers_run-stats_list",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/{server_type}/{server_pk}/ssh-tunnels/",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &ProjectsSSHTunnelsListReader{formats: a.formats},
+		Reader:             &ProjectsServersRunStatsListReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ProjectsSSHTunnelsListOK), nil
+	return result.(*ProjectsServersRunStatsListOK), nil
 
 }
 
 /*
-ProjectsSSHTunnelsPartialUpdate projects ssh tunnels partial update API
+ProjectsServersRunStatsPartialUpdate projects servers run stats partial update API
 */
-func (a *Client) ProjectsSSHTunnelsPartialUpdate(params *ProjectsSSHTunnelsPartialUpdateParams) (*ProjectsSSHTunnelsPartialUpdateOK, error) {
+func (a *Client) ProjectsServersRunStatsPartialUpdate(params *ProjectsServersRunStatsPartialUpdateParams) (*ProjectsServersRunStatsPartialUpdateOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewProjectsSSHTunnelsPartialUpdateParams()
+		params = NewProjectsServersRunStatsPartialUpdateParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_ssh-tunnels_partial_update",
+		ID:                 "projects_servers_run-stats_partial_update",
 		Method:             "PATCH",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/{server_type}/{server_pk}/ssh-tunnels/{id}/",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &ProjectsSSHTunnelsPartialUpdateReader{formats: a.formats},
+		Reader:             &ProjectsServersRunStatsPartialUpdateReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ProjectsSSHTunnelsPartialUpdateOK), nil
+	return result.(*ProjectsServersRunStatsPartialUpdateOK), nil
 
 }
 
 /*
-ProjectsSSHTunnelsRead projects ssh tunnels read API
+ProjectsServersRunStatsRead projects servers run stats read API
 */
-func (a *Client) ProjectsSSHTunnelsRead(params *ProjectsSSHTunnelsReadParams) (*ProjectsSSHTunnelsReadOK, error) {
+func (a *Client) ProjectsServersRunStatsRead(params *ProjectsServersRunStatsReadParams) (*ProjectsServersRunStatsReadOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewProjectsSSHTunnelsReadParams()
+		params = NewProjectsServersRunStatsReadParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_ssh-tunnels_read",
+		ID:                 "projects_servers_run-stats_read",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/{server_type}/{server_pk}/ssh-tunnels/{id}/",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &ProjectsSSHTunnelsReadReader{formats: a.formats},
+		Reader:             &ProjectsServersRunStatsReadReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ProjectsSSHTunnelsReadOK), nil
+	return result.(*ProjectsServersRunStatsReadOK), nil
 
 }
 
 /*
-ProjectsSSHTunnelsUpdate projects ssh tunnels update API
+ProjectsServersRunStatsUpdate projects servers run stats update API
 */
-func (a *Client) ProjectsSSHTunnelsUpdate(params *ProjectsSSHTunnelsUpdateParams) (*ProjectsSSHTunnelsUpdateOK, error) {
+func (a *Client) ProjectsServersRunStatsUpdate(params *ProjectsServersRunStatsUpdateParams) (*ProjectsServersRunStatsUpdateOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewProjectsSSHTunnelsUpdateParams()
+		params = NewProjectsServersRunStatsUpdateParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_ssh-tunnels_update",
+		ID:                 "projects_servers_run-stats_update",
 		Method:             "PUT",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/{server_type}/{server_pk}/ssh-tunnels/{id}/",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &ProjectsSSHTunnelsUpdateReader{formats: a.formats},
+		Reader:             &ProjectsServersRunStatsUpdateReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ProjectsSSHTunnelsUpdateOK), nil
+	return result.(*ProjectsServersRunStatsUpdateOK), nil
 
 }
 
 /*
-ProjectsStatsCreate projects stats create API
+ProjectsServersSSHTunnelsCreate projects servers ssh tunnels create API
 */
-func (a *Client) ProjectsStatsCreate(params *ProjectsStatsCreateParams) (*ProjectsStatsCreateCreated, error) {
+func (a *Client) ProjectsServersSSHTunnelsCreate(params *ProjectsServersSSHTunnelsCreateParams) (*ProjectsServersSSHTunnelsCreateCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewProjectsStatsCreateParams()
+		params = NewProjectsServersSSHTunnelsCreateParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_stats_create",
+		ID:                 "projects_servers_ssh-tunnels_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/{server_type}/{server_pk}/stats/",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &ProjectsStatsCreateReader{formats: a.formats},
+		Reader:             &ProjectsServersSSHTunnelsCreateReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ProjectsStatsCreateCreated), nil
+	return result.(*ProjectsServersSSHTunnelsCreateCreated), nil
 
 }
 
 /*
-ProjectsStatsDelete projects stats delete API
+ProjectsServersSSHTunnelsDelete projects servers ssh tunnels delete API
 */
-func (a *Client) ProjectsStatsDelete(params *ProjectsStatsDeleteParams) (*ProjectsStatsDeleteNoContent, error) {
+func (a *Client) ProjectsServersSSHTunnelsDelete(params *ProjectsServersSSHTunnelsDeleteParams) (*ProjectsServersSSHTunnelsDeleteNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewProjectsStatsDeleteParams()
+		params = NewProjectsServersSSHTunnelsDeleteParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_stats_delete",
+		ID:                 "projects_servers_ssh-tunnels_delete",
 		Method:             "DELETE",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/{server_type}/{server_pk}/stats/{id}/",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &ProjectsStatsDeleteReader{formats: a.formats},
+		Reader:             &ProjectsServersSSHTunnelsDeleteReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ProjectsStatsDeleteNoContent), nil
+	return result.(*ProjectsServersSSHTunnelsDeleteNoContent), nil
 
 }
 
 /*
-ProjectsStatsList projects stats list API
+ProjectsServersSSHTunnelsList projects servers ssh tunnels list API
 */
-func (a *Client) ProjectsStatsList(params *ProjectsStatsListParams) (*ProjectsStatsListOK, error) {
+func (a *Client) ProjectsServersSSHTunnelsList(params *ProjectsServersSSHTunnelsListParams) (*ProjectsServersSSHTunnelsListOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewProjectsStatsListParams()
+		params = NewProjectsServersSSHTunnelsListParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_stats_list",
+		ID:                 "projects_servers_ssh-tunnels_list",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/{server_type}/{server_pk}/stats/",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &ProjectsStatsListReader{formats: a.formats},
+		Reader:             &ProjectsServersSSHTunnelsListReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ProjectsStatsListOK), nil
+	return result.(*ProjectsServersSSHTunnelsListOK), nil
 
 }
 
 /*
-ProjectsStatsPartialUpdate projects stats partial update API
+ProjectsServersSSHTunnelsPartialUpdate projects servers ssh tunnels partial update API
 */
-func (a *Client) ProjectsStatsPartialUpdate(params *ProjectsStatsPartialUpdateParams) (*ProjectsStatsPartialUpdateOK, error) {
+func (a *Client) ProjectsServersSSHTunnelsPartialUpdate(params *ProjectsServersSSHTunnelsPartialUpdateParams) (*ProjectsServersSSHTunnelsPartialUpdateOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewProjectsStatsPartialUpdateParams()
+		params = NewProjectsServersSSHTunnelsPartialUpdateParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_stats_partial_update",
+		ID:                 "projects_servers_ssh-tunnels_partial_update",
 		Method:             "PATCH",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/{server_type}/{server_pk}/stats/{id}/",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &ProjectsStatsPartialUpdateReader{formats: a.formats},
+		Reader:             &ProjectsServersSSHTunnelsPartialUpdateReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ProjectsStatsPartialUpdateOK), nil
+	return result.(*ProjectsServersSSHTunnelsPartialUpdateOK), nil
 
 }
 
 /*
-ProjectsStatsRead projects stats read API
+ProjectsServersSSHTunnelsRead projects servers ssh tunnels read API
 */
-func (a *Client) ProjectsStatsRead(params *ProjectsStatsReadParams) (*ProjectsStatsReadOK, error) {
+func (a *Client) ProjectsServersSSHTunnelsRead(params *ProjectsServersSSHTunnelsReadParams) (*ProjectsServersSSHTunnelsReadOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewProjectsStatsReadParams()
+		params = NewProjectsServersSSHTunnelsReadParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_stats_read",
+		ID:                 "projects_servers_ssh-tunnels_read",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/{server_type}/{server_pk}/stats/{id}/",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &ProjectsStatsReadReader{formats: a.formats},
+		Reader:             &ProjectsServersSSHTunnelsReadReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ProjectsStatsReadOK), nil
+	return result.(*ProjectsServersSSHTunnelsReadOK), nil
 
 }
 
 /*
-ProjectsStatsUpdate projects stats update API
+ProjectsServersSSHTunnelsUpdate projects servers ssh tunnels update API
 */
-func (a *Client) ProjectsStatsUpdate(params *ProjectsStatsUpdateParams) (*ProjectsStatsUpdateOK, error) {
+func (a *Client) ProjectsServersSSHTunnelsUpdate(params *ProjectsServersSSHTunnelsUpdateParams) (*ProjectsServersSSHTunnelsUpdateOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewProjectsStatsUpdateParams()
+		params = NewProjectsServersSSHTunnelsUpdateParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_stats_update",
+		ID:                 "projects_servers_ssh-tunnels_update",
 		Method:             "PUT",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/{server_type}/{server_pk}/stats/{id}/",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &ProjectsStatsUpdateReader{formats: a.formats},
+		Reader:             &ProjectsServersSSHTunnelsUpdateReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ProjectsStatsUpdateOK), nil
+	return result.(*ProjectsServersSSHTunnelsUpdateOK), nil
+
+}
+
+/*
+ProjectsServersStart projects servers start API
+*/
+func (a *Client) ProjectsServersStart(params *ProjectsServersStartParams) (*ProjectsServersStartCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsServersStartParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_servers_start",
+		Method:             "POST",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{id}/start/",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsServersStartReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsServersStartCreated), nil
+
+}
+
+/*
+ProjectsServersStatsCreate projects servers stats create API
+*/
+func (a *Client) ProjectsServersStatsCreate(params *ProjectsServersStatsCreateParams) (*ProjectsServersStatsCreateCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsServersStatsCreateParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_servers_stats_create",
+		Method:             "POST",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsServersStatsCreateReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsServersStatsCreateCreated), nil
+
+}
+
+/*
+ProjectsServersStatsDelete projects servers stats delete API
+*/
+func (a *Client) ProjectsServersStatsDelete(params *ProjectsServersStatsDeleteParams) (*ProjectsServersStatsDeleteNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsServersStatsDeleteParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_servers_stats_delete",
+		Method:             "DELETE",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/{id}/",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsServersStatsDeleteReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsServersStatsDeleteNoContent), nil
+
+}
+
+/*
+ProjectsServersStatsList projects servers stats list API
+*/
+func (a *Client) ProjectsServersStatsList(params *ProjectsServersStatsListParams) (*ProjectsServersStatsListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsServersStatsListParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_servers_stats_list",
+		Method:             "GET",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsServersStatsListReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsServersStatsListOK), nil
+
+}
+
+/*
+ProjectsServersStatsPartialUpdate projects servers stats partial update API
+*/
+func (a *Client) ProjectsServersStatsPartialUpdate(params *ProjectsServersStatsPartialUpdateParams) (*ProjectsServersStatsPartialUpdateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsServersStatsPartialUpdateParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_servers_stats_partial_update",
+		Method:             "PATCH",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/{id}/",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsServersStatsPartialUpdateReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsServersStatsPartialUpdateOK), nil
+
+}
+
+/*
+ProjectsServersStatsRead projects servers stats read API
+*/
+func (a *Client) ProjectsServersStatsRead(params *ProjectsServersStatsReadParams) (*ProjectsServersStatsReadOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsServersStatsReadParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_servers_stats_read",
+		Method:             "GET",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/{id}/",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsServersStatsReadReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsServersStatsReadOK), nil
+
+}
+
+/*
+ProjectsServersStatsUpdate projects servers stats update API
+*/
+func (a *Client) ProjectsServersStatsUpdate(params *ProjectsServersStatsUpdateParams) (*ProjectsServersStatsUpdateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsServersStatsUpdateParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_servers_stats_update",
+		Method:             "PUT",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/{id}/",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsServersStatsUpdateReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsServersStatsUpdateOK), nil
+
+}
+
+/*
+ProjectsServersStop projects servers stop API
+*/
+func (a *Client) ProjectsServersStop(params *ProjectsServersStopParams) (*ProjectsServersStopCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsServersStopParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_servers_stop",
+		Method:             "POST",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{id}/stop/",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsServersStopReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsServersStopCreated), nil
+
+}
+
+/*
+ProjectsServersTerminate projects servers terminate API
+*/
+func (a *Client) ProjectsServersTerminate(params *ProjectsServersTerminateParams) (*ProjectsServersTerminateCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsServersTerminateParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_servers_terminate",
+		Method:             "POST",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{id}/terminate/",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsServersTerminateReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsServersTerminateCreated), nil
+
+}
+
+/*
+ProjectsServersUpdate projects servers update API
+*/
+func (a *Client) ProjectsServersUpdate(params *ProjectsServersUpdateParams) (*ProjectsServersUpdateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsServersUpdateParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_servers_update",
+		Method:             "PUT",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{id}/",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsServersUpdateReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsServersUpdateOK), nil
+
+}
+
+/*
+ProjectsSyncedResourcesCreate projects synced resources create API
+*/
+func (a *Client) ProjectsSyncedResourcesCreate(params *ProjectsSyncedResourcesCreateParams) (*ProjectsSyncedResourcesCreateCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsSyncedResourcesCreateParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_synced-resources_create",
+		Method:             "POST",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/synced-resources/",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsSyncedResourcesCreateReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsSyncedResourcesCreateCreated), nil
+
+}
+
+/*
+ProjectsSyncedResourcesList projects synced resources list API
+*/
+func (a *Client) ProjectsSyncedResourcesList(params *ProjectsSyncedResourcesListParams) (*ProjectsSyncedResourcesListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsSyncedResourcesListParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_synced-resources_list",
+		Method:             "GET",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/synced-resources/",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsSyncedResourcesListReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsSyncedResourcesListOK), nil
 
 }
 
@@ -1783,258 +1365,6 @@ func (a *Client) ProjectsUpdate(params *ProjectsUpdateParams) (*ProjectsUpdateOK
 		return nil, err
 	}
 	return result.(*ProjectsUpdateOK), nil
-
-}
-
-/*
-ProjectsWorkspacesCreate projects workspaces create API
-*/
-func (a *Client) ProjectsWorkspacesCreate(params *ProjectsWorkspacesCreateParams) (*ProjectsWorkspacesCreateCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsWorkspacesCreateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_workspaces_create",
-		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/workspaces/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsWorkspacesCreateReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsWorkspacesCreateCreated), nil
-
-}
-
-/*
-ProjectsWorkspacesDelete projects workspaces delete API
-*/
-func (a *Client) ProjectsWorkspacesDelete(params *ProjectsWorkspacesDeleteParams) (*ProjectsWorkspacesDeleteNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsWorkspacesDeleteParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_workspaces_delete",
-		Method:             "DELETE",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/workspaces/{server}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsWorkspacesDeleteReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsWorkspacesDeleteNoContent), nil
-
-}
-
-/*
-ProjectsWorkspacesList projects workspaces list API
-*/
-func (a *Client) ProjectsWorkspacesList(params *ProjectsWorkspacesListParams) (*ProjectsWorkspacesListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsWorkspacesListParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_workspaces_list",
-		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/workspaces/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsWorkspacesListReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsWorkspacesListOK), nil
-
-}
-
-/*
-ProjectsWorkspacesPartialUpdate projects workspaces partial update API
-*/
-func (a *Client) ProjectsWorkspacesPartialUpdate(params *ProjectsWorkspacesPartialUpdateParams) (*ProjectsWorkspacesPartialUpdateOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsWorkspacesPartialUpdateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_workspaces_partial_update",
-		Method:             "PATCH",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/workspaces/{server}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsWorkspacesPartialUpdateReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsWorkspacesPartialUpdateOK), nil
-
-}
-
-/*
-ProjectsWorkspacesRead projects workspaces read API
-*/
-func (a *Client) ProjectsWorkspacesRead(params *ProjectsWorkspacesReadParams) (*ProjectsWorkspacesReadOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsWorkspacesReadParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_workspaces_read",
-		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/workspaces/{server}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsWorkspacesReadReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsWorkspacesReadOK), nil
-
-}
-
-/*
-ProjectsWorkspacesStart projects workspaces start API
-*/
-func (a *Client) ProjectsWorkspacesStart(params *ProjectsWorkspacesStartParams) (*ProjectsWorkspacesStartCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsWorkspacesStartParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_workspaces_start",
-		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/workspaces/{server}/start/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsWorkspacesStartReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsWorkspacesStartCreated), nil
-
-}
-
-/*
-ProjectsWorkspacesStop projects workspaces stop API
-*/
-func (a *Client) ProjectsWorkspacesStop(params *ProjectsWorkspacesStopParams) (*ProjectsWorkspacesStopCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsWorkspacesStopParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_workspaces_stop",
-		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/workspaces/{server}/stop/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsWorkspacesStopReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsWorkspacesStopCreated), nil
-
-}
-
-/*
-ProjectsWorkspacesTerminate projects workspaces terminate API
-*/
-func (a *Client) ProjectsWorkspacesTerminate(params *ProjectsWorkspacesTerminateParams) (*ProjectsWorkspacesTerminateCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsWorkspacesTerminateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_workspaces_terminate",
-		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/workspaces/{server}/terminate/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsWorkspacesTerminateReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsWorkspacesTerminateCreated), nil
-
-}
-
-/*
-ProjectsWorkspacesUpdate projects workspaces update API
-*/
-func (a *Client) ProjectsWorkspacesUpdate(params *ProjectsWorkspacesUpdateParams) (*ProjectsWorkspacesUpdateOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsWorkspacesUpdateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_workspaces_update",
-		Method:             "PUT",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/workspaces/{server}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsWorkspacesUpdateReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsWorkspacesUpdateOK), nil
 
 }
 

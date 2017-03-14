@@ -66,6 +66,8 @@ type UsersIntegrationsListParams struct {
 	Namespace string
 	/*Offset*/
 	Offset *string
+	/*Ordering*/
+	Ordering *string
 	/*UserPk*/
 	UserPk string
 
@@ -140,6 +142,17 @@ func (o *UsersIntegrationsListParams) SetOffset(offset *string) {
 	o.Offset = offset
 }
 
+// WithOrdering adds the ordering to the users integrations list params
+func (o *UsersIntegrationsListParams) WithOrdering(ordering *string) *UsersIntegrationsListParams {
+	o.SetOrdering(ordering)
+	return o
+}
+
+// SetOrdering adds the ordering to the users integrations list params
+func (o *UsersIntegrationsListParams) SetOrdering(ordering *string) {
+	o.Ordering = ordering
+}
+
 // WithUserPk adds the userPk to the users integrations list params
 func (o *UsersIntegrationsListParams) WithUserPk(userPk string) *UsersIntegrationsListParams {
 	o.SetUserPk(userPk)
@@ -188,6 +201,22 @@ func (o *UsersIntegrationsListParams) WriteToRequest(r runtime.ClientRequest, re
 		qOffset := qrOffset
 		if qOffset != "" {
 			if err := r.SetQueryParam("offset", qOffset); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.Ordering != nil {
+
+		// query param ordering
+		var qrOrdering string
+		if o.Ordering != nil {
+			qrOrdering = *o.Ordering
+		}
+		qOrdering := qrOrdering
+		if qOrdering != "" {
+			if err := r.SetQueryParam("ordering", qOrdering); err != nil {
 				return err
 			}
 		}

@@ -14,6 +14,13 @@ import (
 // swagger:model Server
 type Server struct {
 
+	// config
+	Config interface{} `json:"config,omitempty"`
+
+	// connected
+	// Required: true
+	Connected []string `json:"connected"`
+
 	// created at
 	CreatedAt string `json:"created_at,omitempty"`
 
@@ -34,11 +41,19 @@ type Server struct {
 
 	// startup script
 	StartupScript string `json:"startup_script,omitempty"`
+
+	// status
+	Status string `json:"status,omitempty"`
 }
 
 // Validate validates this server
 func (m *Server) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateConnected(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
 
 	if err := m.validateEnvironmentResources(formats); err != nil {
 		// prop
@@ -58,6 +73,15 @@ func (m *Server) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *Server) validateConnected(formats strfmt.Registry) error {
+
+	if err := validate.Required("connected", "body", m.Connected); err != nil {
+		return err
+	}
+
 	return nil
 }
 

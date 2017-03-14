@@ -11,7 +11,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/jkp85/go-sdk/models"
+	"github.com/3Blades/go-sdk/models"
 )
 
 // ServersOptionsTypesPartialUpdateReader is a Reader for the ServersOptionsTypesPartialUpdate structure.
@@ -139,9 +139,6 @@ type ServersOptionsTypesPartialUpdateBody struct {
 
 	// name
 	Name string `json:"name,omitempty"`
-
-	// type
-	Type string `json:"type,omitempty"`
 
 	// work dir
 	WorkDir string `json:"work_dir,omitempty"`

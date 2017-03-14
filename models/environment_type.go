@@ -34,10 +34,6 @@ type EnvironmentType struct {
 	// Required: true
 	Name *string `json:"name"`
 
-	// type
-	// Required: true
-	Type *string `json:"type"`
-
 	// work dir
 	WorkDir string `json:"work_dir,omitempty"`
 }
@@ -52,11 +48,6 @@ func (m *EnvironmentType) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateName(formats); err != nil {
-		// prop
-		res = append(res, err)
-	}
-
-	if err := m.validateType(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
@@ -79,15 +70,6 @@ func (m *EnvironmentType) validateImageName(formats strfmt.Registry) error {
 func (m *EnvironmentType) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *EnvironmentType) validateType(formats strfmt.Registry) error {
-
-	if err := validate.Required("type", "body", m.Type); err != nil {
 		return err
 	}
 
