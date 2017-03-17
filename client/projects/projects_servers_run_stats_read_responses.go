@@ -11,7 +11,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	"github.com/jkp85/go-sdk/models"
 )
 
 // ProjectsServersRunStatsReadReader is a Reader for the ProjectsServersRunStatsRead structure.
@@ -81,13 +81,21 @@ func NewProjectsServersRunStatsReadNotFound() *ProjectsServersRunStatsReadNotFou
 ServerRunStatistics not found
 */
 type ProjectsServersRunStatsReadNotFound struct {
+	Payload *models.NotFound
 }
 
 func (o *ProjectsServersRunStatsReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/{id}/][%d] projectsServersRunStatsReadNotFound ", 404)
+	return fmt.Sprintf("[GET /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/{id}/][%d] projectsServersRunStatsReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectsServersRunStatsReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NotFound)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

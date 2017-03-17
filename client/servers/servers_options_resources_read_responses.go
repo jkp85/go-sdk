@@ -11,7 +11,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	"github.com/jkp85/go-sdk/models"
 )
 
 // ServersOptionsResourcesReadReader is a Reader for the ServersOptionsResourcesRead structure.
@@ -81,13 +81,21 @@ func NewServersOptionsResourcesReadNotFound() *ServersOptionsResourcesReadNotFou
 EnvironmentResource not found
 */
 type ServersOptionsResourcesReadNotFound struct {
+	Payload *models.NotFound
 }
 
 func (o *ServersOptionsResourcesReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v0/{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesReadNotFound ", 404)
+	return fmt.Sprintf("[GET /api/v0/{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServersOptionsResourcesReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NotFound)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

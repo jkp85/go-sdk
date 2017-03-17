@@ -11,7 +11,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	"github.com/jkp85/go-sdk/models"
 )
 
 // ProjectsReadReader is a Reader for the ProjectsRead structure.
@@ -81,13 +81,21 @@ func NewProjectsReadNotFound() *ProjectsReadNotFound {
 Project not found
 */
 type ProjectsReadNotFound struct {
+	Payload *models.NotFound
 }
 
 func (o *ProjectsReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v0/{namespace}/projects/{id}/][%d] projectsReadNotFound ", 404)
+	return fmt.Sprintf("[GET /api/v0/{namespace}/projects/{id}/][%d] projectsReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectsReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NotFound)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

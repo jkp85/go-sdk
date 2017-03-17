@@ -7,11 +7,13 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	"github.com/jkp85/go-sdk/models"
 )
 
 // UsersIntegrationsCreateReader is a Reader for the UsersIntegrationsCreate structure.
@@ -81,13 +83,89 @@ func NewUsersIntegrationsCreateBadRequest() *UsersIntegrationsCreateBadRequest {
 Invalid data supplied
 */
 type UsersIntegrationsCreateBadRequest struct {
+	Payload UsersIntegrationsCreateBadRequestBody
 }
 
 func (o *UsersIntegrationsCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v0/{namespace}/users/{user_pk}/integrations/][%d] usersIntegrationsCreateBadRequest ", 400)
+	return fmt.Sprintf("[POST /api/v0/{namespace}/users/{user_pk}/integrations/][%d] usersIntegrationsCreateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *UsersIntegrationsCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*UsersIntegrationsCreateBadRequestBody users integrations create bad request body
+swagger:model UsersIntegrationsCreateBadRequestBody
+*/
+type UsersIntegrationsCreateBadRequestBody struct {
+
+	// extra_data firld errors
+	// Required: true
+	ExtraData []string `json:"extra_data"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// provider firld errors
+	// Required: true
+	Provider []string `json:"provider"`
+}
+
+// Validate validates this users integrations create bad request body
+func (o *UsersIntegrationsCreateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateExtraData(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateProvider(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *UsersIntegrationsCreateBadRequestBody) validateExtraData(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersIntegrationsCreateBadRequest"+"."+"extra_data", "body", o.ExtraData); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *UsersIntegrationsCreateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersIntegrationsCreateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *UsersIntegrationsCreateBadRequestBody) validateProvider(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersIntegrationsCreateBadRequest"+"."+"provider", "body", o.Provider); err != nil {
+		return err
+	}
 
 	return nil
 }

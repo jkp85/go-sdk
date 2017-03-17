@@ -7,11 +7,13 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	"github.com/jkp85/go-sdk/models"
 )
 
 // ProjectsServersPartialUpdateReader is a Reader for the ProjectsServersPartialUpdate structure.
@@ -88,13 +90,19 @@ func NewProjectsServersPartialUpdateBadRequest() *ProjectsServersPartialUpdateBa
 Invalid data supplied
 */
 type ProjectsServersPartialUpdateBadRequest struct {
+	Payload ProjectsServersPartialUpdateBadRequestBody
 }
 
 func (o *ProjectsServersPartialUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/servers/{id}/][%d] projectsServersPartialUpdateBadRequest ", 400)
+	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/servers/{id}/][%d] projectsServersPartialUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsServersPartialUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -109,13 +117,217 @@ func NewProjectsServersPartialUpdateNotFound() *ProjectsServersPartialUpdateNotF
 Server not found
 */
 type ProjectsServersPartialUpdateNotFound struct {
+	Payload *models.NotFound
 }
 
 func (o *ProjectsServersPartialUpdateNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/servers/{id}/][%d] projectsServersPartialUpdateNotFound ", 404)
+	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/servers/{id}/][%d] projectsServersPartialUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectsServersPartialUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NotFound)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*ProjectsServersPartialUpdateBadRequestBody projects servers partial update bad request body
+swagger:model ProjectsServersPartialUpdateBadRequestBody
+*/
+type ProjectsServersPartialUpdateBadRequestBody struct {
+
+	// config firld errors
+	// Required: true
+	Config []string `json:"config"`
+
+	// connected firld errors
+	// Required: true
+	Connected []string `json:"connected"`
+
+	// created_at firld errors
+	// Required: true
+	CreatedAt []string `json:"created_at"`
+
+	// environment_resources firld errors
+	// Required: true
+	EnvironmentResources []string `json:"environment_resources"`
+
+	// environment_type firld errors
+	// Required: true
+	EnvironmentType []string `json:"environment_type"`
+
+	// id firld errors
+	// Required: true
+	ID []string `json:"id"`
+
+	// name firld errors
+	// Required: true
+	Name []string `json:"name"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// startup_script firld errors
+	// Required: true
+	StartupScript []string `json:"startup_script"`
+
+	// status firld errors
+	// Required: true
+	Status []string `json:"status"`
+}
+
+// Validate validates this projects servers partial update bad request body
+func (o *ProjectsServersPartialUpdateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateConfig(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateConnected(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateCreatedAt(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateEnvironmentResources(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateEnvironmentType(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateID(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateName(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateStartupScript(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateStatus(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsServersPartialUpdateBadRequestBody) validateConfig(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersPartialUpdateBadRequest"+"."+"config", "body", o.Config); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersPartialUpdateBadRequestBody) validateConnected(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersPartialUpdateBadRequest"+"."+"connected", "body", o.Connected); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersPartialUpdateBadRequestBody) validateCreatedAt(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersPartialUpdateBadRequest"+"."+"created_at", "body", o.CreatedAt); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersPartialUpdateBadRequestBody) validateEnvironmentResources(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersPartialUpdateBadRequest"+"."+"environment_resources", "body", o.EnvironmentResources); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersPartialUpdateBadRequestBody) validateEnvironmentType(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersPartialUpdateBadRequest"+"."+"environment_type", "body", o.EnvironmentType); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersPartialUpdateBadRequestBody) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersPartialUpdateBadRequest"+"."+"id", "body", o.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersPartialUpdateBadRequestBody) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersPartialUpdateBadRequest"+"."+"name", "body", o.Name); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersPartialUpdateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersPartialUpdateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersPartialUpdateBadRequestBody) validateStartupScript(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersPartialUpdateBadRequest"+"."+"startup_script", "body", o.StartupScript); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersPartialUpdateBadRequestBody) validateStatus(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersPartialUpdateBadRequest"+"."+"status", "body", o.Status); err != nil {
+		return err
+	}
 
 	return nil
 }

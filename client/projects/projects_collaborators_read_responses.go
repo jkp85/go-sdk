@@ -11,7 +11,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	"github.com/jkp85/go-sdk/models"
 )
 
 // ProjectsCollaboratorsReadReader is a Reader for the ProjectsCollaboratorsRead structure.
@@ -81,13 +81,21 @@ func NewProjectsCollaboratorsReadNotFound() *ProjectsCollaboratorsReadNotFound {
 Collaborator not found
 */
 type ProjectsCollaboratorsReadNotFound struct {
+	Payload *models.NotFound
 }
 
 func (o *ProjectsCollaboratorsReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v0/{namespace}/projects/{project_pk}/collaborators/{id}/][%d] projectsCollaboratorsReadNotFound ", 404)
+	return fmt.Sprintf("[GET /api/v0/{namespace}/projects/{project_pk}/collaborators/{id}/][%d] projectsCollaboratorsReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectsCollaboratorsReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NotFound)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

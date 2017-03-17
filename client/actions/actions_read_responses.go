@@ -11,7 +11,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	"github.com/jkp85/go-sdk/models"
 )
 
 // ActionsReadReader is a Reader for the ActionsRead structure.
@@ -81,13 +81,21 @@ func NewActionsReadNotFound() *ActionsReadNotFound {
 Action not found
 */
 type ActionsReadNotFound struct {
+	Payload *models.NotFound
 }
 
 func (o *ActionsReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v0/actions/{id}/][%d] actionsReadNotFound ", 404)
+	return fmt.Sprintf("[GET /api/v0/actions/{id}/][%d] actionsReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ActionsReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NotFound)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

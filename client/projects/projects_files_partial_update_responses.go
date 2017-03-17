@@ -7,11 +7,13 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	"github.com/jkp85/go-sdk/models"
 )
 
 // ProjectsFilesPartialUpdateReader is a Reader for the ProjectsFilesPartialUpdate structure.
@@ -88,13 +90,19 @@ func NewProjectsFilesPartialUpdateBadRequest() *ProjectsFilesPartialUpdateBadReq
 Invalid data supplied
 */
 type ProjectsFilesPartialUpdateBadRequest struct {
+	Payload ProjectsFilesPartialUpdateBadRequestBody
 }
 
 func (o *ProjectsFilesPartialUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/files/{id}/][%d] projectsFilesPartialUpdateBadRequest ", 400)
+	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/files/{id}/][%d] projectsFilesPartialUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsFilesPartialUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -109,13 +117,199 @@ func NewProjectsFilesPartialUpdateNotFound() *ProjectsFilesPartialUpdateNotFound
 File not found
 */
 type ProjectsFilesPartialUpdateNotFound struct {
+	Payload *models.NotFound
 }
 
 func (o *ProjectsFilesPartialUpdateNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/files/{id}/][%d] projectsFilesPartialUpdateNotFound ", 404)
+	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/files/{id}/][%d] projectsFilesPartialUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectsFilesPartialUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NotFound)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*ProjectsFilesPartialUpdateBadRequestBody projects files partial update bad request body
+swagger:model ProjectsFilesPartialUpdateBadRequestBody
+*/
+type ProjectsFilesPartialUpdateBadRequestBody struct {
+
+	// author firld errors
+	// Required: true
+	Author []string `json:"author"`
+
+	// content firld errors
+	// Required: true
+	Content []string `json:"content"`
+
+	// encoding firld errors
+	// Required: true
+	Encoding []string `json:"encoding"`
+
+	// id firld errors
+	// Required: true
+	ID []string `json:"id"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// path firld errors
+	// Required: true
+	Path []string `json:"path"`
+
+	// project firld errors
+	// Required: true
+	Project []string `json:"project"`
+
+	// public firld errors
+	// Required: true
+	Public []string `json:"public"`
+
+	// size firld errors
+	// Required: true
+	Size []string `json:"size"`
+}
+
+// Validate validates this projects files partial update bad request body
+func (o *ProjectsFilesPartialUpdateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateAuthor(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateContent(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateEncoding(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateID(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validatePath(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateProject(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validatePublic(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateSize(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsFilesPartialUpdateBadRequestBody) validateAuthor(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsFilesPartialUpdateBadRequest"+"."+"author", "body", o.Author); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsFilesPartialUpdateBadRequestBody) validateContent(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsFilesPartialUpdateBadRequest"+"."+"content", "body", o.Content); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsFilesPartialUpdateBadRequestBody) validateEncoding(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsFilesPartialUpdateBadRequest"+"."+"encoding", "body", o.Encoding); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsFilesPartialUpdateBadRequestBody) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsFilesPartialUpdateBadRequest"+"."+"id", "body", o.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsFilesPartialUpdateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsFilesPartialUpdateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsFilesPartialUpdateBadRequestBody) validatePath(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsFilesPartialUpdateBadRequest"+"."+"path", "body", o.Path); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsFilesPartialUpdateBadRequestBody) validateProject(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsFilesPartialUpdateBadRequest"+"."+"project", "body", o.Project); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsFilesPartialUpdateBadRequestBody) validatePublic(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsFilesPartialUpdateBadRequest"+"."+"public", "body", o.Public); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsFilesPartialUpdateBadRequestBody) validateSize(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsFilesPartialUpdateBadRequest"+"."+"size", "body", o.Size); err != nil {
+		return err
+	}
 
 	return nil
 }

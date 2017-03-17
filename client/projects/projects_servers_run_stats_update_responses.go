@@ -7,11 +7,13 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	"github.com/jkp85/go-sdk/models"
 )
 
 // ProjectsServersRunStatsUpdateReader is a Reader for the ProjectsServersRunStatsUpdate structure.
@@ -81,13 +83,161 @@ func NewProjectsServersRunStatsUpdateBadRequest() *ProjectsServersRunStatsUpdate
 Invalid data supplied
 */
 type ProjectsServersRunStatsUpdateBadRequest struct {
+	Payload ProjectsServersRunStatsUpdateBadRequestBody
 }
 
 func (o *ProjectsServersRunStatsUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/{id}/][%d] projectsServersRunStatsUpdateBadRequest ", 400)
+	return fmt.Sprintf("[PUT /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/{id}/][%d] projectsServersRunStatsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsServersRunStatsUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*ProjectsServersRunStatsUpdateBadRequestBody projects servers run stats update bad request body
+swagger:model ProjectsServersRunStatsUpdateBadRequestBody
+*/
+type ProjectsServersRunStatsUpdateBadRequestBody struct {
+
+	// exit_code firld errors
+	// Required: true
+	ExitCode []string `json:"exit_code"`
+
+	// id firld errors
+	// Required: true
+	ID []string `json:"id"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// size firld errors
+	// Required: true
+	Size []string `json:"size"`
+
+	// stacktrace firld errors
+	// Required: true
+	Stacktrace []string `json:"stacktrace"`
+
+	// start firld errors
+	// Required: true
+	Start []string `json:"start"`
+
+	// stop firld errors
+	// Required: true
+	Stop []string `json:"stop"`
+}
+
+// Validate validates this projects servers run stats update bad request body
+func (o *ProjectsServersRunStatsUpdateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateExitCode(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateID(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateSize(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateStacktrace(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateStart(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateStop(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsServersRunStatsUpdateBadRequestBody) validateExitCode(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersRunStatsUpdateBadRequest"+"."+"exit_code", "body", o.ExitCode); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersRunStatsUpdateBadRequestBody) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersRunStatsUpdateBadRequest"+"."+"id", "body", o.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersRunStatsUpdateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersRunStatsUpdateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersRunStatsUpdateBadRequestBody) validateSize(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersRunStatsUpdateBadRequest"+"."+"size", "body", o.Size); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersRunStatsUpdateBadRequestBody) validateStacktrace(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersRunStatsUpdateBadRequest"+"."+"stacktrace", "body", o.Stacktrace); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersRunStatsUpdateBadRequestBody) validateStart(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersRunStatsUpdateBadRequest"+"."+"start", "body", o.Start); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersRunStatsUpdateBadRequestBody) validateStop(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersRunStatsUpdateBadRequest"+"."+"stop", "body", o.Stop); err != nil {
+		return err
+	}
 
 	return nil
 }

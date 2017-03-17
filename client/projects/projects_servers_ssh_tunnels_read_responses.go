@@ -11,7 +11,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	"github.com/jkp85/go-sdk/models"
 )
 
 // ProjectsServersSSHTunnelsReadReader is a Reader for the ProjectsServersSSHTunnelsRead structure.
@@ -81,13 +81,21 @@ func NewProjectsServersSSHTunnelsReadNotFound() *ProjectsServersSSHTunnelsReadNo
 SshTunnel not found
 */
 type ProjectsServersSSHTunnelsReadNotFound struct {
+	Payload *models.NotFound
 }
 
 func (o *ProjectsServersSSHTunnelsReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsReadNotFound ", 404)
+	return fmt.Sprintf("[GET /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectsServersSSHTunnelsReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NotFound)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

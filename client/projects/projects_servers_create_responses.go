@@ -7,11 +7,13 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	"github.com/jkp85/go-sdk/models"
 )
 
 // ProjectsServersCreateReader is a Reader for the ProjectsServersCreate structure.
@@ -81,13 +83,215 @@ func NewProjectsServersCreateBadRequest() *ProjectsServersCreateBadRequest {
 Invalid data supplied
 */
 type ProjectsServersCreateBadRequest struct {
+	Payload ProjectsServersCreateBadRequestBody
 }
 
 func (o *ProjectsServersCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v0/{namespace}/projects/{project_pk}/servers/][%d] projectsServersCreateBadRequest ", 400)
+	return fmt.Sprintf("[POST /api/v0/{namespace}/projects/{project_pk}/servers/][%d] projectsServersCreateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsServersCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*ProjectsServersCreateBadRequestBody projects servers create bad request body
+swagger:model ProjectsServersCreateBadRequestBody
+*/
+type ProjectsServersCreateBadRequestBody struct {
+
+	// config firld errors
+	// Required: true
+	Config []string `json:"config"`
+
+	// connected firld errors
+	// Required: true
+	Connected []string `json:"connected"`
+
+	// created_at firld errors
+	// Required: true
+	CreatedAt []string `json:"created_at"`
+
+	// environment_resources firld errors
+	// Required: true
+	EnvironmentResources []string `json:"environment_resources"`
+
+	// environment_type firld errors
+	// Required: true
+	EnvironmentType []string `json:"environment_type"`
+
+	// id firld errors
+	// Required: true
+	ID []string `json:"id"`
+
+	// name firld errors
+	// Required: true
+	Name []string `json:"name"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// startup_script firld errors
+	// Required: true
+	StartupScript []string `json:"startup_script"`
+
+	// status firld errors
+	// Required: true
+	Status []string `json:"status"`
+}
+
+// Validate validates this projects servers create bad request body
+func (o *ProjectsServersCreateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateConfig(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateConnected(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateCreatedAt(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateEnvironmentResources(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateEnvironmentType(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateID(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateName(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateStartupScript(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateStatus(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsServersCreateBadRequestBody) validateConfig(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersCreateBadRequest"+"."+"config", "body", o.Config); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersCreateBadRequestBody) validateConnected(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersCreateBadRequest"+"."+"connected", "body", o.Connected); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersCreateBadRequestBody) validateCreatedAt(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersCreateBadRequest"+"."+"created_at", "body", o.CreatedAt); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersCreateBadRequestBody) validateEnvironmentResources(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersCreateBadRequest"+"."+"environment_resources", "body", o.EnvironmentResources); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersCreateBadRequestBody) validateEnvironmentType(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersCreateBadRequest"+"."+"environment_type", "body", o.EnvironmentType); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersCreateBadRequestBody) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersCreateBadRequest"+"."+"id", "body", o.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersCreateBadRequestBody) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersCreateBadRequest"+"."+"name", "body", o.Name); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersCreateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersCreateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersCreateBadRequestBody) validateStartupScript(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersCreateBadRequest"+"."+"startup_script", "body", o.StartupScript); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersCreateBadRequestBody) validateStatus(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersCreateBadRequest"+"."+"status", "body", o.Status); err != nil {
+		return err
+	}
 
 	return nil
 }

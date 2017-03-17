@@ -5,10 +5,13 @@ package servers
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	"github.com/jkp85/go-sdk/models"
 )
 
 // ServersOptionsResourcesDeleteReader is a Reader for the ServersOptionsResourcesDelete structure.
@@ -70,13 +73,21 @@ func NewServersOptionsResourcesDeleteNotFound() *ServersOptionsResourcesDeleteNo
 EnvironmentResource not found
 */
 type ServersOptionsResourcesDeleteNotFound struct {
+	Payload *models.NotFound
 }
 
 func (o *ServersOptionsResourcesDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /api/v0/{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesDeleteNotFound ", 404)
+	return fmt.Sprintf("[DELETE /api/v0/{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServersOptionsResourcesDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NotFound)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

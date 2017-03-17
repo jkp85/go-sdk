@@ -7,11 +7,13 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	"github.com/jkp85/go-sdk/models"
 )
 
 // ServersOptionsTypesPartialUpdateReader is a Reader for the ServersOptionsTypesPartialUpdate structure.
@@ -88,13 +90,19 @@ func NewServersOptionsTypesPartialUpdateBadRequest() *ServersOptionsTypesPartial
 Invalid data supplied
 */
 type ServersOptionsTypesPartialUpdateBadRequest struct {
+	Payload ServersOptionsTypesPartialUpdateBadRequestBody
 }
 
 func (o *ServersOptionsTypesPartialUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/servers/options/types/{id}/][%d] serversOptionsTypesPartialUpdateBadRequest ", 400)
+	return fmt.Sprintf("[PATCH /api/v0/{namespace}/servers/options/types/{id}/][%d] serversOptionsTypesPartialUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServersOptionsTypesPartialUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -109,13 +117,181 @@ func NewServersOptionsTypesPartialUpdateNotFound() *ServersOptionsTypesPartialUp
 EnvironmentType not found
 */
 type ServersOptionsTypesPartialUpdateNotFound struct {
+	Payload *models.NotFound
 }
 
 func (o *ServersOptionsTypesPartialUpdateNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/servers/options/types/{id}/][%d] serversOptionsTypesPartialUpdateNotFound ", 404)
+	return fmt.Sprintf("[PATCH /api/v0/{namespace}/servers/options/types/{id}/][%d] serversOptionsTypesPartialUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServersOptionsTypesPartialUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NotFound)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*ServersOptionsTypesPartialUpdateBadRequestBody servers options types partial update bad request body
+swagger:model ServersOptionsTypesPartialUpdateBadRequestBody
+*/
+type ServersOptionsTypesPartialUpdateBadRequestBody struct {
+
+	// cmd firld errors
+	// Required: true
+	Cmd []string `json:"cmd"`
+
+	// container_path firld errors
+	// Required: true
+	ContainerPath []string `json:"container_path"`
+
+	// container_port firld errors
+	// Required: true
+	ContainerPort []string `json:"container_port"`
+
+	// id firld errors
+	// Required: true
+	ID []string `json:"id"`
+
+	// image_name firld errors
+	// Required: true
+	ImageName []string `json:"image_name"`
+
+	// name firld errors
+	// Required: true
+	Name []string `json:"name"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// work_dir firld errors
+	// Required: true
+	WorkDir []string `json:"work_dir"`
+}
+
+// Validate validates this servers options types partial update bad request body
+func (o *ServersOptionsTypesPartialUpdateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateCmd(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateContainerPath(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateContainerPort(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateID(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateImageName(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateName(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateWorkDir(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ServersOptionsTypesPartialUpdateBadRequestBody) validateCmd(formats strfmt.Registry) error {
+
+	if err := validate.Required("serversOptionsTypesPartialUpdateBadRequest"+"."+"cmd", "body", o.Cmd); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ServersOptionsTypesPartialUpdateBadRequestBody) validateContainerPath(formats strfmt.Registry) error {
+
+	if err := validate.Required("serversOptionsTypesPartialUpdateBadRequest"+"."+"container_path", "body", o.ContainerPath); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ServersOptionsTypesPartialUpdateBadRequestBody) validateContainerPort(formats strfmt.Registry) error {
+
+	if err := validate.Required("serversOptionsTypesPartialUpdateBadRequest"+"."+"container_port", "body", o.ContainerPort); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ServersOptionsTypesPartialUpdateBadRequestBody) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("serversOptionsTypesPartialUpdateBadRequest"+"."+"id", "body", o.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ServersOptionsTypesPartialUpdateBadRequestBody) validateImageName(formats strfmt.Registry) error {
+
+	if err := validate.Required("serversOptionsTypesPartialUpdateBadRequest"+"."+"image_name", "body", o.ImageName); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ServersOptionsTypesPartialUpdateBadRequestBody) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("serversOptionsTypesPartialUpdateBadRequest"+"."+"name", "body", o.Name); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ServersOptionsTypesPartialUpdateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("serversOptionsTypesPartialUpdateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ServersOptionsTypesPartialUpdateBadRequestBody) validateWorkDir(formats strfmt.Registry) error {
+
+	if err := validate.Required("serversOptionsTypesPartialUpdateBadRequest"+"."+"work_dir", "body", o.WorkDir); err != nil {
+		return err
+	}
 
 	return nil
 }

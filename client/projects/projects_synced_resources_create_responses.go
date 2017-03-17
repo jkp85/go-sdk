@@ -7,11 +7,13 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	"github.com/jkp85/go-sdk/models"
 )
 
 // ProjectsSyncedResourcesCreateReader is a Reader for the ProjectsSyncedResourcesCreate structure.
@@ -81,13 +83,107 @@ func NewProjectsSyncedResourcesCreateBadRequest() *ProjectsSyncedResourcesCreate
 Invalid data supplied
 */
 type ProjectsSyncedResourcesCreateBadRequest struct {
+	Payload ProjectsSyncedResourcesCreateBadRequestBody
 }
 
 func (o *ProjectsSyncedResourcesCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v0/{namespace}/projects/{project_pk}/synced-resources/][%d] projectsSyncedResourcesCreateBadRequest ", 400)
+	return fmt.Sprintf("[POST /api/v0/{namespace}/projects/{project_pk}/synced-resources/][%d] projectsSyncedResourcesCreateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsSyncedResourcesCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*ProjectsSyncedResourcesCreateBadRequestBody projects synced resources create bad request body
+swagger:model ProjectsSyncedResourcesCreateBadRequestBody
+*/
+type ProjectsSyncedResourcesCreateBadRequestBody struct {
+
+	// folder firld errors
+	// Required: true
+	Folder []string `json:"folder"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// provider firld errors
+	// Required: true
+	Provider []string `json:"provider"`
+
+	// settings firld errors
+	// Required: true
+	Settings []string `json:"settings"`
+}
+
+// Validate validates this projects synced resources create bad request body
+func (o *ProjectsSyncedResourcesCreateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateFolder(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateProvider(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateSettings(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsSyncedResourcesCreateBadRequestBody) validateFolder(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsSyncedResourcesCreateBadRequest"+"."+"folder", "body", o.Folder); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsSyncedResourcesCreateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsSyncedResourcesCreateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsSyncedResourcesCreateBadRequestBody) validateProvider(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsSyncedResourcesCreateBadRequest"+"."+"provider", "body", o.Provider); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsSyncedResourcesCreateBadRequestBody) validateSettings(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsSyncedResourcesCreateBadRequest"+"."+"settings", "body", o.Settings); err != nil {
+		return err
+	}
 
 	return nil
 }

@@ -7,11 +7,13 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	"github.com/jkp85/go-sdk/models"
 )
 
 // ProjectsServersStatsCreateReader is a Reader for the ProjectsServersStatsCreate structure.
@@ -81,13 +83,125 @@ func NewProjectsServersStatsCreateBadRequest() *ProjectsServersStatsCreateBadReq
 Invalid data supplied
 */
 type ProjectsServersStatsCreateBadRequest struct {
+	Payload ProjectsServersStatsCreateBadRequestBody
 }
 
 func (o *ProjectsServersStatsCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/][%d] projectsServersStatsCreateBadRequest ", 400)
+	return fmt.Sprintf("[POST /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/][%d] projectsServersStatsCreateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsServersStatsCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*ProjectsServersStatsCreateBadRequestBody projects servers stats create bad request body
+swagger:model ProjectsServersStatsCreateBadRequestBody
+*/
+type ProjectsServersStatsCreateBadRequestBody struct {
+
+	// id firld errors
+	// Required: true
+	ID []string `json:"id"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// size firld errors
+	// Required: true
+	Size []string `json:"size"`
+
+	// start firld errors
+	// Required: true
+	Start []string `json:"start"`
+
+	// stop firld errors
+	// Required: true
+	Stop []string `json:"stop"`
+}
+
+// Validate validates this projects servers stats create bad request body
+func (o *ProjectsServersStatsCreateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateID(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateSize(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateStart(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateStop(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsServersStatsCreateBadRequestBody) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStatsCreateBadRequest"+"."+"id", "body", o.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStatsCreateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStatsCreateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStatsCreateBadRequestBody) validateSize(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStatsCreateBadRequest"+"."+"size", "body", o.Size); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStatsCreateBadRequestBody) validateStart(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStatsCreateBadRequest"+"."+"start", "body", o.Start); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStatsCreateBadRequestBody) validateStop(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStatsCreateBadRequest"+"."+"stop", "body", o.Stop); err != nil {
+		return err
+	}
 
 	return nil
 }

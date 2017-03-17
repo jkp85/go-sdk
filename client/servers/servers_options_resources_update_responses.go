@@ -7,11 +7,13 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	"github.com/jkp85/go-sdk/models"
 )
 
 // ServersOptionsResourcesUpdateReader is a Reader for the ServersOptionsResourcesUpdate structure.
@@ -81,13 +83,143 @@ func NewServersOptionsResourcesUpdateBadRequest() *ServersOptionsResourcesUpdate
 Invalid data supplied
 */
 type ServersOptionsResourcesUpdateBadRequest struct {
+	Payload ServersOptionsResourcesUpdateBadRequestBody
 }
 
 func (o *ServersOptionsResourcesUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /api/v0/{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesUpdateBadRequest ", 400)
+	return fmt.Sprintf("[PUT /api/v0/{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServersOptionsResourcesUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*ServersOptionsResourcesUpdateBadRequestBody servers options resources update bad request body
+swagger:model ServersOptionsResourcesUpdateBadRequestBody
+*/
+type ServersOptionsResourcesUpdateBadRequestBody struct {
+
+	// active firld errors
+	// Required: true
+	Active []string `json:"active"`
+
+	// cpu firld errors
+	// Required: true
+	CPU []string `json:"cpu"`
+
+	// id firld errors
+	// Required: true
+	ID []string `json:"id"`
+
+	// memory firld errors
+	// Required: true
+	Memory []string `json:"memory"`
+
+	// name firld errors
+	// Required: true
+	Name []string `json:"name"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+}
+
+// Validate validates this servers options resources update bad request body
+func (o *ServersOptionsResourcesUpdateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateActive(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateCPU(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateID(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateMemory(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateName(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ServersOptionsResourcesUpdateBadRequestBody) validateActive(formats strfmt.Registry) error {
+
+	if err := validate.Required("serversOptionsResourcesUpdateBadRequest"+"."+"active", "body", o.Active); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ServersOptionsResourcesUpdateBadRequestBody) validateCPU(formats strfmt.Registry) error {
+
+	if err := validate.Required("serversOptionsResourcesUpdateBadRequest"+"."+"cpu", "body", o.CPU); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ServersOptionsResourcesUpdateBadRequestBody) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("serversOptionsResourcesUpdateBadRequest"+"."+"id", "body", o.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ServersOptionsResourcesUpdateBadRequestBody) validateMemory(formats strfmt.Registry) error {
+
+	if err := validate.Required("serversOptionsResourcesUpdateBadRequest"+"."+"memory", "body", o.Memory); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ServersOptionsResourcesUpdateBadRequestBody) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("serversOptionsResourcesUpdateBadRequest"+"."+"name", "body", o.Name); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ServersOptionsResourcesUpdateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("serversOptionsResourcesUpdateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
 
 	return nil
 }

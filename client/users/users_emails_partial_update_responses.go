@@ -7,11 +7,13 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	"github.com/jkp85/go-sdk/models"
 )
 
 // UsersEmailsPartialUpdateReader is a Reader for the UsersEmailsPartialUpdate structure.
@@ -88,13 +90,19 @@ func NewUsersEmailsPartialUpdateBadRequest() *UsersEmailsPartialUpdateBadRequest
 Invalid data supplied
 */
 type UsersEmailsPartialUpdateBadRequest struct {
+	Payload UsersEmailsPartialUpdateBadRequestBody
 }
 
 func (o *UsersEmailsPartialUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/users/{user_pk}/emails/{address}/][%d] usersEmailsPartialUpdateBadRequest ", 400)
+	return fmt.Sprintf("[PATCH /api/v0/{namespace}/users/{user_pk}/emails/{address}/][%d] usersEmailsPartialUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *UsersEmailsPartialUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -109,13 +117,109 @@ func NewUsersEmailsPartialUpdateNotFound() *UsersEmailsPartialUpdateNotFound {
 Email not found
 */
 type UsersEmailsPartialUpdateNotFound struct {
+	Payload *models.NotFound
 }
 
 func (o *UsersEmailsPartialUpdateNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/users/{user_pk}/emails/{address}/][%d] usersEmailsPartialUpdateNotFound ", 404)
+	return fmt.Sprintf("[PATCH /api/v0/{namespace}/users/{user_pk}/emails/{address}/][%d] usersEmailsPartialUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *UsersEmailsPartialUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NotFound)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*UsersEmailsPartialUpdateBadRequestBody users emails partial update bad request body
+swagger:model UsersEmailsPartialUpdateBadRequestBody
+*/
+type UsersEmailsPartialUpdateBadRequestBody struct {
+
+	// address firld errors
+	// Required: true
+	Address []string `json:"address"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// public firld errors
+	// Required: true
+	Public []string `json:"public"`
+
+	// unsubscribed firld errors
+	// Required: true
+	Unsubscribed []string `json:"unsubscribed"`
+}
+
+// Validate validates this users emails partial update bad request body
+func (o *UsersEmailsPartialUpdateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateAddress(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validatePublic(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateUnsubscribed(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *UsersEmailsPartialUpdateBadRequestBody) validateAddress(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersEmailsPartialUpdateBadRequest"+"."+"address", "body", o.Address); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *UsersEmailsPartialUpdateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersEmailsPartialUpdateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *UsersEmailsPartialUpdateBadRequestBody) validatePublic(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersEmailsPartialUpdateBadRequest"+"."+"public", "body", o.Public); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *UsersEmailsPartialUpdateBadRequestBody) validateUnsubscribed(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersEmailsPartialUpdateBadRequest"+"."+"unsubscribed", "body", o.Unsubscribed); err != nil {
+		return err
+	}
 
 	return nil
 }

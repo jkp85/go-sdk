@@ -7,11 +7,13 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	"github.com/jkp85/go-sdk/models"
 )
 
 // ProjectsCollaboratorsUpdateReader is a Reader for the ProjectsCollaboratorsUpdate structure.
@@ -81,13 +83,125 @@ func NewProjectsCollaboratorsUpdateBadRequest() *ProjectsCollaboratorsUpdateBadR
 Invalid data supplied
 */
 type ProjectsCollaboratorsUpdateBadRequest struct {
+	Payload ProjectsCollaboratorsUpdateBadRequestBody
 }
 
 func (o *ProjectsCollaboratorsUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /api/v0/{namespace}/projects/{project_pk}/collaborators/{id}/][%d] projectsCollaboratorsUpdateBadRequest ", 400)
+	return fmt.Sprintf("[PUT /api/v0/{namespace}/projects/{project_pk}/collaborators/{id}/][%d] projectsCollaboratorsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsCollaboratorsUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*ProjectsCollaboratorsUpdateBadRequestBody projects collaborators update bad request body
+swagger:model ProjectsCollaboratorsUpdateBadRequestBody
+*/
+type ProjectsCollaboratorsUpdateBadRequestBody struct {
+
+	// email firld errors
+	// Required: true
+	Email []string `json:"email"`
+
+	// id firld errors
+	// Required: true
+	ID []string `json:"id"`
+
+	// joined firld errors
+	// Required: true
+	Joined []string `json:"joined"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// owner firld errors
+	// Required: true
+	Owner []string `json:"owner"`
+}
+
+// Validate validates this projects collaborators update bad request body
+func (o *ProjectsCollaboratorsUpdateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateEmail(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateID(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateJoined(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateOwner(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsCollaboratorsUpdateBadRequestBody) validateEmail(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsCollaboratorsUpdateBadRequest"+"."+"email", "body", o.Email); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsCollaboratorsUpdateBadRequestBody) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsCollaboratorsUpdateBadRequest"+"."+"id", "body", o.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsCollaboratorsUpdateBadRequestBody) validateJoined(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsCollaboratorsUpdateBadRequest"+"."+"joined", "body", o.Joined); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsCollaboratorsUpdateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsCollaboratorsUpdateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsCollaboratorsUpdateBadRequestBody) validateOwner(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsCollaboratorsUpdateBadRequest"+"."+"owner", "body", o.Owner); err != nil {
+		return err
+	}
 
 	return nil
 }
@@ -97,10 +211,10 @@ swagger:model ProjectsCollaboratorsUpdateBody
 */
 type ProjectsCollaboratorsUpdateBody struct {
 
+	// email
+	// Required: true
+	Email *string `json:"email"`
+
 	// owner
 	Owner bool `json:"owner,omitempty"`
-
-	// user
-	// Required: true
-	User *models.User `json:"user"`
 }

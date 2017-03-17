@@ -7,11 +7,13 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	"github.com/jkp85/go-sdk/models"
 )
 
 // ProjectsServersSSHTunnelsCreateReader is a Reader for the ProjectsServersSSHTunnelsCreate structure.
@@ -81,13 +83,179 @@ func NewProjectsServersSSHTunnelsCreateBadRequest() *ProjectsServersSSHTunnelsCr
 Invalid data supplied
 */
 type ProjectsServersSSHTunnelsCreateBadRequest struct {
+	Payload ProjectsServersSSHTunnelsCreateBadRequestBody
 }
 
 func (o *ProjectsServersSSHTunnelsCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/][%d] projectsServersSshTunnelsCreateBadRequest ", 400)
+	return fmt.Sprintf("[POST /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/][%d] projectsServersSshTunnelsCreateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsServersSSHTunnelsCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*ProjectsServersSSHTunnelsCreateBadRequestBody projects servers SSH tunnels create bad request body
+swagger:model ProjectsServersSSHTunnelsCreateBadRequestBody
+*/
+type ProjectsServersSSHTunnelsCreateBadRequestBody struct {
+
+	// endpoint firld errors
+	// Required: true
+	Endpoint []string `json:"endpoint"`
+
+	// host firld errors
+	// Required: true
+	Host []string `json:"host"`
+
+	// id firld errors
+	// Required: true
+	ID []string `json:"id"`
+
+	// local_port firld errors
+	// Required: true
+	LocalPort []string `json:"local_port"`
+
+	// name firld errors
+	// Required: true
+	Name []string `json:"name"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// remote_port firld errors
+	// Required: true
+	RemotePort []string `json:"remote_port"`
+
+	// username firld errors
+	// Required: true
+	Username []string `json:"username"`
+}
+
+// Validate validates this projects servers SSH tunnels create bad request body
+func (o *ProjectsServersSSHTunnelsCreateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateEndpoint(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateHost(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateID(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateLocalPort(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateName(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateRemotePort(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateUsername(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsServersSSHTunnelsCreateBadRequestBody) validateEndpoint(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersSshTunnelsCreateBadRequest"+"."+"endpoint", "body", o.Endpoint); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersSSHTunnelsCreateBadRequestBody) validateHost(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersSshTunnelsCreateBadRequest"+"."+"host", "body", o.Host); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersSSHTunnelsCreateBadRequestBody) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersSshTunnelsCreateBadRequest"+"."+"id", "body", o.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersSSHTunnelsCreateBadRequestBody) validateLocalPort(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersSshTunnelsCreateBadRequest"+"."+"local_port", "body", o.LocalPort); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersSSHTunnelsCreateBadRequestBody) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersSshTunnelsCreateBadRequest"+"."+"name", "body", o.Name); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersSSHTunnelsCreateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersSshTunnelsCreateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersSSHTunnelsCreateBadRequestBody) validateRemotePort(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersSshTunnelsCreateBadRequest"+"."+"remote_port", "body", o.RemotePort); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersSSHTunnelsCreateBadRequestBody) validateUsername(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersSshTunnelsCreateBadRequest"+"."+"username", "body", o.Username); err != nil {
+		return err
+	}
 
 	return nil
 }

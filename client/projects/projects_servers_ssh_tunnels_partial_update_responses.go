@@ -7,11 +7,13 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	"github.com/jkp85/go-sdk/models"
 )
 
 // ProjectsServersSSHTunnelsPartialUpdateReader is a Reader for the ProjectsServersSSHTunnelsPartialUpdate structure.
@@ -88,13 +90,19 @@ func NewProjectsServersSSHTunnelsPartialUpdateBadRequest() *ProjectsServersSSHTu
 Invalid data supplied
 */
 type ProjectsServersSSHTunnelsPartialUpdateBadRequest struct {
+	Payload ProjectsServersSSHTunnelsPartialUpdateBadRequestBody
 }
 
 func (o *ProjectsServersSSHTunnelsPartialUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsPartialUpdateBadRequest ", 400)
+	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsPartialUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsServersSSHTunnelsPartialUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -109,13 +117,181 @@ func NewProjectsServersSSHTunnelsPartialUpdateNotFound() *ProjectsServersSSHTunn
 SshTunnel not found
 */
 type ProjectsServersSSHTunnelsPartialUpdateNotFound struct {
+	Payload *models.NotFound
 }
 
 func (o *ProjectsServersSSHTunnelsPartialUpdateNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsPartialUpdateNotFound ", 404)
+	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsPartialUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectsServersSSHTunnelsPartialUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NotFound)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*ProjectsServersSSHTunnelsPartialUpdateBadRequestBody projects servers SSH tunnels partial update bad request body
+swagger:model ProjectsServersSSHTunnelsPartialUpdateBadRequestBody
+*/
+type ProjectsServersSSHTunnelsPartialUpdateBadRequestBody struct {
+
+	// endpoint firld errors
+	// Required: true
+	Endpoint []string `json:"endpoint"`
+
+	// host firld errors
+	// Required: true
+	Host []string `json:"host"`
+
+	// id firld errors
+	// Required: true
+	ID []string `json:"id"`
+
+	// local_port firld errors
+	// Required: true
+	LocalPort []string `json:"local_port"`
+
+	// name firld errors
+	// Required: true
+	Name []string `json:"name"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// remote_port firld errors
+	// Required: true
+	RemotePort []string `json:"remote_port"`
+
+	// username firld errors
+	// Required: true
+	Username []string `json:"username"`
+}
+
+// Validate validates this projects servers SSH tunnels partial update bad request body
+func (o *ProjectsServersSSHTunnelsPartialUpdateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateEndpoint(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateHost(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateID(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateLocalPort(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateName(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateRemotePort(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateUsername(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsServersSSHTunnelsPartialUpdateBadRequestBody) validateEndpoint(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersSshTunnelsPartialUpdateBadRequest"+"."+"endpoint", "body", o.Endpoint); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersSSHTunnelsPartialUpdateBadRequestBody) validateHost(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersSshTunnelsPartialUpdateBadRequest"+"."+"host", "body", o.Host); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersSSHTunnelsPartialUpdateBadRequestBody) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersSshTunnelsPartialUpdateBadRequest"+"."+"id", "body", o.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersSSHTunnelsPartialUpdateBadRequestBody) validateLocalPort(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersSshTunnelsPartialUpdateBadRequest"+"."+"local_port", "body", o.LocalPort); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersSSHTunnelsPartialUpdateBadRequestBody) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersSshTunnelsPartialUpdateBadRequest"+"."+"name", "body", o.Name); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersSSHTunnelsPartialUpdateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersSshTunnelsPartialUpdateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersSSHTunnelsPartialUpdateBadRequestBody) validateRemotePort(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersSshTunnelsPartialUpdateBadRequest"+"."+"remote_port", "body", o.RemotePort); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersSSHTunnelsPartialUpdateBadRequestBody) validateUsername(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersSshTunnelsPartialUpdateBadRequest"+"."+"username", "body", o.Username); err != nil {
+		return err
+	}
 
 	return nil
 }

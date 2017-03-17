@@ -62,6 +62,8 @@ type ProjectsListParams struct {
 
 	/*Limit*/
 	Limit *string
+	/*Name*/
+	Name *string
 	/*Namespace*/
 	Namespace string
 	/*Offset*/
@@ -118,6 +120,17 @@ func (o *ProjectsListParams) WithLimit(limit *string) *ProjectsListParams {
 // SetLimit adds the limit to the projects list params
 func (o *ProjectsListParams) SetLimit(limit *string) {
 	o.Limit = limit
+}
+
+// WithName adds the name to the projects list params
+func (o *ProjectsListParams) WithName(name *string) *ProjectsListParams {
+	o.SetName(name)
+	return o
+}
+
+// SetName adds the name to the projects list params
+func (o *ProjectsListParams) SetName(name *string) {
+	o.Name = name
 }
 
 // WithNamespace adds the namespace to the projects list params
@@ -180,6 +193,22 @@ func (o *ProjectsListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 		qLimit := qrLimit
 		if qLimit != "" {
 			if err := r.SetQueryParam("limit", qLimit); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.Name != nil {
+
+		// query param name
+		var qrName string
+		if o.Name != nil {
+			qrName = *o.Name
+		}
+		qName := qrName
+		if qName != "" {
+			if err := r.SetQueryParam("name", qName); err != nil {
 				return err
 			}
 		}

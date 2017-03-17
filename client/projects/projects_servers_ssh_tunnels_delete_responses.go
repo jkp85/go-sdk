@@ -5,10 +5,13 @@ package projects
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	"github.com/jkp85/go-sdk/models"
 )
 
 // ProjectsServersSSHTunnelsDeleteReader is a Reader for the ProjectsServersSSHTunnelsDelete structure.
@@ -70,13 +73,21 @@ func NewProjectsServersSSHTunnelsDeleteNotFound() *ProjectsServersSSHTunnelsDele
 SshTunnel not found
 */
 type ProjectsServersSSHTunnelsDeleteNotFound struct {
+	Payload *models.NotFound
 }
 
 func (o *ProjectsServersSSHTunnelsDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsDeleteNotFound ", 404)
+	return fmt.Sprintf("[DELETE /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectsServersSSHTunnelsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NotFound)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
