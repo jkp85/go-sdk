@@ -141,31 +141,31 @@ swagger:model ProjectsServersPartialUpdateBadRequestBody
 */
 type ProjectsServersPartialUpdateBadRequestBody struct {
 
-	// config firld errors
+	// config field errors
 	// Required: true
 	Config []string `json:"config"`
 
-	// connected firld errors
+	// connected field errors
 	// Required: true
 	Connected []string `json:"connected"`
 
-	// created_at firld errors
+	// created_at field errors
 	// Required: true
 	CreatedAt []string `json:"created_at"`
 
-	// environment_resources firld errors
+	// environment_resources field errors
 	// Required: true
 	EnvironmentResources []string `json:"environment_resources"`
 
-	// environment_type firld errors
+	// environment_type field errors
 	// Required: true
 	EnvironmentType []string `json:"environment_type"`
 
-	// id firld errors
+	// id field errors
 	// Required: true
 	ID []string `json:"id"`
 
-	// name firld errors
+	// name field errors
 	// Required: true
 	Name []string `json:"name"`
 
@@ -173,11 +173,11 @@ type ProjectsServersPartialUpdateBadRequestBody struct {
 	// Required: true
 	NonFieldErrors []string `json:"non_field_errors"`
 
-	// startup_script firld errors
+	// startup_script field errors
 	// Required: true
 	StartupScript []string `json:"startup_script"`
 
-	// status firld errors
+	// status field errors
 	// Required: true
 	Status []string `json:"status"`
 }

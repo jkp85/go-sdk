@@ -109,15 +109,15 @@ type AuthSimpleTokenAuthCreateBadRequestBody struct {
 	// Required: true
 	NonFieldErrors []string `json:"non_field_errors"`
 
-	// password firld errors
+	// password field errors
 	// Required: true
 	Password []string `json:"password"`
 
-	// token firld errors
+	// token field errors
 	// Required: true
 	Token []string `json:"token"`
 
-	// username firld errors
+	// username field errors
 	// Required: true
 	Username []string `json:"username"`
 }

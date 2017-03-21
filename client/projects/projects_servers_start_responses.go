@@ -305,7 +305,6 @@ type ProjectsServersStartBody struct {
 	Config interface{} `json:"config,omitempty"`
 
 	// connected
-	// Required: true
 	Connected []string `json:"connected"`
 
 	// environment resources

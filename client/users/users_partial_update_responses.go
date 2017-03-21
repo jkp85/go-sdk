@@ -142,19 +142,19 @@ swagger:model UsersPartialUpdateBadRequestBody
 */
 type UsersPartialUpdateBadRequestBody struct {
 
-	// email firld errors
+	// email field errors
 	// Required: true
 	Email []string `json:"email"`
 
-	// first_name firld errors
+	// first_name field errors
 	// Required: true
 	FirstName []string `json:"first_name"`
 
-	// id firld errors
+	// id field errors
 	// Required: true
 	ID []string `json:"id"`
 
-	// last_name firld errors
+	// last_name field errors
 	// Required: true
 	LastName []string `json:"last_name"`
 
@@ -162,7 +162,7 @@ type UsersPartialUpdateBadRequestBody struct {
 	// Required: true
 	NonFieldErrors []string `json:"non_field_errors"`
 
-	// password firld errors
+	// password field errors
 	// Required: true
 	Password []string `json:"password"`
 
@@ -170,7 +170,7 @@ type UsersPartialUpdateBadRequestBody struct {
 	// Required: true
 	Profile *UsersPartialUpdateBadRequestBodyProfile `json:"profile"`
 
-	// username firld errors
+	// username field errors
 	// Required: true
 	Username []string `json:"username"`
 }
@@ -312,25 +312,25 @@ swagger:model UsersPartialUpdateBadRequestBodyProfile
 */
 type UsersPartialUpdateBadRequestBodyProfile struct {
 
-	// avatar_url firld errors
+	// avatar_url field errors
 	AvatarURL []string `json:"avatar_url"`
 
-	// bio firld errors
+	// bio field errors
 	Bio []string `json:"bio"`
 
-	// company firld errors
+	// company field errors
 	Company []string `json:"company"`
 
-	// location firld errors
+	// location field errors
 	Location []string `json:"location"`
 
 	// Errors not connected to any field
 	NonFieldErrors []string `json:"non_field_errors"`
 
-	// timezone firld errors
+	// timezone field errors
 	Timezone []string `json:"timezone"`
 
-	// url firld errors
+	// url field errors
 	URL []string `json:"url"`
 }
 

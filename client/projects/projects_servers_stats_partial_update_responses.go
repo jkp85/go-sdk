@@ -141,7 +141,7 @@ swagger:model ProjectsServersStatsPartialUpdateBadRequestBody
 */
 type ProjectsServersStatsPartialUpdateBadRequestBody struct {
 
-	// id firld errors
+	// id field errors
 	// Required: true
 	ID []string `json:"id"`
 
@@ -149,15 +149,15 @@ type ProjectsServersStatsPartialUpdateBadRequestBody struct {
 	// Required: true
 	NonFieldErrors []string `json:"non_field_errors"`
 
-	// size firld errors
+	// size field errors
 	// Required: true
 	Size []string `json:"size"`
 
-	// start firld errors
+	// start field errors
 	// Required: true
 	Start []string `json:"start"`
 
-	// stop firld errors
+	// stop field errors
 	// Required: true
 	Stop []string `json:"stop"`
 }

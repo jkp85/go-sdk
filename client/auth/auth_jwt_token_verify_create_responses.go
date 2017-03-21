@@ -109,7 +109,7 @@ type AuthJwtTokenVerifyCreateBadRequestBody struct {
 	// Required: true
 	NonFieldErrors []string `json:"non_field_errors"`
 
-	// token firld errors
+	// token field errors
 	// Required: true
 	Token []string `json:"token"`
 }

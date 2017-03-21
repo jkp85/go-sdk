@@ -141,19 +141,19 @@ swagger:model ProjectsFilesPartialUpdateBadRequestBody
 */
 type ProjectsFilesPartialUpdateBadRequestBody struct {
 
-	// author firld errors
+	// author field errors
 	// Required: true
 	Author []string `json:"author"`
 
-	// content firld errors
+	// content field errors
 	// Required: true
 	Content []string `json:"content"`
 
-	// encoding firld errors
+	// encoding field errors
 	// Required: true
 	Encoding []string `json:"encoding"`
 
-	// id firld errors
+	// id field errors
 	// Required: true
 	ID []string `json:"id"`
 
@@ -161,19 +161,19 @@ type ProjectsFilesPartialUpdateBadRequestBody struct {
 	// Required: true
 	NonFieldErrors []string `json:"non_field_errors"`
 
-	// path firld errors
+	// path field errors
 	// Required: true
 	Path []string `json:"path"`
 
-	// project firld errors
+	// project field errors
 	// Required: true
 	Project []string `json:"project"`
 
-	// public firld errors
+	// public field errors
 	// Required: true
 	Public []string `json:"public"`
 
-	// size firld errors
+	// size field errors
 	// Required: true
 	Size []string `json:"size"`
 }

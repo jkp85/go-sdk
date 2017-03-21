@@ -105,27 +105,27 @@ swagger:model ServersOptionsTypesCreateBadRequestBody
 */
 type ServersOptionsTypesCreateBadRequestBody struct {
 
-	// cmd firld errors
+	// cmd field errors
 	// Required: true
 	Cmd []string `json:"cmd"`
 
-	// container_path firld errors
+	// container_path field errors
 	// Required: true
 	ContainerPath []string `json:"container_path"`
 
-	// container_port firld errors
+	// container_port field errors
 	// Required: true
 	ContainerPort []string `json:"container_port"`
 
-	// id firld errors
+	// id field errors
 	// Required: true
 	ID []string `json:"id"`
 
-	// image_name firld errors
+	// image_name field errors
 	// Required: true
 	ImageName []string `json:"image_name"`
 
-	// name firld errors
+	// name field errors
 	// Required: true
 	Name []string `json:"name"`
 
@@ -133,7 +133,7 @@ type ServersOptionsTypesCreateBadRequestBody struct {
 	// Required: true
 	NonFieldErrors []string `json:"non_field_errors"`
 
-	// work_dir firld errors
+	// work_dir field errors
 	// Required: true
 	WorkDir []string `json:"work_dir"`
 }

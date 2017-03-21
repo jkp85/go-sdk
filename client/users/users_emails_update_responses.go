@@ -105,7 +105,7 @@ swagger:model UsersEmailsUpdateBadRequestBody
 */
 type UsersEmailsUpdateBadRequestBody struct {
 
-	// address firld errors
+	// address field errors
 	// Required: true
 	Address []string `json:"address"`
 
@@ -113,11 +113,11 @@ type UsersEmailsUpdateBadRequestBody struct {
 	// Required: true
 	NonFieldErrors []string `json:"non_field_errors"`
 
-	// public firld errors
+	// public field errors
 	// Required: true
 	Public []string `json:"public"`
 
-	// unsubscribed firld errors
+	// unsubscribed field errors
 	// Required: true
 	Unsubscribed []string `json:"unsubscribed"`
 }

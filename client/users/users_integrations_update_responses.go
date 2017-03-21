@@ -105,7 +105,7 @@ swagger:model UsersIntegrationsUpdateBadRequestBody
 */
 type UsersIntegrationsUpdateBadRequestBody struct {
 
-	// extra_data firld errors
+	// extra_data field errors
 	// Required: true
 	ExtraData []string `json:"extra_data"`
 
@@ -113,7 +113,7 @@ type UsersIntegrationsUpdateBadRequestBody struct {
 	// Required: true
 	NonFieldErrors []string `json:"non_field_errors"`
 
-	// provider firld errors
+	// provider field errors
 	// Required: true
 	Provider []string `json:"provider"`
 }

@@ -105,23 +105,23 @@ swagger:model ServersOptionsResourcesCreateBadRequestBody
 */
 type ServersOptionsResourcesCreateBadRequestBody struct {
 
-	// active firld errors
+	// active field errors
 	// Required: true
 	Active []string `json:"active"`
 
-	// cpu firld errors
+	// cpu field errors
 	// Required: true
 	CPU []string `json:"cpu"`
 
-	// id firld errors
+	// id field errors
 	// Required: true
 	ID []string `json:"id"`
 
-	// memory firld errors
+	// memory field errors
 	// Required: true
 	Memory []string `json:"memory"`
 
-	// name firld errors
+	// name field errors
 	// Required: true
 	Name []string `json:"name"`
 

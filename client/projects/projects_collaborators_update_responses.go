@@ -105,15 +105,15 @@ swagger:model ProjectsCollaboratorsUpdateBadRequestBody
 */
 type ProjectsCollaboratorsUpdateBadRequestBody struct {
 
-	// email firld errors
+	// email field errors
 	// Required: true
 	Email []string `json:"email"`
 
-	// id firld errors
+	// id field errors
 	// Required: true
 	ID []string `json:"id"`
 
-	// joined firld errors
+	// joined field errors
 	// Required: true
 	Joined []string `json:"joined"`
 
@@ -121,7 +121,7 @@ type ProjectsCollaboratorsUpdateBadRequestBody struct {
 	// Required: true
 	NonFieldErrors []string `json:"non_field_errors"`
 
-	// owner firld errors
+	// owner field errors
 	// Required: true
 	Owner []string `json:"owner"`
 }

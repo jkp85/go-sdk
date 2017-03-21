@@ -141,23 +141,23 @@ swagger:model ProjectsServersSSHTunnelsPartialUpdateBadRequestBody
 */
 type ProjectsServersSSHTunnelsPartialUpdateBadRequestBody struct {
 
-	// endpoint firld errors
+	// endpoint field errors
 	// Required: true
 	Endpoint []string `json:"endpoint"`
 
-	// host firld errors
+	// host field errors
 	// Required: true
 	Host []string `json:"host"`
 
-	// id firld errors
+	// id field errors
 	// Required: true
 	ID []string `json:"id"`
 
-	// local_port firld errors
+	// local_port field errors
 	// Required: true
 	LocalPort []string `json:"local_port"`
 
-	// name firld errors
+	// name field errors
 	// Required: true
 	Name []string `json:"name"`
 
@@ -165,11 +165,11 @@ type ProjectsServersSSHTunnelsPartialUpdateBadRequestBody struct {
 	// Required: true
 	NonFieldErrors []string `json:"non_field_errors"`
 
-	// remote_port firld errors
+	// remote_port field errors
 	// Required: true
 	RemotePort []string `json:"remote_port"`
 
-	// username firld errors
+	// username field errors
 	// Required: true
 	Username []string `json:"username"`
 }

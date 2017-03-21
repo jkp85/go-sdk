@@ -141,11 +141,11 @@ swagger:model ProjectsServersRunStatsPartialUpdateBadRequestBody
 */
 type ProjectsServersRunStatsPartialUpdateBadRequestBody struct {
 
-	// exit_code firld errors
+	// exit_code field errors
 	// Required: true
 	ExitCode []string `json:"exit_code"`
 
-	// id firld errors
+	// id field errors
 	// Required: true
 	ID []string `json:"id"`
 
@@ -153,19 +153,19 @@ type ProjectsServersRunStatsPartialUpdateBadRequestBody struct {
 	// Required: true
 	NonFieldErrors []string `json:"non_field_errors"`
 
-	// size firld errors
+	// size field errors
 	// Required: true
 	Size []string `json:"size"`
 
-	// stacktrace firld errors
+	// stacktrace field errors
 	// Required: true
 	Stacktrace []string `json:"stacktrace"`
 
-	// start firld errors
+	// start field errors
 	// Required: true
 	Start []string `json:"start"`
 
-	// stop firld errors
+	// stop field errors
 	// Required: true
 	Stop []string `json:"stop"`
 }

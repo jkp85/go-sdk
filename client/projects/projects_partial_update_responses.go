@@ -141,19 +141,19 @@ swagger:model ProjectsPartialUpdateBadRequestBody
 */
 type ProjectsPartialUpdateBadRequestBody struct {
 
-	// description firld errors
+	// description field errors
 	// Required: true
 	Description []string `json:"description"`
 
-	// id firld errors
+	// id field errors
 	// Required: true
 	ID []string `json:"id"`
 
-	// last_updated firld errors
+	// last_updated field errors
 	// Required: true
 	LastUpdated []string `json:"last_updated"`
 
-	// name firld errors
+	// name field errors
 	// Required: true
 	Name []string `json:"name"`
 
@@ -161,7 +161,7 @@ type ProjectsPartialUpdateBadRequestBody struct {
 	// Required: true
 	NonFieldErrors []string `json:"non_field_errors"`
 
-	// private firld errors
+	// private field errors
 	// Required: true
 	Private []string `json:"private"`
 }

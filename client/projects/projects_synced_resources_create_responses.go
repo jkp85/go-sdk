@@ -105,7 +105,7 @@ swagger:model ProjectsSyncedResourcesCreateBadRequestBody
 */
 type ProjectsSyncedResourcesCreateBadRequestBody struct {
 
-	// folder firld errors
+	// folder field errors
 	// Required: true
 	Folder []string `json:"folder"`
 
@@ -113,11 +113,11 @@ type ProjectsSyncedResourcesCreateBadRequestBody struct {
 	// Required: true
 	NonFieldErrors []string `json:"non_field_errors"`
 
-	// provider firld errors
+	// provider field errors
 	// Required: true
 	Provider []string `json:"provider"`
 
-	// settings firld errors
+	// settings field errors
 	// Required: true
 	Settings []string `json:"settings"`
 }
