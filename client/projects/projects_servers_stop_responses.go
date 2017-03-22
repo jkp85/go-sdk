@@ -7,7 +7,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -81,13 +83,215 @@ func NewProjectsServersStopBadRequest() *ProjectsServersStopBadRequest {
 Invalid data supplied
 */
 type ProjectsServersStopBadRequest struct {
+	Payload ProjectsServersStopBadRequestBody
 }
 
 func (o *ProjectsServersStopBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v0/{namespace}/projects/{project_pk}/servers/{id}/stop/][%d] projectsServersStopBadRequest ", 400)
+	return fmt.Sprintf("[POST /api/v0/{namespace}/projects/{project_pk}/servers/{id}/stop/][%d] projectsServersStopBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsServersStopBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*ProjectsServersStopBadRequestBody projects servers stop bad request body
+swagger:model ProjectsServersStopBadRequestBody
+*/
+type ProjectsServersStopBadRequestBody struct {
+
+	// config firld errors
+	// Required: true
+	Config []string `json:"config"`
+
+	// connected firld errors
+	// Required: true
+	Connected []string `json:"connected"`
+
+	// created_at firld errors
+	// Required: true
+	CreatedAt []string `json:"created_at"`
+
+	// environment_resources firld errors
+	// Required: true
+	EnvironmentResources []string `json:"environment_resources"`
+
+	// environment_type firld errors
+	// Required: true
+	EnvironmentType []string `json:"environment_type"`
+
+	// id firld errors
+	// Required: true
+	ID []string `json:"id"`
+
+	// name firld errors
+	// Required: true
+	Name []string `json:"name"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// startup_script firld errors
+	// Required: true
+	StartupScript []string `json:"startup_script"`
+
+	// status firld errors
+	// Required: true
+	Status []string `json:"status"`
+}
+
+// Validate validates this projects servers stop bad request body
+func (o *ProjectsServersStopBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateConfig(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateConnected(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateCreatedAt(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateEnvironmentResources(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateEnvironmentType(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateID(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateName(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateStartupScript(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateStatus(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsServersStopBadRequestBody) validateConfig(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStopBadRequest"+"."+"config", "body", o.Config); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStopBadRequestBody) validateConnected(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStopBadRequest"+"."+"connected", "body", o.Connected); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStopBadRequestBody) validateCreatedAt(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStopBadRequest"+"."+"created_at", "body", o.CreatedAt); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStopBadRequestBody) validateEnvironmentResources(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStopBadRequest"+"."+"environment_resources", "body", o.EnvironmentResources); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStopBadRequestBody) validateEnvironmentType(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStopBadRequest"+"."+"environment_type", "body", o.EnvironmentType); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStopBadRequestBody) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStopBadRequest"+"."+"id", "body", o.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStopBadRequestBody) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStopBadRequest"+"."+"name", "body", o.Name); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStopBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStopBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStopBadRequestBody) validateStartupScript(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStopBadRequest"+"."+"startup_script", "body", o.StartupScript); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStopBadRequestBody) validateStatus(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStopBadRequest"+"."+"status", "body", o.Status); err != nil {
+		return err
+	}
 
 	return nil
 }
@@ -101,7 +305,6 @@ type ProjectsServersStopBody struct {
 	Config interface{} `json:"config,omitempty"`
 
 	// connected
-	// Required: true
 	Connected []string `json:"connected"`
 
 	// environment resources

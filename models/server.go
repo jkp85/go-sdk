@@ -7,6 +7,7 @@ import (
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
@@ -18,7 +19,6 @@ type Server struct {
 	Config interface{} `json:"config,omitempty"`
 
 	// connected
-	// Required: true
 	Connected []string `json:"connected"`
 
 	// created at
@@ -78,8 +78,8 @@ func (m *Server) Validate(formats strfmt.Registry) error {
 
 func (m *Server) validateConnected(formats strfmt.Registry) error {
 
-	if err := validate.Required("connected", "body", m.Connected); err != nil {
-		return err
+	if swag.IsZero(m.Connected) { // not required
+		return nil
 	}
 
 	return nil

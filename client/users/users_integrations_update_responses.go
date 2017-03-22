@@ -7,7 +7,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -81,13 +83,89 @@ func NewUsersIntegrationsUpdateBadRequest() *UsersIntegrationsUpdateBadRequest {
 Invalid data supplied
 */
 type UsersIntegrationsUpdateBadRequest struct {
+	Payload UsersIntegrationsUpdateBadRequestBody
 }
 
 func (o *UsersIntegrationsUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /api/v0/{namespace}/users/{user_pk}/integrations/{id}/][%d] usersIntegrationsUpdateBadRequest ", 400)
+	return fmt.Sprintf("[PUT /api/v0/{namespace}/users/{user_pk}/integrations/{id}/][%d] usersIntegrationsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *UsersIntegrationsUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*UsersIntegrationsUpdateBadRequestBody users integrations update bad request body
+swagger:model UsersIntegrationsUpdateBadRequestBody
+*/
+type UsersIntegrationsUpdateBadRequestBody struct {
+
+	// extra_data field errors
+	// Required: true
+	ExtraData []string `json:"extra_data"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// provider field errors
+	// Required: true
+	Provider []string `json:"provider"`
+}
+
+// Validate validates this users integrations update bad request body
+func (o *UsersIntegrationsUpdateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateExtraData(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateProvider(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *UsersIntegrationsUpdateBadRequestBody) validateExtraData(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersIntegrationsUpdateBadRequest"+"."+"extra_data", "body", o.ExtraData); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *UsersIntegrationsUpdateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersIntegrationsUpdateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *UsersIntegrationsUpdateBadRequestBody) validateProvider(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersIntegrationsUpdateBadRequest"+"."+"provider", "body", o.Provider); err != nil {
+		return err
+	}
 
 	return nil
 }

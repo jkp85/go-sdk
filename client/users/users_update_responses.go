@@ -7,7 +7,10 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -81,13 +84,324 @@ func NewUsersUpdateBadRequest() *UsersUpdateBadRequest {
 Invalid data supplied
 */
 type UsersUpdateBadRequest struct {
+	Payload UsersUpdateBadRequestBody
 }
 
 func (o *UsersUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /api/v0/{namespace}/users/{id}/][%d] usersUpdateBadRequest ", 400)
+	return fmt.Sprintf("[PUT /api/v0/{namespace}/users/{id}/][%d] usersUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *UsersUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*UsersUpdateBadRequestBody users update bad request body
+swagger:model UsersUpdateBadRequestBody
+*/
+type UsersUpdateBadRequestBody struct {
+
+	// email field errors
+	// Required: true
+	Email []string `json:"email"`
+
+	// first_name field errors
+	// Required: true
+	FirstName []string `json:"first_name"`
+
+	// id field errors
+	// Required: true
+	ID []string `json:"id"`
+
+	// last_name field errors
+	// Required: true
+	LastName []string `json:"last_name"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// password field errors
+	// Required: true
+	Password []string `json:"password"`
+
+	// profile
+	// Required: true
+	Profile *UsersUpdateBadRequestBodyProfile `json:"profile"`
+
+	// username field errors
+	// Required: true
+	Username []string `json:"username"`
+}
+
+// Validate validates this users update bad request body
+func (o *UsersUpdateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateEmail(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateFirstName(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateID(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateLastName(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validatePassword(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateProfile(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateUsername(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *UsersUpdateBadRequestBody) validateEmail(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersUpdateBadRequest"+"."+"email", "body", o.Email); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *UsersUpdateBadRequestBody) validateFirstName(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersUpdateBadRequest"+"."+"first_name", "body", o.FirstName); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *UsersUpdateBadRequestBody) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersUpdateBadRequest"+"."+"id", "body", o.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *UsersUpdateBadRequestBody) validateLastName(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersUpdateBadRequest"+"."+"last_name", "body", o.LastName); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *UsersUpdateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersUpdateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *UsersUpdateBadRequestBody) validatePassword(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersUpdateBadRequest"+"."+"password", "body", o.Password); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *UsersUpdateBadRequestBody) validateProfile(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersUpdateBadRequest"+"."+"profile", "body", o.Profile); err != nil {
+		return err
+	}
+
+	if o.Profile != nil {
+
+		if err := o.Profile.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("usersUpdateBadRequest" + "." + "profile")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (o *UsersUpdateBadRequestBody) validateUsername(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersUpdateBadRequest"+"."+"username", "body", o.Username); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+/*UsersUpdateBadRequestBodyProfile users update bad request body profile
+swagger:model UsersUpdateBadRequestBodyProfile
+*/
+type UsersUpdateBadRequestBodyProfile struct {
+
+	// avatar_url field errors
+	AvatarURL []string `json:"avatar_url"`
+
+	// bio field errors
+	Bio []string `json:"bio"`
+
+	// company field errors
+	Company []string `json:"company"`
+
+	// location field errors
+	Location []string `json:"location"`
+
+	// Errors not connected to any field
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// timezone field errors
+	Timezone []string `json:"timezone"`
+
+	// url field errors
+	URL []string `json:"url"`
+}
+
+// Validate validates this users update bad request body profile
+func (o *UsersUpdateBadRequestBodyProfile) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateAvatarURL(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateBio(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateCompany(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateLocation(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateTimezone(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateURL(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *UsersUpdateBadRequestBodyProfile) validateAvatarURL(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.AvatarURL) { // not required
+		return nil
+	}
+
+	return nil
+}
+
+func (o *UsersUpdateBadRequestBodyProfile) validateBio(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Bio) { // not required
+		return nil
+	}
+
+	return nil
+}
+
+func (o *UsersUpdateBadRequestBodyProfile) validateCompany(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Company) { // not required
+		return nil
+	}
+
+	return nil
+}
+
+func (o *UsersUpdateBadRequestBodyProfile) validateLocation(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Location) { // not required
+		return nil
+	}
+
+	return nil
+}
+
+func (o *UsersUpdateBadRequestBodyProfile) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.NonFieldErrors) { // not required
+		return nil
+	}
+
+	return nil
+}
+
+func (o *UsersUpdateBadRequestBodyProfile) validateTimezone(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.Timezone) { // not required
+		return nil
+	}
+
+	return nil
+}
+
+func (o *UsersUpdateBadRequestBodyProfile) validateURL(formats strfmt.Registry) error {
+
+	if swag.IsZero(o.URL) { // not required
+		return nil
+	}
 
 	return nil
 }

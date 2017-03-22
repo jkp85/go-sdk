@@ -66,6 +66,8 @@ type ProjectsServersRunStatsListParams struct {
 	Namespace string
 	/*Offset*/
 	Offset *string
+	/*Ordering*/
+	Ordering *string
 	/*ProjectPk*/
 	ProjectPk string
 	/*ServerPk*/
@@ -142,6 +144,17 @@ func (o *ProjectsServersRunStatsListParams) SetOffset(offset *string) {
 	o.Offset = offset
 }
 
+// WithOrdering adds the ordering to the projects servers run stats list params
+func (o *ProjectsServersRunStatsListParams) WithOrdering(ordering *string) *ProjectsServersRunStatsListParams {
+	o.SetOrdering(ordering)
+	return o
+}
+
+// SetOrdering adds the ordering to the projects servers run stats list params
+func (o *ProjectsServersRunStatsListParams) SetOrdering(ordering *string) {
+	o.Ordering = ordering
+}
+
 // WithProjectPk adds the projectPk to the projects servers run stats list params
 func (o *ProjectsServersRunStatsListParams) WithProjectPk(projectPk string) *ProjectsServersRunStatsListParams {
 	o.SetProjectPk(projectPk)
@@ -201,6 +214,22 @@ func (o *ProjectsServersRunStatsListParams) WriteToRequest(r runtime.ClientReque
 		qOffset := qrOffset
 		if qOffset != "" {
 			if err := r.SetQueryParam("offset", qOffset); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.Ordering != nil {
+
+		// query param ordering
+		var qrOrdering string
+		if o.Ordering != nil {
+			qrOrdering = *o.Ordering
+		}
+		qOrdering := qrOrdering
+		if qOrdering != "" {
+			if err := r.SetQueryParam("ordering", qOrdering); err != nil {
 				return err
 			}
 		}

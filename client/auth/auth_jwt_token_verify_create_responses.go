@@ -7,7 +7,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -81,13 +83,71 @@ func NewAuthJwtTokenVerifyCreateBadRequest() *AuthJwtTokenVerifyCreateBadRequest
 Invalid data supplied
 */
 type AuthJwtTokenVerifyCreateBadRequest struct {
+	Payload AuthJwtTokenVerifyCreateBadRequestBody
 }
 
 func (o *AuthJwtTokenVerifyCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v0/auth/jwt-token-verify/][%d] authJwtTokenVerifyCreateBadRequest ", 400)
+	return fmt.Sprintf("[POST /api/v0/auth/jwt-token-verify/][%d] authJwtTokenVerifyCreateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *AuthJwtTokenVerifyCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*AuthJwtTokenVerifyCreateBadRequestBody auth jwt token verify create bad request body
+swagger:model AuthJwtTokenVerifyCreateBadRequestBody
+*/
+type AuthJwtTokenVerifyCreateBadRequestBody struct {
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// token field errors
+	// Required: true
+	Token []string `json:"token"`
+}
+
+// Validate validates this auth jwt token verify create bad request body
+func (o *AuthJwtTokenVerifyCreateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateToken(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *AuthJwtTokenVerifyCreateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("authJwtTokenVerifyCreateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *AuthJwtTokenVerifyCreateBadRequestBody) validateToken(formats strfmt.Registry) error {
+
+	if err := validate.Required("authJwtTokenVerifyCreateBadRequest"+"."+"token", "body", o.Token); err != nil {
+		return err
+	}
 
 	return nil
 }

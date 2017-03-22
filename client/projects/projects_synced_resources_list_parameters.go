@@ -66,6 +66,8 @@ type ProjectsSyncedResourcesListParams struct {
 	Namespace string
 	/*Offset*/
 	Offset *string
+	/*Ordering*/
+	Ordering *string
 	/*ProjectPk*/
 	ProjectPk string
 
@@ -140,6 +142,17 @@ func (o *ProjectsSyncedResourcesListParams) SetOffset(offset *string) {
 	o.Offset = offset
 }
 
+// WithOrdering adds the ordering to the projects synced resources list params
+func (o *ProjectsSyncedResourcesListParams) WithOrdering(ordering *string) *ProjectsSyncedResourcesListParams {
+	o.SetOrdering(ordering)
+	return o
+}
+
+// SetOrdering adds the ordering to the projects synced resources list params
+func (o *ProjectsSyncedResourcesListParams) SetOrdering(ordering *string) {
+	o.Ordering = ordering
+}
+
 // WithProjectPk adds the projectPk to the projects synced resources list params
 func (o *ProjectsSyncedResourcesListParams) WithProjectPk(projectPk string) *ProjectsSyncedResourcesListParams {
 	o.SetProjectPk(projectPk)
@@ -188,6 +201,22 @@ func (o *ProjectsSyncedResourcesListParams) WriteToRequest(r runtime.ClientReque
 		qOffset := qrOffset
 		if qOffset != "" {
 			if err := r.SetQueryParam("offset", qOffset); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.Ordering != nil {
+
+		// query param ordering
+		var qrOrdering string
+		if o.Ordering != nil {
+			qrOrdering = *o.Ordering
+		}
+		qOrdering := qrOrdering
+		if qOrdering != "" {
+			if err := r.SetQueryParam("ordering", qOrdering); err != nil {
 				return err
 			}
 		}

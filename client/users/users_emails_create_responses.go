@@ -7,7 +7,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -81,13 +83,107 @@ func NewUsersEmailsCreateBadRequest() *UsersEmailsCreateBadRequest {
 Invalid data supplied
 */
 type UsersEmailsCreateBadRequest struct {
+	Payload UsersEmailsCreateBadRequestBody
 }
 
 func (o *UsersEmailsCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v0/{namespace}/users/{user_pk}/emails/][%d] usersEmailsCreateBadRequest ", 400)
+	return fmt.Sprintf("[POST /api/v0/{namespace}/users/{user_pk}/emails/][%d] usersEmailsCreateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *UsersEmailsCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*UsersEmailsCreateBadRequestBody users emails create bad request body
+swagger:model UsersEmailsCreateBadRequestBody
+*/
+type UsersEmailsCreateBadRequestBody struct {
+
+	// address field errors
+	// Required: true
+	Address []string `json:"address"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// public field errors
+	// Required: true
+	Public []string `json:"public"`
+
+	// unsubscribed field errors
+	// Required: true
+	Unsubscribed []string `json:"unsubscribed"`
+}
+
+// Validate validates this users emails create bad request body
+func (o *UsersEmailsCreateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateAddress(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validatePublic(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateUnsubscribed(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *UsersEmailsCreateBadRequestBody) validateAddress(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersEmailsCreateBadRequest"+"."+"address", "body", o.Address); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *UsersEmailsCreateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersEmailsCreateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *UsersEmailsCreateBadRequestBody) validatePublic(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersEmailsCreateBadRequest"+"."+"public", "body", o.Public); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *UsersEmailsCreateBadRequestBody) validateUnsubscribed(formats strfmt.Registry) error {
+
+	if err := validate.Required("usersEmailsCreateBadRequest"+"."+"unsubscribed", "body", o.Unsubscribed); err != nil {
+		return err
+	}
 
 	return nil
 }

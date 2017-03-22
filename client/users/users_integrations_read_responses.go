@@ -81,13 +81,21 @@ func NewUsersIntegrationsReadNotFound() *UsersIntegrationsReadNotFound {
 Integration not found
 */
 type UsersIntegrationsReadNotFound struct {
+	Payload *models.NotFound
 }
 
 func (o *UsersIntegrationsReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v0/{namespace}/users/{user_pk}/integrations/{id}/][%d] usersIntegrationsReadNotFound ", 404)
+	return fmt.Sprintf("[GET /api/v0/{namespace}/users/{user_pk}/integrations/{id}/][%d] usersIntegrationsReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *UsersIntegrationsReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NotFound)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

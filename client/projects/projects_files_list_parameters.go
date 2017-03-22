@@ -66,6 +66,10 @@ type ProjectsFilesListParams struct {
 	Namespace string
 	/*Offset*/
 	Offset *string
+	/*Ordering*/
+	Ordering *string
+	/*Path*/
+	Path *string
 	/*ProjectPk*/
 	ProjectPk string
 
@@ -140,6 +144,28 @@ func (o *ProjectsFilesListParams) SetOffset(offset *string) {
 	o.Offset = offset
 }
 
+// WithOrdering adds the ordering to the projects files list params
+func (o *ProjectsFilesListParams) WithOrdering(ordering *string) *ProjectsFilesListParams {
+	o.SetOrdering(ordering)
+	return o
+}
+
+// SetOrdering adds the ordering to the projects files list params
+func (o *ProjectsFilesListParams) SetOrdering(ordering *string) {
+	o.Ordering = ordering
+}
+
+// WithPath adds the path to the projects files list params
+func (o *ProjectsFilesListParams) WithPath(path *string) *ProjectsFilesListParams {
+	o.SetPath(path)
+	return o
+}
+
+// SetPath adds the path to the projects files list params
+func (o *ProjectsFilesListParams) SetPath(path *string) {
+	o.Path = path
+}
+
 // WithProjectPk adds the projectPk to the projects files list params
 func (o *ProjectsFilesListParams) WithProjectPk(projectPk string) *ProjectsFilesListParams {
 	o.SetProjectPk(projectPk)
@@ -188,6 +214,38 @@ func (o *ProjectsFilesListParams) WriteToRequest(r runtime.ClientRequest, reg st
 		qOffset := qrOffset
 		if qOffset != "" {
 			if err := r.SetQueryParam("offset", qOffset); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.Ordering != nil {
+
+		// query param ordering
+		var qrOrdering string
+		if o.Ordering != nil {
+			qrOrdering = *o.Ordering
+		}
+		qOrdering := qrOrdering
+		if qOrdering != "" {
+			if err := r.SetQueryParam("ordering", qOrdering); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.Path != nil {
+
+		// query param path
+		var qrPath string
+		if o.Path != nil {
+			qrPath = *o.Path
+		}
+		qPath := qrPath
+		if qPath != "" {
+			if err := r.SetQueryParam("path", qPath); err != nil {
 				return err
 			}
 		}

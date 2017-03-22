@@ -7,7 +7,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -81,13 +83,143 @@ func NewProjectsUpdateBadRequest() *ProjectsUpdateBadRequest {
 Invalid data supplied
 */
 type ProjectsUpdateBadRequest struct {
+	Payload ProjectsUpdateBadRequestBody
 }
 
 func (o *ProjectsUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /api/v0/{namespace}/projects/{id}/][%d] projectsUpdateBadRequest ", 400)
+	return fmt.Sprintf("[PUT /api/v0/{namespace}/projects/{id}/][%d] projectsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*ProjectsUpdateBadRequestBody projects update bad request body
+swagger:model ProjectsUpdateBadRequestBody
+*/
+type ProjectsUpdateBadRequestBody struct {
+
+	// description field errors
+	// Required: true
+	Description []string `json:"description"`
+
+	// id field errors
+	// Required: true
+	ID []string `json:"id"`
+
+	// last_updated field errors
+	// Required: true
+	LastUpdated []string `json:"last_updated"`
+
+	// name field errors
+	// Required: true
+	Name []string `json:"name"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// private field errors
+	// Required: true
+	Private []string `json:"private"`
+}
+
+// Validate validates this projects update bad request body
+func (o *ProjectsUpdateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateDescription(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateID(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateLastUpdated(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateName(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validatePrivate(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsUpdateBadRequestBody) validateDescription(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsUpdateBadRequest"+"."+"description", "body", o.Description); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsUpdateBadRequestBody) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsUpdateBadRequest"+"."+"id", "body", o.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsUpdateBadRequestBody) validateLastUpdated(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsUpdateBadRequest"+"."+"last_updated", "body", o.LastUpdated); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsUpdateBadRequestBody) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsUpdateBadRequest"+"."+"name", "body", o.Name); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsUpdateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsUpdateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsUpdateBadRequestBody) validatePrivate(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsUpdateBadRequest"+"."+"private", "body", o.Private); err != nil {
+		return err
+	}
 
 	return nil
 }

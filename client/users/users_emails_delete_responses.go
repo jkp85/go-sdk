@@ -5,10 +5,13 @@ package users
 
 import (
 	"fmt"
+	"io"
 
 	"github.com/go-openapi/runtime"
 
 	strfmt "github.com/go-openapi/strfmt"
+
+	"github.com/3Blades/go-sdk/models"
 )
 
 // UsersEmailsDeleteReader is a Reader for the UsersEmailsDelete structure.
@@ -70,13 +73,21 @@ func NewUsersEmailsDeleteNotFound() *UsersEmailsDeleteNotFound {
 Email not found
 */
 type UsersEmailsDeleteNotFound struct {
+	Payload *models.NotFound
 }
 
 func (o *UsersEmailsDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /api/v0/{namespace}/users/{user_pk}/emails/{address}/][%d] usersEmailsDeleteNotFound ", 404)
+	return fmt.Sprintf("[DELETE /api/v0/{namespace}/users/{user_pk}/emails/{address}/][%d] usersEmailsDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *UsersEmailsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NotFound)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

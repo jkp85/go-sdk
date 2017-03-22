@@ -66,6 +66,8 @@ type ServersOptionsTypesListParams struct {
 	Namespace string
 	/*Offset*/
 	Offset *string
+	/*Ordering*/
+	Ordering *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -138,6 +140,17 @@ func (o *ServersOptionsTypesListParams) SetOffset(offset *string) {
 	o.Offset = offset
 }
 
+// WithOrdering adds the ordering to the servers options types list params
+func (o *ServersOptionsTypesListParams) WithOrdering(ordering *string) *ServersOptionsTypesListParams {
+	o.SetOrdering(ordering)
+	return o
+}
+
+// SetOrdering adds the ordering to the servers options types list params
+func (o *ServersOptionsTypesListParams) SetOrdering(ordering *string) {
+	o.Ordering = ordering
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ServersOptionsTypesListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -175,6 +188,22 @@ func (o *ServersOptionsTypesListParams) WriteToRequest(r runtime.ClientRequest, 
 		qOffset := qrOffset
 		if qOffset != "" {
 			if err := r.SetQueryParam("offset", qOffset); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.Ordering != nil {
+
+		// query param ordering
+		var qrOrdering string
+		if o.Ordering != nil {
+			qrOrdering = *o.Ordering
+		}
+		qOrdering := qrOrdering
+		if qOrdering != "" {
+			if err := r.SetQueryParam("ordering", qOrdering); err != nil {
 				return err
 			}
 		}

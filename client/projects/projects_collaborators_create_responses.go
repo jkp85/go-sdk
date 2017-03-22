@@ -7,7 +7,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -81,13 +83,125 @@ func NewProjectsCollaboratorsCreateBadRequest() *ProjectsCollaboratorsCreateBadR
 Invalid data supplied
 */
 type ProjectsCollaboratorsCreateBadRequest struct {
+	Payload ProjectsCollaboratorsCreateBadRequestBody
 }
 
 func (o *ProjectsCollaboratorsCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v0/{namespace}/projects/{project_pk}/collaborators/][%d] projectsCollaboratorsCreateBadRequest ", 400)
+	return fmt.Sprintf("[POST /api/v0/{namespace}/projects/{project_pk}/collaborators/][%d] projectsCollaboratorsCreateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsCollaboratorsCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*ProjectsCollaboratorsCreateBadRequestBody projects collaborators create bad request body
+swagger:model ProjectsCollaboratorsCreateBadRequestBody
+*/
+type ProjectsCollaboratorsCreateBadRequestBody struct {
+
+	// email field errors
+	// Required: true
+	Email []string `json:"email"`
+
+	// id field errors
+	// Required: true
+	ID []string `json:"id"`
+
+	// joined field errors
+	// Required: true
+	Joined []string `json:"joined"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// owner field errors
+	// Required: true
+	Owner []string `json:"owner"`
+}
+
+// Validate validates this projects collaborators create bad request body
+func (o *ProjectsCollaboratorsCreateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateEmail(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateID(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateJoined(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateOwner(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsCollaboratorsCreateBadRequestBody) validateEmail(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsCollaboratorsCreateBadRequest"+"."+"email", "body", o.Email); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsCollaboratorsCreateBadRequestBody) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsCollaboratorsCreateBadRequest"+"."+"id", "body", o.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsCollaboratorsCreateBadRequestBody) validateJoined(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsCollaboratorsCreateBadRequest"+"."+"joined", "body", o.Joined); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsCollaboratorsCreateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsCollaboratorsCreateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsCollaboratorsCreateBadRequestBody) validateOwner(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsCollaboratorsCreateBadRequest"+"."+"owner", "body", o.Owner); err != nil {
+		return err
+	}
 
 	return nil
 }
@@ -97,10 +211,10 @@ swagger:model ProjectsCollaboratorsCreateBody
 */
 type ProjectsCollaboratorsCreateBody struct {
 
+	// email
+	// Required: true
+	Email *string `json:"email"`
+
 	// owner
 	Owner bool `json:"owner,omitempty"`
-
-	// user
-	// Required: true
-	User *models.User `json:"user"`
 }

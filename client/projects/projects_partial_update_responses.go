@@ -7,7 +7,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -88,13 +90,19 @@ func NewProjectsPartialUpdateBadRequest() *ProjectsPartialUpdateBadRequest {
 Invalid data supplied
 */
 type ProjectsPartialUpdateBadRequest struct {
+	Payload ProjectsPartialUpdateBadRequestBody
 }
 
 func (o *ProjectsPartialUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{id}/][%d] projectsPartialUpdateBadRequest ", 400)
+	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{id}/][%d] projectsPartialUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsPartialUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -109,13 +117,145 @@ func NewProjectsPartialUpdateNotFound() *ProjectsPartialUpdateNotFound {
 Project not found
 */
 type ProjectsPartialUpdateNotFound struct {
+	Payload *models.NotFound
 }
 
 func (o *ProjectsPartialUpdateNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{id}/][%d] projectsPartialUpdateNotFound ", 404)
+	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{id}/][%d] projectsPartialUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectsPartialUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NotFound)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*ProjectsPartialUpdateBadRequestBody projects partial update bad request body
+swagger:model ProjectsPartialUpdateBadRequestBody
+*/
+type ProjectsPartialUpdateBadRequestBody struct {
+
+	// description field errors
+	// Required: true
+	Description []string `json:"description"`
+
+	// id field errors
+	// Required: true
+	ID []string `json:"id"`
+
+	// last_updated field errors
+	// Required: true
+	LastUpdated []string `json:"last_updated"`
+
+	// name field errors
+	// Required: true
+	Name []string `json:"name"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// private field errors
+	// Required: true
+	Private []string `json:"private"`
+}
+
+// Validate validates this projects partial update bad request body
+func (o *ProjectsPartialUpdateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateDescription(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateID(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateLastUpdated(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateName(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validatePrivate(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsPartialUpdateBadRequestBody) validateDescription(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsPartialUpdateBadRequest"+"."+"description", "body", o.Description); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsPartialUpdateBadRequestBody) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsPartialUpdateBadRequest"+"."+"id", "body", o.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsPartialUpdateBadRequestBody) validateLastUpdated(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsPartialUpdateBadRequest"+"."+"last_updated", "body", o.LastUpdated); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsPartialUpdateBadRequestBody) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsPartialUpdateBadRequest"+"."+"name", "body", o.Name); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsPartialUpdateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsPartialUpdateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsPartialUpdateBadRequestBody) validatePrivate(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsPartialUpdateBadRequest"+"."+"private", "body", o.Private); err != nil {
+		return err
+	}
 
 	return nil
 }

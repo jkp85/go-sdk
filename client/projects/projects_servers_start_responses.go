@@ -7,7 +7,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -81,13 +83,215 @@ func NewProjectsServersStartBadRequest() *ProjectsServersStartBadRequest {
 Invalid data supplied
 */
 type ProjectsServersStartBadRequest struct {
+	Payload ProjectsServersStartBadRequestBody
 }
 
 func (o *ProjectsServersStartBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v0/{namespace}/projects/{project_pk}/servers/{id}/start/][%d] projectsServersStartBadRequest ", 400)
+	return fmt.Sprintf("[POST /api/v0/{namespace}/projects/{project_pk}/servers/{id}/start/][%d] projectsServersStartBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsServersStartBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*ProjectsServersStartBadRequestBody projects servers start bad request body
+swagger:model ProjectsServersStartBadRequestBody
+*/
+type ProjectsServersStartBadRequestBody struct {
+
+	// config firld errors
+	// Required: true
+	Config []string `json:"config"`
+
+	// connected firld errors
+	// Required: true
+	Connected []string `json:"connected"`
+
+	// created_at firld errors
+	// Required: true
+	CreatedAt []string `json:"created_at"`
+
+	// environment_resources firld errors
+	// Required: true
+	EnvironmentResources []string `json:"environment_resources"`
+
+	// environment_type firld errors
+	// Required: true
+	EnvironmentType []string `json:"environment_type"`
+
+	// id firld errors
+	// Required: true
+	ID []string `json:"id"`
+
+	// name firld errors
+	// Required: true
+	Name []string `json:"name"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// startup_script firld errors
+	// Required: true
+	StartupScript []string `json:"startup_script"`
+
+	// status firld errors
+	// Required: true
+	Status []string `json:"status"`
+}
+
+// Validate validates this projects servers start bad request body
+func (o *ProjectsServersStartBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateConfig(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateConnected(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateCreatedAt(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateEnvironmentResources(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateEnvironmentType(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateID(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateName(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateStartupScript(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateStatus(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsServersStartBadRequestBody) validateConfig(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStartBadRequest"+"."+"config", "body", o.Config); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStartBadRequestBody) validateConnected(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStartBadRequest"+"."+"connected", "body", o.Connected); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStartBadRequestBody) validateCreatedAt(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStartBadRequest"+"."+"created_at", "body", o.CreatedAt); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStartBadRequestBody) validateEnvironmentResources(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStartBadRequest"+"."+"environment_resources", "body", o.EnvironmentResources); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStartBadRequestBody) validateEnvironmentType(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStartBadRequest"+"."+"environment_type", "body", o.EnvironmentType); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStartBadRequestBody) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStartBadRequest"+"."+"id", "body", o.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStartBadRequestBody) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStartBadRequest"+"."+"name", "body", o.Name); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStartBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStartBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStartBadRequestBody) validateStartupScript(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStartBadRequest"+"."+"startup_script", "body", o.StartupScript); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersStartBadRequestBody) validateStatus(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersStartBadRequest"+"."+"status", "body", o.Status); err != nil {
+		return err
+	}
 
 	return nil
 }
@@ -101,7 +305,6 @@ type ProjectsServersStartBody struct {
 	Config interface{} `json:"config,omitempty"`
 
 	// connected
-	// Required: true
 	Connected []string `json:"connected"`
 
 	// environment resources

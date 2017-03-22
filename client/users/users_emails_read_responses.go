@@ -81,13 +81,21 @@ func NewUsersEmailsReadNotFound() *UsersEmailsReadNotFound {
 Email not found
 */
 type UsersEmailsReadNotFound struct {
+	Payload *models.NotFound
 }
 
 func (o *UsersEmailsReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v0/{namespace}/users/{user_pk}/emails/{address}/][%d] usersEmailsReadNotFound ", 404)
+	return fmt.Sprintf("[GET /api/v0/{namespace}/users/{user_pk}/emails/{address}/][%d] usersEmailsReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *UsersEmailsReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NotFound)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

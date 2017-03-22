@@ -7,7 +7,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
+	"github.com/go-openapi/validate"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -88,13 +90,19 @@ func NewProjectsServersRunStatsPartialUpdateBadRequest() *ProjectsServersRunStat
 Invalid data supplied
 */
 type ProjectsServersRunStatsPartialUpdateBadRequest struct {
+	Payload ProjectsServersRunStatsPartialUpdateBadRequestBody
 }
 
 func (o *ProjectsServersRunStatsPartialUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/{id}/][%d] projectsServersRunStatsPartialUpdateBadRequest ", 400)
+	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/{id}/][%d] projectsServersRunStatsPartialUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsServersRunStatsPartialUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }
@@ -109,13 +117,163 @@ func NewProjectsServersRunStatsPartialUpdateNotFound() *ProjectsServersRunStatsP
 ServerRunStatistics not found
 */
 type ProjectsServersRunStatsPartialUpdateNotFound struct {
+	Payload *models.NotFound
 }
 
 func (o *ProjectsServersRunStatsPartialUpdateNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/{id}/][%d] projectsServersRunStatsPartialUpdateNotFound ", 404)
+	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/{id}/][%d] projectsServersRunStatsPartialUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectsServersRunStatsPartialUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NotFound)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+/*ProjectsServersRunStatsPartialUpdateBadRequestBody projects servers run stats partial update bad request body
+swagger:model ProjectsServersRunStatsPartialUpdateBadRequestBody
+*/
+type ProjectsServersRunStatsPartialUpdateBadRequestBody struct {
+
+	// exit_code field errors
+	// Required: true
+	ExitCode []string `json:"exit_code"`
+
+	// id field errors
+	// Required: true
+	ID []string `json:"id"`
+
+	// Errors not connected to any field
+	// Required: true
+	NonFieldErrors []string `json:"non_field_errors"`
+
+	// size field errors
+	// Required: true
+	Size []string `json:"size"`
+
+	// stacktrace field errors
+	// Required: true
+	Stacktrace []string `json:"stacktrace"`
+
+	// start field errors
+	// Required: true
+	Start []string `json:"start"`
+
+	// stop field errors
+	// Required: true
+	Stop []string `json:"stop"`
+}
+
+// Validate validates this projects servers run stats partial update bad request body
+func (o *ProjectsServersRunStatsPartialUpdateBadRequestBody) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := o.validateExitCode(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateID(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateSize(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateStacktrace(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateStart(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateStop(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (o *ProjectsServersRunStatsPartialUpdateBadRequestBody) validateExitCode(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersRunStatsPartialUpdateBadRequest"+"."+"exit_code", "body", o.ExitCode); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersRunStatsPartialUpdateBadRequestBody) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersRunStatsPartialUpdateBadRequest"+"."+"id", "body", o.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersRunStatsPartialUpdateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersRunStatsPartialUpdateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersRunStatsPartialUpdateBadRequestBody) validateSize(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersRunStatsPartialUpdateBadRequest"+"."+"size", "body", o.Size); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersRunStatsPartialUpdateBadRequestBody) validateStacktrace(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersRunStatsPartialUpdateBadRequest"+"."+"stacktrace", "body", o.Stacktrace); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersRunStatsPartialUpdateBadRequestBody) validateStart(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersRunStatsPartialUpdateBadRequest"+"."+"start", "body", o.Start); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersRunStatsPartialUpdateBadRequestBody) validateStop(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersRunStatsPartialUpdateBadRequest"+"."+"stop", "body", o.Stop); err != nil {
+		return err
+	}
 
 	return nil
 }

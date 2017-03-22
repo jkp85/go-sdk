@@ -11,7 +11,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/jkp85/go-sdk/models"
+	"github.com/3Blades/go-sdk/models"
 )
 
 // ServersOptionsTypesReadReader is a Reader for the ServersOptionsTypesRead structure.
@@ -81,13 +81,21 @@ func NewServersOptionsTypesReadNotFound() *ServersOptionsTypesReadNotFound {
 EnvironmentType not found
 */
 type ServersOptionsTypesReadNotFound struct {
+	Payload *models.NotFound
 }
 
 func (o *ServersOptionsTypesReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v0/{namespace}/servers/options/types/{id}/][%d] serversOptionsTypesReadNotFound ", 404)
+	return fmt.Sprintf("[GET /api/v0/{namespace}/servers/options/types/{id}/][%d] serversOptionsTypesReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServersOptionsTypesReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NotFound)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

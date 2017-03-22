@@ -81,13 +81,21 @@ func NewProjectsServersReadNotFound() *ProjectsServersReadNotFound {
 Server not found
 */
 type ProjectsServersReadNotFound struct {
+	Payload *models.NotFound
 }
 
 func (o *ProjectsServersReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v0/{namespace}/projects/{project_pk}/servers/{id}/][%d] projectsServersReadNotFound ", 404)
+	return fmt.Sprintf("[GET /api/v0/{namespace}/projects/{project_pk}/servers/{id}/][%d] projectsServersReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectsServersReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.NotFound)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
 
 	return nil
 }

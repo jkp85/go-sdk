@@ -62,10 +62,14 @@ type ProjectsServersListParams struct {
 
 	/*Limit*/
 	Limit *string
+	/*Name*/
+	Name *string
 	/*Namespace*/
 	Namespace string
 	/*Offset*/
 	Offset *string
+	/*Ordering*/
+	Ordering *string
 	/*ProjectPk*/
 	ProjectPk string
 
@@ -118,6 +122,17 @@ func (o *ProjectsServersListParams) SetLimit(limit *string) {
 	o.Limit = limit
 }
 
+// WithName adds the name to the projects servers list params
+func (o *ProjectsServersListParams) WithName(name *string) *ProjectsServersListParams {
+	o.SetName(name)
+	return o
+}
+
+// SetName adds the name to the projects servers list params
+func (o *ProjectsServersListParams) SetName(name *string) {
+	o.Name = name
+}
+
 // WithNamespace adds the namespace to the projects servers list params
 func (o *ProjectsServersListParams) WithNamespace(namespace string) *ProjectsServersListParams {
 	o.SetNamespace(namespace)
@@ -138,6 +153,17 @@ func (o *ProjectsServersListParams) WithOffset(offset *string) *ProjectsServersL
 // SetOffset adds the offset to the projects servers list params
 func (o *ProjectsServersListParams) SetOffset(offset *string) {
 	o.Offset = offset
+}
+
+// WithOrdering adds the ordering to the projects servers list params
+func (o *ProjectsServersListParams) WithOrdering(ordering *string) *ProjectsServersListParams {
+	o.SetOrdering(ordering)
+	return o
+}
+
+// SetOrdering adds the ordering to the projects servers list params
+func (o *ProjectsServersListParams) SetOrdering(ordering *string) {
+	o.Ordering = ordering
 }
 
 // WithProjectPk adds the projectPk to the projects servers list params
@@ -173,6 +199,22 @@ func (o *ProjectsServersListParams) WriteToRequest(r runtime.ClientRequest, reg 
 
 	}
 
+	if o.Name != nil {
+
+		// query param name
+		var qrName string
+		if o.Name != nil {
+			qrName = *o.Name
+		}
+		qName := qrName
+		if qName != "" {
+			if err := r.SetQueryParam("name", qName); err != nil {
+				return err
+			}
+		}
+
+	}
+
 	// path param namespace
 	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
@@ -188,6 +230,22 @@ func (o *ProjectsServersListParams) WriteToRequest(r runtime.ClientRequest, reg 
 		qOffset := qrOffset
 		if qOffset != "" {
 			if err := r.SetQueryParam("offset", qOffset); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.Ordering != nil {
+
+		// query param ordering
+		var qrOrdering string
+		if o.Ordering != nil {
+			qrOrdering = *o.Ordering
+		}
+		qOrdering := qrOrdering
+		if qOrdering != "" {
+			if err := r.SetQueryParam("ordering", qOrdering); err != nil {
 				return err
 			}
 		}

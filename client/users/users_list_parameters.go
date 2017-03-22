@@ -66,6 +66,10 @@ type UsersListParams struct {
 	Namespace string
 	/*Offset*/
 	Offset *string
+	/*Ordering*/
+	Ordering *string
+	/*Username*/
+	Username *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -138,6 +142,28 @@ func (o *UsersListParams) SetOffset(offset *string) {
 	o.Offset = offset
 }
 
+// WithOrdering adds the ordering to the users list params
+func (o *UsersListParams) WithOrdering(ordering *string) *UsersListParams {
+	o.SetOrdering(ordering)
+	return o
+}
+
+// SetOrdering adds the ordering to the users list params
+func (o *UsersListParams) SetOrdering(ordering *string) {
+	o.Ordering = ordering
+}
+
+// WithUsername adds the username to the users list params
+func (o *UsersListParams) WithUsername(username *string) *UsersListParams {
+	o.SetUsername(username)
+	return o
+}
+
+// SetUsername adds the username to the users list params
+func (o *UsersListParams) SetUsername(username *string) {
+	o.Username = username
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *UsersListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -175,6 +201,38 @@ func (o *UsersListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 		qOffset := qrOffset
 		if qOffset != "" {
 			if err := r.SetQueryParam("offset", qOffset); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.Ordering != nil {
+
+		// query param ordering
+		var qrOrdering string
+		if o.Ordering != nil {
+			qrOrdering = *o.Ordering
+		}
+		qOrdering := qrOrdering
+		if qOrdering != "" {
+			if err := r.SetQueryParam("ordering", qOrdering); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.Username != nil {
+
+		// query param username
+		var qrUsername string
+		if o.Username != nil {
+			qrUsername = *o.Username
+		}
+		qUsername := qrUsername
+		if qUsername != "" {
+			if err := r.SetQueryParam("username", qUsername); err != nil {
 				return err
 			}
 		}

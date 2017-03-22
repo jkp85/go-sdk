@@ -1005,30 +1005,30 @@ func (a *Client) ProjectsServersSSHTunnelsUpdate(params *ProjectsServersSSHTunne
 }
 
 /*
-ProjectsServersStart projects servers start API
+ProjectsServersStartCreate projects servers start create API
 */
-func (a *Client) ProjectsServersStart(params *ProjectsServersStartParams) (*ProjectsServersStartCreated, error) {
+func (a *Client) ProjectsServersStartCreate(params *ProjectsServersStartCreateParams) (*ProjectsServersStartCreateCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewProjectsServersStartParams()
+		params = NewProjectsServersStartCreateParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_servers_start",
+		ID:                 "projects_servers_start_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{id}/start/",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/start/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &ProjectsServersStartReader{formats: a.formats},
+		Reader:             &ProjectsServersStartCreateReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ProjectsServersStartCreated), nil
+	return result.(*ProjectsServersStartCreateCreated), nil
 
 }
 
@@ -1201,58 +1201,58 @@ func (a *Client) ProjectsServersStatsUpdate(params *ProjectsServersStatsUpdatePa
 }
 
 /*
-ProjectsServersStop projects servers stop API
+ProjectsServersStopCreate projects servers stop create API
 */
-func (a *Client) ProjectsServersStop(params *ProjectsServersStopParams) (*ProjectsServersStopCreated, error) {
+func (a *Client) ProjectsServersStopCreate(params *ProjectsServersStopCreateParams) (*ProjectsServersStopCreateCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewProjectsServersStopParams()
+		params = NewProjectsServersStopCreateParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_servers_stop",
+		ID:                 "projects_servers_stop_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{id}/stop/",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stop/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &ProjectsServersStopReader{formats: a.formats},
+		Reader:             &ProjectsServersStopCreateReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ProjectsServersStopCreated), nil
+	return result.(*ProjectsServersStopCreateCreated), nil
 
 }
 
 /*
-ProjectsServersTerminate projects servers terminate API
+ProjectsServersTerminateCreate projects servers terminate create API
 */
-func (a *Client) ProjectsServersTerminate(params *ProjectsServersTerminateParams) (*ProjectsServersTerminateCreated, error) {
+func (a *Client) ProjectsServersTerminateCreate(params *ProjectsServersTerminateCreateParams) (*ProjectsServersTerminateCreateCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewProjectsServersTerminateParams()
+		params = NewProjectsServersTerminateCreateParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_servers_terminate",
+		ID:                 "projects_servers_terminate_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{id}/terminate/",
+		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/terminate/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &ProjectsServersTerminateReader{formats: a.formats},
+		Reader:             &ProjectsServersTerminateCreateReader{formats: a.formats},
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ProjectsServersTerminateCreated), nil
+	return result.(*ProjectsServersTerminateCreateCreated), nil
 
 }
 
