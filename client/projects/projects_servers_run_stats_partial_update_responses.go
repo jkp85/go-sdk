@@ -13,7 +13,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/jkp85/go-sdk/models"
+	"github.com/3Blades/go-sdk/models"
 )
 
 // ProjectsServersRunStatsPartialUpdateReader is a Reader for the ProjectsServersRunStatsPartialUpdate structure.
