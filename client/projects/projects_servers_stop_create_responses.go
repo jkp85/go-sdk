@@ -52,7 +52,7 @@ type ProjectsServersStopCreateCreated struct {
 }
 
 func (o *ProjectsServersStopCreateCreated) Error() string {
-	return fmt.Sprintf("[POST /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stop/][%d] projectsServersStopCreateCreated ", 201)
+	return fmt.Sprintf("[POST /{namespace}/projects/{project_pk}/servers/{server_pk}/stop/][%d] projectsServersStopCreateCreated ", 201)
 }
 
 func (o *ProjectsServersStopCreateCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -73,7 +73,7 @@ type ProjectsServersStopCreateBadRequest struct {
 }
 
 func (o *ProjectsServersStopCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stop/][%d] projectsServersStopCreateBadRequest ", 400)
+	return fmt.Sprintf("[POST /{namespace}/projects/{project_pk}/servers/{server_pk}/stop/][%d] projectsServersStopCreateBadRequest ", 400)
 }
 
 func (o *ProjectsServersStopCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -49,7 +49,7 @@ type ProjectsServersSSHTunnelsListOK struct {
 }
 
 func (o *ProjectsServersSSHTunnelsListOK) Error() string {
-	return fmt.Sprintf("[GET /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/][%d] projectsServersSshTunnelsListOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/][%d] projectsServersSshTunnelsListOK  %+v", 200, o.Payload)
 }
 
 func (o *ProjectsServersSSHTunnelsListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

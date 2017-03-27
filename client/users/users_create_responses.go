@@ -59,7 +59,7 @@ type UsersCreateCreated struct {
 }
 
 func (o *UsersCreateCreated) Error() string {
-	return fmt.Sprintf("[POST /api/v0/{namespace}/users/][%d] usersCreateCreated  %+v", 201, o.Payload)
+	return fmt.Sprintf("[POST /{namespace}/users/][%d] usersCreateCreated  %+v", 201, o.Payload)
 }
 
 func (o *UsersCreateCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -88,7 +88,7 @@ type UsersCreateBadRequest struct {
 }
 
 func (o *UsersCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v0/{namespace}/users/][%d] usersCreateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /{namespace}/users/][%d] usersCreateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *UsersCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -41,7 +41,7 @@ func (a *Client) AuthConvertTokenCreate(params *AuthConvertTokenCreateParams) (*
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "auth_convert-token_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/auth/convert-token/",
+		PathPattern:        "/auth/convert-token/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -69,7 +69,7 @@ func (a *Client) AuthInvalidateSessionsCreate(params *AuthInvalidateSessionsCrea
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "auth_invalidate-sessions_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/auth/invalidate-sessions/",
+		PathPattern:        "/auth/invalidate-sessions/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -101,7 +101,7 @@ func (a *Client) AuthJwtTokenAuthCreate(params *AuthJwtTokenAuthCreateParams) (*
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "auth_jwt-token-auth_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/auth/jwt-token-auth/",
+		PathPattern:        "/auth/jwt-token-auth/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -135,7 +135,7 @@ func (a *Client) AuthJwtTokenRefreshCreate(params *AuthJwtTokenRefreshCreatePara
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "auth_jwt-token-refresh_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/auth/jwt-token-refresh/",
+		PathPattern:        "/auth/jwt-token-refresh/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -166,7 +166,7 @@ func (a *Client) AuthJwtTokenVerifyCreate(params *AuthJwtTokenVerifyCreateParams
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "auth_jwt-token-verify_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/auth/jwt-token-verify/",
+		PathPattern:        "/auth/jwt-token-verify/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -196,7 +196,7 @@ func (a *Client) AuthRevokeTokenCreate(params *AuthRevokeTokenCreateParams) (*Au
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "auth_revoke-token_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/auth/revoke-token/",
+		PathPattern:        "/auth/revoke-token/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -224,7 +224,7 @@ func (a *Client) AuthSimpleTokenAuthCreate(params *AuthSimpleTokenAuthCreatePara
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "auth_simple-token-auth_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/auth/simple-token-auth/",
+		PathPattern:        "/auth/simple-token-auth/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -260,7 +260,7 @@ func (a *Client) AuthTokenCreate(params *AuthTokenCreateParams) (*AuthTokenCreat
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "auth_token_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/auth/token/",
+		PathPattern:        "/auth/token/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},

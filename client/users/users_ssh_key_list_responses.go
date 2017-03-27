@@ -45,7 +45,7 @@ type UsersSSHKeyListOK struct {
 }
 
 func (o *UsersSSHKeyListOK) Error() string {
-	return fmt.Sprintf("[GET /api/v0/{namespace}/users/{user_pk}/ssh-key/][%d] usersSshKeyListOK ", 200)
+	return fmt.Sprintf("[GET /{namespace}/users/{user_pk}/ssh-key/][%d] usersSshKeyListOK ", 200)
 }
 
 func (o *UsersSSHKeyListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

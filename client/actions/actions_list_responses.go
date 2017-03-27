@@ -49,7 +49,7 @@ type ActionsListOK struct {
 }
 
 func (o *ActionsListOK) Error() string {
-	return fmt.Sprintf("[GET /api/v0/actions/][%d] actionsListOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /actions/][%d] actionsListOK  %+v", 200, o.Payload)
 }
 
 func (o *ActionsListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

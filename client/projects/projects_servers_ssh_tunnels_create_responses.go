@@ -58,7 +58,7 @@ type ProjectsServersSSHTunnelsCreateCreated struct {
 }
 
 func (o *ProjectsServersSSHTunnelsCreateCreated) Error() string {
-	return fmt.Sprintf("[POST /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/][%d] projectsServersSshTunnelsCreateCreated  %+v", 201, o.Payload)
+	return fmt.Sprintf("[POST /{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/][%d] projectsServersSshTunnelsCreateCreated  %+v", 201, o.Payload)
 }
 
 func (o *ProjectsServersSSHTunnelsCreateCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type ProjectsServersSSHTunnelsCreateBadRequest struct {
 }
 
 func (o *ProjectsServersSSHTunnelsCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/][%d] projectsServersSshTunnelsCreateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/][%d] projectsServersSshTunnelsCreateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsServersSSHTunnelsCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -36,7 +36,7 @@ func (a *Client) ActionsCancelCreate(params *ActionsCancelCreateParams) (*Action
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "actions_cancel_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/actions/{id}/cancel/",
+		PathPattern:        "/actions/{id}/cancel/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -66,7 +66,7 @@ func (a *Client) ActionsList(params *ActionsListParams) (*ActionsListOK, error) 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "actions_list",
 		Method:             "GET",
-		PathPattern:        "/api/v0/actions/",
+		PathPattern:        "/actions/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -96,7 +96,7 @@ func (a *Client) ActionsRead(params *ActionsReadParams) (*ActionsReadOK, error) 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "actions_read",
 		Method:             "GET",
-		PathPattern:        "/api/v0/actions/{id}/",
+		PathPattern:        "/actions/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},

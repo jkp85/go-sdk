@@ -34,7 +34,7 @@ func (a *Client) ProjectsCollaboratorsCreate(params *ProjectsCollaboratorsCreate
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_collaborators_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/collaborators/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/collaborators/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -62,7 +62,7 @@ func (a *Client) ProjectsCollaboratorsDelete(params *ProjectsCollaboratorsDelete
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_collaborators_delete",
 		Method:             "DELETE",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/collaborators/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/collaborators/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -90,7 +90,7 @@ func (a *Client) ProjectsCollaboratorsList(params *ProjectsCollaboratorsListPara
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_collaborators_list",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/collaborators/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/collaborators/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -118,7 +118,7 @@ func (a *Client) ProjectsCollaboratorsPartialUpdate(params *ProjectsCollaborator
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_collaborators_partial_update",
 		Method:             "PATCH",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/collaborators/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/collaborators/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -146,7 +146,7 @@ func (a *Client) ProjectsCollaboratorsRead(params *ProjectsCollaboratorsReadPara
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_collaborators_read",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/collaborators/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/collaborators/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -174,7 +174,7 @@ func (a *Client) ProjectsCollaboratorsUpdate(params *ProjectsCollaboratorsUpdate
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_collaborators_update",
 		Method:             "PUT",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/collaborators/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/collaborators/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -202,7 +202,7 @@ func (a *Client) ProjectsCreate(params *ProjectsCreateParams) (*ProjectsCreateCr
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/",
+		PathPattern:        "/{namespace}/projects/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -230,7 +230,7 @@ func (a *Client) ProjectsDelete(params *ProjectsDeleteParams) (*ProjectsDeleteNo
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_delete",
 		Method:             "DELETE",
-		PathPattern:        "/api/v0/{namespace}/projects/{id}/",
+		PathPattern:        "/{namespace}/projects/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -258,7 +258,7 @@ func (a *Client) ProjectsFilesCreate(params *ProjectsFilesCreateParams) (*Projec
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_files_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/files/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/files/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -286,7 +286,7 @@ func (a *Client) ProjectsFilesDelete(params *ProjectsFilesDeleteParams) (*Projec
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_files_delete",
 		Method:             "DELETE",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/files/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/files/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -314,7 +314,7 @@ func (a *Client) ProjectsFilesList(params *ProjectsFilesListParams) (*ProjectsFi
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_files_list",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/files/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/files/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -342,7 +342,7 @@ func (a *Client) ProjectsFilesPartialUpdate(params *ProjectsFilesPartialUpdatePa
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_files_partial_update",
 		Method:             "PATCH",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/files/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/files/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -370,7 +370,7 @@ func (a *Client) ProjectsFilesRead(params *ProjectsFilesReadParams) (*ProjectsFi
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_files_read",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/files/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/files/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -398,7 +398,7 @@ func (a *Client) ProjectsFilesUpdate(params *ProjectsFilesUpdateParams) (*Projec
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_files_update",
 		Method:             "PUT",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/files/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/files/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -426,7 +426,7 @@ func (a *Client) ProjectsList(params *ProjectsListParams) (*ProjectsListOK, erro
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_list",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/",
+		PathPattern:        "/{namespace}/projects/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -454,7 +454,7 @@ func (a *Client) ProjectsPartialUpdate(params *ProjectsPartialUpdateParams) (*Pr
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_partial_update",
 		Method:             "PATCH",
-		PathPattern:        "/api/v0/{namespace}/projects/{id}/",
+		PathPattern:        "/{namespace}/projects/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -482,7 +482,7 @@ func (a *Client) ProjectsRead(params *ProjectsReadParams) (*ProjectsReadOK, erro
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_read",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{id}/",
+		PathPattern:        "/{namespace}/projects/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -510,7 +510,7 @@ func (a *Client) ProjectsServersCreate(params *ProjectsServersCreateParams) (*Pr
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -538,7 +538,7 @@ func (a *Client) ProjectsServersDelete(params *ProjectsServersDeleteParams) (*Pr
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_delete",
 		Method:             "DELETE",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -568,7 +568,7 @@ func (a *Client) ProjectsServersIsAllowedList(params *ProjectsServersIsAllowedLi
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_is-allowed_list",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/is-allowed/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/is-allowed/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -596,7 +596,7 @@ func (a *Client) ProjectsServersList(params *ProjectsServersListParams) (*Projec
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_list",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -624,7 +624,7 @@ func (a *Client) ProjectsServersPartialUpdate(params *ProjectsServersPartialUpda
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_partial_update",
 		Method:             "PATCH",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -652,7 +652,7 @@ func (a *Client) ProjectsServersRead(params *ProjectsServersReadParams) (*Projec
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_read",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -680,7 +680,7 @@ func (a *Client) ProjectsServersRunStatsCreate(params *ProjectsServersRunStatsCr
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_run-stats_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -708,7 +708,7 @@ func (a *Client) ProjectsServersRunStatsDelete(params *ProjectsServersRunStatsDe
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_run-stats_delete",
 		Method:             "DELETE",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -736,7 +736,7 @@ func (a *Client) ProjectsServersRunStatsList(params *ProjectsServersRunStatsList
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_run-stats_list",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -764,7 +764,7 @@ func (a *Client) ProjectsServersRunStatsPartialUpdate(params *ProjectsServersRun
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_run-stats_partial_update",
 		Method:             "PATCH",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -792,7 +792,7 @@ func (a *Client) ProjectsServersRunStatsRead(params *ProjectsServersRunStatsRead
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_run-stats_read",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -820,7 +820,7 @@ func (a *Client) ProjectsServersRunStatsUpdate(params *ProjectsServersRunStatsUp
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_run-stats_update",
 		Method:             "PUT",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/run-stats/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -848,7 +848,7 @@ func (a *Client) ProjectsServersSSHTunnelsCreate(params *ProjectsServersSSHTunne
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_ssh-tunnels_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -876,7 +876,7 @@ func (a *Client) ProjectsServersSSHTunnelsDelete(params *ProjectsServersSSHTunne
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_ssh-tunnels_delete",
 		Method:             "DELETE",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -904,7 +904,7 @@ func (a *Client) ProjectsServersSSHTunnelsList(params *ProjectsServersSSHTunnels
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_ssh-tunnels_list",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -932,7 +932,7 @@ func (a *Client) ProjectsServersSSHTunnelsPartialUpdate(params *ProjectsServersS
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_ssh-tunnels_partial_update",
 		Method:             "PATCH",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -960,7 +960,7 @@ func (a *Client) ProjectsServersSSHTunnelsRead(params *ProjectsServersSSHTunnels
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_ssh-tunnels_read",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -988,7 +988,7 @@ func (a *Client) ProjectsServersSSHTunnelsUpdate(params *ProjectsServersSSHTunne
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_ssh-tunnels_update",
 		Method:             "PUT",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -1016,7 +1016,7 @@ func (a *Client) ProjectsServersStartCreate(params *ProjectsServersStartCreatePa
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_start_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/start/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/start/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -1044,7 +1044,7 @@ func (a *Client) ProjectsServersStatsCreate(params *ProjectsServersStatsCreatePa
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_stats_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -1072,7 +1072,7 @@ func (a *Client) ProjectsServersStatsDelete(params *ProjectsServersStatsDeletePa
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_stats_delete",
 		Method:             "DELETE",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -1100,7 +1100,7 @@ func (a *Client) ProjectsServersStatsList(params *ProjectsServersStatsListParams
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_stats_list",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -1128,7 +1128,7 @@ func (a *Client) ProjectsServersStatsPartialUpdate(params *ProjectsServersStatsP
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_stats_partial_update",
 		Method:             "PATCH",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -1156,7 +1156,7 @@ func (a *Client) ProjectsServersStatsRead(params *ProjectsServersStatsReadParams
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_stats_read",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -1184,7 +1184,7 @@ func (a *Client) ProjectsServersStatsUpdate(params *ProjectsServersStatsUpdatePa
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_stats_update",
 		Method:             "PUT",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -1212,7 +1212,7 @@ func (a *Client) ProjectsServersStopCreate(params *ProjectsServersStopCreatePara
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_stop_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stop/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/stop/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -1240,7 +1240,7 @@ func (a *Client) ProjectsServersTerminateCreate(params *ProjectsServersTerminate
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_terminate_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/terminate/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/terminate/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -1268,7 +1268,7 @@ func (a *Client) ProjectsServersUpdate(params *ProjectsServersUpdateParams) (*Pr
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_update",
 		Method:             "PUT",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/servers/{id}/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -1296,7 +1296,7 @@ func (a *Client) ProjectsSyncedResourcesCreate(params *ProjectsSyncedResourcesCr
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_synced-resources_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/synced-resources/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/synced-resources/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -1324,7 +1324,7 @@ func (a *Client) ProjectsSyncedResourcesList(params *ProjectsSyncedResourcesList
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_synced-resources_list",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/projects/{project_pk}/synced-resources/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/synced-resources/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -1352,7 +1352,7 @@ func (a *Client) ProjectsUpdate(params *ProjectsUpdateParams) (*ProjectsUpdateOK
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_update",
 		Method:             "PUT",
-		PathPattern:        "/api/v0/{namespace}/projects/{id}/",
+		PathPattern:        "/{namespace}/projects/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},

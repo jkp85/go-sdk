@@ -58,7 +58,7 @@ type AuthSimpleTokenAuthCreateCreated struct {
 }
 
 func (o *AuthSimpleTokenAuthCreateCreated) Error() string {
-	return fmt.Sprintf("[POST /api/v0/auth/simple-token-auth/][%d] authSimpleTokenAuthCreateCreated  %+v", 201, o.Payload)
+	return fmt.Sprintf("[POST /auth/simple-token-auth/][%d] authSimpleTokenAuthCreateCreated  %+v", 201, o.Payload)
 }
 
 func (o *AuthSimpleTokenAuthCreateCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type AuthSimpleTokenAuthCreateBadRequest struct {
 }
 
 func (o *AuthSimpleTokenAuthCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v0/auth/simple-token-auth/][%d] authSimpleTokenAuthCreateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /auth/simple-token-auth/][%d] authSimpleTokenAuthCreateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *AuthSimpleTokenAuthCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

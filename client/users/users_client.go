@@ -34,7 +34,7 @@ func (a *Client) UsersAPIKeyList(params *UsersAPIKeyListParams) (*UsersAPIKeyLis
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_api-key_list",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/users/{user_pk}/api-key/",
+		PathPattern:        "/{namespace}/users/{user_pk}/api-key/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -62,7 +62,7 @@ func (a *Client) UsersAPIKeyResetCreate(params *UsersAPIKeyResetCreateParams) (*
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_api-key_reset_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/users/{user_pk}/api-key/reset/",
+		PathPattern:        "/{namespace}/users/{user_pk}/api-key/reset/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -90,7 +90,7 @@ func (a *Client) UsersCreate(params *UsersCreateParams) (*UsersCreateCreated, er
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/users/",
+		PathPattern:        "/{namespace}/users/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -118,7 +118,7 @@ func (a *Client) UsersDelete(params *UsersDeleteParams) (*UsersDeleteNoContent, 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_delete",
 		Method:             "DELETE",
-		PathPattern:        "/api/v0/{namespace}/users/{id}/",
+		PathPattern:        "/{namespace}/users/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -146,7 +146,7 @@ func (a *Client) UsersEmailsCreate(params *UsersEmailsCreateParams) (*UsersEmail
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_emails_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/users/{user_pk}/emails/",
+		PathPattern:        "/{namespace}/users/{user_pk}/emails/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -174,7 +174,7 @@ func (a *Client) UsersEmailsDelete(params *UsersEmailsDeleteParams) (*UsersEmail
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_emails_delete",
 		Method:             "DELETE",
-		PathPattern:        "/api/v0/{namespace}/users/{user_pk}/emails/{address}/",
+		PathPattern:        "/{namespace}/users/{user_pk}/emails/{address}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -202,7 +202,7 @@ func (a *Client) UsersEmailsList(params *UsersEmailsListParams) (*UsersEmailsLis
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_emails_list",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/users/{user_pk}/emails/",
+		PathPattern:        "/{namespace}/users/{user_pk}/emails/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -230,7 +230,7 @@ func (a *Client) UsersEmailsPartialUpdate(params *UsersEmailsPartialUpdateParams
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_emails_partial_update",
 		Method:             "PATCH",
-		PathPattern:        "/api/v0/{namespace}/users/{user_pk}/emails/{address}/",
+		PathPattern:        "/{namespace}/users/{user_pk}/emails/{address}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -258,7 +258,7 @@ func (a *Client) UsersEmailsRead(params *UsersEmailsReadParams) (*UsersEmailsRea
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_emails_read",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/users/{user_pk}/emails/{address}/",
+		PathPattern:        "/{namespace}/users/{user_pk}/emails/{address}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -286,7 +286,7 @@ func (a *Client) UsersEmailsUpdate(params *UsersEmailsUpdateParams) (*UsersEmail
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_emails_update",
 		Method:             "PUT",
-		PathPattern:        "/api/v0/{namespace}/users/{user_pk}/emails/{address}/",
+		PathPattern:        "/{namespace}/users/{user_pk}/emails/{address}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -314,7 +314,7 @@ func (a *Client) UsersIntegrationsCreate(params *UsersIntegrationsCreateParams) 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_integrations_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/users/{user_pk}/integrations/",
+		PathPattern:        "/{namespace}/users/{user_pk}/integrations/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -342,7 +342,7 @@ func (a *Client) UsersIntegrationsDelete(params *UsersIntegrationsDeleteParams) 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_integrations_delete",
 		Method:             "DELETE",
-		PathPattern:        "/api/v0/{namespace}/users/{user_pk}/integrations/{id}/",
+		PathPattern:        "/{namespace}/users/{user_pk}/integrations/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -370,7 +370,7 @@ func (a *Client) UsersIntegrationsList(params *UsersIntegrationsListParams) (*Us
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_integrations_list",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/users/{user_pk}/integrations/",
+		PathPattern:        "/{namespace}/users/{user_pk}/integrations/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -398,7 +398,7 @@ func (a *Client) UsersIntegrationsPartialUpdate(params *UsersIntegrationsPartial
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_integrations_partial_update",
 		Method:             "PATCH",
-		PathPattern:        "/api/v0/{namespace}/users/{user_pk}/integrations/{id}/",
+		PathPattern:        "/{namespace}/users/{user_pk}/integrations/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -426,7 +426,7 @@ func (a *Client) UsersIntegrationsRead(params *UsersIntegrationsReadParams) (*Us
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_integrations_read",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/users/{user_pk}/integrations/{id}/",
+		PathPattern:        "/{namespace}/users/{user_pk}/integrations/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -454,7 +454,7 @@ func (a *Client) UsersIntegrationsUpdate(params *UsersIntegrationsUpdateParams) 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_integrations_update",
 		Method:             "PUT",
-		PathPattern:        "/api/v0/{namespace}/users/{user_pk}/integrations/{id}/",
+		PathPattern:        "/{namespace}/users/{user_pk}/integrations/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -482,7 +482,7 @@ func (a *Client) UsersList(params *UsersListParams) (*UsersListOK, error) {
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_list",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/users/",
+		PathPattern:        "/{namespace}/users/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -510,7 +510,7 @@ func (a *Client) UsersPartialUpdate(params *UsersPartialUpdateParams) (*UsersPar
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_partial_update",
 		Method:             "PATCH",
-		PathPattern:        "/api/v0/{namespace}/users/{id}/",
+		PathPattern:        "/{namespace}/users/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -538,7 +538,7 @@ func (a *Client) UsersRead(params *UsersReadParams) (*UsersReadOK, error) {
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_read",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/users/{id}/",
+		PathPattern:        "/{namespace}/users/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -566,7 +566,7 @@ func (a *Client) UsersSSHKeyList(params *UsersSSHKeyListParams) (*UsersSSHKeyLis
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_ssh-key_list",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/users/{user_pk}/ssh-key/",
+		PathPattern:        "/{namespace}/users/{user_pk}/ssh-key/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -594,7 +594,7 @@ func (a *Client) UsersSSHKeyResetCreate(params *UsersSSHKeyResetCreateParams) (*
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_ssh-key_reset_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/users/{user_pk}/ssh-key/reset/",
+		PathPattern:        "/{namespace}/users/{user_pk}/ssh-key/reset/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -622,7 +622,7 @@ func (a *Client) UsersUpdate(params *UsersUpdateParams) (*UsersUpdateOK, error) 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_update",
 		Method:             "PUT",
-		PathPattern:        "/api/v0/{namespace}/users/{id}/",
+		PathPattern:        "/{namespace}/users/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},

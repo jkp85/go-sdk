@@ -65,7 +65,7 @@ type ProjectsServersStatsPartialUpdateOK struct {
 }
 
 func (o *ProjectsServersStatsPartialUpdateOK) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/{id}/][%d] projectsServersStatsPartialUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PATCH /{namespace}/projects/{project_pk}/servers/{server_pk}/stats/{id}/][%d] projectsServersStatsPartialUpdateOK  %+v", 200, o.Payload)
 }
 
 func (o *ProjectsServersStatsPartialUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -94,7 +94,7 @@ type ProjectsServersStatsPartialUpdateBadRequest struct {
 }
 
 func (o *ProjectsServersStatsPartialUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/{id}/][%d] projectsServersStatsPartialUpdateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PATCH /{namespace}/projects/{project_pk}/servers/{server_pk}/stats/{id}/][%d] projectsServersStatsPartialUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsServersStatsPartialUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +121,7 @@ type ProjectsServersStatsPartialUpdateNotFound struct {
 }
 
 func (o *ProjectsServersStatsPartialUpdateNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/{id}/][%d] projectsServersStatsPartialUpdateNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PATCH /{namespace}/projects/{project_pk}/servers/{server_pk}/stats/{id}/][%d] projectsServersStatsPartialUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectsServersStatsPartialUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

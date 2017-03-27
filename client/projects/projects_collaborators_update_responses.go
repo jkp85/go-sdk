@@ -58,7 +58,7 @@ type ProjectsCollaboratorsUpdateOK struct {
 }
 
 func (o *ProjectsCollaboratorsUpdateOK) Error() string {
-	return fmt.Sprintf("[PUT /api/v0/{namespace}/projects/{project_pk}/collaborators/{id}/][%d] projectsCollaboratorsUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /{namespace}/projects/{project_pk}/collaborators/{id}/][%d] projectsCollaboratorsUpdateOK  %+v", 200, o.Payload)
 }
 
 func (o *ProjectsCollaboratorsUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type ProjectsCollaboratorsUpdateBadRequest struct {
 }
 
 func (o *ProjectsCollaboratorsUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /api/v0/{namespace}/projects/{project_pk}/collaborators/{id}/][%d] projectsCollaboratorsUpdateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PUT /{namespace}/projects/{project_pk}/collaborators/{id}/][%d] projectsCollaboratorsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsCollaboratorsUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

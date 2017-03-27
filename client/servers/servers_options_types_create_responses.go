@@ -58,7 +58,7 @@ type ServersOptionsTypesCreateCreated struct {
 }
 
 func (o *ServersOptionsTypesCreateCreated) Error() string {
-	return fmt.Sprintf("[POST /api/v0/{namespace}/servers/options/types/][%d] serversOptionsTypesCreateCreated  %+v", 201, o.Payload)
+	return fmt.Sprintf("[POST /{namespace}/servers/options/types/][%d] serversOptionsTypesCreateCreated  %+v", 201, o.Payload)
 }
 
 func (o *ServersOptionsTypesCreateCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type ServersOptionsTypesCreateBadRequest struct {
 }
 
 func (o *ServersOptionsTypesCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v0/{namespace}/servers/options/types/][%d] serversOptionsTypesCreateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /{namespace}/servers/options/types/][%d] serversOptionsTypesCreateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServersOptionsTypesCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -52,7 +52,7 @@ type ActionsCancelCreateCreated struct {
 }
 
 func (o *ActionsCancelCreateCreated) Error() string {
-	return fmt.Sprintf("[POST /api/v0/actions/{id}/cancel/][%d] actionsCancelCreateCreated ", 201)
+	return fmt.Sprintf("[POST /actions/{id}/cancel/][%d] actionsCancelCreateCreated ", 201)
 }
 
 func (o *ActionsCancelCreateCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -73,7 +73,7 @@ type ActionsCancelCreateBadRequest struct {
 }
 
 func (o *ActionsCancelCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v0/actions/{id}/cancel/][%d] actionsCancelCreateBadRequest ", 400)
+	return fmt.Sprintf("[POST /actions/{id}/cancel/][%d] actionsCancelCreateBadRequest ", 400)
 }
 
 func (o *ActionsCancelCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

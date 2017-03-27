@@ -45,7 +45,7 @@ type ProjectsServersIsAllowedListOK struct {
 }
 
 func (o *ProjectsServersIsAllowedListOK) Error() string {
-	return fmt.Sprintf("[GET /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/is-allowed/][%d] projectsServersIsAllowedListOK ", 200)
+	return fmt.Sprintf("[GET /{namespace}/projects/{project_pk}/servers/{server_pk}/is-allowed/][%d] projectsServersIsAllowedListOK ", 200)
 }
 
 func (o *ProjectsServersIsAllowedListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

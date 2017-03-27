@@ -34,7 +34,7 @@ func (a *Client) ServersOptionsResourcesCreate(params *ServersOptionsResourcesCr
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "servers_options_resources_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/servers/options/resources/",
+		PathPattern:        "/{namespace}/servers/options/resources/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -62,7 +62,7 @@ func (a *Client) ServersOptionsResourcesDelete(params *ServersOptionsResourcesDe
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "servers_options_resources_delete",
 		Method:             "DELETE",
-		PathPattern:        "/api/v0/{namespace}/servers/options/resources/{id}/",
+		PathPattern:        "/{namespace}/servers/options/resources/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -90,7 +90,7 @@ func (a *Client) ServersOptionsResourcesList(params *ServersOptionsResourcesList
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "servers_options_resources_list",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/servers/options/resources/",
+		PathPattern:        "/{namespace}/servers/options/resources/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -118,7 +118,7 @@ func (a *Client) ServersOptionsResourcesPartialUpdate(params *ServersOptionsReso
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "servers_options_resources_partial_update",
 		Method:             "PATCH",
-		PathPattern:        "/api/v0/{namespace}/servers/options/resources/{id}/",
+		PathPattern:        "/{namespace}/servers/options/resources/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -146,7 +146,7 @@ func (a *Client) ServersOptionsResourcesRead(params *ServersOptionsResourcesRead
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "servers_options_resources_read",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/servers/options/resources/{id}/",
+		PathPattern:        "/{namespace}/servers/options/resources/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -174,7 +174,7 @@ func (a *Client) ServersOptionsResourcesUpdate(params *ServersOptionsResourcesUp
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "servers_options_resources_update",
 		Method:             "PUT",
-		PathPattern:        "/api/v0/{namespace}/servers/options/resources/{id}/",
+		PathPattern:        "/{namespace}/servers/options/resources/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -202,7 +202,7 @@ func (a *Client) ServersOptionsTypesCreate(params *ServersOptionsTypesCreatePara
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "servers_options_types_create",
 		Method:             "POST",
-		PathPattern:        "/api/v0/{namespace}/servers/options/types/",
+		PathPattern:        "/{namespace}/servers/options/types/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -230,7 +230,7 @@ func (a *Client) ServersOptionsTypesDelete(params *ServersOptionsTypesDeletePara
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "servers_options_types_delete",
 		Method:             "DELETE",
-		PathPattern:        "/api/v0/{namespace}/servers/options/types/{id}/",
+		PathPattern:        "/{namespace}/servers/options/types/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -258,7 +258,7 @@ func (a *Client) ServersOptionsTypesList(params *ServersOptionsTypesListParams) 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "servers_options_types_list",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/servers/options/types/",
+		PathPattern:        "/{namespace}/servers/options/types/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -286,7 +286,7 @@ func (a *Client) ServersOptionsTypesPartialUpdate(params *ServersOptionsTypesPar
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "servers_options_types_partial_update",
 		Method:             "PATCH",
-		PathPattern:        "/api/v0/{namespace}/servers/options/types/{id}/",
+		PathPattern:        "/{namespace}/servers/options/types/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -314,7 +314,7 @@ func (a *Client) ServersOptionsTypesRead(params *ServersOptionsTypesReadParams) 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "servers_options_types_read",
 		Method:             "GET",
-		PathPattern:        "/api/v0/{namespace}/servers/options/types/{id}/",
+		PathPattern:        "/{namespace}/servers/options/types/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -342,7 +342,7 @@ func (a *Client) ServersOptionsTypesUpdate(params *ServersOptionsTypesUpdatePara
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "servers_options_types_update",
 		Method:             "PUT",
-		PathPattern:        "/api/v0/{namespace}/servers/options/types/{id}/",
+		PathPattern:        "/{namespace}/servers/options/types/{id}/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},

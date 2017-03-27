@@ -55,7 +55,7 @@ type ProjectsServersSSHTunnelsDeleteNoContent struct {
 }
 
 func (o *ProjectsServersSSHTunnelsDeleteNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsDeleteNoContent ", 204)
+	return fmt.Sprintf("[DELETE /{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsDeleteNoContent ", 204)
 }
 
 func (o *ProjectsServersSSHTunnelsDeleteNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -77,7 +77,7 @@ type ProjectsServersSSHTunnelsDeleteNotFound struct {
 }
 
 func (o *ProjectsServersSSHTunnelsDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsDeleteNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[DELETE /{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectsServersSSHTunnelsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

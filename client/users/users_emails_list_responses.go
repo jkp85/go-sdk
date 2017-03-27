@@ -49,7 +49,7 @@ type UsersEmailsListOK struct {
 }
 
 func (o *UsersEmailsListOK) Error() string {
-	return fmt.Sprintf("[GET /api/v0/{namespace}/users/{user_pk}/emails/][%d] usersEmailsListOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /{namespace}/users/{user_pk}/emails/][%d] usersEmailsListOK  %+v", 200, o.Payload)
 }
 
 func (o *UsersEmailsListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -52,7 +52,7 @@ type AuthConvertTokenCreateCreated struct {
 }
 
 func (o *AuthConvertTokenCreateCreated) Error() string {
-	return fmt.Sprintf("[POST /api/v0/auth/convert-token/][%d] authConvertTokenCreateCreated ", 201)
+	return fmt.Sprintf("[POST /auth/convert-token/][%d] authConvertTokenCreateCreated ", 201)
 }
 
 func (o *AuthConvertTokenCreateCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -73,7 +73,7 @@ type AuthConvertTokenCreateBadRequest struct {
 }
 
 func (o *AuthConvertTokenCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v0/auth/convert-token/][%d] authConvertTokenCreateBadRequest ", 400)
+	return fmt.Sprintf("[POST /auth/convert-token/][%d] authConvertTokenCreateBadRequest ", 400)
 }
 
 func (o *AuthConvertTokenCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
