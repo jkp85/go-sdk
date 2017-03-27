@@ -65,7 +65,7 @@ type ProjectsCollaboratorsPartialUpdateOK struct {
 }
 
 func (o *ProjectsCollaboratorsPartialUpdateOK) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/collaborators/{id}/][%d] projectsCollaboratorsPartialUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PATCH /{namespace}/projects/{project_pk}/collaborators/{id}/][%d] projectsCollaboratorsPartialUpdateOK  %+v", 200, o.Payload)
 }
 
 func (o *ProjectsCollaboratorsPartialUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -94,7 +94,7 @@ type ProjectsCollaboratorsPartialUpdateBadRequest struct {
 }
 
 func (o *ProjectsCollaboratorsPartialUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/collaborators/{id}/][%d] projectsCollaboratorsPartialUpdateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PATCH /{namespace}/projects/{project_pk}/collaborators/{id}/][%d] projectsCollaboratorsPartialUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsCollaboratorsPartialUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +121,7 @@ type ProjectsCollaboratorsPartialUpdateNotFound struct {
 }
 
 func (o *ProjectsCollaboratorsPartialUpdateNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/projects/{project_pk}/collaborators/{id}/][%d] projectsCollaboratorsPartialUpdateNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PATCH /{namespace}/projects/{project_pk}/collaborators/{id}/][%d] projectsCollaboratorsPartialUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectsCollaboratorsPartialUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -49,7 +49,7 @@ type ProjectsServersStatsListOK struct {
 }
 
 func (o *ProjectsServersStatsListOK) Error() string {
-	return fmt.Sprintf("[GET /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/stats/][%d] projectsServersStatsListOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /{namespace}/projects/{project_pk}/servers/{server_pk}/stats/][%d] projectsServersStatsListOK  %+v", 200, o.Payload)
 }
 
 func (o *ProjectsServersStatsListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

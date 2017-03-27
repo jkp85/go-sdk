@@ -55,7 +55,7 @@ type ProjectsServersDeleteNoContent struct {
 }
 
 func (o *ProjectsServersDeleteNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /api/v0/{namespace}/projects/{project_pk}/servers/{id}/][%d] projectsServersDeleteNoContent ", 204)
+	return fmt.Sprintf("[DELETE /{namespace}/projects/{project_pk}/servers/{id}/][%d] projectsServersDeleteNoContent ", 204)
 }
 
 func (o *ProjectsServersDeleteNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -77,7 +77,7 @@ type ProjectsServersDeleteNotFound struct {
 }
 
 func (o *ProjectsServersDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /api/v0/{namespace}/projects/{project_pk}/servers/{id}/][%d] projectsServersDeleteNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[DELETE /{namespace}/projects/{project_pk}/servers/{id}/][%d] projectsServersDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectsServersDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

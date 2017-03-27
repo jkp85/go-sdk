@@ -66,7 +66,7 @@ type UsersPartialUpdateOK struct {
 }
 
 func (o *UsersPartialUpdateOK) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/users/{id}/][%d] usersPartialUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PATCH /{namespace}/users/{id}/][%d] usersPartialUpdateOK  %+v", 200, o.Payload)
 }
 
 func (o *UsersPartialUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -95,7 +95,7 @@ type UsersPartialUpdateBadRequest struct {
 }
 
 func (o *UsersPartialUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/users/{id}/][%d] usersPartialUpdateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PATCH /{namespace}/users/{id}/][%d] usersPartialUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *UsersPartialUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -122,7 +122,7 @@ type UsersPartialUpdateNotFound struct {
 }
 
 func (o *UsersPartialUpdateNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/users/{id}/][%d] usersPartialUpdateNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PATCH /{namespace}/users/{id}/][%d] usersPartialUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *UsersPartialUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

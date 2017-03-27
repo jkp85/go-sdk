@@ -58,7 +58,7 @@ type UsersIntegrationsUpdateOK struct {
 }
 
 func (o *UsersIntegrationsUpdateOK) Error() string {
-	return fmt.Sprintf("[PUT /api/v0/{namespace}/users/{user_pk}/integrations/{id}/][%d] usersIntegrationsUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /{namespace}/users/{user_pk}/integrations/{id}/][%d] usersIntegrationsUpdateOK  %+v", 200, o.Payload)
 }
 
 func (o *UsersIntegrationsUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type UsersIntegrationsUpdateBadRequest struct {
 }
 
 func (o *UsersIntegrationsUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /api/v0/{namespace}/users/{user_pk}/integrations/{id}/][%d] usersIntegrationsUpdateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PUT /{namespace}/users/{user_pk}/integrations/{id}/][%d] usersIntegrationsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *UsersIntegrationsUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

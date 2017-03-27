@@ -56,7 +56,7 @@ type ProjectsCollaboratorsReadOK struct {
 }
 
 func (o *ProjectsCollaboratorsReadOK) Error() string {
-	return fmt.Sprintf("[GET /api/v0/{namespace}/projects/{project_pk}/collaborators/{id}/][%d] projectsCollaboratorsReadOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /{namespace}/projects/{project_pk}/collaborators/{id}/][%d] projectsCollaboratorsReadOK  %+v", 200, o.Payload)
 }
 
 func (o *ProjectsCollaboratorsReadOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -85,7 +85,7 @@ type ProjectsCollaboratorsReadNotFound struct {
 }
 
 func (o *ProjectsCollaboratorsReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v0/{namespace}/projects/{project_pk}/collaborators/{id}/][%d] projectsCollaboratorsReadNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /{namespace}/projects/{project_pk}/collaborators/{id}/][%d] projectsCollaboratorsReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectsCollaboratorsReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

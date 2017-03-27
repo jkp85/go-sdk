@@ -56,7 +56,7 @@ type ProjectsServersSSHTunnelsReadOK struct {
 }
 
 func (o *ProjectsServersSSHTunnelsReadOK) Error() string {
-	return fmt.Sprintf("[GET /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsReadOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsReadOK  %+v", 200, o.Payload)
 }
 
 func (o *ProjectsServersSSHTunnelsReadOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -85,7 +85,7 @@ type ProjectsServersSSHTunnelsReadNotFound struct {
 }
 
 func (o *ProjectsServersSSHTunnelsReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v0/{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsReadNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /{namespace}/projects/{project_pk}/servers/{server_pk}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectsServersSSHTunnelsReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

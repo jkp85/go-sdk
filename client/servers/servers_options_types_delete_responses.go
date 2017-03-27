@@ -55,7 +55,7 @@ type ServersOptionsTypesDeleteNoContent struct {
 }
 
 func (o *ServersOptionsTypesDeleteNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /api/v0/{namespace}/servers/options/types/{id}/][%d] serversOptionsTypesDeleteNoContent ", 204)
+	return fmt.Sprintf("[DELETE /{namespace}/servers/options/types/{id}/][%d] serversOptionsTypesDeleteNoContent ", 204)
 }
 
 func (o *ServersOptionsTypesDeleteNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -77,7 +77,7 @@ type ServersOptionsTypesDeleteNotFound struct {
 }
 
 func (o *ServersOptionsTypesDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /api/v0/{namespace}/servers/options/types/{id}/][%d] serversOptionsTypesDeleteNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[DELETE /{namespace}/servers/options/types/{id}/][%d] serversOptionsTypesDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServersOptionsTypesDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

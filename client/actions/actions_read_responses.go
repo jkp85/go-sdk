@@ -56,7 +56,7 @@ type ActionsReadOK struct {
 }
 
 func (o *ActionsReadOK) Error() string {
-	return fmt.Sprintf("[GET /api/v0/actions/{id}/][%d] actionsReadOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /actions/{id}/][%d] actionsReadOK  %+v", 200, o.Payload)
 }
 
 func (o *ActionsReadOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -85,7 +85,7 @@ type ActionsReadNotFound struct {
 }
 
 func (o *ActionsReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /api/v0/actions/{id}/][%d] actionsReadNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /actions/{id}/][%d] actionsReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ActionsReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

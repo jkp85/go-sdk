@@ -58,7 +58,7 @@ type AuthJwtTokenRefreshCreateCreated struct {
 }
 
 func (o *AuthJwtTokenRefreshCreateCreated) Error() string {
-	return fmt.Sprintf("[POST /api/v0/auth/jwt-token-refresh/][%d] authJwtTokenRefreshCreateCreated  %+v", 201, o.Payload)
+	return fmt.Sprintf("[POST /auth/jwt-token-refresh/][%d] authJwtTokenRefreshCreateCreated  %+v", 201, o.Payload)
 }
 
 func (o *AuthJwtTokenRefreshCreateCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type AuthJwtTokenRefreshCreateBadRequest struct {
 }
 
 func (o *AuthJwtTokenRefreshCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v0/auth/jwt-token-refresh/][%d] authJwtTokenRefreshCreateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /auth/jwt-token-refresh/][%d] authJwtTokenRefreshCreateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *AuthJwtTokenRefreshCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

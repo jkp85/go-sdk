@@ -58,7 +58,7 @@ type ServersOptionsResourcesUpdateOK struct {
 }
 
 func (o *ServersOptionsResourcesUpdateOK) Error() string {
-	return fmt.Sprintf("[PUT /api/v0/{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesUpdateOK  %+v", 200, o.Payload)
 }
 
 func (o *ServersOptionsResourcesUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type ServersOptionsResourcesUpdateBadRequest struct {
 }
 
 func (o *ServersOptionsResourcesUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /api/v0/{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesUpdateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PUT /{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServersOptionsResourcesUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

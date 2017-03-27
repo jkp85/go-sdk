@@ -55,7 +55,7 @@ type UsersIntegrationsDeleteNoContent struct {
 }
 
 func (o *UsersIntegrationsDeleteNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /api/v0/{namespace}/users/{user_pk}/integrations/{id}/][%d] usersIntegrationsDeleteNoContent ", 204)
+	return fmt.Sprintf("[DELETE /{namespace}/users/{user_pk}/integrations/{id}/][%d] usersIntegrationsDeleteNoContent ", 204)
 }
 
 func (o *UsersIntegrationsDeleteNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -77,7 +77,7 @@ type UsersIntegrationsDeleteNotFound struct {
 }
 
 func (o *UsersIntegrationsDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /api/v0/{namespace}/users/{user_pk}/integrations/{id}/][%d] usersIntegrationsDeleteNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[DELETE /{namespace}/users/{user_pk}/integrations/{id}/][%d] usersIntegrationsDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *UsersIntegrationsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -55,7 +55,7 @@ type ServersOptionsResourcesDeleteNoContent struct {
 }
 
 func (o *ServersOptionsResourcesDeleteNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /api/v0/{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesDeleteNoContent ", 204)
+	return fmt.Sprintf("[DELETE /{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesDeleteNoContent ", 204)
 }
 
 func (o *ServersOptionsResourcesDeleteNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -77,7 +77,7 @@ type ServersOptionsResourcesDeleteNotFound struct {
 }
 
 func (o *ServersOptionsResourcesDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /api/v0/{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesDeleteNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[DELETE /{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServersOptionsResourcesDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

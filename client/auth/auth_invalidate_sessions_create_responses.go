@@ -52,7 +52,7 @@ type AuthInvalidateSessionsCreateCreated struct {
 }
 
 func (o *AuthInvalidateSessionsCreateCreated) Error() string {
-	return fmt.Sprintf("[POST /api/v0/auth/invalidate-sessions/][%d] authInvalidateSessionsCreateCreated ", 201)
+	return fmt.Sprintf("[POST /auth/invalidate-sessions/][%d] authInvalidateSessionsCreateCreated ", 201)
 }
 
 func (o *AuthInvalidateSessionsCreateCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -73,7 +73,7 @@ type AuthInvalidateSessionsCreateBadRequest struct {
 }
 
 func (o *AuthInvalidateSessionsCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v0/auth/invalidate-sessions/][%d] authInvalidateSessionsCreateBadRequest ", 400)
+	return fmt.Sprintf("[POST /auth/invalidate-sessions/][%d] authInvalidateSessionsCreateBadRequest ", 400)
 }
 
 func (o *AuthInvalidateSessionsCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

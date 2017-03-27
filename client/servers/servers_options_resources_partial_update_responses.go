@@ -65,7 +65,7 @@ type ServersOptionsResourcesPartialUpdateOK struct {
 }
 
 func (o *ServersOptionsResourcesPartialUpdateOK) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesPartialUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PATCH /{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesPartialUpdateOK  %+v", 200, o.Payload)
 }
 
 func (o *ServersOptionsResourcesPartialUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -94,7 +94,7 @@ type ServersOptionsResourcesPartialUpdateBadRequest struct {
 }
 
 func (o *ServersOptionsResourcesPartialUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesPartialUpdateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PATCH /{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesPartialUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServersOptionsResourcesPartialUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +121,7 @@ type ServersOptionsResourcesPartialUpdateNotFound struct {
 }
 
 func (o *ServersOptionsResourcesPartialUpdateNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /api/v0/{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesPartialUpdateNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PATCH /{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesPartialUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServersOptionsResourcesPartialUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

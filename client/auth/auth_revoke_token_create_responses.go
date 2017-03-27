@@ -52,7 +52,7 @@ type AuthRevokeTokenCreateCreated struct {
 }
 
 func (o *AuthRevokeTokenCreateCreated) Error() string {
-	return fmt.Sprintf("[POST /api/v0/auth/revoke-token/][%d] authRevokeTokenCreateCreated ", 201)
+	return fmt.Sprintf("[POST /auth/revoke-token/][%d] authRevokeTokenCreateCreated ", 201)
 }
 
 func (o *AuthRevokeTokenCreateCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -73,7 +73,7 @@ type AuthRevokeTokenCreateBadRequest struct {
 }
 
 func (o *AuthRevokeTokenCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /api/v0/auth/revoke-token/][%d] authRevokeTokenCreateBadRequest ", 400)
+	return fmt.Sprintf("[POST /auth/revoke-token/][%d] authRevokeTokenCreateBadRequest ", 400)
 }
 
 func (o *AuthRevokeTokenCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
