@@ -121,13 +121,13 @@ type ProjectsServersUpdateBadRequestBody struct {
 	// Required: true
 	EnvironmentResources []string `json:"environment_resources"`
 
-	// environment_type field errors
-	// Required: true
-	EnvironmentType []string `json:"environment_type"`
-
 	// id field errors
 	// Required: true
 	ID []string `json:"id"`
+
+	// image_name field errors
+	// Required: true
+	ImageName []string `json:"image_name"`
 
 	// name field errors
 	// Required: true
@@ -170,12 +170,12 @@ func (o *ProjectsServersUpdateBadRequestBody) Validate(formats strfmt.Registry) 
 		res = append(res, err)
 	}
 
-	if err := o.validateEnvironmentType(formats); err != nil {
+	if err := o.validateID(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
 
-	if err := o.validateID(formats); err != nil {
+	if err := o.validateImageName(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
@@ -242,18 +242,18 @@ func (o *ProjectsServersUpdateBadRequestBody) validateEnvironmentResources(forma
 	return nil
 }
 
-func (o *ProjectsServersUpdateBadRequestBody) validateEnvironmentType(formats strfmt.Registry) error {
+func (o *ProjectsServersUpdateBadRequestBody) validateID(formats strfmt.Registry) error {
 
-	if err := validate.Required("projectsServersUpdateBadRequest"+"."+"environment_type", "body", o.EnvironmentType); err != nil {
+	if err := validate.Required("projectsServersUpdateBadRequest"+"."+"id", "body", o.ID); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-func (o *ProjectsServersUpdateBadRequestBody) validateID(formats strfmt.Registry) error {
+func (o *ProjectsServersUpdateBadRequestBody) validateImageName(formats strfmt.Registry) error {
 
-	if err := validate.Required("projectsServersUpdateBadRequest"+"."+"id", "body", o.ID); err != nil {
+	if err := validate.Required("projectsServersUpdateBadRequest"+"."+"image_name", "body", o.ImageName); err != nil {
 		return err
 	}
 
@@ -311,9 +311,8 @@ type ProjectsServersUpdateBody struct {
 	// Required: true
 	EnvironmentResources *string `json:"environment_resources"`
 
-	// environment type
-	// Required: true
-	EnvironmentType *string `json:"environment_type"`
+	// image name
+	ImageName string `json:"image_name,omitempty"`
 
 	// name
 	// Required: true

@@ -157,13 +157,13 @@ type ProjectsServersPartialUpdateBadRequestBody struct {
 	// Required: true
 	EnvironmentResources []string `json:"environment_resources"`
 
-	// environment_type field errors
-	// Required: true
-	EnvironmentType []string `json:"environment_type"`
-
 	// id field errors
 	// Required: true
 	ID []string `json:"id"`
+
+	// image_name field errors
+	// Required: true
+	ImageName []string `json:"image_name"`
 
 	// name field errors
 	// Required: true
@@ -206,12 +206,12 @@ func (o *ProjectsServersPartialUpdateBadRequestBody) Validate(formats strfmt.Reg
 		res = append(res, err)
 	}
 
-	if err := o.validateEnvironmentType(formats); err != nil {
+	if err := o.validateID(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
 
-	if err := o.validateID(formats); err != nil {
+	if err := o.validateImageName(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
@@ -278,18 +278,18 @@ func (o *ProjectsServersPartialUpdateBadRequestBody) validateEnvironmentResource
 	return nil
 }
 
-func (o *ProjectsServersPartialUpdateBadRequestBody) validateEnvironmentType(formats strfmt.Registry) error {
+func (o *ProjectsServersPartialUpdateBadRequestBody) validateID(formats strfmt.Registry) error {
 
-	if err := validate.Required("projectsServersPartialUpdateBadRequest"+"."+"environment_type", "body", o.EnvironmentType); err != nil {
+	if err := validate.Required("projectsServersPartialUpdateBadRequest"+"."+"id", "body", o.ID); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-func (o *ProjectsServersPartialUpdateBadRequestBody) validateID(formats strfmt.Registry) error {
+func (o *ProjectsServersPartialUpdateBadRequestBody) validateImageName(formats strfmt.Registry) error {
 
-	if err := validate.Required("projectsServersPartialUpdateBadRequest"+"."+"id", "body", o.ID); err != nil {
+	if err := validate.Required("projectsServersPartialUpdateBadRequest"+"."+"image_name", "body", o.ImageName); err != nil {
 		return err
 	}
 
@@ -346,8 +346,8 @@ type ProjectsServersPartialUpdateBody struct {
 	// environment resources
 	EnvironmentResources string `json:"environment_resources,omitempty"`
 
-	// environment type
-	EnvironmentType string `json:"environment_type,omitempty"`
+	// image name
+	ImageName string `json:"image_name,omitempty"`
 
 	// name
 	Name string `json:"name,omitempty"`
