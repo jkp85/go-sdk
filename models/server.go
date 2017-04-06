@@ -28,12 +28,11 @@ type Server struct {
 	// Required: true
 	EnvironmentResources *string `json:"environment_resources"`
 
-	// environment type
-	// Required: true
-	EnvironmentType *string `json:"environment_type"`
-
 	// id
 	ID string `json:"id,omitempty"`
+
+	// image name
+	ImageName string `json:"image_name,omitempty"`
 
 	// name
 	// Required: true
@@ -56,11 +55,6 @@ func (m *Server) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateEnvironmentResources(formats); err != nil {
-		// prop
-		res = append(res, err)
-	}
-
-	if err := m.validateEnvironmentType(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
@@ -88,15 +82,6 @@ func (m *Server) validateConnected(formats strfmt.Registry) error {
 func (m *Server) validateEnvironmentResources(formats strfmt.Registry) error {
 
 	if err := validate.Required("environment_resources", "body", m.EnvironmentResources); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *Server) validateEnvironmentType(formats strfmt.Registry) error {
-
-	if err := validate.Required("environment_type", "body", m.EnvironmentType); err != nil {
 		return err
 	}
 
