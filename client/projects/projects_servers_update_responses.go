@@ -117,6 +117,10 @@ type ProjectsServersUpdateBadRequestBody struct {
 	// Required: true
 	CreatedAt []string `json:"created_at"`
 
+	// endpoint field errors
+	// Required: true
+	Endpoint []string `json:"endpoint"`
+
 	// environment_resources field errors
 	// Required: true
 	EnvironmentResources []string `json:"environment_resources"`
@@ -161,6 +165,11 @@ func (o *ProjectsServersUpdateBadRequestBody) Validate(formats strfmt.Registry) 
 	}
 
 	if err := o.validateCreatedAt(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateEndpoint(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
@@ -227,6 +236,15 @@ func (o *ProjectsServersUpdateBadRequestBody) validateConnected(formats strfmt.R
 func (o *ProjectsServersUpdateBadRequestBody) validateCreatedAt(formats strfmt.Registry) error {
 
 	if err := validate.Required("projectsServersUpdateBadRequest"+"."+"created_at", "body", o.CreatedAt); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersUpdateBadRequestBody) validateEndpoint(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersUpdateBadRequest"+"."+"endpoint", "body", o.Endpoint); err != nil {
 		return err
 	}
 
@@ -308,8 +326,7 @@ type ProjectsServersUpdateBody struct {
 	Connected []string `json:"connected"`
 
 	// environment resources
-	// Required: true
-	EnvironmentResources *string `json:"environment_resources"`
+	EnvironmentResources string `json:"environment_resources,omitempty"`
 
 	// image name
 	ImageName string `json:"image_name,omitempty"`
