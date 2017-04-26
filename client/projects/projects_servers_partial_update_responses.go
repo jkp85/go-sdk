@@ -153,6 +153,10 @@ type ProjectsServersPartialUpdateBadRequestBody struct {
 	// Required: true
 	CreatedAt []string `json:"created_at"`
 
+	// endpoint field errors
+	// Required: true
+	Endpoint []string `json:"endpoint"`
+
 	// environment_resources field errors
 	// Required: true
 	EnvironmentResources []string `json:"environment_resources"`
@@ -197,6 +201,11 @@ func (o *ProjectsServersPartialUpdateBadRequestBody) Validate(formats strfmt.Reg
 	}
 
 	if err := o.validateCreatedAt(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateEndpoint(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
@@ -263,6 +272,15 @@ func (o *ProjectsServersPartialUpdateBadRequestBody) validateConnected(formats s
 func (o *ProjectsServersPartialUpdateBadRequestBody) validateCreatedAt(formats strfmt.Registry) error {
 
 	if err := validate.Required("projectsServersPartialUpdateBadRequest"+"."+"created_at", "body", o.CreatedAt); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersPartialUpdateBadRequestBody) validateEndpoint(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersPartialUpdateBadRequest"+"."+"endpoint", "body", o.Endpoint); err != nil {
 		return err
 	}
 

@@ -24,9 +24,11 @@ type Server struct {
 	// created at
 	CreatedAt string `json:"created_at,omitempty"`
 
+	// endpoint
+	Endpoint string `json:"endpoint,omitempty"`
+
 	// environment resources
-	// Required: true
-	EnvironmentResources *string `json:"environment_resources"`
+	EnvironmentResources string `json:"environment_resources,omitempty"`
 
 	// id
 	ID string `json:"id,omitempty"`
@@ -54,11 +56,6 @@ func (m *Server) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateEnvironmentResources(formats); err != nil {
-		// prop
-		res = append(res, err)
-	}
-
 	if err := m.validateName(formats); err != nil {
 		// prop
 		res = append(res, err)
@@ -74,15 +71,6 @@ func (m *Server) validateConnected(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Connected) { // not required
 		return nil
-	}
-
-	return nil
-}
-
-func (m *Server) validateEnvironmentResources(formats strfmt.Registry) error {
-
-	if err := validate.Required("environment_resources", "body", m.EnvironmentResources); err != nil {
-		return err
 	}
 
 	return nil
