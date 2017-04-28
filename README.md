@@ -1,4 +1,4 @@
-[![slack in](https://slackin-pypmyuhqds.now.sh/badge.svg)](https://slackin-pypmyuhqds.now.sh/)
+[![slack in](https://slack.3blades.io/badge.svg)](https://slack.3blades.io/)
 
 # Golang SDK
 
