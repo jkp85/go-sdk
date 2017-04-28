@@ -117,6 +117,10 @@ type ProjectsCollaboratorsUpdateBadRequestBody struct {
 	// Required: true
 	Joined []string `json:"joined"`
 
+	// member field errors
+	// Required: true
+	Member []string `json:"member"`
+
 	// Errors not connected to any field
 	// Required: true
 	NonFieldErrors []string `json:"non_field_errors"`
@@ -141,6 +145,11 @@ func (o *ProjectsCollaboratorsUpdateBadRequestBody) Validate(formats strfmt.Regi
 	}
 
 	if err := o.validateJoined(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateMember(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
@@ -188,6 +197,15 @@ func (o *ProjectsCollaboratorsUpdateBadRequestBody) validateJoined(formats strfm
 	return nil
 }
 
+func (o *ProjectsCollaboratorsUpdateBadRequestBody) validateMember(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsCollaboratorsUpdateBadRequest"+"."+"member", "body", o.Member); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (o *ProjectsCollaboratorsUpdateBadRequestBody) validateNonFieldErrors(formats strfmt.Registry) error {
 
 	if err := validate.Required("projectsCollaboratorsUpdateBadRequest"+"."+"non_field_errors", "body", o.NonFieldErrors); err != nil {
@@ -211,9 +229,9 @@ swagger:model ProjectsCollaboratorsUpdateBody
 */
 type ProjectsCollaboratorsUpdateBody struct {
 
-	// email
+	// member
 	// Required: true
-	Email *string `json:"email"`
+	Member *string `json:"member"`
 
 	// owner
 	Owner bool `json:"owner,omitempty"`
