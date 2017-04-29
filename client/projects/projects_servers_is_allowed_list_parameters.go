@@ -60,12 +60,12 @@ for the projects servers is allowed list operation typically these are written t
 */
 type ProjectsServersIsAllowedListParams struct {
 
+	/*ID*/
+	ID string
 	/*Namespace*/
 	Namespace string
 	/*ProjectPk*/
 	ProjectPk string
-	/*ServerPk*/
-	ServerPk string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -105,6 +105,17 @@ func (o *ProjectsServersIsAllowedListParams) SetHTTPClient(client *http.Client) 
 	o.HTTPClient = client
 }
 
+// WithID adds the id to the projects servers is allowed list params
+func (o *ProjectsServersIsAllowedListParams) WithID(id string) *ProjectsServersIsAllowedListParams {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the projects servers is allowed list params
+func (o *ProjectsServersIsAllowedListParams) SetID(id string) {
+	o.ID = id
+}
+
 // WithNamespace adds the namespace to the projects servers is allowed list params
 func (o *ProjectsServersIsAllowedListParams) WithNamespace(namespace string) *ProjectsServersIsAllowedListParams {
 	o.SetNamespace(namespace)
@@ -127,22 +138,16 @@ func (o *ProjectsServersIsAllowedListParams) SetProjectPk(projectPk string) {
 	o.ProjectPk = projectPk
 }
 
-// WithServerPk adds the serverPk to the projects servers is allowed list params
-func (o *ProjectsServersIsAllowedListParams) WithServerPk(serverPk string) *ProjectsServersIsAllowedListParams {
-	o.SetServerPk(serverPk)
-	return o
-}
-
-// SetServerPk adds the serverPk to the projects servers is allowed list params
-func (o *ProjectsServersIsAllowedListParams) SetServerPk(serverPk string) {
-	o.ServerPk = serverPk
-}
-
 // WriteToRequest writes these params to a swagger request
 func (o *ProjectsServersIsAllowedListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	r.SetTimeout(o.timeout)
 	var res []error
+
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
+		return err
+	}
 
 	// path param namespace
 	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
@@ -151,11 +156,6 @@ func (o *ProjectsServersIsAllowedListParams) WriteToRequest(r runtime.ClientRequ
 
 	// path param project_pk
 	if err := r.SetPathParam("project_pk", o.ProjectPk); err != nil {
-		return err
-	}
-
-	// path param server_pk
-	if err := r.SetPathParam("server_pk", o.ServerPk); err != nil {
 		return err
 	}
 

@@ -53,9 +53,7 @@ func (a *Client) ActionsCancelCreate(params *ActionsCancelCreateParams) (*Action
 }
 
 /*
-ActionsList retrieves a list of actions in chronological order
-
-Retrieve a list of actions in chronological order
+ActionsList actions list API
 */
 func (a *Client) ActionsList(params *ActionsListParams) (*ActionsListOK, error) {
 	// TODO: Validate the params before sending
@@ -79,36 +77,6 @@ func (a *Client) ActionsList(params *ActionsListParams) (*ActionsListOK, error) 
 		return nil, err
 	}
 	return result.(*ActionsListOK), nil
-
-}
-
-/*
-ActionsRead gets an action object by ID
-
-Gets an action object by ID
-*/
-func (a *Client) ActionsRead(params *ActionsReadParams) (*ActionsReadOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewActionsReadParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "actions_read",
-		Method:             "GET",
-		PathPattern:        "/actions/{id}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ActionsReadReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ActionsReadOK), nil
 
 }
 
