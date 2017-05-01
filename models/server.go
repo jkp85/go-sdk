@@ -30,6 +30,9 @@ type Server struct {
 	// environment resources
 	EnvironmentResources string `json:"environment_resources,omitempty"`
 
+	// host
+	Host string `json:"host,omitempty"`
+
 	// id
 	ID string `json:"id,omitempty"`
 
