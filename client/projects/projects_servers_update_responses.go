@@ -125,6 +125,10 @@ type ProjectsServersUpdateBadRequestBody struct {
 	// Required: true
 	EnvironmentResources []string `json:"environment_resources"`
 
+	// host field errors
+	// Required: true
+	Host []string `json:"host"`
+
 	// id field errors
 	// Required: true
 	ID []string `json:"id"`
@@ -175,6 +179,11 @@ func (o *ProjectsServersUpdateBadRequestBody) Validate(formats strfmt.Registry) 
 	}
 
 	if err := o.validateEnvironmentResources(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateHost(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
@@ -260,6 +269,15 @@ func (o *ProjectsServersUpdateBadRequestBody) validateEnvironmentResources(forma
 	return nil
 }
 
+func (o *ProjectsServersUpdateBadRequestBody) validateHost(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersUpdateBadRequest"+"."+"host", "body", o.Host); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (o *ProjectsServersUpdateBadRequestBody) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("projectsServersUpdateBadRequest"+"."+"id", "body", o.ID); err != nil {
@@ -327,6 +345,9 @@ type ProjectsServersUpdateBody struct {
 
 	// environment resources
 	EnvironmentResources string `json:"environment_resources,omitempty"`
+
+	// host
+	Host string `json:"host,omitempty"`
 
 	// image name
 	ImageName string `json:"image_name,omitempty"`
