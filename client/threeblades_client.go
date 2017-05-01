@@ -13,6 +13,7 @@ import (
 	"github.com/3Blades/go-sdk/client/auth"
 	"github.com/3Blades/go-sdk/client/projects"
 	"github.com/3Blades/go-sdk/client/servers"
+	"github.com/3Blades/go-sdk/client/triggers"
 	"github.com/3Blades/go-sdk/client/users"
 )
 
@@ -64,6 +65,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Threeblade
 	cli.Projects = projects.New(transport, formats)
 
 	cli.Servers = servers.New(transport, formats)
+
+	cli.Triggers = triggers.New(transport, formats)
 
 	cli.Users = users.New(transport, formats)
 
@@ -119,6 +122,8 @@ type Threeblades struct {
 
 	Servers *servers.Client
 
+	Triggers *triggers.Client
+
 	Users *users.Client
 
 	Transport runtime.ClientTransport
@@ -135,6 +140,8 @@ func (c *Threeblades) SetTransport(transport runtime.ClientTransport) {
 	c.Projects.SetTransport(transport)
 
 	c.Servers.SetTransport(transport)
+
+	c.Triggers.SetTransport(transport)
 
 	c.Users.SetTransport(transport)
 

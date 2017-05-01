@@ -568,7 +568,7 @@ func (a *Client) ProjectsServersIsAllowedList(params *ProjectsServersIsAllowedLi
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_is-allowed_list",
 		Method:             "GET",
-		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/is-allowed/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{id}/is-allowed/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -1016,7 +1016,7 @@ func (a *Client) ProjectsServersStartCreate(params *ProjectsServersStartCreatePa
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_start_create",
 		Method:             "POST",
-		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/start/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{id}/start/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -1212,7 +1212,7 @@ func (a *Client) ProjectsServersStopCreate(params *ProjectsServersStopCreatePara
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_stop_create",
 		Method:             "POST",
-		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/stop/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{id}/stop/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -1240,7 +1240,7 @@ func (a *Client) ProjectsServersTerminateCreate(params *ProjectsServersTerminate
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_terminate_create",
 		Method:             "POST",
-		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{server_pk}/terminate/",
+		PathPattern:        "/{namespace}/projects/{project_pk}/servers/{id}/terminate/",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},

@@ -60,12 +60,12 @@ for the projects servers stop create operation typically these are written to a 
 */
 type ProjectsServersStopCreateParams struct {
 
+	/*ID*/
+	ID string
 	/*Namespace*/
 	Namespace string
 	/*ProjectPk*/
 	ProjectPk string
-	/*ServerPk*/
-	ServerPk string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -105,6 +105,17 @@ func (o *ProjectsServersStopCreateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithID adds the id to the projects servers stop create params
+func (o *ProjectsServersStopCreateParams) WithID(id string) *ProjectsServersStopCreateParams {
+	o.SetID(id)
+	return o
+}
+
+// SetID adds the id to the projects servers stop create params
+func (o *ProjectsServersStopCreateParams) SetID(id string) {
+	o.ID = id
+}
+
 // WithNamespace adds the namespace to the projects servers stop create params
 func (o *ProjectsServersStopCreateParams) WithNamespace(namespace string) *ProjectsServersStopCreateParams {
 	o.SetNamespace(namespace)
@@ -127,22 +138,16 @@ func (o *ProjectsServersStopCreateParams) SetProjectPk(projectPk string) {
 	o.ProjectPk = projectPk
 }
 
-// WithServerPk adds the serverPk to the projects servers stop create params
-func (o *ProjectsServersStopCreateParams) WithServerPk(serverPk string) *ProjectsServersStopCreateParams {
-	o.SetServerPk(serverPk)
-	return o
-}
-
-// SetServerPk adds the serverPk to the projects servers stop create params
-func (o *ProjectsServersStopCreateParams) SetServerPk(serverPk string) {
-	o.ServerPk = serverPk
-}
-
 // WriteToRequest writes these params to a swagger request
 func (o *ProjectsServersStopCreateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
 	r.SetTimeout(o.timeout)
 	var res []error
+
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
+		return err
+	}
 
 	// path param namespace
 	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
@@ -151,11 +156,6 @@ func (o *ProjectsServersStopCreateParams) WriteToRequest(r runtime.ClientRequest
 
 	// path param project_pk
 	if err := r.SetPathParam("project_pk", o.ProjectPk); err != nil {
-		return err
-	}
-
-	// path param server_pk
-	if err := r.SetPathParam("server_pk", o.ServerPk); err != nil {
 		return err
 	}
 
