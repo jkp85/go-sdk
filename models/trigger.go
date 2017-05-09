@@ -20,6 +20,9 @@ type Trigger struct {
 	// effect
 	Effect *TriggerAction `json:"effect,omitempty"`
 
+	// id
+	ID string `json:"id,omitempty"`
+
 	// Cron schedule
 	Schedule string `json:"schedule,omitempty"`
 

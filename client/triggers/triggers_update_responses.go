@@ -114,6 +114,10 @@ type TriggersUpdateBadRequestBody struct {
 	// Required: true
 	Effect *TriggersUpdateBadRequestBodyEffect `json:"effect"`
 
+	// id field errors
+	// Required: true
+	ID []string `json:"id"`
+
 	// Errors not connected to any field
 	// Required: true
 	NonFieldErrors []string `json:"non_field_errors"`
@@ -137,6 +141,11 @@ func (o *TriggersUpdateBadRequestBody) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := o.validateEffect(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateID(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
@@ -195,6 +204,15 @@ func (o *TriggersUpdateBadRequestBody) validateEffect(formats strfmt.Registry) e
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (o *TriggersUpdateBadRequestBody) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("triggersUpdateBadRequest"+"."+"id", "body", o.ID); err != nil {
+		return err
 	}
 
 	return nil
