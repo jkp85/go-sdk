@@ -137,6 +137,10 @@ type ProjectsServersUpdateBadRequestBody struct {
 	// Required: true
 	ImageName []string `json:"image_name"`
 
+	// logs_url field errors
+	// Required: true
+	LogsURL []string `json:"logs_url"`
+
 	// name field errors
 	// Required: true
 	Name []string `json:"name"`
@@ -194,6 +198,11 @@ func (o *ProjectsServersUpdateBadRequestBody) Validate(formats strfmt.Registry) 
 	}
 
 	if err := o.validateImageName(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateLogsURL(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
@@ -290,6 +299,15 @@ func (o *ProjectsServersUpdateBadRequestBody) validateID(formats strfmt.Registry
 func (o *ProjectsServersUpdateBadRequestBody) validateImageName(formats strfmt.Registry) error {
 
 	if err := validate.Required("projectsServersUpdateBadRequest"+"."+"image_name", "body", o.ImageName); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersUpdateBadRequestBody) validateLogsURL(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersUpdateBadRequest"+"."+"logs_url", "body", o.LogsURL); err != nil {
 		return err
 	}
 

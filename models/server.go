@@ -39,6 +39,9 @@ type Server struct {
 	// image name
 	ImageName string `json:"image_name,omitempty"`
 
+	// logs url
+	LogsURL string `json:"logs_url,omitempty"`
+
 	// name
 	// Required: true
 	Name *string `json:"name"`

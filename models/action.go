@@ -18,6 +18,9 @@ type Action struct {
 	// Required: true
 	Action *string `json:"action"`
 
+	// action name
+	ActionName string `json:"action_name,omitempty"`
+
 	// can be cancelled
 	CanBeCancelled bool `json:"can_be_cancelled,omitempty"`
 
@@ -44,8 +47,7 @@ type Action struct {
 	Object string `json:"object,omitempty"`
 
 	// path
-	// Required: true
-	Path *string `json:"path"`
+	Path string `json:"path,omitempty"`
 
 	// payload
 	Payload interface{} `json:"payload,omitempty"`
@@ -61,8 +63,7 @@ type Action struct {
 	State *string `json:"state"`
 
 	// user
-	// Required: true
-	User *string `json:"user"`
+	User string `json:"user,omitempty"`
 
 	// user agent
 	// Required: true
@@ -83,17 +84,7 @@ func (m *Action) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validatePath(formats); err != nil {
-		// prop
-		res = append(res, err)
-	}
-
 	if err := m.validateState(formats); err != nil {
-		// prop
-		res = append(res, err)
-	}
-
-	if err := m.validateUser(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
@@ -127,27 +118,9 @@ func (m *Action) validateMethod(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Action) validatePath(formats strfmt.Registry) error {
-
-	if err := validate.Required("path", "body", m.Path); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func (m *Action) validateState(formats strfmt.Registry) error {
 
 	if err := validate.Required("state", "body", m.State); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *Action) validateUser(formats strfmt.Registry) error {
-
-	if err := validate.Required("user", "body", m.User); err != nil {
 		return err
 	}
 
