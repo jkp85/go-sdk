@@ -51,10 +51,10 @@ func NewAuthJwtTokenAuthCreateCreated() *AuthJwtTokenAuthCreateCreated {
 
 /*AuthJwtTokenAuthCreateCreated handles this case with default header values.
 
-JSONWebToken created
+JWT created
 */
 type AuthJwtTokenAuthCreateCreated struct {
-	Payload *models.JSONWebToken
+	Payload *models.JWT
 }
 
 func (o *AuthJwtTokenAuthCreateCreated) Error() string {
@@ -63,7 +63,7 @@ func (o *AuthJwtTokenAuthCreateCreated) Error() string {
 
 func (o *AuthJwtTokenAuthCreateCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.JSONWebToken)
+	o.Payload = new(models.JWT)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -113,6 +113,10 @@ type AuthJwtTokenAuthCreateBadRequestBody struct {
 	// Required: true
 	Password []string `json:"password"`
 
+	// token field errors
+	// Required: true
+	Token []string `json:"token"`
+
 	// username field errors
 	// Required: true
 	Username []string `json:"username"`
@@ -128,6 +132,11 @@ func (o *AuthJwtTokenAuthCreateBadRequestBody) Validate(formats strfmt.Registry)
 	}
 
 	if err := o.validatePassword(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateToken(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
@@ -155,6 +164,15 @@ func (o *AuthJwtTokenAuthCreateBadRequestBody) validateNonFieldErrors(formats st
 func (o *AuthJwtTokenAuthCreateBadRequestBody) validatePassword(formats strfmt.Registry) error {
 
 	if err := validate.Required("authJwtTokenAuthCreateBadRequest"+"."+"password", "body", o.Password); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *AuthJwtTokenAuthCreateBadRequestBody) validateToken(formats strfmt.Registry) error {
+
+	if err := validate.Required("authJwtTokenAuthCreateBadRequest"+"."+"token", "body", o.Token); err != nil {
 		return err
 	}
 
