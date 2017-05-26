@@ -86,11 +86,7 @@ func (a *Client) AuthInvalidateSessionsCreate(params *AuthInvalidateSessionsCrea
 }
 
 /*
-AuthJwtTokenAuthCreate APIs view that receives a p o s t with a user s username and password
-
-API View that receives a POST with a user's username and password.
-
-Returns a JSON Web Token that can be used for authenticated requests.
+AuthJwtTokenAuthCreate auth jwt token auth create API
 */
 func (a *Client) AuthJwtTokenAuthCreate(params *AuthJwtTokenAuthCreateParams) (*AuthJwtTokenAuthCreateCreated, error) {
 	// TODO: Validate the params before sending

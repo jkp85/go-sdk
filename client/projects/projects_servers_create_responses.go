@@ -376,7 +376,4 @@ type ProjectsServersCreateBody struct {
 
 	// startup script
 	StartupScript string `json:"startup_script,omitempty"`
-
-	// status
-	Status string `json:"status,omitempty"`
 }
