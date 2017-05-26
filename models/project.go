@@ -7,12 +7,16 @@ import (
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
+	"github.com/go-openapi/swag"
 	"github.com/go-openapi/validate"
 )
 
 // Project project
 // swagger:model Project
 type Project struct {
+
+	// collaborators
+	Collaborators []string `json:"collaborators"`
 
 	// description
 	Description string `json:"description,omitempty"`
@@ -27,6 +31,9 @@ type Project struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// owner
+	Owner string `json:"owner,omitempty"`
+
 	// private
 	Private bool `json:"private,omitempty"`
 }
@@ -34,6 +41,11 @@ type Project struct {
 // Validate validates this project
 func (m *Project) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateCollaborators(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
 
 	if err := m.validateName(formats); err != nil {
 		// prop
@@ -43,6 +55,15 @@ func (m *Project) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *Project) validateCollaborators(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Collaborators) { // not required
+		return nil
+	}
+
 	return nil
 }
 
