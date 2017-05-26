@@ -141,6 +141,10 @@ swagger:model ProjectsPartialUpdateBadRequestBody
 */
 type ProjectsPartialUpdateBadRequestBody struct {
 
+	// collaborators field errors
+	// Required: true
+	Collaborators []string `json:"collaborators"`
+
 	// description field errors
 	// Required: true
 	Description []string `json:"description"`
@@ -161,6 +165,10 @@ type ProjectsPartialUpdateBadRequestBody struct {
 	// Required: true
 	NonFieldErrors []string `json:"non_field_errors"`
 
+	// owner field errors
+	// Required: true
+	Owner []string `json:"owner"`
+
 	// private field errors
 	// Required: true
 	Private []string `json:"private"`
@@ -169,6 +177,11 @@ type ProjectsPartialUpdateBadRequestBody struct {
 // Validate validates this projects partial update bad request body
 func (o *ProjectsPartialUpdateBadRequestBody) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := o.validateCollaborators(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
 
 	if err := o.validateDescription(formats); err != nil {
 		// prop
@@ -195,6 +208,11 @@ func (o *ProjectsPartialUpdateBadRequestBody) Validate(formats strfmt.Registry) 
 		res = append(res, err)
 	}
 
+	if err := o.validateOwner(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
 	if err := o.validatePrivate(formats); err != nil {
 		// prop
 		res = append(res, err)
@@ -203,6 +221,15 @@ func (o *ProjectsPartialUpdateBadRequestBody) Validate(formats strfmt.Registry) 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (o *ProjectsPartialUpdateBadRequestBody) validateCollaborators(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsPartialUpdateBadRequest"+"."+"collaborators", "body", o.Collaborators); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -251,6 +278,15 @@ func (o *ProjectsPartialUpdateBadRequestBody) validateNonFieldErrors(formats str
 	return nil
 }
 
+func (o *ProjectsPartialUpdateBadRequestBody) validateOwner(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsPartialUpdateBadRequest"+"."+"owner", "body", o.Owner); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (o *ProjectsPartialUpdateBadRequestBody) validatePrivate(formats strfmt.Registry) error {
 
 	if err := validate.Required("projectsPartialUpdateBadRequest"+"."+"private", "body", o.Private); err != nil {
@@ -264,6 +300,9 @@ func (o *ProjectsPartialUpdateBadRequestBody) validatePrivate(formats strfmt.Reg
 swagger:model ProjectsPartialUpdateBody
 */
 type ProjectsPartialUpdateBody struct {
+
+	// collaborators
+	Collaborators []string `json:"collaborators"`
 
 	// description
 	Description string `json:"description,omitempty"`
