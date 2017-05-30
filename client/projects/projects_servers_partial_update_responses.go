@@ -192,6 +192,10 @@ type ProjectsServersPartialUpdateBadRequestBody struct {
 	// status field errors
 	// Required: true
 	Status []string `json:"status"`
+
+	// status_url field errors
+	// Required: true
+	StatusURL []string `json:"status_url"`
 }
 
 // Validate validates this projects servers partial update bad request body
@@ -259,6 +263,11 @@ func (o *ProjectsServersPartialUpdateBadRequestBody) Validate(formats strfmt.Reg
 	}
 
 	if err := o.validateStatus(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateStatusURL(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
@@ -380,6 +389,15 @@ func (o *ProjectsServersPartialUpdateBadRequestBody) validateStartupScript(forma
 func (o *ProjectsServersPartialUpdateBadRequestBody) validateStatus(formats strfmt.Registry) error {
 
 	if err := validate.Required("projectsServersPartialUpdateBadRequest"+"."+"status", "body", o.Status); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersPartialUpdateBadRequestBody) validateStatusURL(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersPartialUpdateBadRequest"+"."+"status_url", "body", o.StatusURL); err != nil {
 		return err
 	}
 

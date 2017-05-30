@@ -51,6 +51,9 @@ type Server struct {
 
 	// status
 	Status string `json:"status,omitempty"`
+
+	// status url
+	StatusURL string `json:"status_url,omitempty"`
 }
 
 // Validate validates this server

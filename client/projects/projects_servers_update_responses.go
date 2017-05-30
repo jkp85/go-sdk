@@ -156,6 +156,10 @@ type ProjectsServersUpdateBadRequestBody struct {
 	// status field errors
 	// Required: true
 	Status []string `json:"status"`
+
+	// status_url field errors
+	// Required: true
+	StatusURL []string `json:"status_url"`
 }
 
 // Validate validates this projects servers update bad request body
@@ -223,6 +227,11 @@ func (o *ProjectsServersUpdateBadRequestBody) Validate(formats strfmt.Registry) 
 	}
 
 	if err := o.validateStatus(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := o.validateStatusURL(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
@@ -344,6 +353,15 @@ func (o *ProjectsServersUpdateBadRequestBody) validateStartupScript(formats strf
 func (o *ProjectsServersUpdateBadRequestBody) validateStatus(formats strfmt.Registry) error {
 
 	if err := validate.Required("projectsServersUpdateBadRequest"+"."+"status", "body", o.Status); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (o *ProjectsServersUpdateBadRequestBody) validateStatusURL(formats strfmt.Registry) error {
+
+	if err := validate.Required("projectsServersUpdateBadRequest"+"."+"status_url", "body", o.StatusURL); err != nil {
 		return err
 	}
 
