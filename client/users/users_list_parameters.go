@@ -60,6 +60,8 @@ for the users list operation typically these are written to a http.Request
 */
 type UsersListParams struct {
 
+	/*Email*/
+	Email *string
 	/*Limit*/
 	Limit *string
 	/*Namespace*/
@@ -107,6 +109,17 @@ func (o *UsersListParams) WithHTTPClient(client *http.Client) *UsersListParams {
 // SetHTTPClient adds the HTTPClient to the users list params
 func (o *UsersListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
+}
+
+// WithEmail adds the email to the users list params
+func (o *UsersListParams) WithEmail(email *string) *UsersListParams {
+	o.SetEmail(email)
+	return o
+}
+
+// SetEmail adds the email to the users list params
+func (o *UsersListParams) SetEmail(email *string) {
+	o.Email = email
 }
 
 // WithLimit adds the limit to the users list params
@@ -169,6 +182,22 @@ func (o *UsersListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 
 	r.SetTimeout(o.timeout)
 	var res []error
+
+	if o.Email != nil {
+
+		// query param email
+		var qrEmail string
+		if o.Email != nil {
+			qrEmail = *o.Email
+		}
+		qEmail := qrEmail
+		if qEmail != "" {
+			if err := r.SetQueryParam("email", qEmail); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	if o.Limit != nil {
 
