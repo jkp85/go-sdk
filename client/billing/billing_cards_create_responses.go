@@ -535,6 +535,8 @@ type BillingCardsCreateBody struct {
 	// address zip
 	AddressZip string `json:"address_zip,omitempty"`
 
+	Cvc string `json:"cvc,omitempty"`
+
 	// exp month
 	ExpMonth int64 `json:"exp_month,omitempty"`
 
@@ -543,6 +545,8 @@ type BillingCardsCreateBody struct {
 
 	// name
 	Name string `json:"name,omitempty"`
+
+	Number string `json:"number,omitempty"`
 
 	// token
 	Token string `json:"token,omitempty"`
