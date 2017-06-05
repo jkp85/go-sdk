@@ -11,6 +11,7 @@ import (
 
 	"github.com/3Blades/go-sdk/client/actions"
 	"github.com/3Blades/go-sdk/client/auth"
+	"github.com/3Blades/go-sdk/client/billing"
 	"github.com/3Blades/go-sdk/client/hosts"
 	"github.com/3Blades/go-sdk/client/projects"
 	"github.com/3Blades/go-sdk/client/servers"
@@ -63,6 +64,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Threeblade
 	cli.Actions = actions.New(transport, formats)
 
 	cli.Auth = auth.New(transport, formats)
+
+	cli.Billing = billing.New(transport, formats)
 
 	cli.Hosts = hosts.New(transport, formats)
 
@@ -124,6 +127,8 @@ type Threeblades struct {
 
 	Auth *auth.Client
 
+	Billing *billing.Client
+
 	Hosts *hosts.Client
 
 	Projects *projects.Client
@@ -146,6 +151,8 @@ func (c *Threeblades) SetTransport(transport runtime.ClientTransport) {
 	c.Actions.SetTransport(transport)
 
 	c.Auth.SetTransport(transport)
+
+	c.Billing.SetTransport(transport)
 
 	c.Hosts.SetTransport(transport)
 
