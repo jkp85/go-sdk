@@ -247,174 +247,6 @@ func (a *Client) ProjectsDelete(params *ProjectsDeleteParams) (*ProjectsDeleteNo
 }
 
 /*
-ProjectsFilesCreate projects files create API
-*/
-func (a *Client) ProjectsFilesCreate(params *ProjectsFilesCreateParams) (*ProjectsFilesCreateCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsFilesCreateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_files_create",
-		Method:             "POST",
-		PathPattern:        "/{namespace}/projects/{project_pk}/files/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsFilesCreateReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsFilesCreateCreated), nil
-
-}
-
-/*
-ProjectsFilesDelete projects files delete API
-*/
-func (a *Client) ProjectsFilesDelete(params *ProjectsFilesDeleteParams) (*ProjectsFilesDeleteNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsFilesDeleteParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_files_delete",
-		Method:             "DELETE",
-		PathPattern:        "/{namespace}/projects/{project_pk}/files/{id}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsFilesDeleteReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsFilesDeleteNoContent), nil
-
-}
-
-/*
-ProjectsFilesList projects files list API
-*/
-func (a *Client) ProjectsFilesList(params *ProjectsFilesListParams) (*ProjectsFilesListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsFilesListParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_files_list",
-		Method:             "GET",
-		PathPattern:        "/{namespace}/projects/{project_pk}/files/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsFilesListReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsFilesListOK), nil
-
-}
-
-/*
-ProjectsFilesPartialUpdate projects files partial update API
-*/
-func (a *Client) ProjectsFilesPartialUpdate(params *ProjectsFilesPartialUpdateParams) (*ProjectsFilesPartialUpdateOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsFilesPartialUpdateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_files_partial_update",
-		Method:             "PATCH",
-		PathPattern:        "/{namespace}/projects/{project_pk}/files/{id}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsFilesPartialUpdateReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsFilesPartialUpdateOK), nil
-
-}
-
-/*
-ProjectsFilesRead projects files read API
-*/
-func (a *Client) ProjectsFilesRead(params *ProjectsFilesReadParams) (*ProjectsFilesReadOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsFilesReadParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_files_read",
-		Method:             "GET",
-		PathPattern:        "/{namespace}/projects/{project_pk}/files/{id}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsFilesReadReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsFilesReadOK), nil
-
-}
-
-/*
-ProjectsFilesUpdate projects files update API
-*/
-func (a *Client) ProjectsFilesUpdate(params *ProjectsFilesUpdateParams) (*ProjectsFilesUpdateOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsFilesUpdateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_files_update",
-		Method:             "PUT",
-		PathPattern:        "/{namespace}/projects/{project_pk}/files/{id}/",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &ProjectsFilesUpdateReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsFilesUpdateOK), nil
-
-}
-
-/*
 ProjectsList projects list API
 */
 func (a *Client) ProjectsList(params *ProjectsListParams) (*ProjectsListOK, error) {
@@ -1371,4 +1203,173 @@ func (a *Client) ProjectsUpdate(params *ProjectsUpdateParams) (*ProjectsUpdateOK
 // SetTransport changes the transport on the client
 func (a *Client) SetTransport(transport runtime.ClientTransport) {
 	a.transport = transport
+}
+
+/*
+ProjectsProjectFilesCreate projects project files create API
+*/
+func (a *Client) ProjectsProjectFilesCreate(params *ProjectsProjectFilesCreateParams) (*ProjectsProjectFilesCreateCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsProjectFilesCreateParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_project_files_create",
+		Method:             "POST",
+		PathPattern:        "/{namespace}/projects/{project_pk}/project_files/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsProjectFilesCreateReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsProjectFilesCreateCreated), nil
+
+}
+
+/*
+ProjectsProjectFilesDelete projects project files delete API
+*/
+func (a *Client) ProjectsProjectFilesDelete(params *ProjectsProjectFilesDeleteParams) (*ProjectsProjectFilesDeleteNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsProjectFilesDeleteParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_project_files_delete",
+		Method:             "DELETE",
+		PathPattern:        "/{namespace}/projects/{project_pk}/project_files/{id}/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsProjectFilesDeleteReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsProjectFilesDeleteNoContent), nil
+
+}
+
+/*
+ProjectsProjectFilesList projects project files list API
+*/
+func (a *Client) ProjectsProjectFilesList(params *ProjectsProjectFilesListParams) (*ProjectsProjectFilesListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsProjectFilesListParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_project_files_list",
+		Method:             "GET",
+		PathPattern:        "/{namespace}/projects/{project_pk}/project_files/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsProjectFilesListReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsProjectFilesListOK), nil
+
+}
+
+/*
+ProjectsProjectFilesPartialUpdate projects project files partial update API
+*/
+func (a *Client) ProjectsProjectFilesPartialUpdate(params *ProjectsProjectFilesPartialUpdateParams) (*ProjectsProjectFilesPartialUpdateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsProjectFilesPartialUpdateParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_project_files_partial_update",
+		Method:             "PATCH",
+		PathPattern:        "/{namespace}/projects/{project_pk}/project_files/{id}/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsProjectFilesPartialUpdateReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsProjectFilesPartialUpdateOK), nil
+
+}
+
+/*
+ProjectsProjectFilesRead projects project files read API
+*/
+func (a *Client) ProjectsProjectFilesRead(params *ProjectsProjectFilesReadParams) (*ProjectsProjectFilesReadOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsProjectFilesReadParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_project_files_read",
+		Method:             "GET",
+		PathPattern:        "/{namespace}/projects/{project_pk}/project_files/{id}/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsProjectFilesReadReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsProjectFilesReadOK), nil
+
+}
+
+/*
+ProjectsProjectFilesUpdate projects project files update API
+*/
+func (a *Client) ProjectsProjectFilesUpdate(params *ProjectsProjectFilesUpdateParams) (*ProjectsProjectFilesUpdateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsProjectFilesUpdateParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_project_files_update",
+		Method:             "PUT",
+		PathPattern:        "/{namespace}/projects/{project_pk}/project_files/{id}/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &ProjectsProjectFilesUpdateReader{formats: a.formats},
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsProjectFilesUpdateOK), nil
+
 }
