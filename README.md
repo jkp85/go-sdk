@@ -5,6 +5,10 @@
 
 Golang SDK for 3Blades API.
 
+## Generation command
+
+	swagger generate client -f ./swagger.json -A threeblades  --template-dir="./templates"
+
 ## Copyright and license
 
 Copyright © 2017 3Blades, LLC. All rights reserved, except as follows. Code
