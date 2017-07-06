@@ -62,8 +62,6 @@ type UsersEmailsReadParams struct {
 
 	/*Address*/
 	Address string
-	/*Namespace*/
-	Namespace string
 	/*UserPk*/
 	UserPk string
 
@@ -116,17 +114,6 @@ func (o *UsersEmailsReadParams) SetAddress(address string) {
 	o.Address = address
 }
 
-// WithNamespace adds the namespace to the users emails read params
-func (o *UsersEmailsReadParams) WithNamespace(namespace string) *UsersEmailsReadParams {
-	o.SetNamespace(namespace)
-	return o
-}
-
-// SetNamespace adds the namespace to the users emails read params
-func (o *UsersEmailsReadParams) SetNamespace(namespace string) {
-	o.Namespace = namespace
-}
-
 // WithUserPk adds the userPk to the users emails read params
 func (o *UsersEmailsReadParams) WithUserPk(userPk string) *UsersEmailsReadParams {
 	o.SetUserPk(userPk)
@@ -146,11 +133,6 @@ func (o *UsersEmailsReadParams) WriteToRequest(r runtime.ClientRequest, reg strf
 
 	// path param address
 	if err := r.SetPathParam("address", o.Address); err != nil {
-		return err
-	}
-
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 

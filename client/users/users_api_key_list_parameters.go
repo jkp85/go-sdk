@@ -60,8 +60,6 @@ for the users api key list operation typically these are written to a http.Reque
 */
 type UsersAPIKeyListParams struct {
 
-	/*Namespace*/
-	Namespace string
 	/*UserPk*/
 	UserPk string
 
@@ -103,17 +101,6 @@ func (o *UsersAPIKeyListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithNamespace adds the namespace to the users api key list params
-func (o *UsersAPIKeyListParams) WithNamespace(namespace string) *UsersAPIKeyListParams {
-	o.SetNamespace(namespace)
-	return o
-}
-
-// SetNamespace adds the namespace to the users api key list params
-func (o *UsersAPIKeyListParams) SetNamespace(namespace string) {
-	o.Namespace = namespace
-}
-
 // WithUserPk adds the userPk to the users api key list params
 func (o *UsersAPIKeyListParams) WithUserPk(userPk string) *UsersAPIKeyListParams {
 	o.SetUserPk(userPk)
@@ -130,11 +117,6 @@ func (o *UsersAPIKeyListParams) WriteToRequest(r runtime.ClientRequest, reg strf
 
 	r.SetTimeout(o.timeout)
 	var res []error
-
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
-		return err
-	}
 
 	// path param user_pk
 	if err := r.SetPathParam("user_pk", o.UserPk); err != nil {

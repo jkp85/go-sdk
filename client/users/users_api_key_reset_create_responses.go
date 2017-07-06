@@ -52,7 +52,7 @@ type UsersAPIKeyResetCreateCreated struct {
 }
 
 func (o *UsersAPIKeyResetCreateCreated) Error() string {
-	return fmt.Sprintf("[POST /{namespace}/users/{user_pk}/api-key/reset/][%d] usersApiKeyResetCreateCreated ", 201)
+	return fmt.Sprintf("[POST /users/{user_pk}/api-key/reset/][%d] usersApiKeyResetCreateCreated ", 201)
 }
 
 func (o *UsersAPIKeyResetCreateCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -73,7 +73,7 @@ type UsersAPIKeyResetCreateBadRequest struct {
 }
 
 func (o *UsersAPIKeyResetCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /{namespace}/users/{user_pk}/api-key/reset/][%d] usersApiKeyResetCreateBadRequest ", 400)
+	return fmt.Sprintf("[POST /users/{user_pk}/api-key/reset/][%d] usersApiKeyResetCreateBadRequest ", 400)
 }
 
 func (o *UsersAPIKeyResetCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

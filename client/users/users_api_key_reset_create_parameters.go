@@ -59,9 +59,6 @@ func NewUsersAPIKeyResetCreateParamsWithHTTPClient(client *http.Client) *UsersAP
 for the users api key reset create operation typically these are written to a http.Request
 */
 type UsersAPIKeyResetCreateParams struct {
-
-	/*Namespace*/
-	Namespace string
 	/*UserPk*/
 	UserPk string
 
@@ -103,17 +100,6 @@ func (o *UsersAPIKeyResetCreateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithNamespace adds the namespace to the users api key reset create params
-func (o *UsersAPIKeyResetCreateParams) WithNamespace(namespace string) *UsersAPIKeyResetCreateParams {
-	o.SetNamespace(namespace)
-	return o
-}
-
-// SetNamespace adds the namespace to the users api key reset create params
-func (o *UsersAPIKeyResetCreateParams) SetNamespace(namespace string) {
-	o.Namespace = namespace
-}
-
 // WithUserPk adds the userPk to the users api key reset create params
 func (o *UsersAPIKeyResetCreateParams) WithUserPk(userPk string) *UsersAPIKeyResetCreateParams {
 	o.SetUserPk(userPk)
@@ -130,11 +116,6 @@ func (o *UsersAPIKeyResetCreateParams) WriteToRequest(r runtime.ClientRequest, r
 
 	r.SetTimeout(o.timeout)
 	var res []error
-
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
-		return err
-	}
 
 	// path param user_pk
 	if err := r.SetPathParam("user_pk", o.UserPk); err != nil {

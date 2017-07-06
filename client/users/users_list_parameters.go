@@ -64,8 +64,6 @@ type UsersListParams struct {
 	Email *string
 	/*Limit*/
 	Limit *string
-	/*Namespace*/
-	Namespace string
 	/*Offset*/
 	Offset *string
 	/*Ordering*/
@@ -131,17 +129,6 @@ func (o *UsersListParams) WithLimit(limit *string) *UsersListParams {
 // SetLimit adds the limit to the users list params
 func (o *UsersListParams) SetLimit(limit *string) {
 	o.Limit = limit
-}
-
-// WithNamespace adds the namespace to the users list params
-func (o *UsersListParams) WithNamespace(namespace string) *UsersListParams {
-	o.SetNamespace(namespace)
-	return o
-}
-
-// SetNamespace adds the namespace to the users list params
-func (o *UsersListParams) SetNamespace(namespace string) {
-	o.Namespace = namespace
 }
 
 // WithOffset adds the offset to the users list params
@@ -213,11 +200,6 @@ func (o *UsersListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 			}
 		}
 
-	}
-
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
-		return err
 	}
 
 	if o.Offset != nil {

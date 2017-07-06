@@ -64,8 +64,6 @@ type UsersEmailsPartialUpdateParams struct {
 	Address string
 	/*Data*/
 	Data UsersEmailsPartialUpdateBody
-	/*Namespace*/
-	Namespace string
 	/*UserPk*/
 	UserPk string
 
@@ -129,17 +127,6 @@ func (o *UsersEmailsPartialUpdateParams) SetData(data UsersEmailsPartialUpdateBo
 	o.Data = data
 }
 
-// WithNamespace adds the namespace to the users emails partial update params
-func (o *UsersEmailsPartialUpdateParams) WithNamespace(namespace string) *UsersEmailsPartialUpdateParams {
-	o.SetNamespace(namespace)
-	return o
-}
-
-// SetNamespace adds the namespace to the users emails partial update params
-func (o *UsersEmailsPartialUpdateParams) SetNamespace(namespace string) {
-	o.Namespace = namespace
-}
-
 // WithUserPk adds the userPk to the users emails partial update params
 func (o *UsersEmailsPartialUpdateParams) WithUserPk(userPk string) *UsersEmailsPartialUpdateParams {
 	o.SetUserPk(userPk)
@@ -163,11 +150,6 @@ func (o *UsersEmailsPartialUpdateParams) WriteToRequest(r runtime.ClientRequest,
 	}
 
 	if err := r.SetBodyParam(o.Data); err != nil {
-		return err
-	}
-
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 

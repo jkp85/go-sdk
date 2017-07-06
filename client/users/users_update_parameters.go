@@ -64,8 +64,6 @@ type UsersUpdateParams struct {
 	Data UsersUpdateBody
 	/*ID*/
 	ID string
-	/*Namespace*/
-	Namespace string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -127,17 +125,6 @@ func (o *UsersUpdateParams) SetID(id string) {
 	o.ID = id
 }
 
-// WithNamespace adds the namespace to the users update params
-func (o *UsersUpdateParams) WithNamespace(namespace string) *UsersUpdateParams {
-	o.SetNamespace(namespace)
-	return o
-}
-
-// SetNamespace adds the namespace to the users update params
-func (o *UsersUpdateParams) SetNamespace(namespace string) {
-	o.Namespace = namespace
-}
-
 // WriteToRequest writes these params to a swagger request
 func (o *UsersUpdateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -150,11 +137,6 @@ func (o *UsersUpdateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
-
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 

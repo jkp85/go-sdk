@@ -62,8 +62,6 @@ type UsersIntegrationsDeleteParams struct {
 
 	/*ID*/
 	ID string
-	/*Namespace*/
-	Namespace string
 	/*UserPk*/
 	UserPk string
 
@@ -116,17 +114,6 @@ func (o *UsersIntegrationsDeleteParams) SetID(id string) {
 	o.ID = id
 }
 
-// WithNamespace adds the namespace to the users integrations delete params
-func (o *UsersIntegrationsDeleteParams) WithNamespace(namespace string) *UsersIntegrationsDeleteParams {
-	o.SetNamespace(namespace)
-	return o
-}
-
-// SetNamespace adds the namespace to the users integrations delete params
-func (o *UsersIntegrationsDeleteParams) SetNamespace(namespace string) {
-	o.Namespace = namespace
-}
-
 // WithUserPk adds the userPk to the users integrations delete params
 func (o *UsersIntegrationsDeleteParams) WithUserPk(userPk string) *UsersIntegrationsDeleteParams {
 	o.SetUserPk(userPk)
@@ -146,11 +133,6 @@ func (o *UsersIntegrationsDeleteParams) WriteToRequest(r runtime.ClientRequest, 
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
-
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 

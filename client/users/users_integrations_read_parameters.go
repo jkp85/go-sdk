@@ -62,8 +62,6 @@ type UsersIntegrationsReadParams struct {
 
 	/*ID*/
 	ID string
-	/*Namespace*/
-	Namespace string
 	/*UserPk*/
 	UserPk string
 
@@ -116,17 +114,6 @@ func (o *UsersIntegrationsReadParams) SetID(id string) {
 	o.ID = id
 }
 
-// WithNamespace adds the namespace to the users integrations read params
-func (o *UsersIntegrationsReadParams) WithNamespace(namespace string) *UsersIntegrationsReadParams {
-	o.SetNamespace(namespace)
-	return o
-}
-
-// SetNamespace adds the namespace to the users integrations read params
-func (o *UsersIntegrationsReadParams) SetNamespace(namespace string) {
-	o.Namespace = namespace
-}
-
 // WithUserPk adds the userPk to the users integrations read params
 func (o *UsersIntegrationsReadParams) WithUserPk(userPk string) *UsersIntegrationsReadParams {
 	o.SetUserPk(userPk)
@@ -146,11 +133,6 @@ func (o *UsersIntegrationsReadParams) WriteToRequest(r runtime.ClientRequest, re
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
-
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 

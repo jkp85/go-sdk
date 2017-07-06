@@ -60,8 +60,6 @@ for the users ssh key list operation typically these are written to a http.Reque
 */
 type UsersSSHKeyListParams struct {
 
-	/*Namespace*/
-	Namespace string
 	/*UserPk*/
 	UserPk string
 
@@ -103,17 +101,6 @@ func (o *UsersSSHKeyListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithNamespace adds the namespace to the users ssh key list params
-func (o *UsersSSHKeyListParams) WithNamespace(namespace string) *UsersSSHKeyListParams {
-	o.SetNamespace(namespace)
-	return o
-}
-
-// SetNamespace adds the namespace to the users ssh key list params
-func (o *UsersSSHKeyListParams) SetNamespace(namespace string) {
-	o.Namespace = namespace
-}
-
 // WithUserPk adds the userPk to the users ssh key list params
 func (o *UsersSSHKeyListParams) WithUserPk(userPk string) *UsersSSHKeyListParams {
 	o.SetUserPk(userPk)
@@ -130,11 +117,6 @@ func (o *UsersSSHKeyListParams) WriteToRequest(r runtime.ClientRequest, reg strf
 
 	r.SetTimeout(o.timeout)
 	var res []error
-
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
-		return err
-	}
 
 	// path param user_pk
 	if err := r.SetPathParam("user_pk", o.UserPk); err != nil {

@@ -52,7 +52,7 @@ type UsersSSHKeyResetCreateCreated struct {
 }
 
 func (o *UsersSSHKeyResetCreateCreated) Error() string {
-	return fmt.Sprintf("[POST /{namespace}/users/{user_pk}/ssh-key/reset/][%d] usersSshKeyResetCreateCreated ", 201)
+	return fmt.Sprintf("[POST /users/{user_pk}/ssh-key/reset/][%d] usersSshKeyResetCreateCreated ", 201)
 }
 
 func (o *UsersSSHKeyResetCreateCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -73,7 +73,7 @@ type UsersSSHKeyResetCreateBadRequest struct {
 }
 
 func (o *UsersSSHKeyResetCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /{namespace}/users/{user_pk}/ssh-key/reset/][%d] usersSshKeyResetCreateBadRequest ", 400)
+	return fmt.Sprintf("[POST /users/{user_pk}/ssh-key/reset/][%d] usersSshKeyResetCreateBadRequest ", 400)
 }
 
 func (o *UsersSSHKeyResetCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

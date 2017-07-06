@@ -62,8 +62,6 @@ type UsersIntegrationsListParams struct {
 
 	/*Limit*/
 	Limit *string
-	/*Namespace*/
-	Namespace string
 	/*Offset*/
 	Offset *string
 	/*Ordering*/
@@ -120,16 +118,6 @@ func (o *UsersIntegrationsListParams) SetLimit(limit *string) {
 	o.Limit = limit
 }
 
-// WithNamespace adds the namespace to the users integrations list params
-func (o *UsersIntegrationsListParams) WithNamespace(namespace string) *UsersIntegrationsListParams {
-	o.SetNamespace(namespace)
-	return o
-}
-
-// SetNamespace adds the namespace to the users integrations list params
-func (o *UsersIntegrationsListParams) SetNamespace(namespace string) {
-	o.Namespace = namespace
-}
 
 // WithOffset adds the offset to the users integrations list params
 func (o *UsersIntegrationsListParams) WithOffset(offset *string) *UsersIntegrationsListParams {
@@ -184,11 +172,6 @@ func (o *UsersIntegrationsListParams) WriteToRequest(r runtime.ClientRequest, re
 			}
 		}
 
-	}
-
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
-		return err
 	}
 
 	if o.Offset != nil {

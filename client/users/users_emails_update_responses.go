@@ -58,7 +58,7 @@ type UsersEmailsUpdateOK struct {
 }
 
 func (o *UsersEmailsUpdateOK) Error() string {
-	return fmt.Sprintf("[PUT /{namespace}/users/{user_pk}/emails/{address}/][%d] usersEmailsUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /users/emails/{id}/][%d] usersEmailsUpdateOK  %+v", 200, o.Payload)
 }
 
 func (o *UsersEmailsUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type UsersEmailsUpdateBadRequest struct {
 }
 
 func (o *UsersEmailsUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /{namespace}/users/{user_pk}/emails/{address}/][%d] usersEmailsUpdateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PUT /users/emails/{id}/][%d] usersEmailsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *UsersEmailsUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

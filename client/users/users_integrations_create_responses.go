@@ -58,7 +58,7 @@ type UsersIntegrationsCreateCreated struct {
 }
 
 func (o *UsersIntegrationsCreateCreated) Error() string {
-	return fmt.Sprintf("[POST /{namespace}/users/{user_pk}/integrations/][%d] usersIntegrationsCreateCreated  %+v", 201, o.Payload)
+	return fmt.Sprintf("[POST /users/integrations/][%d] usersIntegrationsCreateCreated  %+v", 201, o.Payload)
 }
 
 func (o *UsersIntegrationsCreateCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type UsersIntegrationsCreateBadRequest struct {
 }
 
 func (o *UsersIntegrationsCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /{namespace}/users/{user_pk}/integrations/][%d] usersIntegrationsCreateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /users/integrations/][%d] usersIntegrationsCreateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *UsersIntegrationsCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
