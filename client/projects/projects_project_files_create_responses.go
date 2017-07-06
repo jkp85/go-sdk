@@ -213,4 +213,12 @@ type ProjectsProjectFilesCreateBody struct {
 	Project *string `json:"project"`
 
 	Public bool `json:"public,omitempty"`
+
+	Name string `json:"name,omitempty"`
+
+	Path string `json:"path,omitempty"`
+
+	Content string `json:"content,omitempty"`
+
+	Base64Data string `json:"content,omitempty"`
 }
