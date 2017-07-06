@@ -6,7 +6,6 @@ package projects
 import (
 	"net/http"
 	"time"
-
 	"golang.org/x/net/context"
 
 	"github.com/go-openapi/errors"
