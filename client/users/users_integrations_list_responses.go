@@ -49,7 +49,7 @@ type UsersIntegrationsListOK struct {
 }
 
 func (o *UsersIntegrationsListOK) Error() string {
-	return fmt.Sprintf("[GET /{namespace}/users/{user_pk}/integrations/][%d] usersIntegrationsListOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /users/integrations/][%d] usersIntegrationsListOK  %+v", 200, o.Payload)
 }
 
 func (o *UsersIntegrationsListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

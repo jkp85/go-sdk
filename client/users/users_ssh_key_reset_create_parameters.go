@@ -60,8 +60,6 @@ for the users ssh key reset create operation typically these are written to a ht
 */
 type UsersSSHKeyResetCreateParams struct {
 
-	/*Namespace*/
-	Namespace string
 	/*UserPk*/
 	UserPk string
 
@@ -103,17 +101,6 @@ func (o *UsersSSHKeyResetCreateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithNamespace adds the namespace to the users ssh key reset create params
-func (o *UsersSSHKeyResetCreateParams) WithNamespace(namespace string) *UsersSSHKeyResetCreateParams {
-	o.SetNamespace(namespace)
-	return o
-}
-
-// SetNamespace adds the namespace to the users ssh key reset create params
-func (o *UsersSSHKeyResetCreateParams) SetNamespace(namespace string) {
-	o.Namespace = namespace
-}
-
 // WithUserPk adds the userPk to the users ssh key reset create params
 func (o *UsersSSHKeyResetCreateParams) WithUserPk(userPk string) *UsersSSHKeyResetCreateParams {
 	o.SetUserPk(userPk)
@@ -130,11 +117,6 @@ func (o *UsersSSHKeyResetCreateParams) WriteToRequest(r runtime.ClientRequest, r
 
 	r.SetTimeout(o.timeout)
 	var res []error
-
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
-		return err
-	}
 
 	// path param user_pk
 	if err := r.SetPathParam("user_pk", o.UserPk); err != nil {

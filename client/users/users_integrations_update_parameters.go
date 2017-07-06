@@ -64,8 +64,6 @@ type UsersIntegrationsUpdateParams struct {
 	Data UsersIntegrationsUpdateBody
 	/*ID*/
 	ID string
-	/*Namespace*/
-	Namespace string
 	/*UserPk*/
 	UserPk string
 
@@ -129,17 +127,6 @@ func (o *UsersIntegrationsUpdateParams) SetID(id string) {
 	o.ID = id
 }
 
-// WithNamespace adds the namespace to the users integrations update params
-func (o *UsersIntegrationsUpdateParams) WithNamespace(namespace string) *UsersIntegrationsUpdateParams {
-	o.SetNamespace(namespace)
-	return o
-}
-
-// SetNamespace adds the namespace to the users integrations update params
-func (o *UsersIntegrationsUpdateParams) SetNamespace(namespace string) {
-	o.Namespace = namespace
-}
-
 // WithUserPk adds the userPk to the users integrations update params
 func (o *UsersIntegrationsUpdateParams) WithUserPk(userPk string) *UsersIntegrationsUpdateParams {
 	o.SetUserPk(userPk)
@@ -163,11 +150,6 @@ func (o *UsersIntegrationsUpdateParams) WriteToRequest(r runtime.ClientRequest, 
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
-
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 

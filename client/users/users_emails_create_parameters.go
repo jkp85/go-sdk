@@ -62,8 +62,6 @@ type UsersEmailsCreateParams struct {
 
 	/*Data*/
 	Data UsersEmailsCreateBody
-	/*Namespace*/
-	Namespace string
 	/*UserPk*/
 	UserPk string
 
@@ -116,17 +114,6 @@ func (o *UsersEmailsCreateParams) SetData(data UsersEmailsCreateBody) {
 	o.Data = data
 }
 
-// WithNamespace adds the namespace to the users emails create params
-func (o *UsersEmailsCreateParams) WithNamespace(namespace string) *UsersEmailsCreateParams {
-	o.SetNamespace(namespace)
-	return o
-}
-
-// SetNamespace adds the namespace to the users emails create params
-func (o *UsersEmailsCreateParams) SetNamespace(namespace string) {
-	o.Namespace = namespace
-}
-
 // WithUserPk adds the userPk to the users emails create params
 func (o *UsersEmailsCreateParams) WithUserPk(userPk string) *UsersEmailsCreateParams {
 	o.SetUserPk(userPk)
@@ -145,11 +132,6 @@ func (o *UsersEmailsCreateParams) WriteToRequest(r runtime.ClientRequest, reg st
 	var res []error
 
 	if err := r.SetBodyParam(o.Data); err != nil {
-		return err
-	}
-
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 

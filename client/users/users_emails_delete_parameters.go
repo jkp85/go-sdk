@@ -62,8 +62,6 @@ type UsersEmailsDeleteParams struct {
 
 	/*Address*/
 	Address string
-	/*Namespace*/
-	Namespace string
 	/*UserPk*/
 	UserPk string
 
@@ -116,17 +114,6 @@ func (o *UsersEmailsDeleteParams) SetAddress(address string) {
 	o.Address = address
 }
 
-// WithNamespace adds the namespace to the users emails delete params
-func (o *UsersEmailsDeleteParams) WithNamespace(namespace string) *UsersEmailsDeleteParams {
-	o.SetNamespace(namespace)
-	return o
-}
-
-// SetNamespace adds the namespace to the users emails delete params
-func (o *UsersEmailsDeleteParams) SetNamespace(namespace string) {
-	o.Namespace = namespace
-}
-
 // WithUserPk adds the userPk to the users emails delete params
 func (o *UsersEmailsDeleteParams) WithUserPk(userPk string) *UsersEmailsDeleteParams {
 	o.SetUserPk(userPk)
@@ -146,11 +133,6 @@ func (o *UsersEmailsDeleteParams) WriteToRequest(r runtime.ClientRequest, reg st
 
 	// path param address
 	if err := r.SetPathParam("address", o.Address); err != nil {
-		return err
-	}
-
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 

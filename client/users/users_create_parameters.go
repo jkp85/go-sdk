@@ -62,8 +62,6 @@ type UsersCreateParams struct {
 
 	/*Data*/
 	Data UsersCreateBody
-	/*Namespace*/
-	Namespace string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -114,17 +112,6 @@ func (o *UsersCreateParams) SetData(data UsersCreateBody) {
 	o.Data = data
 }
 
-// WithNamespace adds the namespace to the users create params
-func (o *UsersCreateParams) WithNamespace(namespace string) *UsersCreateParams {
-	o.SetNamespace(namespace)
-	return o
-}
-
-// SetNamespace adds the namespace to the users create params
-func (o *UsersCreateParams) SetNamespace(namespace string) {
-	o.Namespace = namespace
-}
-
 // WriteToRequest writes these params to a swagger request
 func (o *UsersCreateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -132,11 +119,6 @@ func (o *UsersCreateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 	var res []error
 
 	if err := r.SetBodyParam(o.Data); err != nil {
-		return err
-	}
-
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 

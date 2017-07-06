@@ -62,8 +62,6 @@ type UsersDeleteParams struct {
 
 	/*ID*/
 	ID string
-	/*Namespace*/
-	Namespace string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -114,17 +112,6 @@ func (o *UsersDeleteParams) SetID(id string) {
 	o.ID = id
 }
 
-// WithNamespace adds the namespace to the users delete params
-func (o *UsersDeleteParams) WithNamespace(namespace string) *UsersDeleteParams {
-	o.SetNamespace(namespace)
-	return o
-}
-
-// SetNamespace adds the namespace to the users delete params
-func (o *UsersDeleteParams) SetNamespace(namespace string) {
-	o.Namespace = namespace
-}
-
 // WriteToRequest writes these params to a swagger request
 func (o *UsersDeleteParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -133,11 +120,6 @@ func (o *UsersDeleteParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
-
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 

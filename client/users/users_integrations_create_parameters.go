@@ -62,8 +62,6 @@ type UsersIntegrationsCreateParams struct {
 
 	/*Data*/
 	Data UsersIntegrationsCreateBody
-	/*Namespace*/
-	Namespace string
 	/*UserPk*/
 	UserPk string
 
@@ -116,17 +114,6 @@ func (o *UsersIntegrationsCreateParams) SetData(data UsersIntegrationsCreateBody
 	o.Data = data
 }
 
-// WithNamespace adds the namespace to the users integrations create params
-func (o *UsersIntegrationsCreateParams) WithNamespace(namespace string) *UsersIntegrationsCreateParams {
-	o.SetNamespace(namespace)
-	return o
-}
-
-// SetNamespace adds the namespace to the users integrations create params
-func (o *UsersIntegrationsCreateParams) SetNamespace(namespace string) {
-	o.Namespace = namespace
-}
-
 // WithUserPk adds the userPk to the users integrations create params
 func (o *UsersIntegrationsCreateParams) WithUserPk(userPk string) *UsersIntegrationsCreateParams {
 	o.SetUserPk(userPk)
@@ -145,11 +132,6 @@ func (o *UsersIntegrationsCreateParams) WriteToRequest(r runtime.ClientRequest, 
 	var res []error
 
 	if err := r.SetBodyParam(o.Data); err != nil {
-		return err
-	}
-
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 

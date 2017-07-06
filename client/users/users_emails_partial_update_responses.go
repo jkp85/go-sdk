@@ -65,7 +65,7 @@ type UsersEmailsPartialUpdateOK struct {
 }
 
 func (o *UsersEmailsPartialUpdateOK) Error() string {
-	return fmt.Sprintf("[PATCH /{namespace}/users/{user_pk}/emails/{address}/][%d] usersEmailsPartialUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PATCH /users/emails/{id}/][%d] usersEmailsPartialUpdateOK  %+v", 200, o.Payload)
 }
 
 func (o *UsersEmailsPartialUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -94,7 +94,7 @@ type UsersEmailsPartialUpdateBadRequest struct {
 }
 
 func (o *UsersEmailsPartialUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /{namespace}/users/{user_pk}/emails/{address}/][%d] usersEmailsPartialUpdateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PATCH /users/emails/{id}/][%d] usersEmailsPartialUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *UsersEmailsPartialUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -121,7 +121,7 @@ type UsersEmailsPartialUpdateNotFound struct {
 }
 
 func (o *UsersEmailsPartialUpdateNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /{namespace}/users/{user_pk}/emails/{address}/][%d] usersEmailsPartialUpdateNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PATCH /users/emails/{id}/][%d] usersEmailsPartialUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *UsersEmailsPartialUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

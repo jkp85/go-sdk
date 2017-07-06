@@ -56,7 +56,7 @@ type UsersIntegrationsReadOK struct {
 }
 
 func (o *UsersIntegrationsReadOK) Error() string {
-	return fmt.Sprintf("[GET /{namespace}/users/{user_pk}/integrations/{id}/][%d] usersIntegrationsReadOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /users/integrations/{id}/][%d] usersIntegrationsReadOK  %+v", 200, o.Payload)
 }
 
 func (o *UsersIntegrationsReadOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -85,7 +85,7 @@ type UsersIntegrationsReadNotFound struct {
 }
 
 func (o *UsersIntegrationsReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /{namespace}/users/{user_pk}/integrations/{id}/][%d] usersIntegrationsReadNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /users/integrations/{id}/][%d] usersIntegrationsReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *UsersIntegrationsReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

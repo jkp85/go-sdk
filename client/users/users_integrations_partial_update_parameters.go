@@ -64,8 +64,6 @@ type UsersIntegrationsPartialUpdateParams struct {
 	Data UsersIntegrationsPartialUpdateBody
 	/*ID*/
 	ID string
-	/*Namespace*/
-	Namespace string
 	/*UserPk*/
 	UserPk string
 
@@ -129,17 +127,6 @@ func (o *UsersIntegrationsPartialUpdateParams) SetID(id string) {
 	o.ID = id
 }
 
-// WithNamespace adds the namespace to the users integrations partial update params
-func (o *UsersIntegrationsPartialUpdateParams) WithNamespace(namespace string) *UsersIntegrationsPartialUpdateParams {
-	o.SetNamespace(namespace)
-	return o
-}
-
-// SetNamespace adds the namespace to the users integrations partial update params
-func (o *UsersIntegrationsPartialUpdateParams) SetNamespace(namespace string) {
-	o.Namespace = namespace
-}
-
 // WithUserPk adds the userPk to the users integrations partial update params
 func (o *UsersIntegrationsPartialUpdateParams) WithUserPk(userPk string) *UsersIntegrationsPartialUpdateParams {
 	o.SetUserPk(userPk)
@@ -163,11 +150,6 @@ func (o *UsersIntegrationsPartialUpdateParams) WriteToRequest(r runtime.ClientRe
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
-
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 
