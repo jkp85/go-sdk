@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/d1d6514a7a474cc0b10050c836df2a39)](https://www.codacy.com/app/3Blades/go-sdk?utm_source=github.com&utm_medium=referral&utm_content=3Blades/go-sdk&utm_campaign=badger)
 [![slack in](https://slack.3blades.io/badge.svg)](https://slack.3blades.io/)
 
 # Golang SDK
