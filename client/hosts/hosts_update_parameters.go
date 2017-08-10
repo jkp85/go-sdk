@@ -64,8 +64,8 @@ for the hosts update operation typically these are written to a http.Request
 */
 type HostsUpdateParams struct {
 
-	/*Data*/
-	Data *models.DockerHostData
+	/*DockerhostData*/
+	DockerhostData *models.DockerHostData
 	/*ID*/
 	ID string
 	/*Namespace
@@ -112,15 +112,15 @@ func (o *HostsUpdateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the hosts update params
-func (o *HostsUpdateParams) WithData(data *models.DockerHostData) *HostsUpdateParams {
-	o.SetData(data)
+// WithDockerhostData adds the dockerhostData to the hosts update params
+func (o *HostsUpdateParams) WithDockerhostData(dockerhostData *models.DockerHostData) *HostsUpdateParams {
+	o.SetDockerhostData(dockerhostData)
 	return o
 }
 
-// SetData adds the data to the hosts update params
-func (o *HostsUpdateParams) SetData(data *models.DockerHostData) {
-	o.Data = data
+// SetDockerhostData adds the dockerhostData to the hosts update params
+func (o *HostsUpdateParams) SetDockerhostData(dockerhostData *models.DockerHostData) {
+	o.DockerhostData = dockerhostData
 }
 
 // WithID adds the id to the hosts update params
@@ -153,11 +153,11 @@ func (o *HostsUpdateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.DockerHostData)
+	if o.DockerhostData == nil {
+		o.DockerhostData = new(models.DockerHostData)
 	}
 
-	if err := r.SetBodyParam(o.Data); err != nil {
+	if err := r.SetBodyParam(o.DockerhostData); err != nil {
 		return err
 	}
 

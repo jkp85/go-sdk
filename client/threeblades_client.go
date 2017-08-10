@@ -11,15 +11,12 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/client/actions"
 	"github.com/3Blades/go-sdk/client/auth"
 	"github.com/3Blades/go-sdk/client/billing"
 	"github.com/3Blades/go-sdk/client/hosts"
 	"github.com/3Blades/go-sdk/client/projects"
 	"github.com/3Blades/go-sdk/client/search"
 	"github.com/3Blades/go-sdk/client/servers"
-	"github.com/3Blades/go-sdk/client/service"
-	"github.com/3Blades/go-sdk/client/triggers"
 	"github.com/3Blades/go-sdk/client/users"
 )
 
@@ -29,7 +26,7 @@ var Default = NewHTTPClient(nil)
 const (
 	// DefaultHost is the default Host
 	// found in Meta (info) section of spec file
-	DefaultHost string = "dev-api.3blades.ai"
+	DefaultHost string = "api.3blades.ai"
 	// DefaultBasePath is the default BasePath
 	// found in Meta (info) section of spec file
 	DefaultBasePath string = "/"
@@ -64,8 +61,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Threeblade
 	cli := new(Threeblades)
 	cli.Transport = transport
 
-	cli.Actions = actions.New(transport, formats)
-
 	cli.Auth = auth.New(transport, formats)
 
 	cli.Billing = billing.New(transport, formats)
@@ -77,10 +72,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *Threeblade
 	cli.Search = search.New(transport, formats)
 
 	cli.Servers = servers.New(transport, formats)
-
-	cli.Service = service.New(transport, formats)
-
-	cli.Triggers = triggers.New(transport, formats)
 
 	cli.Users = users.New(transport, formats)
 
@@ -128,8 +119,6 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 
 // Threeblades is a client for threeblades
 type Threeblades struct {
-	Actions *actions.Client
-
 	Auth *auth.Client
 
 	Billing *billing.Client
@@ -142,10 +131,6 @@ type Threeblades struct {
 
 	Servers *servers.Client
 
-	Service *service.Client
-
-	Triggers *triggers.Client
-
 	Users *users.Client
 
 	Transport runtime.ClientTransport
@@ -154,8 +139,6 @@ type Threeblades struct {
 // SetTransport changes the transport on the client and all its subresources
 func (c *Threeblades) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
-
-	c.Actions.SetTransport(transport)
 
 	c.Auth.SetTransport(transport)
 
@@ -168,10 +151,6 @@ func (c *Threeblades) SetTransport(transport runtime.ClientTransport) {
 	c.Search.SetTransport(transport)
 
 	c.Servers.SetTransport(transport)
-
-	c.Service.SetTransport(transport)
-
-	c.Triggers.SetTransport(transport)
 
 	c.Users.SetTransport(transport)
 

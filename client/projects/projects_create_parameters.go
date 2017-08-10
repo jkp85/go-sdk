@@ -64,13 +64,13 @@ for the projects create operation typically these are written to a http.Request
 */
 type ProjectsCreateParams struct {
 
-	/*Data*/
-	Data *models.ProjectData
 	/*Namespace
 	  User or team name.
 
 	*/
 	Namespace string
+	/*ProjectData*/
+	ProjectData *models.ProjectData
 
 	timeout    time.Duration
 	Context    context.Context
@@ -110,17 +110,6 @@ func (o *ProjectsCreateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the projects create params
-func (o *ProjectsCreateParams) WithData(data *models.ProjectData) *ProjectsCreateParams {
-	o.SetData(data)
-	return o
-}
-
-// SetData adds the data to the projects create params
-func (o *ProjectsCreateParams) SetData(data *models.ProjectData) {
-	o.Data = data
-}
-
 // WithNamespace adds the namespace to the projects create params
 func (o *ProjectsCreateParams) WithNamespace(namespace string) *ProjectsCreateParams {
 	o.SetNamespace(namespace)
@@ -132,6 +121,17 @@ func (o *ProjectsCreateParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
+// WithProjectData adds the projectData to the projects create params
+func (o *ProjectsCreateParams) WithProjectData(projectData *models.ProjectData) *ProjectsCreateParams {
+	o.SetProjectData(projectData)
+	return o
+}
+
+// SetProjectData adds the projectData to the projects create params
+func (o *ProjectsCreateParams) SetProjectData(projectData *models.ProjectData) {
+	o.ProjectData = projectData
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ProjectsCreateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -140,16 +140,16 @@ func (o *ProjectsCreateParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.ProjectData)
-	}
-
-	if err := r.SetBodyParam(o.Data); err != nil {
+	// path param namespace
+	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
+	if o.ProjectData == nil {
+		o.ProjectData = new(models.ProjectData)
+	}
+
+	if err := r.SetBodyParam(o.ProjectData); err != nil {
 		return err
 	}
 

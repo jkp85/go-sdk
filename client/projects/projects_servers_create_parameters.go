@@ -64,8 +64,6 @@ for the projects servers create operation typically these are written to a http.
 */
 type ProjectsServersCreateParams struct {
 
-	/*Data*/
-	Data *models.ServerData
 	/*Namespace
 	  User or team name.
 
@@ -76,6 +74,8 @@ type ProjectsServersCreateParams struct {
 
 	*/
 	ProjectID string
+	/*ServerData*/
+	ServerData *models.ServerData
 
 	timeout    time.Duration
 	Context    context.Context
@@ -115,17 +115,6 @@ func (o *ProjectsServersCreateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the projects servers create params
-func (o *ProjectsServersCreateParams) WithData(data *models.ServerData) *ProjectsServersCreateParams {
-	o.SetData(data)
-	return o
-}
-
-// SetData adds the data to the projects servers create params
-func (o *ProjectsServersCreateParams) SetData(data *models.ServerData) {
-	o.Data = data
-}
-
 // WithNamespace adds the namespace to the projects servers create params
 func (o *ProjectsServersCreateParams) WithNamespace(namespace string) *ProjectsServersCreateParams {
 	o.SetNamespace(namespace)
@@ -148,6 +137,17 @@ func (o *ProjectsServersCreateParams) SetProjectID(projectID string) {
 	o.ProjectID = projectID
 }
 
+// WithServerData adds the serverData to the projects servers create params
+func (o *ProjectsServersCreateParams) WithServerData(serverData *models.ServerData) *ProjectsServersCreateParams {
+	o.SetServerData(serverData)
+	return o
+}
+
+// SetServerData adds the serverData to the projects servers create params
+func (o *ProjectsServersCreateParams) SetServerData(serverData *models.ServerData) {
+	o.ServerData = serverData
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ProjectsServersCreateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -156,14 +156,6 @@ func (o *ProjectsServersCreateParams) WriteToRequest(r runtime.ClientRequest, re
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.ServerData)
-	}
-
-	if err := r.SetBodyParam(o.Data); err != nil {
-		return err
-	}
-
 	// path param namespace
 	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
@@ -171,6 +163,14 @@ func (o *ProjectsServersCreateParams) WriteToRequest(r runtime.ClientRequest, re
 
 	// path param project_id
 	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+		return err
+	}
+
+	if o.ServerData == nil {
+		o.ServerData = new(models.ServerData)
+	}
+
+	if err := r.SetBodyParam(o.ServerData); err != nil {
 		return err
 	}
 

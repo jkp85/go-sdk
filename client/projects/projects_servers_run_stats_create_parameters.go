@@ -64,8 +64,6 @@ for the projects servers run stats create operation typically these are written 
 */
 type ProjectsServersRunStatsCreateParams struct {
 
-	/*Data*/
-	Data *models.ServerRunStatisticsData
 	/*Namespace
 	  User or team name.
 
@@ -81,6 +79,8 @@ type ProjectsServersRunStatsCreateParams struct {
 
 	*/
 	ServerID string
+	/*ServerrunstatsData*/
+	ServerrunstatsData *models.ServerRunStatisticsData
 
 	timeout    time.Duration
 	Context    context.Context
@@ -120,17 +120,6 @@ func (o *ProjectsServersRunStatsCreateParams) SetHTTPClient(client *http.Client)
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the projects servers run stats create params
-func (o *ProjectsServersRunStatsCreateParams) WithData(data *models.ServerRunStatisticsData) *ProjectsServersRunStatsCreateParams {
-	o.SetData(data)
-	return o
-}
-
-// SetData adds the data to the projects servers run stats create params
-func (o *ProjectsServersRunStatsCreateParams) SetData(data *models.ServerRunStatisticsData) {
-	o.Data = data
-}
-
 // WithNamespace adds the namespace to the projects servers run stats create params
 func (o *ProjectsServersRunStatsCreateParams) WithNamespace(namespace string) *ProjectsServersRunStatsCreateParams {
 	o.SetNamespace(namespace)
@@ -164,6 +153,17 @@ func (o *ProjectsServersRunStatsCreateParams) SetServerID(serverID string) {
 	o.ServerID = serverID
 }
 
+// WithServerrunstatsData adds the serverrunstatsData to the projects servers run stats create params
+func (o *ProjectsServersRunStatsCreateParams) WithServerrunstatsData(serverrunstatsData *models.ServerRunStatisticsData) *ProjectsServersRunStatsCreateParams {
+	o.SetServerrunstatsData(serverrunstatsData)
+	return o
+}
+
+// SetServerrunstatsData adds the serverrunstatsData to the projects servers run stats create params
+func (o *ProjectsServersRunStatsCreateParams) SetServerrunstatsData(serverrunstatsData *models.ServerRunStatisticsData) {
+	o.ServerrunstatsData = serverrunstatsData
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ProjectsServersRunStatsCreateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -171,14 +171,6 @@ func (o *ProjectsServersRunStatsCreateParams) WriteToRequest(r runtime.ClientReq
 		return err
 	}
 	var res []error
-
-	if o.Data == nil {
-		o.Data = new(models.ServerRunStatisticsData)
-	}
-
-	if err := r.SetBodyParam(o.Data); err != nil {
-		return err
-	}
 
 	// path param namespace
 	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
@@ -192,6 +184,14 @@ func (o *ProjectsServersRunStatsCreateParams) WriteToRequest(r runtime.ClientReq
 
 	// path param server_id
 	if err := r.SetPathParam("server_id", o.ServerID); err != nil {
+		return err
+	}
+
+	if o.ServerrunstatsData == nil {
+		o.ServerrunstatsData = new(models.ServerRunStatisticsData)
+	}
+
+	if err := r.SetBodyParam(o.ServerrunstatsData); err != nil {
 		return err
 	}
 

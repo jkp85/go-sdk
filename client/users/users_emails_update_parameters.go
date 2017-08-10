@@ -64,8 +64,8 @@ for the users emails update operation typically these are written to a http.Requ
 */
 type UsersEmailsUpdateParams struct {
 
-	/*Data*/
-	Data *models.EmailData
+	/*EmailData*/
+	EmailData *models.EmailData
 	/*EmailID
 	  Email unique identifier expressed as UUID.
 
@@ -115,15 +115,15 @@ func (o *UsersEmailsUpdateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the users emails update params
-func (o *UsersEmailsUpdateParams) WithData(data *models.EmailData) *UsersEmailsUpdateParams {
-	o.SetData(data)
+// WithEmailData adds the emailData to the users emails update params
+func (o *UsersEmailsUpdateParams) WithEmailData(emailData *models.EmailData) *UsersEmailsUpdateParams {
+	o.SetEmailData(emailData)
 	return o
 }
 
-// SetData adds the data to the users emails update params
-func (o *UsersEmailsUpdateParams) SetData(data *models.EmailData) {
-	o.Data = data
+// SetEmailData adds the emailData to the users emails update params
+func (o *UsersEmailsUpdateParams) SetEmailData(emailData *models.EmailData) {
+	o.EmailData = emailData
 }
 
 // WithEmailID adds the emailID to the users emails update params
@@ -156,11 +156,11 @@ func (o *UsersEmailsUpdateParams) WriteToRequest(r runtime.ClientRequest, reg st
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.EmailData)
+	if o.EmailData == nil {
+		o.EmailData = new(models.EmailData)
 	}
 
-	if err := r.SetBodyParam(o.Data); err != nil {
+	if err := r.SetBodyParam(o.EmailData); err != nil {
 		return err
 	}
 

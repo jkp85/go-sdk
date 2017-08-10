@@ -64,8 +64,8 @@ for the auth jwt token refresh operation typically these are written to a http.R
 */
 type AuthJwtTokenRefreshParams struct {
 
-	/*Data*/
-	Data *models.RefreshJSONWebTokenData
+	/*RefreshjwtData*/
+	RefreshjwtData *models.RefreshJSONWebTokenData
 
 	timeout    time.Duration
 	Context    context.Context
@@ -105,15 +105,15 @@ func (o *AuthJwtTokenRefreshParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the auth jwt token refresh params
-func (o *AuthJwtTokenRefreshParams) WithData(data *models.RefreshJSONWebTokenData) *AuthJwtTokenRefreshParams {
-	o.SetData(data)
+// WithRefreshjwtData adds the refreshjwtData to the auth jwt token refresh params
+func (o *AuthJwtTokenRefreshParams) WithRefreshjwtData(refreshjwtData *models.RefreshJSONWebTokenData) *AuthJwtTokenRefreshParams {
+	o.SetRefreshjwtData(refreshjwtData)
 	return o
 }
 
-// SetData adds the data to the auth jwt token refresh params
-func (o *AuthJwtTokenRefreshParams) SetData(data *models.RefreshJSONWebTokenData) {
-	o.Data = data
+// SetRefreshjwtData adds the refreshjwtData to the auth jwt token refresh params
+func (o *AuthJwtTokenRefreshParams) SetRefreshjwtData(refreshjwtData *models.RefreshJSONWebTokenData) {
+	o.RefreshjwtData = refreshjwtData
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -124,11 +124,11 @@ func (o *AuthJwtTokenRefreshParams) WriteToRequest(r runtime.ClientRequest, reg 
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.RefreshJSONWebTokenData)
+	if o.RefreshjwtData == nil {
+		o.RefreshjwtData = new(models.RefreshJSONWebTokenData)
 	}
 
-	if err := r.SetBodyParam(o.Data); err != nil {
+	if err := r.SetBodyParam(o.RefreshjwtData); err != nil {
 		return err
 	}
 

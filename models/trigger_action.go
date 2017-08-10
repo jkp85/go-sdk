@@ -6,6 +6,9 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	"strconv"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -26,7 +29,7 @@ type TriggerAction struct {
 
 	// Method for trigger action, such as POST.
 	// Required: true
-	Method *string `json:"method"`
+	Method []string `json:"method"`
 
 	// Trigger action model.
 	Model string `json:"model,omitempty"`
@@ -58,12 +61,63 @@ func (m *TriggerAction) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
+var triggerActionTypeActionNamePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["START","TERMINATE"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		triggerActionTypeActionNamePropEnum = append(triggerActionTypeActionNamePropEnum, v)
+	}
+}
+
+const (
+	// TriggerActionActionNameSTART captures enum value "START"
+	TriggerActionActionNameSTART string = "START"
+	// TriggerActionActionNameTERMINATE captures enum value "TERMINATE"
+	TriggerActionActionNameTERMINATE string = "TERMINATE"
+)
+
+// prop value enum
+func (m *TriggerAction) validateActionNameEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, triggerActionTypeActionNamePropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (m *TriggerAction) validateActionName(formats strfmt.Registry) error {
 
 	if err := validate.Required("action_name", "body", m.ActionName); err != nil {
 		return err
 	}
 
+	// value enum
+	if err := m.validateActionNameEnum("action_name", "body", *m.ActionName); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var triggerActionMethodItemsEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["POST","GET","PUT","PATCH","DELETE"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		triggerActionMethodItemsEnum = append(triggerActionMethodItemsEnum, v)
+	}
+}
+
+func (m *TriggerAction) validateMethodItemsEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, triggerActionMethodItemsEnum); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -71,6 +125,15 @@ func (m *TriggerAction) validateMethod(formats strfmt.Registry) error {
 
 	if err := validate.Required("method", "body", m.Method); err != nil {
 		return err
+	}
+
+	for i := 0; i < len(m.Method); i++ {
+
+		// value enum
+		if err := m.validateMethodItemsEnum("method"+"."+strconv.Itoa(i), "body", m.Method[i]); err != nil {
+			return err
+		}
+
 	}
 
 	return nil

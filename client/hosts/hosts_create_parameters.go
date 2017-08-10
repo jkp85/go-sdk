@@ -64,8 +64,8 @@ for the hosts create operation typically these are written to a http.Request
 */
 type HostsCreateParams struct {
 
-	/*Data*/
-	Data *models.DockerHostData
+	/*DockerhostData*/
+	DockerhostData *models.DockerHostData
 	/*Namespace
 	  User or team name.
 
@@ -110,15 +110,15 @@ func (o *HostsCreateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the hosts create params
-func (o *HostsCreateParams) WithData(data *models.DockerHostData) *HostsCreateParams {
-	o.SetData(data)
+// WithDockerhostData adds the dockerhostData to the hosts create params
+func (o *HostsCreateParams) WithDockerhostData(dockerhostData *models.DockerHostData) *HostsCreateParams {
+	o.SetDockerhostData(dockerhostData)
 	return o
 }
 
-// SetData adds the data to the hosts create params
-func (o *HostsCreateParams) SetData(data *models.DockerHostData) {
-	o.Data = data
+// SetDockerhostData adds the dockerhostData to the hosts create params
+func (o *HostsCreateParams) SetDockerhostData(dockerhostData *models.DockerHostData) {
+	o.DockerhostData = dockerhostData
 }
 
 // WithNamespace adds the namespace to the hosts create params
@@ -140,11 +140,11 @@ func (o *HostsCreateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.DockerHostData)
+	if o.DockerhostData == nil {
+		o.DockerhostData = new(models.DockerHostData)
 	}
 
-	if err := r.SetBodyParam(o.Data); err != nil {
+	if err := r.SetBodyParam(o.DockerhostData); err != nil {
 		return err
 	}
 

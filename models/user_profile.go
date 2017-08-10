@@ -16,6 +16,9 @@ import (
 // swagger:model UserProfile
 type UserProfile struct {
 
+	// Avatar image
+	Avatar strfmt.Base64 `json:"avatar,omitempty"`
+
 	// URL where user's avatar is located.
 	AvatarURL string `json:"avatar_url,omitempty"`
 

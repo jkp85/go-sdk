@@ -64,8 +64,8 @@ for the auth jwt token verify operation typically these are written to a http.Re
 */
 type AuthJwtTokenVerifyParams struct {
 
-	/*Data*/
-	Data *models.VerifyJSONWebTokenData
+	/*VerifyjwtData*/
+	VerifyjwtData *models.VerifyJSONWebTokenData
 
 	timeout    time.Duration
 	Context    context.Context
@@ -105,15 +105,15 @@ func (o *AuthJwtTokenVerifyParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the auth jwt token verify params
-func (o *AuthJwtTokenVerifyParams) WithData(data *models.VerifyJSONWebTokenData) *AuthJwtTokenVerifyParams {
-	o.SetData(data)
+// WithVerifyjwtData adds the verifyjwtData to the auth jwt token verify params
+func (o *AuthJwtTokenVerifyParams) WithVerifyjwtData(verifyjwtData *models.VerifyJSONWebTokenData) *AuthJwtTokenVerifyParams {
+	o.SetVerifyjwtData(verifyjwtData)
 	return o
 }
 
-// SetData adds the data to the auth jwt token verify params
-func (o *AuthJwtTokenVerifyParams) SetData(data *models.VerifyJSONWebTokenData) {
-	o.Data = data
+// SetVerifyjwtData adds the verifyjwtData to the auth jwt token verify params
+func (o *AuthJwtTokenVerifyParams) SetVerifyjwtData(verifyjwtData *models.VerifyJSONWebTokenData) {
+	o.VerifyjwtData = verifyjwtData
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -124,11 +124,11 @@ func (o *AuthJwtTokenVerifyParams) WriteToRequest(r runtime.ClientRequest, reg s
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.VerifyJSONWebTokenData)
+	if o.VerifyjwtData == nil {
+		o.VerifyjwtData = new(models.VerifyJSONWebTokenData)
 	}
 
-	if err := r.SetBodyParam(o.Data); err != nil {
+	if err := r.SetBodyParam(o.VerifyjwtData); err != nil {
 		return err
 	}
 

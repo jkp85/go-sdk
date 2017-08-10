@@ -64,8 +64,6 @@ for the projects replace operation typically these are written to a http.Request
 */
 type ProjectsReplaceParams struct {
 
-	/*Data*/
-	Data *models.ProjectData
 	/*ID
 	  Project unique identifier expressed as UUID.
 
@@ -76,6 +74,8 @@ type ProjectsReplaceParams struct {
 
 	*/
 	Namespace string
+	/*ProjectData*/
+	ProjectData *models.ProjectData
 
 	timeout    time.Duration
 	Context    context.Context
@@ -115,17 +115,6 @@ func (o *ProjectsReplaceParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the projects replace params
-func (o *ProjectsReplaceParams) WithData(data *models.ProjectData) *ProjectsReplaceParams {
-	o.SetData(data)
-	return o
-}
-
-// SetData adds the data to the projects replace params
-func (o *ProjectsReplaceParams) SetData(data *models.ProjectData) {
-	o.Data = data
-}
-
 // WithID adds the id to the projects replace params
 func (o *ProjectsReplaceParams) WithID(id string) *ProjectsReplaceParams {
 	o.SetID(id)
@@ -148,6 +137,17 @@ func (o *ProjectsReplaceParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
+// WithProjectData adds the projectData to the projects replace params
+func (o *ProjectsReplaceParams) WithProjectData(projectData *models.ProjectData) *ProjectsReplaceParams {
+	o.SetProjectData(projectData)
+	return o
+}
+
+// SetProjectData adds the projectData to the projects replace params
+func (o *ProjectsReplaceParams) SetProjectData(projectData *models.ProjectData) {
+	o.ProjectData = projectData
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ProjectsReplaceParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -156,14 +156,6 @@ func (o *ProjectsReplaceParams) WriteToRequest(r runtime.ClientRequest, reg strf
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.ProjectData)
-	}
-
-	if err := r.SetBodyParam(o.Data); err != nil {
-		return err
-	}
-
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
@@ -171,6 +163,14 @@ func (o *ProjectsReplaceParams) WriteToRequest(r runtime.ClientRequest, reg strf
 
 	// path param namespace
 	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
+		return err
+	}
+
+	if o.ProjectData == nil {
+		o.ProjectData = new(models.ProjectData)
+	}
+
+	if err := r.SetBodyParam(o.ProjectData); err != nil {
 		return err
 	}
 

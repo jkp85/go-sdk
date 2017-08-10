@@ -64,8 +64,8 @@ for the auth jwt token auth operation typically these are written to a http.Requ
 */
 type AuthJwtTokenAuthParams struct {
 
-	/*Data*/
-	Data *models.JWTData
+	/*JwtData*/
+	JwtData *models.JWTData
 
 	timeout    time.Duration
 	Context    context.Context
@@ -105,15 +105,15 @@ func (o *AuthJwtTokenAuthParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the auth jwt token auth params
-func (o *AuthJwtTokenAuthParams) WithData(data *models.JWTData) *AuthJwtTokenAuthParams {
-	o.SetData(data)
+// WithJwtData adds the jwtData to the auth jwt token auth params
+func (o *AuthJwtTokenAuthParams) WithJwtData(jwtData *models.JWTData) *AuthJwtTokenAuthParams {
+	o.SetJwtData(jwtData)
 	return o
 }
 
-// SetData adds the data to the auth jwt token auth params
-func (o *AuthJwtTokenAuthParams) SetData(data *models.JWTData) {
-	o.Data = data
+// SetJwtData adds the jwtData to the auth jwt token auth params
+func (o *AuthJwtTokenAuthParams) SetJwtData(jwtData *models.JWTData) {
+	o.JwtData = jwtData
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -124,11 +124,11 @@ func (o *AuthJwtTokenAuthParams) WriteToRequest(r runtime.ClientRequest, reg str
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.JWTData)
+	if o.JwtData == nil {
+		o.JwtData = new(models.JWTData)
 	}
 
-	if err := r.SetBodyParam(o.Data); err != nil {
+	if err := r.SetBodyParam(o.JwtData); err != nil {
 		return err
 	}
 

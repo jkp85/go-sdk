@@ -64,8 +64,6 @@ for the projects servers replace operation typically these are written to a http
 */
 type ProjectsServersReplaceParams struct {
 
-	/*Data*/
-	Data *models.ServerData
 	/*ID
 	  Server unique identifier expressed as UUID.
 
@@ -81,6 +79,8 @@ type ProjectsServersReplaceParams struct {
 
 	*/
 	ProjectID string
+	/*ServerData*/
+	ServerData *models.ServerData
 
 	timeout    time.Duration
 	Context    context.Context
@@ -120,17 +120,6 @@ func (o *ProjectsServersReplaceParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the projects servers replace params
-func (o *ProjectsServersReplaceParams) WithData(data *models.ServerData) *ProjectsServersReplaceParams {
-	o.SetData(data)
-	return o
-}
-
-// SetData adds the data to the projects servers replace params
-func (o *ProjectsServersReplaceParams) SetData(data *models.ServerData) {
-	o.Data = data
-}
-
 // WithID adds the id to the projects servers replace params
 func (o *ProjectsServersReplaceParams) WithID(id string) *ProjectsServersReplaceParams {
 	o.SetID(id)
@@ -164,6 +153,17 @@ func (o *ProjectsServersReplaceParams) SetProjectID(projectID string) {
 	o.ProjectID = projectID
 }
 
+// WithServerData adds the serverData to the projects servers replace params
+func (o *ProjectsServersReplaceParams) WithServerData(serverData *models.ServerData) *ProjectsServersReplaceParams {
+	o.SetServerData(serverData)
+	return o
+}
+
+// SetServerData adds the serverData to the projects servers replace params
+func (o *ProjectsServersReplaceParams) SetServerData(serverData *models.ServerData) {
+	o.ServerData = serverData
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ProjectsServersReplaceParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -171,14 +171,6 @@ func (o *ProjectsServersReplaceParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 	var res []error
-
-	if o.Data == nil {
-		o.Data = new(models.ServerData)
-	}
-
-	if err := r.SetBodyParam(o.Data); err != nil {
-		return err
-	}
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
@@ -192,6 +184,14 @@ func (o *ProjectsServersReplaceParams) WriteToRequest(r runtime.ClientRequest, r
 
 	// path param project_id
 	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+		return err
+	}
+
+	if o.ServerData == nil {
+		o.ServerData = new(models.ServerData)
+	}
+
+	if err := r.SetBodyParam(o.ServerData); err != nil {
 		return err
 	}
 

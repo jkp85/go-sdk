@@ -38,7 +38,7 @@ func (a *Client) Search(params *SearchParams, authInfo runtime.ClientAuthInfoWri
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/search/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &SearchReader{formats: a.formats},

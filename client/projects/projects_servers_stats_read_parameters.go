@@ -63,7 +63,7 @@ for the projects servers stats read operation typically these are written to a h
 type ProjectsServersStatsReadParams struct {
 
 	/*ID
-	  Sercer statistics unique identifier expressed as UUID.
+	  Server statistics unique identifier expressed as UUID.
 
 	*/
 	ID string
