@@ -6,9 +6,6 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
-	"strconv"
-
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -63,38 +60,10 @@ func (m *Project) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var projectCollaboratorsItemsEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["read_project","write_project"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		projectCollaboratorsItemsEnum = append(projectCollaboratorsItemsEnum, v)
-	}
-}
-
-func (m *Project) validateCollaboratorsItemsEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, projectCollaboratorsItemsEnum); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (m *Project) validateCollaborators(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Collaborators) { // not required
 		return nil
-	}
-
-	for i := 0; i < len(m.Collaborators); i++ {
-
-		// value enum
-		if err := m.validateCollaboratorsItemsEnum("collaborators"+"."+strconv.Itoa(i), "body", m.Collaborators[i]); err != nil {
-			return err
-		}
-
 	}
 
 	return nil

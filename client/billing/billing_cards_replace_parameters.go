@@ -64,8 +64,8 @@ for the billing cards replace operation typically these are written to a http.Re
 */
 type BillingCardsReplaceParams struct {
 
-	/*Data*/
-	Data *models.CardData
+	/*CardData*/
+	CardData *models.CardData
 	/*ID*/
 	ID string
 	/*Namespace
@@ -112,15 +112,15 @@ func (o *BillingCardsReplaceParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the billing cards replace params
-func (o *BillingCardsReplaceParams) WithData(data *models.CardData) *BillingCardsReplaceParams {
-	o.SetData(data)
+// WithCardData adds the cardData to the billing cards replace params
+func (o *BillingCardsReplaceParams) WithCardData(cardData *models.CardData) *BillingCardsReplaceParams {
+	o.SetCardData(cardData)
 	return o
 }
 
-// SetData adds the data to the billing cards replace params
-func (o *BillingCardsReplaceParams) SetData(data *models.CardData) {
-	o.Data = data
+// SetCardData adds the cardData to the billing cards replace params
+func (o *BillingCardsReplaceParams) SetCardData(cardData *models.CardData) {
+	o.CardData = cardData
 }
 
 // WithID adds the id to the billing cards replace params
@@ -153,11 +153,11 @@ func (o *BillingCardsReplaceParams) WriteToRequest(r runtime.ClientRequest, reg 
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.CardData)
+	if o.CardData == nil {
+		o.CardData = new(models.CardData)
 	}
 
-	if err := r.SetBodyParam(o.Data); err != nil {
+	if err := r.SetBodyParam(o.CardData); err != nil {
 		return err
 	}
 

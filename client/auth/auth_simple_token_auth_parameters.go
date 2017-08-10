@@ -64,8 +64,8 @@ for the auth simple token auth operation typically these are written to a http.R
 */
 type AuthSimpleTokenAuthParams struct {
 
-	/*Data*/
-	Data *models.AuthTokenData
+	/*AuthTokenData*/
+	AuthTokenData *models.AuthTokenData
 
 	timeout    time.Duration
 	Context    context.Context
@@ -105,15 +105,15 @@ func (o *AuthSimpleTokenAuthParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the auth simple token auth params
-func (o *AuthSimpleTokenAuthParams) WithData(data *models.AuthTokenData) *AuthSimpleTokenAuthParams {
-	o.SetData(data)
+// WithAuthTokenData adds the authTokenData to the auth simple token auth params
+func (o *AuthSimpleTokenAuthParams) WithAuthTokenData(authTokenData *models.AuthTokenData) *AuthSimpleTokenAuthParams {
+	o.SetAuthTokenData(authTokenData)
 	return o
 }
 
-// SetData adds the data to the auth simple token auth params
-func (o *AuthSimpleTokenAuthParams) SetData(data *models.AuthTokenData) {
-	o.Data = data
+// SetAuthTokenData adds the authTokenData to the auth simple token auth params
+func (o *AuthSimpleTokenAuthParams) SetAuthTokenData(authTokenData *models.AuthTokenData) {
+	o.AuthTokenData = authTokenData
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -124,11 +124,11 @@ func (o *AuthSimpleTokenAuthParams) WriteToRequest(r runtime.ClientRequest, reg 
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.AuthTokenData)
+	if o.AuthTokenData == nil {
+		o.AuthTokenData = new(models.AuthTokenData)
 	}
 
-	if err := r.SetBodyParam(o.Data); err != nil {
+	if err := r.SetBodyParam(o.AuthTokenData); err != nil {
 		return err
 	}
 

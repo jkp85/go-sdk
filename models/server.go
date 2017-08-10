@@ -31,9 +31,6 @@ type Server struct {
 	// Server endpoint path.
 	Endpoint string `json:"endpoint,omitempty"`
 
-	// Environment resources used by server when launched.
-	EnvironmentResources string `json:"environment_resources,omitempty"`
-
 	// Value that represents user defined host, otherwise known as BYON (Bring Your Own Node).
 	//
 	Host string `json:"host,omitempty"`
@@ -45,12 +42,16 @@ type Server struct {
 	//
 	ImageName string `json:"image_name,omitempty"`
 
-	// URL that streams stdout and stderr logs of server.
+	// A WebSocket URL for streaming stdout and stderr logs from the server.
+	//
 	LogsURL string `json:"logs_url,omitempty"`
 
 	// Server name.
 	// Required: true
 	Name *string `json:"name"`
+
+	// Server size unique identifier.
+	ServerSize string `json:"server_size,omitempty"`
 
 	// Optional startup script to use when launching server.
 	StartupScript string `json:"startup_script,omitempty"`
@@ -58,7 +59,8 @@ type Server struct {
 	// Server status, such as Running or Error.
 	Status string `json:"status,omitempty"`
 
-	// URL that confirms server status.
+	// A WebSocket URL for listening to server status changes.
+	//
 	StatusURL string `json:"status_url,omitempty"`
 }
 
@@ -109,7 +111,7 @@ var serverTypeStatusPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["Pending","Running","Error"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["Stopped","Running","Error"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -118,8 +120,8 @@ func init() {
 }
 
 const (
-	// ServerStatusPending captures enum value "Pending"
-	ServerStatusPending string = "Pending"
+	// ServerStatusStopped captures enum value "Stopped"
+	ServerStatusStopped string = "Stopped"
 	// ServerStatusRunning captures enum value "Running"
 	ServerStatusRunning string = "Running"
 	// ServerStatusError captures enum value "Error"

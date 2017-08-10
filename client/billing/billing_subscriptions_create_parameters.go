@@ -64,13 +64,13 @@ for the billing subscriptions create operation typically these are written to a 
 */
 type BillingSubscriptionsCreateParams struct {
 
-	/*Data*/
-	Data *models.SubscriptionData
 	/*Namespace
 	  User or team name.
 
 	*/
 	Namespace string
+	/*SubscriptionData*/
+	SubscriptionData *models.SubscriptionData
 
 	timeout    time.Duration
 	Context    context.Context
@@ -110,17 +110,6 @@ func (o *BillingSubscriptionsCreateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the billing subscriptions create params
-func (o *BillingSubscriptionsCreateParams) WithData(data *models.SubscriptionData) *BillingSubscriptionsCreateParams {
-	o.SetData(data)
-	return o
-}
-
-// SetData adds the data to the billing subscriptions create params
-func (o *BillingSubscriptionsCreateParams) SetData(data *models.SubscriptionData) {
-	o.Data = data
-}
-
 // WithNamespace adds the namespace to the billing subscriptions create params
 func (o *BillingSubscriptionsCreateParams) WithNamespace(namespace string) *BillingSubscriptionsCreateParams {
 	o.SetNamespace(namespace)
@@ -132,6 +121,17 @@ func (o *BillingSubscriptionsCreateParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
+// WithSubscriptionData adds the subscriptionData to the billing subscriptions create params
+func (o *BillingSubscriptionsCreateParams) WithSubscriptionData(subscriptionData *models.SubscriptionData) *BillingSubscriptionsCreateParams {
+	o.SetSubscriptionData(subscriptionData)
+	return o
+}
+
+// SetSubscriptionData adds the subscriptionData to the billing subscriptions create params
+func (o *BillingSubscriptionsCreateParams) SetSubscriptionData(subscriptionData *models.SubscriptionData) {
+	o.SubscriptionData = subscriptionData
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *BillingSubscriptionsCreateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -140,16 +140,16 @@ func (o *BillingSubscriptionsCreateParams) WriteToRequest(r runtime.ClientReques
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.SubscriptionData)
-	}
-
-	if err := r.SetBodyParam(o.Data); err != nil {
+	// path param namespace
+	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
+	if o.SubscriptionData == nil {
+		o.SubscriptionData = new(models.SubscriptionData)
+	}
+
+	if err := r.SetBodyParam(o.SubscriptionData); err != nil {
 		return err
 	}
 

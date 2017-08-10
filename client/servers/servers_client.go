@@ -25,94 +25,7 @@ type Client struct {
 }
 
 /*
-ServersOptionsResourcesCreate creates a new resource
-*/
-func (a *Client) ServersOptionsResourcesCreate(params *ServersOptionsResourcesCreateParams, authInfo runtime.ClientAuthInfoWriter) (*ServersOptionsResourcesCreateCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewServersOptionsResourcesCreateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "servers_options_resources_create",
-		Method:             "POST",
-		PathPattern:        "/v1/{namespace}/servers/options/resources/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &ServersOptionsResourcesCreateReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ServersOptionsResourcesCreateCreated), nil
-
-}
-
-/*
-ServersOptionsResourcesDelete deletes a resource by id
-*/
-func (a *Client) ServersOptionsResourcesDelete(params *ServersOptionsResourcesDeleteParams, authInfo runtime.ClientAuthInfoWriter) (*ServersOptionsResourcesDeleteNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewServersOptionsResourcesDeleteParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "servers_options_resources_delete",
-		Method:             "DELETE",
-		PathPattern:        "/v1/{namespace}/servers/options/resources/{id}/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &ServersOptionsResourcesDeleteReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ServersOptionsResourcesDeleteNoContent), nil
-
-}
-
-/*
-ServersOptionsResourcesList retrieves available resources
-*/
-func (a *Client) ServersOptionsResourcesList(params *ServersOptionsResourcesListParams, authInfo runtime.ClientAuthInfoWriter) (*ServersOptionsResourcesListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewServersOptionsResourcesListParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "servers_options_resources_list",
-		Method:             "GET",
-		PathPattern:        "/v1/{namespace}/servers/options/resources/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &ServersOptionsResourcesListReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ServersOptionsResourcesListOK), nil
-
-}
-
-/*
-ServersOptionsResourcesRead gets a resource by id
+ServersOptionsResourcesRead gets a server size by id
 */
 func (a *Client) ServersOptionsResourcesRead(params *ServersOptionsResourcesReadParams, authInfo runtime.ClientAuthInfoWriter) (*ServersOptionsResourcesReadOK, error) {
 	// TODO: Validate the params before sending
@@ -123,9 +36,9 @@ func (a *Client) ServersOptionsResourcesRead(params *ServersOptionsResourcesRead
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "servers_options_resources_read",
 		Method:             "GET",
-		PathPattern:        "/v1/{namespace}/servers/options/resources/{id}/",
+		PathPattern:        "/v1/servers/options/server-size/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ServersOptionsResourcesReadReader{formats: a.formats},
@@ -141,23 +54,25 @@ func (a *Client) ServersOptionsResourcesRead(params *ServersOptionsResourcesRead
 }
 
 /*
-ServersOptionsResourcesReplace replaces a resource by id
+ServersOptionsServerSizeCreate creates a new server size item
+
+Only super users with on-premises version have acceess to this endpoint.
 */
-func (a *Client) ServersOptionsResourcesReplace(params *ServersOptionsResourcesReplaceParams, authInfo runtime.ClientAuthInfoWriter) (*ServersOptionsResourcesReplaceOK, error) {
+func (a *Client) ServersOptionsServerSizeCreate(params *ServersOptionsServerSizeCreateParams, authInfo runtime.ClientAuthInfoWriter) (*ServersOptionsServerSizeCreateCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewServersOptionsResourcesReplaceParams()
+		params = NewServersOptionsServerSizeCreateParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "servers_options_resources_replace",
-		Method:             "PUT",
-		PathPattern:        "/v1/{namespace}/servers/options/resources/{id}/",
+		ID:                 "servers_options_server_size_create",
+		Method:             "POST",
+		PathPattern:        "/v1/servers/options/server-size/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ServersOptionsResourcesReplaceReader{formats: a.formats},
+		Reader:             &ServersOptionsServerSizeCreateReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -165,28 +80,30 @@ func (a *Client) ServersOptionsResourcesReplace(params *ServersOptionsResourcesR
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ServersOptionsResourcesReplaceOK), nil
+	return result.(*ServersOptionsServerSizeCreateCreated), nil
 
 }
 
 /*
-ServersOptionsResourcesUpdate updates a resource by id
+ServersOptionsServerSizeDelete deletes a server size by id
+
+Only super users with on-premises version have acceess to this endpoint.
 */
-func (a *Client) ServersOptionsResourcesUpdate(params *ServersOptionsResourcesUpdateParams, authInfo runtime.ClientAuthInfoWriter) (*ServersOptionsResourcesUpdateOK, error) {
+func (a *Client) ServersOptionsServerSizeDelete(params *ServersOptionsServerSizeDeleteParams, authInfo runtime.ClientAuthInfoWriter) (*ServersOptionsServerSizeDeleteNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewServersOptionsResourcesUpdateParams()
+		params = NewServersOptionsServerSizeDeleteParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "servers_options_resources_update",
-		Method:             "PATCH",
-		PathPattern:        "/v1/{namespace}/servers/options/resources/{id}/",
+		ID:                 "servers_options_server_size_delete",
+		Method:             "DELETE",
+		PathPattern:        "/v1/servers/options/server-size/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &ServersOptionsResourcesUpdateReader{formats: a.formats},
+		Reader:             &ServersOptionsServerSizeDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -194,7 +111,98 @@ func (a *Client) ServersOptionsResourcesUpdate(params *ServersOptionsResourcesUp
 	if err != nil {
 		return nil, err
 	}
-	return result.(*ServersOptionsResourcesUpdateOK), nil
+	return result.(*ServersOptionsServerSizeDeleteNoContent), nil
+
+}
+
+/*
+ServersOptionsServerSizeReplace replaces a server size by id
+
+Only super users with on-premises version have acceess to this endpoint.
+*/
+func (a *Client) ServersOptionsServerSizeReplace(params *ServersOptionsServerSizeReplaceParams, authInfo runtime.ClientAuthInfoWriter) (*ServersOptionsServerSizeReplaceOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewServersOptionsServerSizeReplaceParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "servers_options_server_size_replace",
+		Method:             "PUT",
+		PathPattern:        "/v1/servers/options/server-size/{id}/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ServersOptionsServerSizeReplaceReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ServersOptionsServerSizeReplaceOK), nil
+
+}
+
+/*
+ServersOptionsServerSizeUpdate updates a server size by id
+
+Only super users with on-premises version have acceess to this endpoint.
+*/
+func (a *Client) ServersOptionsServerSizeUpdate(params *ServersOptionsServerSizeUpdateParams, authInfo runtime.ClientAuthInfoWriter) (*ServersOptionsServerSizeUpdateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewServersOptionsServerSizeUpdateParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "servers_options_server_size_update",
+		Method:             "PATCH",
+		PathPattern:        "/v1/servers/options/server-size/{id}/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ServersOptionsServerSizeUpdateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ServersOptionsServerSizeUpdateOK), nil
+
+}
+
+/*
+ServersOptionsSizesList retrieves available server sizes
+*/
+func (a *Client) ServersOptionsSizesList(params *ServersOptionsSizesListParams, authInfo runtime.ClientAuthInfoWriter) (*ServersOptionsSizesListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewServersOptionsSizesListParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "servers_options_sizes_list",
+		Method:             "GET",
+		PathPattern:        "/v1/servers/options/server-size/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ServersOptionsSizesListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ServersOptionsSizesListOK), nil
 
 }
 

@@ -64,8 +64,8 @@ for the billing cards update operation typically these are written to a http.Req
 */
 type BillingCardsUpdateParams struct {
 
-	/*Data*/
-	Data *models.CardData
+	/*CardData*/
+	CardData *models.CardData
 	/*ID
 	  Card unique identifier.
 
@@ -115,15 +115,15 @@ func (o *BillingCardsUpdateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the billing cards update params
-func (o *BillingCardsUpdateParams) WithData(data *models.CardData) *BillingCardsUpdateParams {
-	o.SetData(data)
+// WithCardData adds the cardData to the billing cards update params
+func (o *BillingCardsUpdateParams) WithCardData(cardData *models.CardData) *BillingCardsUpdateParams {
+	o.SetCardData(cardData)
 	return o
 }
 
-// SetData adds the data to the billing cards update params
-func (o *BillingCardsUpdateParams) SetData(data *models.CardData) {
-	o.Data = data
+// SetCardData adds the cardData to the billing cards update params
+func (o *BillingCardsUpdateParams) SetCardData(cardData *models.CardData) {
+	o.CardData = cardData
 }
 
 // WithID adds the id to the billing cards update params
@@ -156,11 +156,11 @@ func (o *BillingCardsUpdateParams) WriteToRequest(r runtime.ClientRequest, reg s
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.CardData)
+	if o.CardData == nil {
+		o.CardData = new(models.CardData)
 	}
 
-	if err := r.SetBodyParam(o.Data); err != nil {
+	if err := r.SetBodyParam(o.CardData); err != nil {
 		return err
 	}
 

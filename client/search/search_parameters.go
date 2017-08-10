@@ -77,6 +77,16 @@ type SearchParams struct {
 
 	*/
 	Offset *string
+	/*Q
+	  Search string.
+
+	*/
+	Q string
+	/*Type
+	  Limit results to specific types.
+
+	*/
+	Type *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -149,6 +159,28 @@ func (o *SearchParams) SetOffset(offset *string) {
 	o.Offset = offset
 }
 
+// WithQ adds the q to the search params
+func (o *SearchParams) WithQ(q string) *SearchParams {
+	o.SetQ(q)
+	return o
+}
+
+// SetQ adds the q to the search params
+func (o *SearchParams) SetQ(q string) {
+	o.Q = q
+}
+
+// WithType adds the typeVar to the search params
+func (o *SearchParams) WithType(typeVar *string) *SearchParams {
+	o.SetType(typeVar)
+	return o
+}
+
+// SetType adds the type to the search params
+func (o *SearchParams) SetType(typeVar *string) {
+	o.Type = typeVar
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *SearchParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -188,6 +220,31 @@ func (o *SearchParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Regist
 		qOffset := qrOffset
 		if qOffset != "" {
 			if err := r.SetQueryParam("offset", qOffset); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	// query param q
+	qrQ := o.Q
+	qQ := qrQ
+	if qQ != "" {
+		if err := r.SetQueryParam("q", qQ); err != nil {
+			return err
+		}
+	}
+
+	if o.Type != nil {
+
+		// query param type
+		var qrType string
+		if o.Type != nil {
+			qrType = *o.Type
+		}
+		qType := qrType
+		if qType != "" {
+			if err := r.SetQueryParam("type", qType); err != nil {
 				return err
 			}
 		}

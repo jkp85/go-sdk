@@ -67,7 +67,7 @@ func (a *Client) ProjectsCollaboratorsDelete(params *ProjectsCollaboratorsDelete
 		Method:             "DELETE",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/collaborators/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsCollaboratorsDeleteReader{formats: a.formats},
@@ -96,7 +96,7 @@ func (a *Client) ProjectsCollaboratorsList(params *ProjectsCollaboratorsListPara
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/collaborators/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsCollaboratorsListReader{formats: a.formats},
@@ -125,7 +125,7 @@ func (a *Client) ProjectsCollaboratorsRead(params *ProjectsCollaboratorsReadPara
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/collaborators/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsCollaboratorsReadReader{formats: a.formats},
@@ -241,7 +241,7 @@ func (a *Client) ProjectsDelete(params *ProjectsDeleteParams, authInfo runtime.C
 		Method:             "DELETE",
 		PathPattern:        "/v1/{namespace}/projects/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsDeleteReader{formats: a.formats},
@@ -270,7 +270,7 @@ func (a *Client) ProjectsList(params *ProjectsListParams, authInfo runtime.Clien
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/projects/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsListReader{formats: a.formats},
@@ -328,7 +328,7 @@ func (a *Client) ProjectsProjectFilesDelete(params *ProjectsProjectFilesDeletePa
 		Method:             "DELETE",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/project_files/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsProjectFilesDeleteReader{formats: a.formats},
@@ -357,7 +357,7 @@ func (a *Client) ProjectsProjectFilesList(params *ProjectsProjectFilesListParams
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/project_files/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsProjectFilesListReader{formats: a.formats},
@@ -386,7 +386,7 @@ func (a *Client) ProjectsProjectFilesRead(params *ProjectsProjectFilesReadParams
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/project_files/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsProjectFilesReadReader{formats: a.formats},
@@ -473,7 +473,7 @@ func (a *Client) ProjectsRead(params *ProjectsReadParams, authInfo runtime.Clien
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/projects/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsReadReader{formats: a.formats},
@@ -560,7 +560,7 @@ func (a *Client) ProjectsServersDelete(params *ProjectsServersDeleteParams, auth
 		Method:             "DELETE",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsServersDeleteReader{formats: a.formats},
@@ -591,7 +591,7 @@ func (a *Client) ProjectsServersIsAllowedList(params *ProjectsServersIsAllowedLi
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{id}/is-allowed/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsServersIsAllowedListReader{formats: a.formats},
@@ -620,7 +620,7 @@ func (a *Client) ProjectsServersList(params *ProjectsServersListParams, authInfo
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsServersListReader{formats: a.formats},
@@ -649,7 +649,7 @@ func (a *Client) ProjectsServersRead(params *ProjectsServersReadParams, authInfo
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsServersReadReader{formats: a.formats},
@@ -736,7 +736,7 @@ func (a *Client) ProjectsServersRunStatsDelete(params *ProjectsServersRunStatsDe
 		Method:             "DELETE",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/run-stats/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsServersRunStatsDeleteReader{formats: a.formats},
@@ -765,7 +765,7 @@ func (a *Client) ProjectsServersRunStatsList(params *ProjectsServersRunStatsList
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/run-stats/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsServersRunStatsListReader{formats: a.formats},
@@ -794,7 +794,7 @@ func (a *Client) ProjectsServersRunStatsRead(params *ProjectsServersRunStatsRead
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/run-stats/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsServersRunStatsReadReader{formats: a.formats},
@@ -910,7 +910,7 @@ func (a *Client) ProjectsServersSSHTunnelsDelete(params *ProjectsServersSSHTunne
 		Method:             "DELETE",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/ssh-tunnels/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsServersSSHTunnelsDeleteReader{formats: a.formats},
@@ -939,7 +939,7 @@ func (a *Client) ProjectsServersSSHTunnelsList(params *ProjectsServersSSHTunnels
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/ssh-tunnels/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsServersSSHTunnelsListReader{formats: a.formats},
@@ -968,7 +968,7 @@ func (a *Client) ProjectsServersSSHTunnelsRead(params *ProjectsServersSSHTunnels
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/ssh-tunnels/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsServersSSHTunnelsReadReader{formats: a.formats},
@@ -1055,7 +1055,7 @@ func (a *Client) ProjectsServersStart(params *ProjectsServersStartParams, authIn
 		Method:             "POST",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{id}/start/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsServersStartReader{formats: a.formats},
@@ -1113,7 +1113,7 @@ func (a *Client) ProjectsServersStatsDelete(params *ProjectsServersStatsDeletePa
 		Method:             "DELETE",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/stats/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsServersStatsDeleteReader{formats: a.formats},
@@ -1142,7 +1142,7 @@ func (a *Client) ProjectsServersStatsList(params *ProjectsServersStatsListParams
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/stats/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsServersStatsListReader{formats: a.formats},
@@ -1171,7 +1171,7 @@ func (a *Client) ProjectsServersStatsRead(params *ProjectsServersStatsReadParams
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/stats/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsServersStatsReadReader{formats: a.formats},
@@ -1258,7 +1258,7 @@ func (a *Client) ProjectsServersStop(params *ProjectsServersStopParams, authInfo
 		Method:             "POST",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{id}/stop/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsServersStopReader{formats: a.formats},
@@ -1287,7 +1287,7 @@ func (a *Client) ProjectsServersTerminate(params *ProjectsServersTerminateParams
 		Method:             "POST",
 		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{id}/terminate/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &ProjectsServersTerminateReader{formats: a.formats},
@@ -1332,64 +1332,6 @@ func (a *Client) ProjectsServersUpdate(params *ProjectsServersUpdateParams, auth
 }
 
 /*
-ProjectsSyncedResourcesCreate creates a new synched resource
-*/
-func (a *Client) ProjectsSyncedResourcesCreate(params *ProjectsSyncedResourcesCreateParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsSyncedResourcesCreateCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsSyncedResourcesCreateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_synced-resources_create",
-		Method:             "POST",
-		PathPattern:        "/v1/{namespace}/projects/{project_id}/synced-resources/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &ProjectsSyncedResourcesCreateReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsSyncedResourcesCreateCreated), nil
-
-}
-
-/*
-ProjectsSyncedResourcesList retrieves synched resources
-*/
-func (a *Client) ProjectsSyncedResourcesList(params *ProjectsSyncedResourcesListParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsSyncedResourcesListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsSyncedResourcesListParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_synced-resources_list",
-		Method:             "GET",
-		PathPattern:        "/v1/{namespace}/projects/{project_id}/synced-resources/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &ProjectsSyncedResourcesListReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsSyncedResourcesListOK), nil
-
-}
-
-/*
 ProjectsUpdate updates a project
 */
 func (a *Client) ProjectsUpdate(params *ProjectsUpdateParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsUpdateOK, error) {
@@ -1415,6 +1357,180 @@ func (a *Client) ProjectsUpdate(params *ProjectsUpdateParams, authInfo runtime.C
 		return nil, err
 	}
 	return result.(*ProjectsUpdateOK), nil
+
+}
+
+/*
+ServiceTriggerCreate creates a new server trigger
+*/
+func (a *Client) ServiceTriggerCreate(params *ServiceTriggerCreateParams, authInfo runtime.ClientAuthInfoWriter) (*ServiceTriggerCreateCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewServiceTriggerCreateParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "service_trigger_create",
+		Method:             "POST",
+		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ServiceTriggerCreateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ServiceTriggerCreateCreated), nil
+
+}
+
+/*
+ServiceTriggerDelete deletes a server trigger
+*/
+func (a *Client) ServiceTriggerDelete(params *ServiceTriggerDeleteParams, authInfo runtime.ClientAuthInfoWriter) (*ServiceTriggerDeleteNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewServiceTriggerDeleteParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "service_trigger_delete",
+		Method:             "DELETE",
+		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/{id}/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ServiceTriggerDeleteReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ServiceTriggerDeleteNoContent), nil
+
+}
+
+/*
+ServiceTriggerList retrieves server triggers
+*/
+func (a *Client) ServiceTriggerList(params *ServiceTriggerListParams, authInfo runtime.ClientAuthInfoWriter) (*ServiceTriggerListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewServiceTriggerListParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "service_trigger_list",
+		Method:             "GET",
+		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ServiceTriggerListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ServiceTriggerListOK), nil
+
+}
+
+/*
+ServiceTriggerRead gets a server trigger
+*/
+func (a *Client) ServiceTriggerRead(params *ServiceTriggerReadParams, authInfo runtime.ClientAuthInfoWriter) (*ServiceTriggerReadOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewServiceTriggerReadParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "service_trigger_read",
+		Method:             "GET",
+		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/{id}/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ServiceTriggerReadReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ServiceTriggerReadOK), nil
+
+}
+
+/*
+ServiceTriggerReplace replaces a server trigger
+*/
+func (a *Client) ServiceTriggerReplace(params *ServiceTriggerReplaceParams, authInfo runtime.ClientAuthInfoWriter) (*ServiceTriggerReplaceOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewServiceTriggerReplaceParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "service_trigger_replace",
+		Method:             "PUT",
+		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/{id}/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ServiceTriggerReplaceReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ServiceTriggerReplaceOK), nil
+
+}
+
+/*
+ServiceTriggerUpdate updates a server trigger
+*/
+func (a *Client) ServiceTriggerUpdate(params *ServiceTriggerUpdateParams, authInfo runtime.ClientAuthInfoWriter) (*ServiceTriggerUpdateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewServiceTriggerUpdateParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "service_trigger_update",
+		Method:             "PATCH",
+		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/{id}/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ServiceTriggerUpdateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ServiceTriggerUpdateOK), nil
 
 }
 

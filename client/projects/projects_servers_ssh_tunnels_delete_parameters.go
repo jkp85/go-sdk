@@ -78,7 +78,7 @@ type ProjectsServersSSHTunnelsDeleteParams struct {
 	*/
 	ProjectID string
 	/*ServerID
-	  Sercer unique identifier expressed as UUID.
+	  Server unique identifier expressed as UUID.
 
 	*/
 	ServerID string

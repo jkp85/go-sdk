@@ -31,10 +31,13 @@ type User struct {
 
 	// User profile information.
 	// Required: true
-	Profile interface{} `json:"profile"`
+	Profile *UserProfile `json:"profile"`
 
 	// Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.
 	// Required: true
+	// Max Length: 64
+	// Min Length: 6
+	// Pattern: [a-z0-9]{6,64}
 	Username *string `json:"username"`
 }
 
@@ -60,12 +63,38 @@ func (m *User) Validate(formats strfmt.Registry) error {
 
 func (m *User) validateProfile(formats strfmt.Registry) error {
 
+	if err := validate.Required("profile", "body", m.Profile); err != nil {
+		return err
+	}
+
+	if m.Profile != nil {
+
+		if err := m.Profile.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("profile")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
 func (m *User) validateUsername(formats strfmt.Registry) error {
 
 	if err := validate.Required("username", "body", m.Username); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("username", "body", string(*m.Username), 6); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("username", "body", string(*m.Username), 64); err != nil {
+		return err
+	}
+
+	if err := validate.Pattern("username", "body", string(*m.Username), `[a-z0-9]{6,64}`); err != nil {
 		return err
 	}
 

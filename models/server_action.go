@@ -6,10 +6,13 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // ServerAction server action
@@ -22,7 +25,10 @@ type ServerAction struct {
 	// Name for server action.
 	Name string `json:"name,omitempty"`
 
-	// Operation of server action.
+	// 'Manage server state. Starting a server changes state from Starting to
+	// Running. Terminating a server changes state from Running to Terminated.
+	// If the action results in Error, status will change to Error.'
+	//
 	Operation string `json:"operation,omitempty"`
 }
 
@@ -30,9 +36,55 @@ type ServerAction struct {
 func (m *ServerAction) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateOperation(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+var serverActionTypeOperationPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["start","terminate"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		serverActionTypeOperationPropEnum = append(serverActionTypeOperationPropEnum, v)
+	}
+}
+
+const (
+	// ServerActionOperationStart captures enum value "start"
+	ServerActionOperationStart string = "start"
+	// ServerActionOperationTerminate captures enum value "terminate"
+	ServerActionOperationTerminate string = "terminate"
+)
+
+// prop value enum
+func (m *ServerAction) validateOperationEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, serverActionTypeOperationPropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *ServerAction) validateOperation(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Operation) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateOperationEnum("operation", "body", m.Operation); err != nil {
+		return err
+	}
+
 	return nil
 }
 

@@ -64,8 +64,8 @@ for the projects collaborators update operation typically these are written to a
 */
 type ProjectsCollaboratorsUpdateParams struct {
 
-	/*Data*/
-	Data *models.CollaboratorError
+	/*CollaboratorData*/
+	CollaboratorData *models.CollaboratorError
 	/*ID*/
 	ID string
 	/*Namespace
@@ -114,15 +114,15 @@ func (o *ProjectsCollaboratorsUpdateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the projects collaborators update params
-func (o *ProjectsCollaboratorsUpdateParams) WithData(data *models.CollaboratorError) *ProjectsCollaboratorsUpdateParams {
-	o.SetData(data)
+// WithCollaboratorData adds the collaboratorData to the projects collaborators update params
+func (o *ProjectsCollaboratorsUpdateParams) WithCollaboratorData(collaboratorData *models.CollaboratorError) *ProjectsCollaboratorsUpdateParams {
+	o.SetCollaboratorData(collaboratorData)
 	return o
 }
 
-// SetData adds the data to the projects collaborators update params
-func (o *ProjectsCollaboratorsUpdateParams) SetData(data *models.CollaboratorError) {
-	o.Data = data
+// SetCollaboratorData adds the collaboratorData to the projects collaborators update params
+func (o *ProjectsCollaboratorsUpdateParams) SetCollaboratorData(collaboratorData *models.CollaboratorError) {
+	o.CollaboratorData = collaboratorData
 }
 
 // WithID adds the id to the projects collaborators update params
@@ -166,11 +166,11 @@ func (o *ProjectsCollaboratorsUpdateParams) WriteToRequest(r runtime.ClientReque
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.CollaboratorError)
+	if o.CollaboratorData == nil {
+		o.CollaboratorData = new(models.CollaboratorError)
 	}
 
-	if err := r.SetBodyParam(o.Data); err != nil {
+	if err := r.SetBodyParam(o.CollaboratorData); err != nil {
 		return err
 	}
 

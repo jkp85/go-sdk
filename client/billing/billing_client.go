@@ -67,7 +67,7 @@ func (a *Client) BillingCardsDelete(params *BillingCardsDeleteParams, authInfo r
 		Method:             "DELETE",
 		PathPattern:        "/v1/{namespace}/billing/cards/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &BillingCardsDeleteReader{formats: a.formats},
@@ -96,7 +96,7 @@ func (a *Client) BillingCardsList(params *BillingCardsListParams, authInfo runti
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/billing/cards/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &BillingCardsListReader{formats: a.formats},
@@ -125,7 +125,7 @@ func (a *Client) BillingCardsRead(params *BillingCardsReadParams, authInfo runti
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/billing/cards/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &BillingCardsReadReader{formats: a.formats},
@@ -199,180 +199,6 @@ func (a *Client) BillingCardsUpdate(params *BillingCardsUpdateParams, authInfo r
 }
 
 /*
-BillingCustomersCreate creates new customer
-*/
-func (a *Client) BillingCustomersCreate(params *BillingCustomersCreateParams, authInfo runtime.ClientAuthInfoWriter) (*BillingCustomersCreateCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewBillingCustomersCreateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "billing_customers_create",
-		Method:             "POST",
-		PathPattern:        "/v1/{namespace}/billing/customers/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &BillingCustomersCreateReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*BillingCustomersCreateCreated), nil
-
-}
-
-/*
-BillingCustomersDelete deletes a customer
-*/
-func (a *Client) BillingCustomersDelete(params *BillingCustomersDeleteParams, authInfo runtime.ClientAuthInfoWriter) (*BillingCustomersDeleteNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewBillingCustomersDeleteParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "billing_customers_delete",
-		Method:             "DELETE",
-		PathPattern:        "/v1/{namespace}/billing/customers/{id}/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &BillingCustomersDeleteReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*BillingCustomersDeleteNoContent), nil
-
-}
-
-/*
-BillingCustomersList gets customers
-*/
-func (a *Client) BillingCustomersList(params *BillingCustomersListParams, authInfo runtime.ClientAuthInfoWriter) (*BillingCustomersListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewBillingCustomersListParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "billing_customers_list",
-		Method:             "GET",
-		PathPattern:        "/v1/{namespace}/billing/customers/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &BillingCustomersListReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*BillingCustomersListOK), nil
-
-}
-
-/*
-BillingCustomersRead gets a customer
-*/
-func (a *Client) BillingCustomersRead(params *BillingCustomersReadParams, authInfo runtime.ClientAuthInfoWriter) (*BillingCustomersReadOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewBillingCustomersReadParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "billing_customers_read",
-		Method:             "GET",
-		PathPattern:        "/v1/{namespace}/billing/customers/{id}/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &BillingCustomersReadReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*BillingCustomersReadOK), nil
-
-}
-
-/*
-BillingCustomersReplace replaces a customer
-*/
-func (a *Client) BillingCustomersReplace(params *BillingCustomersReplaceParams, authInfo runtime.ClientAuthInfoWriter) (*BillingCustomersReplaceOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewBillingCustomersReplaceParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "billing_customers_replace",
-		Method:             "PUT",
-		PathPattern:        "/v1/{namespace}/billing/customers/{id}/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &BillingCustomersReplaceReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*BillingCustomersReplaceOK), nil
-
-}
-
-/*
-BillingCustomersUpdate updates a customer
-*/
-func (a *Client) BillingCustomersUpdate(params *BillingCustomersUpdateParams, authInfo runtime.ClientAuthInfoWriter) (*BillingCustomersUpdateOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewBillingCustomersUpdateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "billing_customers_update",
-		Method:             "PATCH",
-		PathPattern:        "/v1/{namespace}/billing/customers/{id}/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &BillingCustomersUpdateReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*BillingCustomersUpdateOK), nil
-
-}
-
-/*
 BillingInvoicesList gets invoices
 */
 func (a *Client) BillingInvoicesList(params *BillingInvoicesListParams, authInfo runtime.ClientAuthInfoWriter) (*BillingInvoicesListOK, error) {
@@ -386,7 +212,7 @@ func (a *Client) BillingInvoicesList(params *BillingInvoicesListParams, authInfo
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/billing/invoices/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &BillingInvoicesListReader{formats: a.formats},
@@ -415,7 +241,7 @@ func (a *Client) BillingInvoicesRead(params *BillingInvoicesReadParams, authInfo
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/billing/invoices/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &BillingInvoicesReadReader{formats: a.formats},
@@ -427,64 +253,6 @@ func (a *Client) BillingInvoicesRead(params *BillingInvoicesReadParams, authInfo
 		return nil, err
 	}
 	return result.(*BillingInvoicesReadOK), nil
-
-}
-
-/*
-BillingPlansCreate creates a billing plan
-*/
-func (a *Client) BillingPlansCreate(params *BillingPlansCreateParams, authInfo runtime.ClientAuthInfoWriter) (*BillingPlansCreateCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewBillingPlansCreateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "billing_plans_create",
-		Method:             "POST",
-		PathPattern:        "/v1/{namespace}/billing/plans/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &BillingPlansCreateReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*BillingPlansCreateCreated), nil
-
-}
-
-/*
-BillingPlansDelete deletes a billing plan
-*/
-func (a *Client) BillingPlansDelete(params *BillingPlansDeleteParams, authInfo runtime.ClientAuthInfoWriter) (*BillingPlansDeleteNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewBillingPlansDeleteParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "billing_plans_delete",
-		Method:             "DELETE",
-		PathPattern:        "/v1/{namespace}/billing/plans/{id}/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &BillingPlansDeleteReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*BillingPlansDeleteNoContent), nil
 
 }
 
@@ -502,7 +270,7 @@ func (a *Client) BillingPlansList(params *BillingPlansListParams, authInfo runti
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/billing/plans/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &BillingPlansListReader{formats: a.formats},
@@ -531,7 +299,7 @@ func (a *Client) BillingPlansRead(params *BillingPlansReadParams, authInfo runti
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/billing/plans/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &BillingPlansReadReader{formats: a.formats},
@@ -543,122 +311,6 @@ func (a *Client) BillingPlansRead(params *BillingPlansReadParams, authInfo runti
 		return nil, err
 	}
 	return result.(*BillingPlansReadOK), nil
-
-}
-
-/*
-BillingPlansReplace replaces a billing plan
-*/
-func (a *Client) BillingPlansReplace(params *BillingPlansReplaceParams, authInfo runtime.ClientAuthInfoWriter) (*BillingPlansReplaceOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewBillingPlansReplaceParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "billing_plans_replace",
-		Method:             "PUT",
-		PathPattern:        "/v1/{namespace}/billing/plans/{id}/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &BillingPlansReplaceReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*BillingPlansReplaceOK), nil
-
-}
-
-/*
-BillingPlansUpdate updates a billing plan
-*/
-func (a *Client) BillingPlansUpdate(params *BillingPlansUpdateParams, authInfo runtime.ClientAuthInfoWriter) (*BillingPlansUpdateOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewBillingPlansUpdateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "billing_plans_update",
-		Method:             "PATCH",
-		PathPattern:        "/v1/{namespace}/billing/plans/{id}/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &BillingPlansUpdateReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*BillingPlansUpdateOK), nil
-
-}
-
-/*
-BillingSubscriptionRequiredCreate requires subscription for an account
-*/
-func (a *Client) BillingSubscriptionRequiredCreate(params *BillingSubscriptionRequiredCreateParams, authInfo runtime.ClientAuthInfoWriter) (*BillingSubscriptionRequiredCreateCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewBillingSubscriptionRequiredCreateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "billing_subscription_required_create",
-		Method:             "POST",
-		PathPattern:        "/v1/{namespace}/billing/subscription_required/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &BillingSubscriptionRequiredCreateReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*BillingSubscriptionRequiredCreateCreated), nil
-
-}
-
-/*
-BillingSubscriptionRequiredList gets subscription required
-*/
-func (a *Client) BillingSubscriptionRequiredList(params *BillingSubscriptionRequiredListParams, authInfo runtime.ClientAuthInfoWriter) (*BillingSubscriptionRequiredListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewBillingSubscriptionRequiredListParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "billing_subscription_required_list",
-		Method:             "GET",
-		PathPattern:        "/v1/{namespace}/billing/subscription_required/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &BillingSubscriptionRequiredListReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*BillingSubscriptionRequiredListOK), nil
 
 }
 
@@ -705,7 +357,7 @@ func (a *Client) BillingSubscriptionsDelete(params *BillingSubscriptionsDeletePa
 		Method:             "DELETE",
 		PathPattern:        "/v1/{namespace}/billing/subscriptions/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &BillingSubscriptionsDeleteReader{formats: a.formats},
@@ -721,7 +373,7 @@ func (a *Client) BillingSubscriptionsDelete(params *BillingSubscriptionsDeletePa
 }
 
 /*
-BillingSubscriptionsList gets valid subscriptons
+BillingSubscriptionsList gets active subscriptons
 */
 func (a *Client) BillingSubscriptionsList(params *BillingSubscriptionsListParams, authInfo runtime.ClientAuthInfoWriter) (*BillingSubscriptionsListOK, error) {
 	// TODO: Validate the params before sending
@@ -734,7 +386,7 @@ func (a *Client) BillingSubscriptionsList(params *BillingSubscriptionsListParams
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/billing/subscriptions/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &BillingSubscriptionsListReader{formats: a.formats},
@@ -763,7 +415,7 @@ func (a *Client) BillingSubscriptionsRead(params *BillingSubscriptionsReadParams
 		Method:             "GET",
 		PathPattern:        "/v1/{namespace}/billing/subscriptions/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &BillingSubscriptionsReadReader{formats: a.formats},
@@ -775,64 +427,6 @@ func (a *Client) BillingSubscriptionsRead(params *BillingSubscriptionsReadParams
 		return nil, err
 	}
 	return result.(*BillingSubscriptionsReadOK), nil
-
-}
-
-/*
-BillingSubscriptionsReplace replaces a subscription
-*/
-func (a *Client) BillingSubscriptionsReplace(params *BillingSubscriptionsReplaceParams, authInfo runtime.ClientAuthInfoWriter) (*BillingSubscriptionsReplaceOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewBillingSubscriptionsReplaceParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "billing_subscriptions_replace",
-		Method:             "PUT",
-		PathPattern:        "/v1/{namespace}/billing/subscriptions/{id}/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &BillingSubscriptionsReplaceReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*BillingSubscriptionsReplaceOK), nil
-
-}
-
-/*
-BillingSubscriptionsUpdate updates a subscription
-*/
-func (a *Client) BillingSubscriptionsUpdate(params *BillingSubscriptionsUpdateParams, authInfo runtime.ClientAuthInfoWriter) (*BillingSubscriptionsUpdateOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewBillingSubscriptionsUpdateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "billing_subscriptions_update",
-		Method:             "PATCH",
-		PathPattern:        "/v1/{namespace}/billing/subscriptions/{id}/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &BillingSubscriptionsUpdateReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*BillingSubscriptionsUpdateOK), nil
 
 }
 

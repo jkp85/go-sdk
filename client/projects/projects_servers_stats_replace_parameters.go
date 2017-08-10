@@ -64,8 +64,6 @@ for the projects servers stats replace operation typically these are written to 
 */
 type ProjectsServersStatsReplaceParams struct {
 
-	/*Data*/
-	Data *models.ServerStatisticsData
 	/*ID
 	  Server statistics unique identifier expressed as UUID.
 
@@ -86,6 +84,8 @@ type ProjectsServersStatsReplaceParams struct {
 
 	*/
 	ServerID string
+	/*ServerstatsData*/
+	ServerstatsData *models.ServerStatisticsData
 
 	timeout    time.Duration
 	Context    context.Context
@@ -123,17 +123,6 @@ func (o *ProjectsServersStatsReplaceParams) WithHTTPClient(client *http.Client) 
 // SetHTTPClient adds the HTTPClient to the projects servers stats replace params
 func (o *ProjectsServersStatsReplaceParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
-}
-
-// WithData adds the data to the projects servers stats replace params
-func (o *ProjectsServersStatsReplaceParams) WithData(data *models.ServerStatisticsData) *ProjectsServersStatsReplaceParams {
-	o.SetData(data)
-	return o
-}
-
-// SetData adds the data to the projects servers stats replace params
-func (o *ProjectsServersStatsReplaceParams) SetData(data *models.ServerStatisticsData) {
-	o.Data = data
 }
 
 // WithID adds the id to the projects servers stats replace params
@@ -180,6 +169,17 @@ func (o *ProjectsServersStatsReplaceParams) SetServerID(serverID string) {
 	o.ServerID = serverID
 }
 
+// WithServerstatsData adds the serverstatsData to the projects servers stats replace params
+func (o *ProjectsServersStatsReplaceParams) WithServerstatsData(serverstatsData *models.ServerStatisticsData) *ProjectsServersStatsReplaceParams {
+	o.SetServerstatsData(serverstatsData)
+	return o
+}
+
+// SetServerstatsData adds the serverstatsData to the projects servers stats replace params
+func (o *ProjectsServersStatsReplaceParams) SetServerstatsData(serverstatsData *models.ServerStatisticsData) {
+	o.ServerstatsData = serverstatsData
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ProjectsServersStatsReplaceParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -187,14 +187,6 @@ func (o *ProjectsServersStatsReplaceParams) WriteToRequest(r runtime.ClientReque
 		return err
 	}
 	var res []error
-
-	if o.Data == nil {
-		o.Data = new(models.ServerStatisticsData)
-	}
-
-	if err := r.SetBodyParam(o.Data); err != nil {
-		return err
-	}
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
@@ -213,6 +205,14 @@ func (o *ProjectsServersStatsReplaceParams) WriteToRequest(r runtime.ClientReque
 
 	// path param server_id
 	if err := r.SetPathParam("server_id", o.ServerID); err != nil {
+		return err
+	}
+
+	if o.ServerstatsData == nil {
+		o.ServerstatsData = new(models.ServerStatisticsData)
+	}
+
+	if err := r.SetBodyParam(o.ServerstatsData); err != nil {
 		return err
 	}
 

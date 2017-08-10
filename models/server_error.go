@@ -28,9 +28,6 @@ type ServerError struct {
 	// endpoint field errors.
 	Endpoint []string `json:"endpoint"`
 
-	// environment_resources field errors.
-	EnvironmentResources []string `json:"environment_resources"`
-
 	// host field errors.
 	Host []string `json:"host"`
 
@@ -48,6 +45,9 @@ type ServerError struct {
 
 	// Errors not connected to any field.
 	NonFieldErrors []string `json:"non_field_errors"`
+
+	// server_size field errors.
+	ServerSize []string `json:"server_size"`
 
 	// startup_script field errors.
 	StartupScript []string `json:"startup_script"`
@@ -83,11 +83,6 @@ func (m *ServerError) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateEnvironmentResources(formats); err != nil {
-		// prop
-		res = append(res, err)
-	}
-
 	if err := m.validateHost(formats); err != nil {
 		// prop
 		res = append(res, err)
@@ -114,6 +109,11 @@ func (m *ServerError) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateNonFieldErrors(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := m.validateServerSize(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
@@ -175,15 +175,6 @@ func (m *ServerError) validateEndpoint(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ServerError) validateEnvironmentResources(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.EnvironmentResources) { // not required
-		return nil
-	}
-
-	return nil
-}
-
 func (m *ServerError) validateHost(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Host) { // not required
@@ -232,6 +223,15 @@ func (m *ServerError) validateName(formats strfmt.Registry) error {
 func (m *ServerError) validateNonFieldErrors(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.NonFieldErrors) { // not required
+		return nil
+	}
+
+	return nil
+}
+
+func (m *ServerError) validateServerSize(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.ServerSize) { // not required
 		return nil
 	}
 
