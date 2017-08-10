@@ -430,64 +430,6 @@ func (a *Client) BillingSubscriptionsRead(params *BillingSubscriptionsReadParams
 
 }
 
-/*
-BillingSubscriptionsReplace replaces a subscription
-*/
-func (a *Client) BillingSubscriptionsReplace(params *BillingSubscriptionsReplaceParams, authInfo runtime.ClientAuthInfoWriter) (*BillingSubscriptionsReplaceOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewBillingSubscriptionsReplaceParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "billing_subscriptions_replace",
-		Method:             "PUT",
-		PathPattern:        "/v1/{namespace}/billing/subscriptions/{id}/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &BillingSubscriptionsReplaceReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*BillingSubscriptionsReplaceOK), nil
-
-}
-
-/*
-BillingSubscriptionsUpdate updates a subscription
-*/
-func (a *Client) BillingSubscriptionsUpdate(params *BillingSubscriptionsUpdateParams, authInfo runtime.ClientAuthInfoWriter) (*BillingSubscriptionsUpdateOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewBillingSubscriptionsUpdateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "billing_subscriptions_update",
-		Method:             "PATCH",
-		PathPattern:        "/v1/{namespace}/billing/subscriptions/{id}/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &BillingSubscriptionsUpdateReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*BillingSubscriptionsUpdateOK), nil
-
-}
-
 // SetTransport changes the transport on the client
 func (a *Client) SetTransport(transport runtime.ClientTransport) {
 	a.transport = transport
