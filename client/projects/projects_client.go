@@ -1372,7 +1372,7 @@ func (a *Client) ServiceTriggerCreate(params *ServiceTriggerCreateParams, authIn
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "service_trigger_create",
 		Method:             "POST",
-		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/",
+		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -1401,7 +1401,7 @@ func (a *Client) ServiceTriggerDelete(params *ServiceTriggerDeleteParams, authIn
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "service_trigger_delete",
 		Method:             "DELETE",
-		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/{id}/",
+		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -1430,7 +1430,7 @@ func (a *Client) ServiceTriggerList(params *ServiceTriggerListParams, authInfo r
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "service_trigger_list",
 		Method:             "GET",
-		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/",
+		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -1459,7 +1459,7 @@ func (a *Client) ServiceTriggerRead(params *ServiceTriggerReadParams, authInfo r
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "service_trigger_read",
 		Method:             "GET",
-		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/{id}/",
+		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -1488,7 +1488,7 @@ func (a *Client) ServiceTriggerReplace(params *ServiceTriggerReplaceParams, auth
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "service_trigger_replace",
 		Method:             "PUT",
-		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/{id}/",
+		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -1517,7 +1517,7 @@ func (a *Client) ServiceTriggerUpdate(params *ServiceTriggerUpdateParams, authIn
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "service_trigger_update",
 		Method:             "PATCH",
-		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/{id}/",
+		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
