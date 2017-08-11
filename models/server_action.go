@@ -30,6 +30,9 @@ type ServerAction struct {
 	// If the action results in Error, status will change to Error.'
 	//
 	Operation string `json:"operation,omitempty"`
+
+	// webhook
+	Webhook *Webhook `json:"webhook,omitempty"`
 }
 
 // Validate validates this server action
@@ -37,6 +40,11 @@ func (m *ServerAction) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateOperation(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
+	if err := m.validateWebhook(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
@@ -83,6 +91,25 @@ func (m *ServerAction) validateOperation(formats strfmt.Registry) error {
 	// value enum
 	if err := m.validateOperationEnum("operation", "body", m.Operation); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *ServerAction) validateWebhook(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Webhook) { // not required
+		return nil
+	}
+
+	if m.Webhook != nil {
+
+		if err := m.Webhook.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("webhook")
+			}
+			return err
+		}
 	}
 
 	return nil

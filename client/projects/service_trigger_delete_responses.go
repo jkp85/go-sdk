@@ -57,7 +57,7 @@ type ServiceTriggerDeleteNoContent struct {
 }
 
 func (o *ServiceTriggerDeleteNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/{id}/][%d] serviceTriggerDeleteNoContent ", 204)
+	return fmt.Sprintf("[DELETE /v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/{id}/][%d] serviceTriggerDeleteNoContent ", 204)
 }
 
 func (o *ServiceTriggerDeleteNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -79,7 +79,7 @@ type ServiceTriggerDeleteNotFound struct {
 }
 
 func (o *ServiceTriggerDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/{id}/][%d] serviceTriggerDeleteNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[DELETE /v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/{id}/][%d] serviceTriggerDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceTriggerDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -18,7 +18,7 @@ import (
 type Webhook struct {
 
 	// Object that represents configuration options for webhook.
-	Config interface{} `json:"config,omitempty"`
+	Payload interface{} `json:"payload,omitempty"`
 
 	// URL for webhook.
 	// Required: true
