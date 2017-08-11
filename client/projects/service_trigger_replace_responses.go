@@ -90,7 +90,7 @@ func NewServiceTriggerReplaceBadRequest() *ServiceTriggerReplaceBadRequest {
 Invalid data supplied.
 */
 type ServiceTriggerReplaceBadRequest struct {
-	Payload *models.TriggerError
+	Payload *models.ServerActionError
 }
 
 func (o *ServiceTriggerReplaceBadRequest) Error() string {
@@ -99,7 +99,7 @@ func (o *ServiceTriggerReplaceBadRequest) Error() string {
 
 func (o *ServiceTriggerReplaceBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.TriggerError)
+	o.Payload = new(models.ServerActionError)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

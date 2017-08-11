@@ -25,9 +25,9 @@ type ServerAction struct {
 	// Name for server action.
 	Name string `json:"name,omitempty"`
 
-	// 'Manage server state. Starting a server changes state from Starting to
+	// Manage server state. Starting a server changes state from Pending to
 	// Running. Terminating a server changes state from Running to Terminated.
-	// If the action results in Error, status will change to Error.'
+	// If the action results in Error, status will change to Error.
 	//
 	Operation string `json:"operation,omitempty"`
 
