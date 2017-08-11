@@ -489,35 +489,6 @@ func (a *Client) UsersRead(params *UsersReadParams, authInfo runtime.ClientAuthI
 }
 
 /*
-UsersReplace replaces a user
-*/
-func (a *Client) UsersReplace(params *UsersReplaceParams, authInfo runtime.ClientAuthInfoWriter) (*UsersReplaceOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUsersReplaceParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "users_replace",
-		Method:             "PUT",
-		PathPattern:        "/v1/users/profiles/{id}/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &UsersReplaceReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*UsersReplaceOK), nil
-
-}
-
-/*
 UsersSSHKeyList retrieves an SSH key
 */
 func (a *Client) UsersSSHKeyList(params *UsersSSHKeyListParams, authInfo runtime.ClientAuthInfoWriter) (*UsersSSHKeyListOK, error) {
