@@ -64,8 +64,8 @@ for the auth register operation typically these are written to a http.Request
 */
 type AuthRegisterParams struct {
 
-	/*Data*/
-	Data *models.UserData
+	/*UserData*/
+	UserData *models.UserData
 
 	timeout    time.Duration
 	Context    context.Context
@@ -105,15 +105,15 @@ func (o *AuthRegisterParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the auth register params
-func (o *AuthRegisterParams) WithData(data *models.UserData) *AuthRegisterParams {
-	o.SetData(data)
+// WithUserData adds the userData to the auth register params
+func (o *AuthRegisterParams) WithUserData(userData *models.UserData) *AuthRegisterParams {
+	o.SetUserData(userData)
 	return o
 }
 
-// SetData adds the data to the auth register params
-func (o *AuthRegisterParams) SetData(data *models.UserData) {
-	o.Data = data
+// SetUserData adds the userData to the auth register params
+func (o *AuthRegisterParams) SetUserData(userData *models.UserData) {
+	o.UserData = userData
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -124,11 +124,11 @@ func (o *AuthRegisterParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.UserData)
+	if o.UserData == nil {
+		o.UserData = new(models.UserData)
 	}
 
-	if err := r.SetBodyParam(o.Data); err != nil {
+	if err := r.SetBodyParam(o.UserData); err != nil {
 		return err
 	}
 

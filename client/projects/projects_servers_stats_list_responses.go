@@ -44,10 +44,10 @@ func NewProjectsServersStatsListOK() *ProjectsServersStatsListOK {
 
 /*ProjectsServersStatsListOK handles this case with default header values.
 
-ServerStatistics list.
+Server statistics.
 */
 type ProjectsServersStatsListOK struct {
-	Payload []*models.ServerStatistics
+	Payload ProjectsServersStatsListOKBody
 }
 
 func (o *ProjectsServersStatsListOK) Error() string {
@@ -63,3 +63,8 @@ func (o *ProjectsServersStatsListOK) readResponse(response runtime.ClientRespons
 
 	return nil
 }
+
+/*ProjectsServersStatsListOKBody projects servers stats list o k body
+swagger:model ProjectsServersStatsListOKBody
+*/
+type ProjectsServersStatsListOKBody []*models.ServerStatistics

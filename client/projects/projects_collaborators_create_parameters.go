@@ -64,8 +64,8 @@ for the projects collaborators create operation typically these are written to a
 */
 type ProjectsCollaboratorsCreateParams struct {
 
-	/*Data*/
-	Data *models.CollaboratorData
+	/*CollaboratorData*/
+	CollaboratorData *models.CollaboratorData
 	/*Namespace
 	  User or team name.
 
@@ -115,15 +115,15 @@ func (o *ProjectsCollaboratorsCreateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the projects collaborators create params
-func (o *ProjectsCollaboratorsCreateParams) WithData(data *models.CollaboratorData) *ProjectsCollaboratorsCreateParams {
-	o.SetData(data)
+// WithCollaboratorData adds the collaboratorData to the projects collaborators create params
+func (o *ProjectsCollaboratorsCreateParams) WithCollaboratorData(collaboratorData *models.CollaboratorData) *ProjectsCollaboratorsCreateParams {
+	o.SetCollaboratorData(collaboratorData)
 	return o
 }
 
-// SetData adds the data to the projects collaborators create params
-func (o *ProjectsCollaboratorsCreateParams) SetData(data *models.CollaboratorData) {
-	o.Data = data
+// SetCollaboratorData adds the collaboratorData to the projects collaborators create params
+func (o *ProjectsCollaboratorsCreateParams) SetCollaboratorData(collaboratorData *models.CollaboratorData) {
+	o.CollaboratorData = collaboratorData
 }
 
 // WithNamespace adds the namespace to the projects collaborators create params
@@ -156,11 +156,11 @@ func (o *ProjectsCollaboratorsCreateParams) WriteToRequest(r runtime.ClientReque
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.CollaboratorData)
+	if o.CollaboratorData == nil {
+		o.CollaboratorData = new(models.CollaboratorData)
 	}
 
-	if err := r.SetBodyParam(o.Data); err != nil {
+	if err := r.SetBodyParam(o.CollaboratorData); err != nil {
 		return err
 	}
 

@@ -17,14 +17,11 @@ import (
 // swagger:model ServerData
 type ServerData struct {
 
-	// Configuration options when launching server.
-	Config interface{} `json:"config,omitempty"`
+	// Server configuration option. Values are jupyter, restful and cron.
+	Config *ServerType `json:"config,omitempty"`
 
 	// Array of other servers the server is connected to.
 	Connected []string `json:"connected"`
-
-	// Environment resources name.
-	EnvironmentResources string `json:"environment_resources,omitempty"`
 
 	// External host IPv4 address or hostname.
 	Host string `json:"host,omitempty"`
@@ -36,6 +33,9 @@ type ServerData struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// Server size unique identifier.
+	ServerSize string `json:"server_size,omitempty"`
+
 	// Startup script to run when launching server.
 	StartupScript string `json:"startup_script,omitempty"`
 }
@@ -43,6 +43,11 @@ type ServerData struct {
 // Validate validates this server data
 func (m *ServerData) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateConfig(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
 
 	if err := m.validateConnected(formats); err != nil {
 		// prop
@@ -57,6 +62,25 @@ func (m *ServerData) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *ServerData) validateConfig(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Config) { // not required
+		return nil
+	}
+
+	if m.Config != nil {
+
+		if err := m.Config.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("config")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 

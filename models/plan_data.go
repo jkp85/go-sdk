@@ -7,6 +7,7 @@ package models
 
 import (
 	"encoding/json"
+	"strconv"
 
 	strfmt "github.com/go-openapi/strfmt"
 
@@ -28,7 +29,7 @@ type PlanData struct {
 
 	// Plan interval.
 	// Required: true
-	Interval *string `json:"interval"`
+	Interval []string `json:"interval"`
 
 	// Number of intervals.
 	// Required: true
@@ -90,7 +91,7 @@ func (m *PlanData) validateAmount(formats strfmt.Registry) error {
 	return nil
 }
 
-var planDataTypeIntervalPropEnum []interface{}
+var planDataIntervalItemsEnum []interface{}
 
 func init() {
 	var res []string
@@ -98,24 +99,12 @@ func init() {
 		panic(err)
 	}
 	for _, v := range res {
-		planDataTypeIntervalPropEnum = append(planDataTypeIntervalPropEnum, v)
+		planDataIntervalItemsEnum = append(planDataIntervalItemsEnum, v)
 	}
 }
 
-const (
-	// PlanDataIntervalDay captures enum value "day"
-	PlanDataIntervalDay string = "day"
-	// PlanDataIntervalWeek captures enum value "week"
-	PlanDataIntervalWeek string = "week"
-	// PlanDataIntervalMonth captures enum value "month"
-	PlanDataIntervalMonth string = "month"
-	// PlanDataIntervalYear captures enum value "year"
-	PlanDataIntervalYear string = "year"
-)
-
-// prop value enum
-func (m *PlanData) validateIntervalEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, planDataTypeIntervalPropEnum); err != nil {
+func (m *PlanData) validateIntervalItemsEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, planDataIntervalItemsEnum); err != nil {
 		return err
 	}
 	return nil
@@ -127,9 +116,13 @@ func (m *PlanData) validateInterval(formats strfmt.Registry) error {
 		return err
 	}
 
-	// value enum
-	if err := m.validateIntervalEnum("interval", "body", *m.Interval); err != nil {
-		return err
+	for i := 0; i < len(m.Interval); i++ {
+
+		// value enum
+		if err := m.validateIntervalItemsEnum("interval"+"."+strconv.Itoa(i), "body", m.Interval[i]); err != nil {
+			return err
+		}
+
 	}
 
 	return nil

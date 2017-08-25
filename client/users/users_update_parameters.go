@@ -64,13 +64,13 @@ for the users update operation typically these are written to a http.Request
 */
 type UsersUpdateParams struct {
 
-	/*Data*/
-	Data *models.UserData
 	/*ID
 	  User unique identifier expressed as UUID.
 
 	*/
 	ID string
+	/*UserData*/
+	UserData *models.UserData
 
 	timeout    time.Duration
 	Context    context.Context
@@ -110,17 +110,6 @@ func (o *UsersUpdateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the users update params
-func (o *UsersUpdateParams) WithData(data *models.UserData) *UsersUpdateParams {
-	o.SetData(data)
-	return o
-}
-
-// SetData adds the data to the users update params
-func (o *UsersUpdateParams) SetData(data *models.UserData) {
-	o.Data = data
-}
-
 // WithID adds the id to the users update params
 func (o *UsersUpdateParams) WithID(id string) *UsersUpdateParams {
 	o.SetID(id)
@@ -132,6 +121,17 @@ func (o *UsersUpdateParams) SetID(id string) {
 	o.ID = id
 }
 
+// WithUserData adds the userData to the users update params
+func (o *UsersUpdateParams) WithUserData(userData *models.UserData) *UsersUpdateParams {
+	o.SetUserData(userData)
+	return o
+}
+
+// SetUserData adds the userData to the users update params
+func (o *UsersUpdateParams) SetUserData(userData *models.UserData) {
+	o.UserData = userData
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *UsersUpdateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -140,16 +140,16 @@ func (o *UsersUpdateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.UserData)
-	}
-
-	if err := r.SetBodyParam(o.Data); err != nil {
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
+	if o.UserData == nil {
+		o.UserData = new(models.UserData)
+	}
+
+	if err := r.SetBodyParam(o.UserData); err != nil {
 		return err
 	}
 

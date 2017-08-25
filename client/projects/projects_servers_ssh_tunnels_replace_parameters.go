@@ -64,8 +64,6 @@ for the projects servers ssh tunnels replace operation typically these are writt
 */
 type ProjectsServersSSHTunnelsReplaceParams struct {
 
-	/*Data*/
-	Data *models.SSHTunnelData
 	/*ID
 	  SSH tunnel unique identifier expressed as UUID.
 
@@ -86,6 +84,8 @@ type ProjectsServersSSHTunnelsReplaceParams struct {
 
 	*/
 	ServerID string
+	/*SshtunnelData*/
+	SshtunnelData *models.SSHTunnelData
 
 	timeout    time.Duration
 	Context    context.Context
@@ -123,17 +123,6 @@ func (o *ProjectsServersSSHTunnelsReplaceParams) WithHTTPClient(client *http.Cli
 // SetHTTPClient adds the HTTPClient to the projects servers ssh tunnels replace params
 func (o *ProjectsServersSSHTunnelsReplaceParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
-}
-
-// WithData adds the data to the projects servers ssh tunnels replace params
-func (o *ProjectsServersSSHTunnelsReplaceParams) WithData(data *models.SSHTunnelData) *ProjectsServersSSHTunnelsReplaceParams {
-	o.SetData(data)
-	return o
-}
-
-// SetData adds the data to the projects servers ssh tunnels replace params
-func (o *ProjectsServersSSHTunnelsReplaceParams) SetData(data *models.SSHTunnelData) {
-	o.Data = data
 }
 
 // WithID adds the id to the projects servers ssh tunnels replace params
@@ -180,6 +169,17 @@ func (o *ProjectsServersSSHTunnelsReplaceParams) SetServerID(serverID string) {
 	o.ServerID = serverID
 }
 
+// WithSshtunnelData adds the sshtunnelData to the projects servers ssh tunnels replace params
+func (o *ProjectsServersSSHTunnelsReplaceParams) WithSshtunnelData(sshtunnelData *models.SSHTunnelData) *ProjectsServersSSHTunnelsReplaceParams {
+	o.SetSshtunnelData(sshtunnelData)
+	return o
+}
+
+// SetSshtunnelData adds the sshtunnelData to the projects servers ssh tunnels replace params
+func (o *ProjectsServersSSHTunnelsReplaceParams) SetSshtunnelData(sshtunnelData *models.SSHTunnelData) {
+	o.SshtunnelData = sshtunnelData
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ProjectsServersSSHTunnelsReplaceParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -187,14 +187,6 @@ func (o *ProjectsServersSSHTunnelsReplaceParams) WriteToRequest(r runtime.Client
 		return err
 	}
 	var res []error
-
-	if o.Data == nil {
-		o.Data = new(models.SSHTunnelData)
-	}
-
-	if err := r.SetBodyParam(o.Data); err != nil {
-		return err
-	}
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
@@ -213,6 +205,14 @@ func (o *ProjectsServersSSHTunnelsReplaceParams) WriteToRequest(r runtime.Client
 
 	// path param server_id
 	if err := r.SetPathParam("server_id", o.ServerID); err != nil {
+		return err
+	}
+
+	if o.SshtunnelData == nil {
+		o.SshtunnelData = new(models.SSHTunnelData)
+	}
+
+	if err := r.SetBodyParam(o.SshtunnelData); err != nil {
 		return err
 	}
 

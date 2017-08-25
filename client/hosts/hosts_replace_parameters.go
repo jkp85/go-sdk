@@ -64,8 +64,8 @@ for the hosts replace operation typically these are written to a http.Request
 */
 type HostsReplaceParams struct {
 
-	/*Data*/
-	Data *models.DockerHostData
+	/*DockerhostData*/
+	DockerhostData *models.DockerHostData
 	/*ID*/
 	ID string
 	/*Namespace
@@ -112,15 +112,15 @@ func (o *HostsReplaceParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the hosts replace params
-func (o *HostsReplaceParams) WithData(data *models.DockerHostData) *HostsReplaceParams {
-	o.SetData(data)
+// WithDockerhostData adds the dockerhostData to the hosts replace params
+func (o *HostsReplaceParams) WithDockerhostData(dockerhostData *models.DockerHostData) *HostsReplaceParams {
+	o.SetDockerhostData(dockerhostData)
 	return o
 }
 
-// SetData adds the data to the hosts replace params
-func (o *HostsReplaceParams) SetData(data *models.DockerHostData) {
-	o.Data = data
+// SetDockerhostData adds the dockerhostData to the hosts replace params
+func (o *HostsReplaceParams) SetDockerhostData(dockerhostData *models.DockerHostData) {
+	o.DockerhostData = dockerhostData
 }
 
 // WithID adds the id to the hosts replace params
@@ -153,11 +153,11 @@ func (o *HostsReplaceParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.DockerHostData)
+	if o.DockerhostData == nil {
+		o.DockerhostData = new(models.DockerHostData)
 	}
 
-	if err := r.SetBodyParam(o.Data); err != nil {
+	if err := r.SetBodyParam(o.DockerhostData); err != nil {
 		return err
 	}
 

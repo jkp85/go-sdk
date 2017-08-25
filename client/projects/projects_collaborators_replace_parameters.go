@@ -64,8 +64,8 @@ for the projects collaborators replace operation typically these are written to 
 */
 type ProjectsCollaboratorsReplaceParams struct {
 
-	/*Data*/
-	Data *models.CollaboratorData
+	/*CollaboratorData*/
+	CollaboratorData *models.CollaboratorData
 	/*ID
 	  Collaborator unique identifier expressed as UUID.
 
@@ -120,15 +120,15 @@ func (o *ProjectsCollaboratorsReplaceParams) SetHTTPClient(client *http.Client) 
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the projects collaborators replace params
-func (o *ProjectsCollaboratorsReplaceParams) WithData(data *models.CollaboratorData) *ProjectsCollaboratorsReplaceParams {
-	o.SetData(data)
+// WithCollaboratorData adds the collaboratorData to the projects collaborators replace params
+func (o *ProjectsCollaboratorsReplaceParams) WithCollaboratorData(collaboratorData *models.CollaboratorData) *ProjectsCollaboratorsReplaceParams {
+	o.SetCollaboratorData(collaboratorData)
 	return o
 }
 
-// SetData adds the data to the projects collaborators replace params
-func (o *ProjectsCollaboratorsReplaceParams) SetData(data *models.CollaboratorData) {
-	o.Data = data
+// SetCollaboratorData adds the collaboratorData to the projects collaborators replace params
+func (o *ProjectsCollaboratorsReplaceParams) SetCollaboratorData(collaboratorData *models.CollaboratorData) {
+	o.CollaboratorData = collaboratorData
 }
 
 // WithID adds the id to the projects collaborators replace params
@@ -172,11 +172,11 @@ func (o *ProjectsCollaboratorsReplaceParams) WriteToRequest(r runtime.ClientRequ
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.CollaboratorData)
+	if o.CollaboratorData == nil {
+		o.CollaboratorData = new(models.CollaboratorData)
 	}
 
-	if err := r.SetBodyParam(o.Data); err != nil {
+	if err := r.SetBodyParam(o.CollaboratorData); err != nil {
 		return err
 	}
 

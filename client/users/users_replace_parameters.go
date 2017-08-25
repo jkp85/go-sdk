@@ -64,13 +64,13 @@ for the users replace operation typically these are written to a http.Request
 */
 type UsersReplaceParams struct {
 
-	/*Data*/
-	Data *models.UserData
 	/*ID
 	  User unique identifier expressed as UUID.
 
 	*/
 	ID string
+	/*UserData*/
+	UserData *models.UserData
 
 	timeout    time.Duration
 	Context    context.Context
@@ -110,17 +110,6 @@ func (o *UsersReplaceParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the users replace params
-func (o *UsersReplaceParams) WithData(data *models.UserData) *UsersReplaceParams {
-	o.SetData(data)
-	return o
-}
-
-// SetData adds the data to the users replace params
-func (o *UsersReplaceParams) SetData(data *models.UserData) {
-	o.Data = data
-}
-
 // WithID adds the id to the users replace params
 func (o *UsersReplaceParams) WithID(id string) *UsersReplaceParams {
 	o.SetID(id)
@@ -132,6 +121,17 @@ func (o *UsersReplaceParams) SetID(id string) {
 	o.ID = id
 }
 
+// WithUserData adds the userData to the users replace params
+func (o *UsersReplaceParams) WithUserData(userData *models.UserData) *UsersReplaceParams {
+	o.SetUserData(userData)
+	return o
+}
+
+// SetUserData adds the userData to the users replace params
+func (o *UsersReplaceParams) SetUserData(userData *models.UserData) {
+	o.UserData = userData
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *UsersReplaceParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -140,16 +140,16 @@ func (o *UsersReplaceParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.UserData)
-	}
-
-	if err := r.SetBodyParam(o.Data); err != nil {
+	// path param id
+	if err := r.SetPathParam("id", o.ID); err != nil {
 		return err
 	}
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
+	if o.UserData == nil {
+		o.UserData = new(models.UserData)
+	}
+
+	if err := r.SetBodyParam(o.UserData); err != nil {
 		return err
 	}
 

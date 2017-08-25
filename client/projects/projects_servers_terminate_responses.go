@@ -48,7 +48,7 @@ func NewProjectsServersTerminateCreated() *ProjectsServersTerminateCreated {
 
 /*ProjectsServersTerminateCreated handles this case with default header values.
 
-Sercer terminated.
+Server terminated.
 */
 type ProjectsServersTerminateCreated struct {
 }

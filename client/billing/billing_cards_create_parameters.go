@@ -64,8 +64,8 @@ for the billing cards create operation typically these are written to a http.Req
 */
 type BillingCardsCreateParams struct {
 
-	/*Data*/
-	Data *models.CardData
+	/*CardData*/
+	CardData *models.CardData
 	/*Namespace
 	  User or team name.
 
@@ -110,15 +110,15 @@ func (o *BillingCardsCreateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the billing cards create params
-func (o *BillingCardsCreateParams) WithData(data *models.CardData) *BillingCardsCreateParams {
-	o.SetData(data)
+// WithCardData adds the cardData to the billing cards create params
+func (o *BillingCardsCreateParams) WithCardData(cardData *models.CardData) *BillingCardsCreateParams {
+	o.SetCardData(cardData)
 	return o
 }
 
-// SetData adds the data to the billing cards create params
-func (o *BillingCardsCreateParams) SetData(data *models.CardData) {
-	o.Data = data
+// SetCardData adds the cardData to the billing cards create params
+func (o *BillingCardsCreateParams) SetCardData(cardData *models.CardData) {
+	o.CardData = cardData
 }
 
 // WithNamespace adds the namespace to the billing cards create params
@@ -140,11 +140,11 @@ func (o *BillingCardsCreateParams) WriteToRequest(r runtime.ClientRequest, reg s
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.CardData)
+	if o.CardData == nil {
+		o.CardData = new(models.CardData)
 	}
 
-	if err := r.SetBodyParam(o.Data); err != nil {
+	if err := r.SetBodyParam(o.CardData); err != nil {
 		return err
 	}
 

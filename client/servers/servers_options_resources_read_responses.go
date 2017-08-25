@@ -54,16 +54,16 @@ func NewServersOptionsResourcesReadOK() *ServersOptionsResourcesReadOK {
 Environment resource retrieved.
 */
 type ServersOptionsResourcesReadOK struct {
-	Payload *models.EnvironmentResource
+	Payload *models.ServerSize
 }
 
 func (o *ServersOptionsResourcesReadOK) Error() string {
-	return fmt.Sprintf("[GET /v1/{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesReadOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /v1/servers/options/server-size/{id}/][%d] serversOptionsResourcesReadOK  %+v", 200, o.Payload)
 }
 
 func (o *ServersOptionsResourcesReadOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.EnvironmentResource)
+	o.Payload = new(models.ServerSize)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -87,7 +87,7 @@ type ServersOptionsResourcesReadNotFound struct {
 }
 
 func (o *ServersOptionsResourcesReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/{namespace}/servers/options/resources/{id}/][%d] serversOptionsResourcesReadNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /v1/servers/options/server-size/{id}/][%d] serversOptionsResourcesReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServersOptionsResourcesReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

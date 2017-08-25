@@ -25,6 +25,122 @@ type Client struct {
 }
 
 /*
+UserAvatarDelete deletes avatar
+*/
+func (a *Client) UserAvatarDelete(params *UserAvatarDeleteParams, authInfo runtime.ClientAuthInfoWriter) (*UserAvatarDeleteNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUserAvatarDeleteParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "user_avatar_delete",
+		Method:             "DELETE",
+		PathPattern:        "/v1/users/{user_id}/avatar/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UserAvatarDeleteReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*UserAvatarDeleteNoContent), nil
+
+}
+
+/*
+UserAvatarGet retrieves user s avatar
+*/
+func (a *Client) UserAvatarGet(params *UserAvatarGetParams, authInfo runtime.ClientAuthInfoWriter) (*UserAvatarGetOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUserAvatarGetParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "user_avatar_get",
+		Method:             "GET",
+		PathPattern:        "/v1/users/{user_id}/avatar/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UserAvatarGetReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*UserAvatarGetOK), nil
+
+}
+
+/*
+UserAvatarSet adds user avatar
+*/
+func (a *Client) UserAvatarSet(params *UserAvatarSetParams, authInfo runtime.ClientAuthInfoWriter) (*UserAvatarSetCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUserAvatarSetParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "user_avatar_set",
+		Method:             "POST",
+		PathPattern:        "/v1/users/{user_id}/avatar/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UserAvatarSetReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*UserAvatarSetCreated), nil
+
+}
+
+/*
+UserAvatarUpdate updates a project file
+*/
+func (a *Client) UserAvatarUpdate(params *UserAvatarUpdateParams, authInfo runtime.ClientAuthInfoWriter) (*UserAvatarUpdateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUserAvatarUpdateParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "user_avatar_update",
+		Method:             "PATCH",
+		PathPattern:        "/v1/users/{user_id}/avatar/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"multipart/form-data"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UserAvatarUpdateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*UserAvatarUpdateOK), nil
+
+}
+
+/*
 UsersAPIKeyList retrieves account s API key
 */
 func (a *Client) UsersAPIKeyList(params *UsersAPIKeyListParams, authInfo runtime.ClientAuthInfoWriter) (*UsersAPIKeyListOK, error) {
@@ -38,7 +154,7 @@ func (a *Client) UsersAPIKeyList(params *UsersAPIKeyListParams, authInfo runtime
 		Method:             "GET",
 		PathPattern:        "/v1/users/{user_id}/api-key/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &UsersAPIKeyListReader{formats: a.formats},
@@ -67,7 +183,7 @@ func (a *Client) UsersAPIKeyReset(params *UsersAPIKeyResetParams, authInfo runti
 		Method:             "POST",
 		PathPattern:        "/v1/users/{user_id}/api-key/reset/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &UsersAPIKeyResetReader{formats: a.formats},
@@ -125,7 +241,7 @@ func (a *Client) UsersDelete(params *UsersDeleteParams, authInfo runtime.ClientA
 		Method:             "DELETE",
 		PathPattern:        "/v1/users/profiles/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &UsersDeleteReader{formats: a.formats},
@@ -183,7 +299,7 @@ func (a *Client) UsersEmailsDelete(params *UsersEmailsDeleteParams, authInfo run
 		Method:             "DELETE",
 		PathPattern:        "/v1/users/{user_id}/emails/{email_id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &UsersEmailsDeleteReader{formats: a.formats},
@@ -212,7 +328,7 @@ func (a *Client) UsersEmailsList(params *UsersEmailsListParams, authInfo runtime
 		Method:             "GET",
 		PathPattern:        "/v1/users/{user_id}/emails/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &UsersEmailsListReader{formats: a.formats},
@@ -241,7 +357,7 @@ func (a *Client) UsersEmailsRead(params *UsersEmailsReadParams, authInfo runtime
 		Method:             "GET",
 		PathPattern:        "/v1/users/{user_id}/emails/{email_id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &UsersEmailsReadReader{formats: a.formats},
@@ -315,180 +431,6 @@ func (a *Client) UsersEmailsUpdate(params *UsersEmailsUpdateParams, authInfo run
 }
 
 /*
-UsersIntegrationsCreate creates a new integration
-*/
-func (a *Client) UsersIntegrationsCreate(params *UsersIntegrationsCreateParams, authInfo runtime.ClientAuthInfoWriter) (*UsersIntegrationsCreateCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUsersIntegrationsCreateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "users_integrations_create",
-		Method:             "POST",
-		PathPattern:        "/v1/users/{user_id}/integrations/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &UsersIntegrationsCreateReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*UsersIntegrationsCreateCreated), nil
-
-}
-
-/*
-UsersIntegrationsDelete deletes an integration
-*/
-func (a *Client) UsersIntegrationsDelete(params *UsersIntegrationsDeleteParams, authInfo runtime.ClientAuthInfoWriter) (*UsersIntegrationsDeleteNoContent, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUsersIntegrationsDeleteParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "users_integrations_delete",
-		Method:             "DELETE",
-		PathPattern:        "/v1/users/{user_id}/integrations/{id}/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &UsersIntegrationsDeleteReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*UsersIntegrationsDeleteNoContent), nil
-
-}
-
-/*
-UsersIntegrationsList obtains list of integrations
-*/
-func (a *Client) UsersIntegrationsList(params *UsersIntegrationsListParams, authInfo runtime.ClientAuthInfoWriter) (*UsersIntegrationsListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUsersIntegrationsListParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "users_integrations_list",
-		Method:             "GET",
-		PathPattern:        "/v1/users/{user_id}/integrations/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &UsersIntegrationsListReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*UsersIntegrationsListOK), nil
-
-}
-
-/*
-UsersIntegrationsRead gets an integration
-*/
-func (a *Client) UsersIntegrationsRead(params *UsersIntegrationsReadParams, authInfo runtime.ClientAuthInfoWriter) (*UsersIntegrationsReadOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUsersIntegrationsReadParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "users_integrations_read",
-		Method:             "GET",
-		PathPattern:        "/v1/users/{user_id}/integrations/{id}/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &UsersIntegrationsReadReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*UsersIntegrationsReadOK), nil
-
-}
-
-/*
-UsersIntegrationsReplace replaces an integration
-*/
-func (a *Client) UsersIntegrationsReplace(params *UsersIntegrationsReplaceParams, authInfo runtime.ClientAuthInfoWriter) (*UsersIntegrationsReplaceOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUsersIntegrationsReplaceParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "users_integrations_replace",
-		Method:             "PUT",
-		PathPattern:        "/v1/users/{user_id}/integrations/{id}/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &UsersIntegrationsReplaceReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*UsersIntegrationsReplaceOK), nil
-
-}
-
-/*
-UsersIntegrationsUpdate updates an integration
-*/
-func (a *Client) UsersIntegrationsUpdate(params *UsersIntegrationsUpdateParams, authInfo runtime.ClientAuthInfoWriter) (*UsersIntegrationsUpdateOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUsersIntegrationsUpdateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "users_integrations_update",
-		Method:             "PATCH",
-		PathPattern:        "/v1/users/{user_id}/integrations/{id}/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &UsersIntegrationsUpdateReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*UsersIntegrationsUpdateOK), nil
-
-}
-
-/*
 UsersList gets user list
 */
 func (a *Client) UsersList(params *UsersListParams, authInfo runtime.ClientAuthInfoWriter) (*UsersListOK, error) {
@@ -502,7 +444,7 @@ func (a *Client) UsersList(params *UsersListParams, authInfo runtime.ClientAuthI
 		Method:             "GET",
 		PathPattern:        "/v1/users/profiles/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &UsersListReader{formats: a.formats},
@@ -531,7 +473,7 @@ func (a *Client) UsersRead(params *UsersReadParams, authInfo runtime.ClientAuthI
 		Method:             "GET",
 		PathPattern:        "/v1/users/profiles/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &UsersReadReader{formats: a.formats},
@@ -589,7 +531,7 @@ func (a *Client) UsersSSHKeyList(params *UsersSSHKeyListParams, authInfo runtime
 		Method:             "GET",
 		PathPattern:        "/v1/users/{user_id}/ssh-key/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &UsersSSHKeyListReader{formats: a.formats},
@@ -618,7 +560,7 @@ func (a *Client) UsersSSHKeyReset(params *UsersSSHKeyResetParams, authInfo runti
 		Method:             "POST",
 		PathPattern:        "/v1/users/{user_id}/ssh-key/reset/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json", "application/x-www-form-urlencoded", "multipart/form-data"},
+		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &UsersSSHKeyResetReader{formats: a.formats},

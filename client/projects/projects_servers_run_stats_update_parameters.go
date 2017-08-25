@@ -64,8 +64,6 @@ for the projects servers run stats update operation typically these are written 
 */
 type ProjectsServersRunStatsUpdateParams struct {
 
-	/*Data*/
-	Data *models.ServerRunStatisticsData
 	/*ID
 	  Server run statistics unique identifier expressed as UUID.
 
@@ -86,6 +84,8 @@ type ProjectsServersRunStatsUpdateParams struct {
 
 	*/
 	ServerID string
+	/*ServerrunstatsData*/
+	ServerrunstatsData *models.ServerRunStatisticsData
 
 	timeout    time.Duration
 	Context    context.Context
@@ -123,17 +123,6 @@ func (o *ProjectsServersRunStatsUpdateParams) WithHTTPClient(client *http.Client
 // SetHTTPClient adds the HTTPClient to the projects servers run stats update params
 func (o *ProjectsServersRunStatsUpdateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
-}
-
-// WithData adds the data to the projects servers run stats update params
-func (o *ProjectsServersRunStatsUpdateParams) WithData(data *models.ServerRunStatisticsData) *ProjectsServersRunStatsUpdateParams {
-	o.SetData(data)
-	return o
-}
-
-// SetData adds the data to the projects servers run stats update params
-func (o *ProjectsServersRunStatsUpdateParams) SetData(data *models.ServerRunStatisticsData) {
-	o.Data = data
 }
 
 // WithID adds the id to the projects servers run stats update params
@@ -180,6 +169,17 @@ func (o *ProjectsServersRunStatsUpdateParams) SetServerID(serverID string) {
 	o.ServerID = serverID
 }
 
+// WithServerrunstatsData adds the serverrunstatsData to the projects servers run stats update params
+func (o *ProjectsServersRunStatsUpdateParams) WithServerrunstatsData(serverrunstatsData *models.ServerRunStatisticsData) *ProjectsServersRunStatsUpdateParams {
+	o.SetServerrunstatsData(serverrunstatsData)
+	return o
+}
+
+// SetServerrunstatsData adds the serverrunstatsData to the projects servers run stats update params
+func (o *ProjectsServersRunStatsUpdateParams) SetServerrunstatsData(serverrunstatsData *models.ServerRunStatisticsData) {
+	o.ServerrunstatsData = serverrunstatsData
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ProjectsServersRunStatsUpdateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -187,14 +187,6 @@ func (o *ProjectsServersRunStatsUpdateParams) WriteToRequest(r runtime.ClientReq
 		return err
 	}
 	var res []error
-
-	if o.Data == nil {
-		o.Data = new(models.ServerRunStatisticsData)
-	}
-
-	if err := r.SetBodyParam(o.Data); err != nil {
-		return err
-	}
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
@@ -213,6 +205,14 @@ func (o *ProjectsServersRunStatsUpdateParams) WriteToRequest(r runtime.ClientReq
 
 	// path param server_id
 	if err := r.SetPathParam("server_id", o.ServerID); err != nil {
+		return err
+	}
+
+	if o.ServerrunstatsData == nil {
+		o.ServerrunstatsData = new(models.ServerRunStatisticsData)
+	}
+
+	if err := r.SetBodyParam(o.ServerrunstatsData); err != nil {
 		return err
 	}
 

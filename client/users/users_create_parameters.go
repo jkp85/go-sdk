@@ -64,8 +64,8 @@ for the users create operation typically these are written to a http.Request
 */
 type UsersCreateParams struct {
 
-	/*Data*/
-	Data *models.UserData
+	/*UserData*/
+	UserData *models.UserData
 
 	timeout    time.Duration
 	Context    context.Context
@@ -105,15 +105,15 @@ func (o *UsersCreateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithData adds the data to the users create params
-func (o *UsersCreateParams) WithData(data *models.UserData) *UsersCreateParams {
-	o.SetData(data)
+// WithUserData adds the userData to the users create params
+func (o *UsersCreateParams) WithUserData(userData *models.UserData) *UsersCreateParams {
+	o.SetUserData(userData)
 	return o
 }
 
-// SetData adds the data to the users create params
-func (o *UsersCreateParams) SetData(data *models.UserData) {
-	o.Data = data
+// SetUserData adds the userData to the users create params
+func (o *UsersCreateParams) SetUserData(userData *models.UserData) {
+	o.UserData = userData
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -124,11 +124,11 @@ func (o *UsersCreateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 	}
 	var res []error
 
-	if o.Data == nil {
-		o.Data = new(models.UserData)
+	if o.UserData == nil {
+		o.UserData = new(models.UserData)
 	}
 
-	if err := r.SetBodyParam(o.Data); err != nil {
+	if err := r.SetBodyParam(o.UserData); err != nil {
 		return err
 	}
 

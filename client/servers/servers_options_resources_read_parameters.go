@@ -63,15 +63,10 @@ for the servers options resources read operation typically these are written to 
 type ServersOptionsResourcesReadParams struct {
 
 	/*ID
-	  Resource unique identifier expressed as UUID.
+	  Server size unique identifier expressed as UUID.
 
 	*/
 	ID string
-	/*Namespace
-	  User or team name.
-
-	*/
-	Namespace string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -122,17 +117,6 @@ func (o *ServersOptionsResourcesReadParams) SetID(id string) {
 	o.ID = id
 }
 
-// WithNamespace adds the namespace to the servers options resources read params
-func (o *ServersOptionsResourcesReadParams) WithNamespace(namespace string) *ServersOptionsResourcesReadParams {
-	o.SetNamespace(namespace)
-	return o
-}
-
-// SetNamespace adds the namespace to the servers options resources read params
-func (o *ServersOptionsResourcesReadParams) SetNamespace(namespace string) {
-	o.Namespace = namespace
-}
-
 // WriteToRequest writes these params to a swagger request
 func (o *ServersOptionsResourcesReadParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -143,11 +127,6 @@ func (o *ServersOptionsResourcesReadParams) WriteToRequest(r runtime.ClientReque
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
-
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 
