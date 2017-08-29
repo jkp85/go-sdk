@@ -16,9 +16,6 @@ import (
 // swagger:model UserProfileError
 type UserProfileError struct {
 
-	// Avatar field errors.
-	AvatarURL []string `json:"avatar_url"`
-
 	// Bio field errors.
 	Bio []string `json:"bio"`
 
@@ -41,11 +38,6 @@ type UserProfileError struct {
 // Validate validates this user profile error
 func (m *UserProfileError) Validate(formats strfmt.Registry) error {
 	var res []error
-
-	if err := m.validateAvatarURL(formats); err != nil {
-		// prop
-		res = append(res, err)
-	}
 
 	if err := m.validateBio(formats); err != nil {
 		// prop
@@ -80,15 +72,6 @@ func (m *UserProfileError) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *UserProfileError) validateAvatarURL(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.AvatarURL) { // not required
-		return nil
-	}
-
 	return nil
 }
 

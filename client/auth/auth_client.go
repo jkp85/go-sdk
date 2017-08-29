@@ -142,34 +142,6 @@ func (a *Client) AuthRegister(params *AuthRegisterParams) (*AuthRegisterCreated,
 
 }
 
-/*
-AuthSimpleTokenAuth creates simple j w t
-*/
-func (a *Client) AuthSimpleTokenAuth(params *AuthSimpleTokenAuthParams) (*AuthSimpleTokenAuthCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewAuthSimpleTokenAuthParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "auth_simple-token-auth",
-		Method:             "POST",
-		PathPattern:        "/auth/simple-token-auth/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &AuthSimpleTokenAuthReader{formats: a.formats},
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*AuthSimpleTokenAuthCreated), nil
-
-}
-
 // SetTransport changes the transport on the client
 func (a *Client) SetTransport(transport runtime.ClientTransport) {
 	a.transport = transport

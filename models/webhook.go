@@ -10,42 +10,26 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // Webhook webhook
 // swagger:model Webhook
 type Webhook struct {
 
-	// Object that represents configuration options for webhook.
-	Payload interface{} `json:"payload,omitempty"`
+	// JSON with payload and webhook configurations.
+	Payload string `json:"payload,omitempty"`
 
 	// URL for webhook.
-	// Required: true
-	URL *string `json:"url"`
+	URL string `json:"url,omitempty"`
 }
 
 // Validate validates this webhook
 func (m *Webhook) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateURL(formats); err != nil {
-		// prop
-		res = append(res, err)
-	}
-
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *Webhook) validateURL(formats strfmt.Registry) error {
-
-	if err := validate.Required("url", "body", m.URL); err != nil {
-		return err
-	}
-
 	return nil
 }
 

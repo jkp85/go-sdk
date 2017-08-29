@@ -65,7 +65,7 @@ for the projects collaborators update operation typically these are written to a
 type ProjectsCollaboratorsUpdateParams struct {
 
 	/*CollaboratorData*/
-	CollaboratorData *models.CollaboratorError
+	CollaboratorData *models.CollaboratorData
 	/*ID*/
 	ID string
 	/*Namespace
@@ -115,13 +115,13 @@ func (o *ProjectsCollaboratorsUpdateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithCollaboratorData adds the collaboratorData to the projects collaborators update params
-func (o *ProjectsCollaboratorsUpdateParams) WithCollaboratorData(collaboratorData *models.CollaboratorError) *ProjectsCollaboratorsUpdateParams {
+func (o *ProjectsCollaboratorsUpdateParams) WithCollaboratorData(collaboratorData *models.CollaboratorData) *ProjectsCollaboratorsUpdateParams {
 	o.SetCollaboratorData(collaboratorData)
 	return o
 }
 
 // SetCollaboratorData adds the collaboratorData to the projects collaborators update params
-func (o *ProjectsCollaboratorsUpdateParams) SetCollaboratorData(collaboratorData *models.CollaboratorError) {
+func (o *ProjectsCollaboratorsUpdateParams) SetCollaboratorData(collaboratorData *models.CollaboratorData) {
 	o.CollaboratorData = collaboratorData
 }
 
@@ -167,7 +167,7 @@ func (o *ProjectsCollaboratorsUpdateParams) WriteToRequest(r runtime.ClientReque
 	var res []error
 
 	if o.CollaboratorData == nil {
-		o.CollaboratorData = new(models.CollaboratorError)
+		o.CollaboratorData = new(models.CollaboratorData)
 	}
 
 	if err := r.SetBodyParam(o.CollaboratorData); err != nil {

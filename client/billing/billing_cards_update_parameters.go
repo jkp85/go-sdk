@@ -65,7 +65,7 @@ for the billing cards update operation typically these are written to a http.Req
 type BillingCardsUpdateParams struct {
 
 	/*CardData*/
-	CardData *models.CardData
+	CardData *models.CardDataPutandPatch
 	/*ID
 	  Card unique identifier.
 
@@ -116,13 +116,13 @@ func (o *BillingCardsUpdateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithCardData adds the cardData to the billing cards update params
-func (o *BillingCardsUpdateParams) WithCardData(cardData *models.CardData) *BillingCardsUpdateParams {
+func (o *BillingCardsUpdateParams) WithCardData(cardData *models.CardDataPutandPatch) *BillingCardsUpdateParams {
 	o.SetCardData(cardData)
 	return o
 }
 
 // SetCardData adds the cardData to the billing cards update params
-func (o *BillingCardsUpdateParams) SetCardData(cardData *models.CardData) {
+func (o *BillingCardsUpdateParams) SetCardData(cardData *models.CardDataPutandPatch) {
 	o.CardData = cardData
 }
 
@@ -157,7 +157,7 @@ func (o *BillingCardsUpdateParams) WriteToRequest(r runtime.ClientRequest, reg s
 	var res []error
 
 	if o.CardData == nil {
-		o.CardData = new(models.CardData)
+		o.CardData = new(models.CardDataPutandPatch)
 	}
 
 	if err := r.SetBodyParam(o.CardData); err != nil {

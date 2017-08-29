@@ -18,11 +18,7 @@ import (
 type ProjectFile struct {
 
 	// Data sent as string, in base64 format.
-	Base64Data string `json:"base64_data,omitempty"`
-
-	// Complete file endpoint as URL.
-	// Required: true
-	File *string `json:"file"`
+	Content string `json:"content,omitempty"`
 
 	// File unique identifier in UUID format.
 	ID string `json:"id,omitempty"`
@@ -30,22 +26,17 @@ type ProjectFile struct {
 	// File name and extension.
 	Name string `json:"name,omitempty"`
 
+	// File path. Defaults to root (/).
+	Path string `json:"path,omitempty"`
+
 	// Project name where file is located.
 	// Required: true
 	Project *string `json:"project"`
-
-	// Public or private file.
-	Public bool `json:"public,omitempty"`
 }
 
 // Validate validates this project file
 func (m *ProjectFile) Validate(formats strfmt.Registry) error {
 	var res []error
-
-	if err := m.validateFile(formats); err != nil {
-		// prop
-		res = append(res, err)
-	}
 
 	if err := m.validateProject(formats); err != nil {
 		// prop
@@ -55,15 +46,6 @@ func (m *ProjectFile) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *ProjectFile) validateFile(formats strfmt.Registry) error {
-
-	if err := validate.Required("file", "body", m.File); err != nil {
-		return err
-	}
-
 	return nil
 }
 

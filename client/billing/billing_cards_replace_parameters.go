@@ -65,7 +65,7 @@ for the billing cards replace operation typically these are written to a http.Re
 type BillingCardsReplaceParams struct {
 
 	/*CardData*/
-	CardData *models.CardData
+	CardData *models.CardDataPutandPatch
 	/*ID*/
 	ID string
 	/*Namespace
@@ -113,13 +113,13 @@ func (o *BillingCardsReplaceParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithCardData adds the cardData to the billing cards replace params
-func (o *BillingCardsReplaceParams) WithCardData(cardData *models.CardData) *BillingCardsReplaceParams {
+func (o *BillingCardsReplaceParams) WithCardData(cardData *models.CardDataPutandPatch) *BillingCardsReplaceParams {
 	o.SetCardData(cardData)
 	return o
 }
 
 // SetCardData adds the cardData to the billing cards replace params
-func (o *BillingCardsReplaceParams) SetCardData(cardData *models.CardData) {
+func (o *BillingCardsReplaceParams) SetCardData(cardData *models.CardDataPutandPatch) {
 	o.CardData = cardData
 }
 
@@ -154,7 +154,7 @@ func (o *BillingCardsReplaceParams) WriteToRequest(r runtime.ClientRequest, reg 
 	var res []error
 
 	if o.CardData == nil {
-		o.CardData = new(models.CardData)
+		o.CardData = new(models.CardDataPutandPatch)
 	}
 
 	if err := r.SetBodyParam(o.CardData); err != nil {

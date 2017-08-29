@@ -63,7 +63,7 @@ for the projects servers delete operation typically these are written to a http.
 type ProjectsServersDeleteParams struct {
 
 	/*ID
-	  User unique identifier expressed as UUID.
+	  User unique identifier.
 
 	*/
 	ID string
@@ -73,7 +73,7 @@ type ProjectsServersDeleteParams struct {
 	*/
 	Namespace string
 	/*ProjectID
-	  Project unique identifier expressed as UUID.
+	  Project unique identifier.
 
 	*/
 	ProjectID string

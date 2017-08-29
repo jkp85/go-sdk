@@ -63,7 +63,7 @@ for the service trigger read operation typically these are written to a http.Req
 type ServiceTriggerReadParams struct {
 
 	/*ID
-	  Trigger identifier expressed as UUID.
+	  Trigger unique identifier.
 
 	*/
 	ID string

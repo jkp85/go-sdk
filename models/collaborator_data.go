@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -17,16 +19,16 @@ import (
 // swagger:model CollaboratorData
 type CollaboratorData struct {
 
-	// Project member.
+	// Project member username.
 	// Required: true
 	Member *string `json:"member"`
 
-	// Project owner.
+	// Project owner. Defaults to false.
 	Owner bool `json:"owner,omitempty"`
 
 	// Permissions assigned to collaborator.
 	// Required: true
-	Permissions []string `json:"permissions"`
+	Permissions *string `json:"permissions"`
 }
 
 // Validate validates this collaborator data
@@ -58,9 +60,41 @@ func (m *CollaboratorData) validateMember(formats strfmt.Registry) error {
 	return nil
 }
 
+var collaboratorDataTypePermissionsPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["read_project","write_project"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		collaboratorDataTypePermissionsPropEnum = append(collaboratorDataTypePermissionsPropEnum, v)
+	}
+}
+
+const (
+	// CollaboratorDataPermissionsReadProject captures enum value "read_project"
+	CollaboratorDataPermissionsReadProject string = "read_project"
+	// CollaboratorDataPermissionsWriteProject captures enum value "write_project"
+	CollaboratorDataPermissionsWriteProject string = "write_project"
+)
+
+// prop value enum
+func (m *CollaboratorData) validatePermissionsEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, collaboratorDataTypePermissionsPropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (m *CollaboratorData) validatePermissions(formats strfmt.Registry) error {
 
 	if err := validate.Required("permissions", "body", m.Permissions); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validatePermissionsEnum("permissions", "body", *m.Permissions); err != nil {
 		return err
 	}
 

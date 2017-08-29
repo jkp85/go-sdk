@@ -62,8 +62,13 @@ for the projects project files read operation typically these are written to a h
 */
 type ProjectsProjectFilesReadParams struct {
 
+	/*Content
+	  Determines whether or not content is returned as base64. Defaults to false.
+
+	*/
+	Content *string
 	/*ID
-	  File unique identifier expressed as UUID.
+	  File unique identifier.
 
 	*/
 	ID string
@@ -73,7 +78,7 @@ type ProjectsProjectFilesReadParams struct {
 	*/
 	Namespace string
 	/*ProjectID
-	  Project unique identifer expressed as UUID.
+	  Project unique identifer.
 
 	*/
 	ProjectID string
@@ -116,6 +121,17 @@ func (o *ProjectsProjectFilesReadParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithContent adds the content to the projects project files read params
+func (o *ProjectsProjectFilesReadParams) WithContent(content *string) *ProjectsProjectFilesReadParams {
+	o.SetContent(content)
+	return o
+}
+
+// SetContent adds the content to the projects project files read params
+func (o *ProjectsProjectFilesReadParams) SetContent(content *string) {
+	o.Content = content
+}
+
 // WithID adds the id to the projects project files read params
 func (o *ProjectsProjectFilesReadParams) WithID(id string) *ProjectsProjectFilesReadParams {
 	o.SetID(id)
@@ -156,6 +172,22 @@ func (o *ProjectsProjectFilesReadParams) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 	var res []error
+
+	if o.Content != nil {
+
+		// query param content
+		var qrContent string
+		if o.Content != nil {
+			qrContent = *o.Content
+		}
+		qContent := qrContent
+		if qContent != "" {
+			if err := r.SetQueryParam("content", qContent); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	// path param id
 	if err := r.SetPathParam("id", o.ID); err != nil {

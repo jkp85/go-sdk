@@ -15,17 +15,14 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// ServerAction server action
-// swagger:model ServerAction
-type ServerAction struct {
+// ServerActionData server action data
+// swagger:model ServerActionData
+type ServerActionData struct {
 
-	// Server trigger unique identifier.
-	ID string `json:"id,omitempty"`
-
-	// Name for server action.
+	// Name of server action.
 	Name string `json:"name,omitempty"`
 
-	// Manage server state. Starting a server changes state from Pending to Running. Terminating a server changes state from Running to Terminated. If the action results in Error, status will change to Error.
+	// Manage server state. Starting a server changes state from Pending to Running. Terminating a server changes state from Running to Terminated. Stopping a server changes state from Running to Stopped. If the action results in Error, status will change to Error.
 	//
 	Operation string `json:"operation,omitempty"`
 
@@ -33,8 +30,8 @@ type ServerAction struct {
 	Webhook *Webhook `json:"webhook,omitempty"`
 }
 
-// Validate validates this server action
-func (m *ServerAction) Validate(formats strfmt.Registry) error {
+// Validate validates this server action data
+func (m *ServerActionData) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateOperation(formats); err != nil {
@@ -53,7 +50,7 @@ func (m *ServerAction) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var serverActionTypeOperationPropEnum []interface{}
+var serverActionDataTypeOperationPropEnum []interface{}
 
 func init() {
 	var res []string
@@ -61,28 +58,28 @@ func init() {
 		panic(err)
 	}
 	for _, v := range res {
-		serverActionTypeOperationPropEnum = append(serverActionTypeOperationPropEnum, v)
+		serverActionDataTypeOperationPropEnum = append(serverActionDataTypeOperationPropEnum, v)
 	}
 }
 
 const (
-	// ServerActionOperationStart captures enum value "start"
-	ServerActionOperationStart string = "start"
-	// ServerActionOperationStop captures enum value "stop"
-	ServerActionOperationStop string = "stop"
-	// ServerActionOperationTerminate captures enum value "terminate"
-	ServerActionOperationTerminate string = "terminate"
+	// ServerActionDataOperationStart captures enum value "start"
+	ServerActionDataOperationStart string = "start"
+	// ServerActionDataOperationStop captures enum value "stop"
+	ServerActionDataOperationStop string = "stop"
+	// ServerActionDataOperationTerminate captures enum value "terminate"
+	ServerActionDataOperationTerminate string = "terminate"
 )
 
 // prop value enum
-func (m *ServerAction) validateOperationEnum(path, location string, value string) error {
-	if err := validate.Enum(path, location, value, serverActionTypeOperationPropEnum); err != nil {
+func (m *ServerActionData) validateOperationEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, serverActionDataTypeOperationPropEnum); err != nil {
 		return err
 	}
 	return nil
 }
 
-func (m *ServerAction) validateOperation(formats strfmt.Registry) error {
+func (m *ServerActionData) validateOperation(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Operation) { // not required
 		return nil
@@ -96,7 +93,7 @@ func (m *ServerAction) validateOperation(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ServerAction) validateWebhook(formats strfmt.Registry) error {
+func (m *ServerActionData) validateWebhook(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Webhook) { // not required
 		return nil
@@ -116,7 +113,7 @@ func (m *ServerAction) validateWebhook(formats strfmt.Registry) error {
 }
 
 // MarshalBinary interface implementation
-func (m *ServerAction) MarshalBinary() ([]byte, error) {
+func (m *ServerActionData) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -124,8 +121,8 @@ func (m *ServerAction) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *ServerAction) UnmarshalBinary(b []byte) error {
-	var res ServerAction
+func (m *ServerActionData) UnmarshalBinary(b []byte) error {
+	var res ServerActionData
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

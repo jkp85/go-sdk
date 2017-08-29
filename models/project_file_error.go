@@ -17,7 +17,7 @@ import (
 type ProjectFileError struct {
 
 	// base64_data field errors
-	Base64Data []string `json:"base64_data"`
+	Content []string `json:"content"`
 
 	// file field errors
 	File []string `json:"file"`
@@ -31,18 +31,18 @@ type ProjectFileError struct {
 	// Errors not connected to any field
 	NonFieldErrors []string `json:"non_field_errors"`
 
+	// path field errors
+	Path []string `json:"path"`
+
 	// project field errors
 	Project []string `json:"project"`
-
-	// public field errors
-	Public []string `json:"public"`
 }
 
 // Validate validates this project file error
 func (m *ProjectFileError) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateBase64Data(formats); err != nil {
+	if err := m.validateContent(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
@@ -67,12 +67,12 @@ func (m *ProjectFileError) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateProject(formats); err != nil {
+	if err := m.validatePath(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
 
-	if err := m.validatePublic(formats); err != nil {
+	if err := m.validateProject(formats); err != nil {
 		// prop
 		res = append(res, err)
 	}
@@ -83,9 +83,9 @@ func (m *ProjectFileError) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *ProjectFileError) validateBase64Data(formats strfmt.Registry) error {
+func (m *ProjectFileError) validateContent(formats strfmt.Registry) error {
 
-	if swag.IsZero(m.Base64Data) { // not required
+	if swag.IsZero(m.Content) { // not required
 		return nil
 	}
 
@@ -128,18 +128,18 @@ func (m *ProjectFileError) validateNonFieldErrors(formats strfmt.Registry) error
 	return nil
 }
 
-func (m *ProjectFileError) validateProject(formats strfmt.Registry) error {
+func (m *ProjectFileError) validatePath(formats strfmt.Registry) error {
 
-	if swag.IsZero(m.Project) { // not required
+	if swag.IsZero(m.Path) { // not required
 		return nil
 	}
 
 	return nil
 }
 
-func (m *ProjectFileError) validatePublic(formats strfmt.Registry) error {
+func (m *ProjectFileError) validateProject(formats strfmt.Registry) error {
 
-	if swag.IsZero(m.Public) { // not required
+	if swag.IsZero(m.Project) { // not required
 		return nil
 	}
 

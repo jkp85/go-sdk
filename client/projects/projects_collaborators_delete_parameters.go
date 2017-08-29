@@ -63,7 +63,7 @@ for the projects collaborators delete operation typically these are written to a
 type ProjectsCollaboratorsDeleteParams struct {
 
 	/*ID
-	  Collaborator unique identifier expressed as UUID.
+	  Collaborator unique identifier.
 
 	*/
 	ID string
@@ -73,7 +73,7 @@ type ProjectsCollaboratorsDeleteParams struct {
 	*/
 	Namespace string
 	/*ProjectID
-	  Project unique identifier expressed as UUID.
+	  Project unique identifier.
 
 	*/
 	ProjectID string

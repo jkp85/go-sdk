@@ -17,7 +17,7 @@ import (
 // swagger:model SubscriptionData
 type SubscriptionData struct {
 
-	// Subscription plan.
+	// Plan unique identifier.
 	// Required: true
 	Plan *string `json:"plan"`
 }

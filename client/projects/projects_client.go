@@ -489,6 +489,35 @@ func (a *Client) ProjectsReplace(params *ProjectsReplaceParams, authInfo runtime
 }
 
 /*
+ProjectsServersAuth servers api key validation
+*/
+func (a *Client) ProjectsServersAuth(params *ProjectsServersAuthParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsServersAuthOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsServersAuthParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_servers_auth",
+		Method:             "POST",
+		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/auth/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProjectsServersAuthReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsServersAuthOK), nil
+
+}
+
+/*
 ProjectsServersCreate creates a new server
 */
 func (a *Client) ProjectsServersCreate(params *ProjectsServersCreateParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsServersCreateCreated, error) {
@@ -1158,7 +1187,7 @@ func (a *Client) ProjectsServersStop(params *ProjectsServersStopParams, authInfo
 }
 
 /*
-ProjectsServersTerminate deletes a server
+ProjectsServersTerminate terminates a server
 */
 func (a *Client) ProjectsServersTerminate(params *ProjectsServersTerminateParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsServersTerminateCreated, error) {
 	// TODO: Validate the params before sending
