@@ -401,6 +401,35 @@ func (a *Client) BillingSubscriptionsList(params *BillingSubscriptionsListParams
 
 }
 
+/*
+BillingSubscriptionsRead gets a subscriptions
+*/
+func (a *Client) BillingSubscriptionsRead(params *BillingSubscriptionsReadParams, authInfo runtime.ClientAuthInfoWriter) (*BillingSubscriptionsReadOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewBillingSubscriptionsReadParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "billing_subscriptions_read",
+		Method:             "GET",
+		PathPattern:        "/v1/{namespace}/billing/subscriptions/{id}/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &BillingSubscriptionsReadReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*BillingSubscriptionsReadOK), nil
+
+}
+
 // SetTransport changes the transport on the client
 func (a *Client) SetTransport(transport runtime.ClientTransport) {
 	a.transport = transport

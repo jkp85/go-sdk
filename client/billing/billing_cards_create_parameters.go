@@ -65,7 +65,7 @@ for the billing cards create operation typically these are written to a http.Req
 type BillingCardsCreateParams struct {
 
 	/*CardData*/
-	CardData *models.CardData
+	CardData *models.CardDataPost
 	/*Namespace
 	  User or team name.
 
@@ -111,13 +111,13 @@ func (o *BillingCardsCreateParams) SetHTTPClient(client *http.Client) {
 }
 
 // WithCardData adds the cardData to the billing cards create params
-func (o *BillingCardsCreateParams) WithCardData(cardData *models.CardData) *BillingCardsCreateParams {
+func (o *BillingCardsCreateParams) WithCardData(cardData *models.CardDataPost) *BillingCardsCreateParams {
 	o.SetCardData(cardData)
 	return o
 }
 
 // SetCardData adds the cardData to the billing cards create params
-func (o *BillingCardsCreateParams) SetCardData(cardData *models.CardData) {
+func (o *BillingCardsCreateParams) SetCardData(cardData *models.CardDataPost) {
 	o.CardData = cardData
 }
 
@@ -141,7 +141,7 @@ func (o *BillingCardsCreateParams) WriteToRequest(r runtime.ClientRequest, reg s
 	var res []error
 
 	if o.CardData == nil {
-		o.CardData = new(models.CardData)
+		o.CardData = new(models.CardDataPost)
 	}
 
 	if err := r.SetBodyParam(o.CardData); err != nil {

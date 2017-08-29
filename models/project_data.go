@@ -17,9 +17,6 @@ import (
 // swagger:model ProjectData
 type ProjectData struct {
 
-	// Array (list) of project collaborators.
-	Collaborators []string `json:"collaborators"`
-
 	// Project description.
 	Description string `json:"description,omitempty"`
 
@@ -35,11 +32,6 @@ type ProjectData struct {
 func (m *ProjectData) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateCollaborators(formats); err != nil {
-		// prop
-		res = append(res, err)
-	}
-
 	if err := m.validateName(formats); err != nil {
 		// prop
 		res = append(res, err)
@@ -48,15 +40,6 @@ func (m *ProjectData) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *ProjectData) validateCollaborators(formats strfmt.Registry) error {
-
-	if swag.IsZero(m.Collaborators) { // not required
-		return nil
-	}
-
 	return nil
 }
 

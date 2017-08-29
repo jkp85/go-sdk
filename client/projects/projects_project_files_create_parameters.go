@@ -15,7 +15,6 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 )
@@ -70,12 +69,12 @@ type ProjectsProjectFilesCreateParams struct {
 	*/
 	Base64Data *string
 	/*File
-	  File to send, to create new file. Note: this parameter is only used with form data.
+	  File to send, to create new file. This parameter is only used with form data and may include multiple files.
 
 	*/
-	File os.File
+	File *os.File
 	/*Name
-	  File name.
+	  File name. May include path when creating file with base64 field.
 
 	*/
 	Name *string
@@ -84,16 +83,16 @@ type ProjectsProjectFilesCreateParams struct {
 
 	*/
 	Namespace string
+	/*Path
+	  File path. Defaults to (/).
+
+	*/
+	Path *string
 	/*ProjectID
-	  Unique project identifier expressed as UUID.
+	  Project unique identifier.
 
 	*/
 	ProjectID string
-	/*Public
-	  Is project file public or private.
-
-	*/
-	Public *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -145,13 +144,13 @@ func (o *ProjectsProjectFilesCreateParams) SetBase64Data(base64Data *string) {
 }
 
 // WithFile adds the file to the projects project files create params
-func (o *ProjectsProjectFilesCreateParams) WithFile(file os.File) *ProjectsProjectFilesCreateParams {
+func (o *ProjectsProjectFilesCreateParams) WithFile(file *os.File) *ProjectsProjectFilesCreateParams {
 	o.SetFile(file)
 	return o
 }
 
 // SetFile adds the file to the projects project files create params
-func (o *ProjectsProjectFilesCreateParams) SetFile(file os.File) {
+func (o *ProjectsProjectFilesCreateParams) SetFile(file *os.File) {
 	o.File = file
 }
 
@@ -177,6 +176,17 @@ func (o *ProjectsProjectFilesCreateParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
+// WithPath adds the path to the projects project files create params
+func (o *ProjectsProjectFilesCreateParams) WithPath(path *string) *ProjectsProjectFilesCreateParams {
+	o.SetPath(path)
+	return o
+}
+
+// SetPath adds the path to the projects project files create params
+func (o *ProjectsProjectFilesCreateParams) SetPath(path *string) {
+	o.Path = path
+}
+
 // WithProjectID adds the projectID to the projects project files create params
 func (o *ProjectsProjectFilesCreateParams) WithProjectID(projectID string) *ProjectsProjectFilesCreateParams {
 	o.SetProjectID(projectID)
@@ -186,17 +196,6 @@ func (o *ProjectsProjectFilesCreateParams) WithProjectID(projectID string) *Proj
 // SetProjectID adds the projectId to the projects project files create params
 func (o *ProjectsProjectFilesCreateParams) SetProjectID(projectID string) {
 	o.ProjectID = projectID
-}
-
-// WithPublic adds the public to the projects project files create params
-func (o *ProjectsProjectFilesCreateParams) WithPublic(public *bool) *ProjectsProjectFilesCreateParams {
-	o.SetPublic(public)
-	return o
-}
-
-// SetPublic adds the public to the projects project files create params
-func (o *ProjectsProjectFilesCreateParams) SetPublic(public *bool) {
-	o.Public = public
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -223,9 +222,17 @@ func (o *ProjectsProjectFilesCreateParams) WriteToRequest(r runtime.ClientReques
 
 	}
 
-	// form file param file
-	if err := r.SetFileParam("file", &o.File); err != nil {
-		return err
+	if o.File != nil {
+
+		if o.File != nil {
+
+			// form file param file
+			if err := r.SetFileParam("file", o.File); err != nil {
+				return err
+			}
+
+		}
+
 	}
 
 	if o.Name != nil {
@@ -249,25 +256,25 @@ func (o *ProjectsProjectFilesCreateParams) WriteToRequest(r runtime.ClientReques
 		return err
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
-		return err
-	}
+	if o.Path != nil {
 
-	if o.Public != nil {
-
-		// form param public
-		var frPublic bool
-		if o.Public != nil {
-			frPublic = *o.Public
+		// form param path
+		var frPath string
+		if o.Path != nil {
+			frPath = *o.Path
 		}
-		fPublic := swag.FormatBool(frPublic)
-		if fPublic != "" {
-			if err := r.SetFormParam("public", fPublic); err != nil {
+		fPath := frPath
+		if fPath != "" {
+			if err := r.SetFormParam("path", fPath); err != nil {
 				return err
 			}
 		}
 
+	}
+
+	// path param project_id
+	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+		return err
 	}
 
 	if len(res) > 0 {

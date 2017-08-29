@@ -62,6 +62,11 @@ for the projects project files list operation typically these are written to a h
 */
 type ProjectsProjectFilesListParams struct {
 
+	/*Content
+	  Determines whether or not content is returned as base64. Defaults to false.
+
+	*/
+	Content *string
 	/*Filename
 	  Exact file name, relative to the project root. If no such file is found, an empty list will be returned.
 
@@ -129,6 +134,17 @@ func (o *ProjectsProjectFilesListParams) WithHTTPClient(client *http.Client) *Pr
 // SetHTTPClient adds the HTTPClient to the projects project files list params
 func (o *ProjectsProjectFilesListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
+}
+
+// WithContent adds the content to the projects project files list params
+func (o *ProjectsProjectFilesListParams) WithContent(content *string) *ProjectsProjectFilesListParams {
+	o.SetContent(content)
+	return o
+}
+
+// SetContent adds the content to the projects project files list params
+func (o *ProjectsProjectFilesListParams) SetContent(content *string) {
+	o.Content = content
 }
 
 // WithFilename adds the filename to the projects project files list params
@@ -204,6 +220,22 @@ func (o *ProjectsProjectFilesListParams) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 	var res []error
+
+	if o.Content != nil {
+
+		// query param content
+		var qrContent string
+		if o.Content != nil {
+			qrContent = *o.Content
+		}
+		qContent := qrContent
+		if qContent != "" {
+			if err := r.SetQueryParam("content", qContent); err != nil {
+				return err
+			}
+		}
+
+	}
 
 	if o.Filename != nil {
 

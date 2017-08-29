@@ -51,7 +51,7 @@ type ServiceTriggerListOK struct {
 }
 
 func (o *ServiceTriggerListOK) Error() string {
-	return fmt.Sprintf("[GET /v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/][%d] serviceTriggerListOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/][%d] serviceTriggerListOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceTriggerListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

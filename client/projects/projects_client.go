@@ -141,35 +141,6 @@ func (a *Client) ProjectsCollaboratorsRead(params *ProjectsCollaboratorsReadPara
 }
 
 /*
-ProjectsCollaboratorsReplace replaces a project collaborator
-*/
-func (a *Client) ProjectsCollaboratorsReplace(params *ProjectsCollaboratorsReplaceParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsCollaboratorsReplaceOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsCollaboratorsReplaceParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_collaborators_replace",
-		Method:             "PUT",
-		PathPattern:        "/v1/{namespace}/projects/{project_id}/collaborators/{id}/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &ProjectsCollaboratorsReplaceReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsCollaboratorsReplaceOK), nil
-
-}
-
-/*
 ProjectsCollaboratorsUpdate updates project collaborator
 */
 func (a *Client) ProjectsCollaboratorsUpdate(params *ProjectsCollaboratorsUpdateParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsCollaboratorsUpdateOK, error) {
@@ -781,35 +752,6 @@ func (a *Client) ProjectsServersRunStatsDelete(params *ProjectsServersRunStatsDe
 }
 
 /*
-ProjectsServersRunStatsList retrieves server run statistics
-*/
-func (a *Client) ProjectsServersRunStatsList(params *ProjectsServersRunStatsListParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsServersRunStatsListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsServersRunStatsListParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_servers_run-stats_list",
-		Method:             "GET",
-		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/run-stats/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &ProjectsServersRunStatsListReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsServersRunStatsListOK), nil
-
-}
-
-/*
 ProjectsServersRunStatsRead retrieves statistics for a server
 */
 func (a *Client) ProjectsServersRunStatsRead(params *ProjectsServersRunStatsReadParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsServersRunStatsReadOK, error) {
@@ -1100,35 +1042,6 @@ func (a *Client) ProjectsServersStart(params *ProjectsServersStartParams, authIn
 }
 
 /*
-ProjectsServersStatsCreate creates server statistics
-*/
-func (a *Client) ProjectsServersStatsCreate(params *ProjectsServersStatsCreateParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsServersStatsCreateCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsServersStatsCreateParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_servers_stats_create",
-		Method:             "POST",
-		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/stats/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &ProjectsServersStatsCreateReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsServersStatsCreateCreated), nil
-
-}
-
-/*
 ProjectsServersStatsDelete deletes a server s statistics
 */
 func (a *Client) ProjectsServersStatsDelete(params *ProjectsServersStatsDeleteParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsServersStatsDeleteNoContent, error) {
@@ -1154,35 +1067,6 @@ func (a *Client) ProjectsServersStatsDelete(params *ProjectsServersStatsDeletePa
 		return nil, err
 	}
 	return result.(*ProjectsServersStatsDeleteNoContent), nil
-
-}
-
-/*
-ProjectsServersStatsList retrieves server statistics
-*/
-func (a *Client) ProjectsServersStatsList(params *ProjectsServersStatsListParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsServersStatsListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewProjectsServersStatsListParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "projects_servers_stats_list",
-		Method:             "GET",
-		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/stats/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &ProjectsServersStatsListReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*ProjectsServersStatsListOK), nil
 
 }
 
@@ -1303,7 +1187,7 @@ func (a *Client) ProjectsServersStop(params *ProjectsServersStopParams, authInfo
 }
 
 /*
-ProjectsServersTerminate deletes a server
+ProjectsServersTerminate terminates a server
 */
 func (a *Client) ProjectsServersTerminate(params *ProjectsServersTerminateParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsServersTerminateCreated, error) {
 	// TODO: Validate the params before sending
@@ -1401,7 +1285,7 @@ func (a *Client) ServiceTriggerCreate(params *ServiceTriggerCreateParams, authIn
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "service_trigger_create",
 		Method:             "POST",
-		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/",
+		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -1430,7 +1314,7 @@ func (a *Client) ServiceTriggerDelete(params *ServiceTriggerDeleteParams, authIn
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "service_trigger_delete",
 		Method:             "DELETE",
-		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/{id}/",
+		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -1459,7 +1343,7 @@ func (a *Client) ServiceTriggerList(params *ServiceTriggerListParams, authInfo r
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "service_trigger_list",
 		Method:             "GET",
-		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/",
+		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -1488,7 +1372,7 @@ func (a *Client) ServiceTriggerRead(params *ServiceTriggerReadParams, authInfo r
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "service_trigger_read",
 		Method:             "GET",
-		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/{id}/",
+		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -1517,7 +1401,7 @@ func (a *Client) ServiceTriggerReplace(params *ServiceTriggerReplaceParams, auth
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "service_trigger_replace",
 		Method:             "PUT",
-		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/{id}/",
+		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -1546,7 +1430,7 @@ func (a *Client) ServiceTriggerUpdate(params *ServiceTriggerUpdateParams, authIn
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "service_trigger_update",
 		Method:             "PATCH",
-		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/trigger/{id}/",
+		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/{id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},

@@ -65,7 +65,7 @@ for the service trigger replace operation typically these are written to a http.
 type ServiceTriggerReplaceParams struct {
 
 	/*ID
-	  Trigger identifier expressed as UUID.
+	  Trigger unique identifier.
 
 	*/
 	ID string
@@ -80,7 +80,7 @@ type ServiceTriggerReplaceParams struct {
 	*/
 	ProjectID string
 	/*ServerAction*/
-	ServerAction *models.ServerAction
+	ServerAction *models.ServerActionData
 	/*ServerID
 	  Server unique identifier expressed as UUID.
 
@@ -159,13 +159,13 @@ func (o *ServiceTriggerReplaceParams) SetProjectID(projectID string) {
 }
 
 // WithServerAction adds the serverAction to the service trigger replace params
-func (o *ServiceTriggerReplaceParams) WithServerAction(serverAction *models.ServerAction) *ServiceTriggerReplaceParams {
+func (o *ServiceTriggerReplaceParams) WithServerAction(serverAction *models.ServerActionData) *ServiceTriggerReplaceParams {
 	o.SetServerAction(serverAction)
 	return o
 }
 
 // SetServerAction adds the serverAction to the service trigger replace params
-func (o *ServiceTriggerReplaceParams) SetServerAction(serverAction *models.ServerAction) {
+func (o *ServiceTriggerReplaceParams) SetServerAction(serverAction *models.ServerActionData) {
 	o.ServerAction = serverAction
 }
 
@@ -204,7 +204,7 @@ func (o *ServiceTriggerReplaceParams) WriteToRequest(r runtime.ClientRequest, re
 	}
 
 	if o.ServerAction == nil {
-		o.ServerAction = new(models.ServerAction)
+		o.ServerAction = new(models.ServerActionData)
 	}
 
 	if err := r.SetBodyParam(o.ServerAction); err != nil {

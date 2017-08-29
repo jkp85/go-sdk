@@ -67,6 +67,11 @@ type ServiceTriggerListParams struct {
 
 	*/
 	Limit *string
+	/*Name
+	  Trigger name.
+
+	*/
+	Name *string
 	/*Namespace
 	  User or team name.
 
@@ -142,6 +147,17 @@ func (o *ServiceTriggerListParams) SetLimit(limit *string) {
 	o.Limit = limit
 }
 
+// WithName adds the name to the service trigger list params
+func (o *ServiceTriggerListParams) WithName(name *string) *ServiceTriggerListParams {
+	o.SetName(name)
+	return o
+}
+
+// SetName adds the name to the service trigger list params
+func (o *ServiceTriggerListParams) SetName(name *string) {
+	o.Name = name
+}
+
 // WithNamespace adds the namespace to the service trigger list params
 func (o *ServiceTriggerListParams) WithNamespace(namespace string) *ServiceTriggerListParams {
 	o.SetNamespace(namespace)
@@ -215,6 +231,22 @@ func (o *ServiceTriggerListParams) WriteToRequest(r runtime.ClientRequest, reg s
 		qLimit := qrLimit
 		if qLimit != "" {
 			if err := r.SetQueryParam("limit", qLimit); err != nil {
+				return err
+			}
+		}
+
+	}
+
+	if o.Name != nil {
+
+		// query param name
+		var qrName string
+		if o.Name != nil {
+			qrName = *o.Name
+		}
+		qName := qrName
+		if qName != "" {
+			if err := r.SetQueryParam("name", qName); err != nil {
 				return err
 			}
 		}

@@ -63,7 +63,7 @@ for the projects servers terminate operation typically these are written to a ht
 type ProjectsServersTerminateParams struct {
 
 	/*ID
-	  Server identifier expressed as UUID.
+	  Server unique identifier.
 
 	*/
 	ID string
@@ -73,7 +73,7 @@ type ProjectsServersTerminateParams struct {
 	*/
 	Namespace string
 	/*ProjectID
-	  Project identifier expressed as UUID.
+	  Project unique identifier.
 
 	*/
 	ProjectID string

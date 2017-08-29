@@ -63,7 +63,7 @@ for the projects project files delete operation typically these are written to a
 type ProjectsProjectFilesDeleteParams struct {
 
 	/*ID
-	  File unique identifier expressed as UUID.
+	  File unique identifier.
 
 	*/
 	ID string
@@ -73,7 +73,7 @@ type ProjectsProjectFilesDeleteParams struct {
 	*/
 	Namespace string
 	/*ProjectID
-	  Project unique identifier expressed as UUID.
+	  Project unique identifer.
 
 	*/
 	ProjectID string

@@ -78,7 +78,7 @@ type ServiceTriggerCreateParams struct {
 	  Server action.
 
 	*/
-	ServerAction *models.ServerAction
+	ServerAction *models.ServerActionData
 	/*ServerID
 	  Server unique identifier expressed as UUID.
 
@@ -146,13 +146,13 @@ func (o *ServiceTriggerCreateParams) SetProjectID(projectID string) {
 }
 
 // WithServerAction adds the serverAction to the service trigger create params
-func (o *ServiceTriggerCreateParams) WithServerAction(serverAction *models.ServerAction) *ServiceTriggerCreateParams {
+func (o *ServiceTriggerCreateParams) WithServerAction(serverAction *models.ServerActionData) *ServiceTriggerCreateParams {
 	o.SetServerAction(serverAction)
 	return o
 }
 
 // SetServerAction adds the serverAction to the service trigger create params
-func (o *ServiceTriggerCreateParams) SetServerAction(serverAction *models.ServerAction) {
+func (o *ServiceTriggerCreateParams) SetServerAction(serverAction *models.ServerActionData) {
 	o.ServerAction = serverAction
 }
 
@@ -186,7 +186,7 @@ func (o *ServiceTriggerCreateParams) WriteToRequest(r runtime.ClientRequest, reg
 	}
 
 	if o.ServerAction == nil {
-		o.ServerAction = new(models.ServerAction)
+		o.ServerAction = new(models.ServerActionData)
 	}
 
 	if err := r.SetBodyParam(o.ServerAction); err != nil {

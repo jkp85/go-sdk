@@ -15,7 +15,6 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
-	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
 )
@@ -65,22 +64,22 @@ for the projects project files update operation typically these are written to a
 type ProjectsProjectFilesUpdateParams struct {
 
 	/*Base64Data
-	  File encoded as base64.
+	  Fila data, represented as base64.
 
 	*/
 	Base64Data *string
 	/*File
-	  File to patch.
+	  File to send, to create new file. This parameter is only used with form data and may include multiple files.
 
 	*/
 	File *os.File
 	/*ID
-	  File unique identifier expressed as UUID.
+	  File unique identifier.
 
 	*/
 	ID string
 	/*Name
-	  File name.
+	  File name. May include path when creating file with base64 field.
 
 	*/
 	Name *string
@@ -89,16 +88,16 @@ type ProjectsProjectFilesUpdateParams struct {
 
 	*/
 	Namespace string
+	/*Path
+	  File path. Defaults to (/).
+
+	*/
+	Path *string
 	/*ProjectID
-	  Project unique identifier.
+	  Project unique identifer.
 
 	*/
 	ProjectID string
-	/*Public
-	  Is project file public or private.
-
-	*/
-	Public *bool
 
 	timeout    time.Duration
 	Context    context.Context
@@ -193,6 +192,17 @@ func (o *ProjectsProjectFilesUpdateParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
+// WithPath adds the path to the projects project files update params
+func (o *ProjectsProjectFilesUpdateParams) WithPath(path *string) *ProjectsProjectFilesUpdateParams {
+	o.SetPath(path)
+	return o
+}
+
+// SetPath adds the path to the projects project files update params
+func (o *ProjectsProjectFilesUpdateParams) SetPath(path *string) {
+	o.Path = path
+}
+
 // WithProjectID adds the projectID to the projects project files update params
 func (o *ProjectsProjectFilesUpdateParams) WithProjectID(projectID string) *ProjectsProjectFilesUpdateParams {
 	o.SetProjectID(projectID)
@@ -202,17 +212,6 @@ func (o *ProjectsProjectFilesUpdateParams) WithProjectID(projectID string) *Proj
 // SetProjectID adds the projectId to the projects project files update params
 func (o *ProjectsProjectFilesUpdateParams) SetProjectID(projectID string) {
 	o.ProjectID = projectID
-}
-
-// WithPublic adds the public to the projects project files update params
-func (o *ProjectsProjectFilesUpdateParams) WithPublic(public *bool) *ProjectsProjectFilesUpdateParams {
-	o.SetPublic(public)
-	return o
-}
-
-// SetPublic adds the public to the projects project files update params
-func (o *ProjectsProjectFilesUpdateParams) SetPublic(public *bool) {
-	o.Public = public
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -278,25 +277,25 @@ func (o *ProjectsProjectFilesUpdateParams) WriteToRequest(r runtime.ClientReques
 		return err
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
-		return err
-	}
+	if o.Path != nil {
 
-	if o.Public != nil {
-
-		// form param public
-		var frPublic bool
-		if o.Public != nil {
-			frPublic = *o.Public
+		// form param path
+		var frPath string
+		if o.Path != nil {
+			frPath = *o.Path
 		}
-		fPublic := swag.FormatBool(frPublic)
-		if fPublic != "" {
-			if err := r.SetFormParam("public", fPublic); err != nil {
+		fPath := frPath
+		if fPath != "" {
+			if err := r.SetFormParam("path", fPath); err != nil {
 				return err
 			}
 		}
 
+	}
+
+	// path param project_id
+	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+		return err
 	}
 
 	if len(res) > 0 {

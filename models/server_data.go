@@ -18,7 +18,7 @@ import (
 type ServerData struct {
 
 	// Server configuration option. Values are jupyter, restful and cron.
-	Config *ServerType `json:"config,omitempty"`
+	Config *ServerConfig `json:"config,omitempty"`
 
 	// Array of other servers the server is connected to.
 	Connected []string `json:"connected"`
