@@ -62,11 +62,6 @@ for the projects servers auth operation typically these are written to a http.Re
 */
 type ProjectsServersAuthParams struct {
 
-	/*ID
-	  Server unique identifier expressed as UUID.
-
-	*/
-	ID string
 	/*Namespace
 	  User or team name.
 
@@ -77,6 +72,11 @@ type ProjectsServersAuthParams struct {
 
 	*/
 	ProjectID string
+	/*ServerID
+	  Server unique identifier expressed as UUID.
+
+	*/
+	ServerID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -116,17 +116,6 @@ func (o *ProjectsServersAuthParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the projects servers auth params
-func (o *ProjectsServersAuthParams) WithID(id string) *ProjectsServersAuthParams {
-	o.SetID(id)
-	return o
-}
-
-// SetID adds the id to the projects servers auth params
-func (o *ProjectsServersAuthParams) SetID(id string) {
-	o.ID = id
-}
-
 // WithNamespace adds the namespace to the projects servers auth params
 func (o *ProjectsServersAuthParams) WithNamespace(namespace string) *ProjectsServersAuthParams {
 	o.SetNamespace(namespace)
@@ -149,6 +138,17 @@ func (o *ProjectsServersAuthParams) SetProjectID(projectID string) {
 	o.ProjectID = projectID
 }
 
+// WithServerID adds the serverID to the projects servers auth params
+func (o *ProjectsServersAuthParams) WithServerID(serverID string) *ProjectsServersAuthParams {
+	o.SetServerID(serverID)
+	return o
+}
+
+// SetServerID adds the serverId to the projects servers auth params
+func (o *ProjectsServersAuthParams) SetServerID(serverID string) {
+	o.ServerID = serverID
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ProjectsServersAuthParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -157,11 +157,6 @@ func (o *ProjectsServersAuthParams) WriteToRequest(r runtime.ClientRequest, reg 
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
-
 	// path param namespace
 	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
@@ -169,6 +164,11 @@ func (o *ProjectsServersAuthParams) WriteToRequest(r runtime.ClientRequest, reg 
 
 	// path param project_id
 	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+		return err
+	}
+
+	// path param server_id
+	if err := r.SetPathParam("server_id", o.ServerID); err != nil {
 		return err
 	}
 

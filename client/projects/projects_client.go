@@ -529,7 +529,7 @@ func (a *Client) ProjectsServersAuth(params *ProjectsServersAuthParams, authInfo
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "projects_servers_auth",
 		Method:             "POST",
-		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{id}/auth/",
+		PathPattern:        "/v1/{namespace}/projects/{project_id}/servers/{server_id}/auth/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
