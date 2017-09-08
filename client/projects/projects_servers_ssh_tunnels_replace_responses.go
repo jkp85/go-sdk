@@ -58,7 +58,7 @@ type ProjectsServersSSHTunnelsReplaceOK struct {
 }
 
 func (o *ProjectsServersSSHTunnelsReplaceOK) Error() string {
-	return fmt.Sprintf("[PUT /v1/{namespace}/projects/{project_id}/servers/{server_id}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsReplaceOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /v1/{namespace}/projects/{project}/servers/{server}/ssh-tunnels/{tunnel}/][%d] projectsServersSshTunnelsReplaceOK  %+v", 200, o.Payload)
 }
 
 func (o *ProjectsServersSSHTunnelsReplaceOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type ProjectsServersSSHTunnelsReplaceBadRequest struct {
 }
 
 func (o *ProjectsServersSSHTunnelsReplaceBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /v1/{namespace}/projects/{project_id}/servers/{server_id}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsReplaceBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PUT /v1/{namespace}/projects/{project}/servers/{server}/ssh-tunnels/{tunnel}/][%d] projectsServersSshTunnelsReplaceBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsServersSSHTunnelsReplaceBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -51,7 +51,7 @@ type ProjectsServersSSHTunnelsListOK struct {
 }
 
 func (o *ProjectsServersSSHTunnelsListOK) Error() string {
-	return fmt.Sprintf("[GET /v1/{namespace}/projects/{project_id}/servers/{server_id}/ssh-tunnels/][%d] projectsServersSshTunnelsListOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /v1/{namespace}/projects/{project}/servers/{server}/ssh-tunnels/][%d] projectsServersSshTunnelsListOK  %+v", 200, o.Payload)
 }
 
 func (o *ProjectsServersSSHTunnelsListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

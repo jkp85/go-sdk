@@ -64,17 +64,17 @@ for the projects collaborators update operation typically these are written to a
 */
 type ProjectsCollaboratorsUpdateParams struct {
 
+	/*Collaborator*/
+	Collaborator string
 	/*CollaboratorData*/
 	CollaboratorData *models.CollaboratorData
-	/*ID*/
-	ID string
 	/*Namespace
 	  User or team name.
 
 	*/
 	Namespace string
-	/*ProjectID*/
-	ProjectID string
+	/*Project*/
+	Project string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -114,6 +114,17 @@ func (o *ProjectsCollaboratorsUpdateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithCollaborator adds the collaborator to the projects collaborators update params
+func (o *ProjectsCollaboratorsUpdateParams) WithCollaborator(collaborator string) *ProjectsCollaboratorsUpdateParams {
+	o.SetCollaborator(collaborator)
+	return o
+}
+
+// SetCollaborator adds the collaborator to the projects collaborators update params
+func (o *ProjectsCollaboratorsUpdateParams) SetCollaborator(collaborator string) {
+	o.Collaborator = collaborator
+}
+
 // WithCollaboratorData adds the collaboratorData to the projects collaborators update params
 func (o *ProjectsCollaboratorsUpdateParams) WithCollaboratorData(collaboratorData *models.CollaboratorData) *ProjectsCollaboratorsUpdateParams {
 	o.SetCollaboratorData(collaboratorData)
@@ -123,17 +134,6 @@ func (o *ProjectsCollaboratorsUpdateParams) WithCollaboratorData(collaboratorDat
 // SetCollaboratorData adds the collaboratorData to the projects collaborators update params
 func (o *ProjectsCollaboratorsUpdateParams) SetCollaboratorData(collaboratorData *models.CollaboratorData) {
 	o.CollaboratorData = collaboratorData
-}
-
-// WithID adds the id to the projects collaborators update params
-func (o *ProjectsCollaboratorsUpdateParams) WithID(id string) *ProjectsCollaboratorsUpdateParams {
-	o.SetID(id)
-	return o
-}
-
-// SetID adds the id to the projects collaborators update params
-func (o *ProjectsCollaboratorsUpdateParams) SetID(id string) {
-	o.ID = id
 }
 
 // WithNamespace adds the namespace to the projects collaborators update params
@@ -147,15 +147,15 @@ func (o *ProjectsCollaboratorsUpdateParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
-// WithProjectID adds the projectID to the projects collaborators update params
-func (o *ProjectsCollaboratorsUpdateParams) WithProjectID(projectID string) *ProjectsCollaboratorsUpdateParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the projects collaborators update params
+func (o *ProjectsCollaboratorsUpdateParams) WithProject(project string) *ProjectsCollaboratorsUpdateParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the projects collaborators update params
-func (o *ProjectsCollaboratorsUpdateParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the projects collaborators update params
+func (o *ProjectsCollaboratorsUpdateParams) SetProject(project string) {
+	o.Project = project
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -166,6 +166,11 @@ func (o *ProjectsCollaboratorsUpdateParams) WriteToRequest(r runtime.ClientReque
 	}
 	var res []error
 
+	// path param collaborator
+	if err := r.SetPathParam("collaborator", o.Collaborator); err != nil {
+		return err
+	}
+
 	if o.CollaboratorData == nil {
 		o.CollaboratorData = new(models.CollaboratorData)
 	}
@@ -174,18 +179,13 @@ func (o *ProjectsCollaboratorsUpdateParams) WriteToRequest(r runtime.ClientReque
 		return err
 	}
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
-
 	// path param namespace
 	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 

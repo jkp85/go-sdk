@@ -62,21 +62,21 @@ for the projects collaborators read operation typically these are written to a h
 */
 type ProjectsCollaboratorsReadParams struct {
 
-	/*ID
-	  Collaborator unique identifier expressed as UUID.
+	/*Collaborator
+	  Collaborator unique identifier expressed as UUID or name.
 
 	*/
-	ID string
+	Collaborator string
 	/*Namespace
 	  User or team name.
 
 	*/
 	Namespace string
-	/*ProjectID
+	/*Project
 	  Project unique identifier.
 
 	*/
-	ProjectID string
+	Project string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -116,15 +116,15 @@ func (o *ProjectsCollaboratorsReadParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the projects collaborators read params
-func (o *ProjectsCollaboratorsReadParams) WithID(id string) *ProjectsCollaboratorsReadParams {
-	o.SetID(id)
+// WithCollaborator adds the collaborator to the projects collaborators read params
+func (o *ProjectsCollaboratorsReadParams) WithCollaborator(collaborator string) *ProjectsCollaboratorsReadParams {
+	o.SetCollaborator(collaborator)
 	return o
 }
 
-// SetID adds the id to the projects collaborators read params
-func (o *ProjectsCollaboratorsReadParams) SetID(id string) {
-	o.ID = id
+// SetCollaborator adds the collaborator to the projects collaborators read params
+func (o *ProjectsCollaboratorsReadParams) SetCollaborator(collaborator string) {
+	o.Collaborator = collaborator
 }
 
 // WithNamespace adds the namespace to the projects collaborators read params
@@ -138,15 +138,15 @@ func (o *ProjectsCollaboratorsReadParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
-// WithProjectID adds the projectID to the projects collaborators read params
-func (o *ProjectsCollaboratorsReadParams) WithProjectID(projectID string) *ProjectsCollaboratorsReadParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the projects collaborators read params
+func (o *ProjectsCollaboratorsReadParams) WithProject(project string) *ProjectsCollaboratorsReadParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the projects collaborators read params
-func (o *ProjectsCollaboratorsReadParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the projects collaborators read params
+func (o *ProjectsCollaboratorsReadParams) SetProject(project string) {
+	o.Project = project
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -157,8 +157,8 @@ func (o *ProjectsCollaboratorsReadParams) WriteToRequest(r runtime.ClientRequest
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
+	// path param collaborator
+	if err := r.SetPathParam("collaborator", o.Collaborator); err != nil {
 		return err
 	}
 
@@ -167,8 +167,8 @@ func (o *ProjectsCollaboratorsReadParams) WriteToRequest(r runtime.ClientRequest
 		return err
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 

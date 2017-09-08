@@ -47,7 +47,7 @@ type UsersAPIKeyListOK struct {
 }
 
 func (o *UsersAPIKeyListOK) Error() string {
-	return fmt.Sprintf("[GET /v1/users/{user_id}/api-key/][%d] usersApiKeyListOK ", 200)
+	return fmt.Sprintf("[GET /v1/users/{user}/api-key/][%d] usersApiKeyListOK ", 200)
 }
 
 func (o *UsersAPIKeyListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

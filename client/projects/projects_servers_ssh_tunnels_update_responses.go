@@ -65,7 +65,7 @@ type ProjectsServersSSHTunnelsUpdateOK struct {
 }
 
 func (o *ProjectsServersSSHTunnelsUpdateOK) Error() string {
-	return fmt.Sprintf("[PATCH /v1/{namespace}/projects/{project_id}/servers/{server_id}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/{namespace}/projects/{project}/servers/{server}/ssh-tunnels/{tunnel}/][%d] projectsServersSshTunnelsUpdateOK  %+v", 200, o.Payload)
 }
 
 func (o *ProjectsServersSSHTunnelsUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -94,7 +94,7 @@ type ProjectsServersSSHTunnelsUpdateBadRequest struct {
 }
 
 func (o *ProjectsServersSSHTunnelsUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /v1/{namespace}/projects/{project_id}/servers/{server_id}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsUpdateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/{namespace}/projects/{project}/servers/{server}/ssh-tunnels/{tunnel}/][%d] projectsServersSshTunnelsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsServersSSHTunnelsUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -123,7 +123,7 @@ type ProjectsServersSSHTunnelsUpdateNotFound struct {
 }
 
 func (o *ProjectsServersSSHTunnelsUpdateNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /v1/{namespace}/projects/{project_id}/servers/{server_id}/ssh-tunnels/{id}/][%d] projectsServersSshTunnelsUpdateNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/{namespace}/projects/{project}/servers/{server}/ssh-tunnels/{tunnel}/][%d] projectsServersSshTunnelsUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectsServersSSHTunnelsUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

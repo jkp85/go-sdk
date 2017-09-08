@@ -115,7 +115,7 @@ func (a *Client) AuthJwtTokenVerify(params *AuthJwtTokenVerifyParams) (*AuthJwtT
 /*
 AuthRegister registers a user
 
-User register
+User registration requires confirming email address to activate user.
 */
 func (a *Client) AuthRegister(params *AuthRegisterParams) (*AuthRegisterCreated, error) {
 	// TODO: Validate the params before sending
@@ -139,6 +139,35 @@ func (a *Client) AuthRegister(params *AuthRegisterParams) (*AuthRegisterCreated,
 		return nil, err
 	}
 	return result.(*AuthRegisterCreated), nil
+
+}
+
+/*
+OauthLogin oauth login API
+*/
+func (a *Client) OauthLogin(params *OauthLoginParams, authInfo runtime.ClientAuthInfoWriter) error {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewOauthLoginParams()
+	}
+
+	_, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "oauth_login",
+		Method:             "GET",
+		PathPattern:        "/auth/login/{provider}/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &OauthLoginReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return err
+	}
+	return nil
 
 }
 

@@ -62,11 +62,11 @@ for the hosts delete operation typically these are written to a http.Request
 */
 type HostsDeleteParams struct {
 
-	/*ID
+	/*Host
 	  DockerHost unique identifier expressed as UUID.
 
 	*/
-	ID string
+	Host string
 	/*Namespace
 	  User or team name.
 
@@ -111,15 +111,15 @@ func (o *HostsDeleteParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the hosts delete params
-func (o *HostsDeleteParams) WithID(id string) *HostsDeleteParams {
-	o.SetID(id)
+// WithHost adds the host to the hosts delete params
+func (o *HostsDeleteParams) WithHost(host string) *HostsDeleteParams {
+	o.SetHost(host)
 	return o
 }
 
-// SetID adds the id to the hosts delete params
-func (o *HostsDeleteParams) SetID(id string) {
-	o.ID = id
+// SetHost adds the host to the hosts delete params
+func (o *HostsDeleteParams) SetHost(host string) {
+	o.Host = host
 }
 
 // WithNamespace adds the namespace to the hosts delete params
@@ -141,8 +141,8 @@ func (o *HostsDeleteParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
+	// path param host
+	if err := r.SetPathParam("host", o.Host); err != nil {
 		return err
 	}
 

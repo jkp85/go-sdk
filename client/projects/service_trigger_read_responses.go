@@ -58,7 +58,7 @@ type ServiceTriggerReadOK struct {
 }
 
 func (o *ServiceTriggerReadOK) Error() string {
-	return fmt.Sprintf("[GET /v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/{id}/][%d] serviceTriggerReadOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /v1/{namespace}/projects/{project}/servers/{server}/triggers/{trigger}/][%d] serviceTriggerReadOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceTriggerReadOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type ServiceTriggerReadNotFound struct {
 }
 
 func (o *ServiceTriggerReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/{id}/][%d] serviceTriggerReadNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /v1/{namespace}/projects/{project}/servers/{server}/triggers/{trigger}/][%d] serviceTriggerReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceTriggerReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

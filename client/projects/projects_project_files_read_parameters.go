@@ -77,11 +77,11 @@ type ProjectsProjectFilesReadParams struct {
 
 	*/
 	Namespace string
-	/*ProjectID
+	/*Project
 	  Project unique identifer.
 
 	*/
-	ProjectID string
+	Project string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -154,15 +154,15 @@ func (o *ProjectsProjectFilesReadParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
-// WithProjectID adds the projectID to the projects project files read params
-func (o *ProjectsProjectFilesReadParams) WithProjectID(projectID string) *ProjectsProjectFilesReadParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the projects project files read params
+func (o *ProjectsProjectFilesReadParams) WithProject(project string) *ProjectsProjectFilesReadParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the projects project files read params
-func (o *ProjectsProjectFilesReadParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the projects project files read params
+func (o *ProjectsProjectFilesReadParams) SetProject(project string) {
+	o.Project = project
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -199,8 +199,8 @@ func (o *ProjectsProjectFilesReadParams) WriteToRequest(r runtime.ClientRequest,
 		return err
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 

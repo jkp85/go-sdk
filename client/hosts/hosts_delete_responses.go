@@ -57,7 +57,7 @@ type HostsDeleteNoContent struct {
 }
 
 func (o *HostsDeleteNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /v1/{namespace}/hosts/{id}/][%d] hostsDeleteNoContent ", 204)
+	return fmt.Sprintf("[DELETE /v1/{namespace}/hosts/{host}/][%d] hostsDeleteNoContent ", 204)
 }
 
 func (o *HostsDeleteNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -79,7 +79,7 @@ type HostsDeleteNotFound struct {
 }
 
 func (o *HostsDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /v1/{namespace}/hosts/{id}/][%d] hostsDeleteNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[DELETE /v1/{namespace}/hosts/{host}/][%d] hostsDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *HostsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

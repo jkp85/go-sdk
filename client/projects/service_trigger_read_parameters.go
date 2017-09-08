@@ -62,26 +62,26 @@ for the service trigger read operation typically these are written to a http.Req
 */
 type ServiceTriggerReadParams struct {
 
-	/*ID
-	  Trigger unique identifier.
-
-	*/
-	ID string
 	/*Namespace
 	  User or team name.
 
 	*/
 	Namespace string
-	/*ProjectID
-	  Project unique identifier expressed as UUID.
+	/*Project
+	  Project unique identifier expressed as UUID or name.
 
 	*/
-	ProjectID string
-	/*ServerID
-	  Server unique identifier expressed as UUID.
+	Project string
+	/*Server
+	  Server unique identifier expressed as UUID or name.
 
 	*/
-	ServerID string
+	Server string
+	/*Trigger
+	  Trigger unique identifier.
+
+	*/
+	Trigger string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,17 +121,6 @@ func (o *ServiceTriggerReadParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the service trigger read params
-func (o *ServiceTriggerReadParams) WithID(id string) *ServiceTriggerReadParams {
-	o.SetID(id)
-	return o
-}
-
-// SetID adds the id to the service trigger read params
-func (o *ServiceTriggerReadParams) SetID(id string) {
-	o.ID = id
-}
-
 // WithNamespace adds the namespace to the service trigger read params
 func (o *ServiceTriggerReadParams) WithNamespace(namespace string) *ServiceTriggerReadParams {
 	o.SetNamespace(namespace)
@@ -143,26 +132,37 @@ func (o *ServiceTriggerReadParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
-// WithProjectID adds the projectID to the service trigger read params
-func (o *ServiceTriggerReadParams) WithProjectID(projectID string) *ServiceTriggerReadParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the service trigger read params
+func (o *ServiceTriggerReadParams) WithProject(project string) *ServiceTriggerReadParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the service trigger read params
-func (o *ServiceTriggerReadParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the service trigger read params
+func (o *ServiceTriggerReadParams) SetProject(project string) {
+	o.Project = project
 }
 
-// WithServerID adds the serverID to the service trigger read params
-func (o *ServiceTriggerReadParams) WithServerID(serverID string) *ServiceTriggerReadParams {
-	o.SetServerID(serverID)
+// WithServer adds the server to the service trigger read params
+func (o *ServiceTriggerReadParams) WithServer(server string) *ServiceTriggerReadParams {
+	o.SetServer(server)
 	return o
 }
 
-// SetServerID adds the serverId to the service trigger read params
-func (o *ServiceTriggerReadParams) SetServerID(serverID string) {
-	o.ServerID = serverID
+// SetServer adds the server to the service trigger read params
+func (o *ServiceTriggerReadParams) SetServer(server string) {
+	o.Server = server
+}
+
+// WithTrigger adds the trigger to the service trigger read params
+func (o *ServiceTriggerReadParams) WithTrigger(trigger string) *ServiceTriggerReadParams {
+	o.SetTrigger(trigger)
+	return o
+}
+
+// SetTrigger adds the trigger to the service trigger read params
+func (o *ServiceTriggerReadParams) SetTrigger(trigger string) {
+	o.Trigger = trigger
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -173,23 +173,23 @@ func (o *ServiceTriggerReadParams) WriteToRequest(r runtime.ClientRequest, reg s
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
-
 	// path param namespace
 	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 
-	// path param server_id
-	if err := r.SetPathParam("server_id", o.ServerID); err != nil {
+	// path param server
+	if err := r.SetPathParam("server", o.Server); err != nil {
+		return err
+	}
+
+	// path param trigger
+	if err := r.SetPathParam("trigger", o.Trigger); err != nil {
 		return err
 	}
 

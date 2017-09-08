@@ -47,7 +47,7 @@ type UserAvatarGetOK struct {
 }
 
 func (o *UserAvatarGetOK) Error() string {
-	return fmt.Sprintf("[GET /v1/users/{user_id}/avatar/][%d] userAvatarGetOK ", 200)
+	return fmt.Sprintf("[GET /v1/users/{user}/avatar/][%d] userAvatarGetOK ", 200)
 }
 
 func (o *UserAvatarGetOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

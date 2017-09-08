@@ -62,11 +62,11 @@ for the servers options resources read operation typically these are written to 
 */
 type ServersOptionsResourcesReadParams struct {
 
-	/*ID
-	  Server size unique identifier expressed as UUID.
+	/*Size
+	  Server size unique identifier expressed as UUID or name.
 
 	*/
-	ID string
+	Size string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -106,15 +106,15 @@ func (o *ServersOptionsResourcesReadParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the servers options resources read params
-func (o *ServersOptionsResourcesReadParams) WithID(id string) *ServersOptionsResourcesReadParams {
-	o.SetID(id)
+// WithSize adds the size to the servers options resources read params
+func (o *ServersOptionsResourcesReadParams) WithSize(size string) *ServersOptionsResourcesReadParams {
+	o.SetSize(size)
 	return o
 }
 
-// SetID adds the id to the servers options resources read params
-func (o *ServersOptionsResourcesReadParams) SetID(id string) {
-	o.ID = id
+// SetSize adds the size to the servers options resources read params
+func (o *ServersOptionsResourcesReadParams) SetSize(size string) {
+	o.Size = size
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -125,8 +125,8 @@ func (o *ServersOptionsResourcesReadParams) WriteToRequest(r runtime.ClientReque
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
+	// path param size
+	if err := r.SetPathParam("size", o.Size); err != nil {
 		return err
 	}
 

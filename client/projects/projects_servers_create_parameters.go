@@ -69,11 +69,11 @@ type ProjectsServersCreateParams struct {
 
 	*/
 	Namespace string
-	/*ProjectID
-	  Project unique identifer expressed as UUID.
+	/*Project
+	  Project unique identifer expressed as UUID or name.
 
 	*/
-	ProjectID string
+	Project string
 	/*ServerData*/
 	ServerData *models.ServerData
 
@@ -126,15 +126,15 @@ func (o *ProjectsServersCreateParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
-// WithProjectID adds the projectID to the projects servers create params
-func (o *ProjectsServersCreateParams) WithProjectID(projectID string) *ProjectsServersCreateParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the projects servers create params
+func (o *ProjectsServersCreateParams) WithProject(project string) *ProjectsServersCreateParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the projects servers create params
-func (o *ProjectsServersCreateParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the projects servers create params
+func (o *ProjectsServersCreateParams) SetProject(project string) {
+	o.Project = project
 }
 
 // WithServerData adds the serverData to the projects servers create params
@@ -161,8 +161,8 @@ func (o *ProjectsServersCreateParams) WriteToRequest(r runtime.ClientRequest, re
 		return err
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 

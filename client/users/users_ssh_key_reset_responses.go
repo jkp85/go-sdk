@@ -54,7 +54,7 @@ type UsersSSHKeyResetCreated struct {
 }
 
 func (o *UsersSSHKeyResetCreated) Error() string {
-	return fmt.Sprintf("[POST /v1/users/{user_id}/ssh-key/reset/][%d] usersSshKeyResetCreated ", 201)
+	return fmt.Sprintf("[POST /v1/users/{user}/ssh-key/reset/][%d] usersSshKeyResetCreated ", 201)
 }
 
 func (o *UsersSSHKeyResetCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -75,7 +75,7 @@ type UsersSSHKeyResetBadRequest struct {
 }
 
 func (o *UsersSSHKeyResetBadRequest) Error() string {
-	return fmt.Sprintf("[POST /v1/users/{user_id}/ssh-key/reset/][%d] usersSshKeyResetBadRequest ", 400)
+	return fmt.Sprintf("[POST /v1/users/{user}/ssh-key/reset/][%d] usersSshKeyResetBadRequest ", 400)
 }
 
 func (o *UsersSSHKeyResetBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -71,11 +71,11 @@ type UsersEmailsReplaceParams struct {
 
 	*/
 	EmailID string
-	/*UserID
-	  User unique identifier expressed as UUID.
+	/*User
+	  User unique identifier expressed as UUID or username.
 
 	*/
-	UserID string
+	User string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -137,15 +137,15 @@ func (o *UsersEmailsReplaceParams) SetEmailID(emailID string) {
 	o.EmailID = emailID
 }
 
-// WithUserID adds the userID to the users emails replace params
-func (o *UsersEmailsReplaceParams) WithUserID(userID string) *UsersEmailsReplaceParams {
-	o.SetUserID(userID)
+// WithUser adds the user to the users emails replace params
+func (o *UsersEmailsReplaceParams) WithUser(user string) *UsersEmailsReplaceParams {
+	o.SetUser(user)
 	return o
 }
 
-// SetUserID adds the userId to the users emails replace params
-func (o *UsersEmailsReplaceParams) SetUserID(userID string) {
-	o.UserID = userID
+// SetUser adds the user to the users emails replace params
+func (o *UsersEmailsReplaceParams) SetUser(user string) {
+	o.User = user
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -169,8 +169,8 @@ func (o *UsersEmailsReplaceParams) WriteToRequest(r runtime.ClientRequest, reg s
 		return err
 	}
 
-	// path param user_id
-	if err := r.SetPathParam("user_id", o.UserID); err != nil {
+	// path param user
+	if err := r.SetPathParam("user", o.User); err != nil {
 		return err
 	}
 

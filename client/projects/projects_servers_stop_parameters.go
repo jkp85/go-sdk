@@ -62,21 +62,21 @@ for the projects servers stop operation typically these are written to a http.Re
 */
 type ProjectsServersStopParams struct {
 
-	/*ID
-	  Server unique identifier expressed as UUID.
-
-	*/
-	ID string
 	/*Namespace
 	  User or team name.
 
 	*/
 	Namespace string
-	/*ProjectID
-	  Project unique identifier expressed as UUID.
+	/*Project
+	  Project unique identifier expressed as UUID or name.
 
 	*/
-	ProjectID string
+	Project string
+	/*Server
+	  Server unique identifier expressed as UUID or name.
+
+	*/
+	Server string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -116,17 +116,6 @@ func (o *ProjectsServersStopParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the projects servers stop params
-func (o *ProjectsServersStopParams) WithID(id string) *ProjectsServersStopParams {
-	o.SetID(id)
-	return o
-}
-
-// SetID adds the id to the projects servers stop params
-func (o *ProjectsServersStopParams) SetID(id string) {
-	o.ID = id
-}
-
 // WithNamespace adds the namespace to the projects servers stop params
 func (o *ProjectsServersStopParams) WithNamespace(namespace string) *ProjectsServersStopParams {
 	o.SetNamespace(namespace)
@@ -138,15 +127,26 @@ func (o *ProjectsServersStopParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
-// WithProjectID adds the projectID to the projects servers stop params
-func (o *ProjectsServersStopParams) WithProjectID(projectID string) *ProjectsServersStopParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the projects servers stop params
+func (o *ProjectsServersStopParams) WithProject(project string) *ProjectsServersStopParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the projects servers stop params
-func (o *ProjectsServersStopParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the projects servers stop params
+func (o *ProjectsServersStopParams) SetProject(project string) {
+	o.Project = project
+}
+
+// WithServer adds the server to the projects servers stop params
+func (o *ProjectsServersStopParams) WithServer(server string) *ProjectsServersStopParams {
+	o.SetServer(server)
+	return o
+}
+
+// SetServer adds the server to the projects servers stop params
+func (o *ProjectsServersStopParams) SetServer(server string) {
+	o.Server = server
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -157,18 +157,18 @@ func (o *ProjectsServersStopParams) WriteToRequest(r runtime.ClientRequest, reg 
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
-
 	// path param namespace
 	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
+		return err
+	}
+
+	// path param server
+	if err := r.SetPathParam("server", o.Server); err != nil {
 		return err
 	}
 

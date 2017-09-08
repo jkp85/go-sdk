@@ -62,11 +62,11 @@ for the user avatar update operation typically these are written to a http.Reque
 */
 type UserAvatarUpdateParams struct {
 
-	/*UserID
-	  User unique identifier expressed as UUID.
+	/*User
+	  User unique identifier expressed as UUID or username.
 
 	*/
-	UserID string
+	User string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -106,15 +106,15 @@ func (o *UserAvatarUpdateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithUserID adds the userID to the user avatar update params
-func (o *UserAvatarUpdateParams) WithUserID(userID string) *UserAvatarUpdateParams {
-	o.SetUserID(userID)
+// WithUser adds the user to the user avatar update params
+func (o *UserAvatarUpdateParams) WithUser(user string) *UserAvatarUpdateParams {
+	o.SetUser(user)
 	return o
 }
 
-// SetUserID adds the userId to the user avatar update params
-func (o *UserAvatarUpdateParams) SetUserID(userID string) {
-	o.UserID = userID
+// SetUser adds the user to the user avatar update params
+func (o *UserAvatarUpdateParams) SetUser(user string) {
+	o.User = user
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -125,8 +125,8 @@ func (o *UserAvatarUpdateParams) WriteToRequest(r runtime.ClientRequest, reg str
 	}
 	var res []error
 
-	// path param user_id
-	if err := r.SetPathParam("user_id", o.UserID); err != nil {
+	// path param user
+	if err := r.SetPathParam("user", o.User); err != nil {
 		return err
 	}
 

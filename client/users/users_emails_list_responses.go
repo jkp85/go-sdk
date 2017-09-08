@@ -51,7 +51,7 @@ type UsersEmailsListOK struct {
 }
 
 func (o *UsersEmailsListOK) Error() string {
-	return fmt.Sprintf("[GET /v1/users/{user_id}/emails/][%d] usersEmailsListOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /v1/users/{user}/emails/][%d] usersEmailsListOK  %+v", 200, o.Payload)
 }
 
 func (o *UsersEmailsListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

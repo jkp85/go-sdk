@@ -65,7 +65,7 @@ type UsersUpdateOK struct {
 }
 
 func (o *UsersUpdateOK) Error() string {
-	return fmt.Sprintf("[PATCH /v1/users/profiles/{id}/][%d] usersUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/users/profiles/{user}/][%d] usersUpdateOK  %+v", 200, o.Payload)
 }
 
 func (o *UsersUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -94,7 +94,7 @@ type UsersUpdateBadRequest struct {
 }
 
 func (o *UsersUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /v1/users/profiles/{id}/][%d] usersUpdateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/users/profiles/{user}/][%d] usersUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *UsersUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -123,7 +123,7 @@ type UsersUpdateNotFound struct {
 }
 
 func (o *UsersUpdateNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /v1/users/profiles/{id}/][%d] usersUpdateNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/users/profiles/{user}/][%d] usersUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *UsersUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -64,16 +64,16 @@ for the projects replace operation typically these are written to a http.Request
 */
 type ProjectsReplaceParams struct {
 
-	/*ID
-	  Project unique identifier expressed as UUID.
-
-	*/
-	ID string
 	/*Namespace
 	  User or team namespace.
 
 	*/
 	Namespace string
+	/*Project
+	  Project unique identifier expressed as UUID or name.
+
+	*/
+	Project string
 	/*ProjectData*/
 	ProjectData *models.ProjectData
 
@@ -115,17 +115,6 @@ func (o *ProjectsReplaceParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the projects replace params
-func (o *ProjectsReplaceParams) WithID(id string) *ProjectsReplaceParams {
-	o.SetID(id)
-	return o
-}
-
-// SetID adds the id to the projects replace params
-func (o *ProjectsReplaceParams) SetID(id string) {
-	o.ID = id
-}
-
 // WithNamespace adds the namespace to the projects replace params
 func (o *ProjectsReplaceParams) WithNamespace(namespace string) *ProjectsReplaceParams {
 	o.SetNamespace(namespace)
@@ -135,6 +124,17 @@ func (o *ProjectsReplaceParams) WithNamespace(namespace string) *ProjectsReplace
 // SetNamespace adds the namespace to the projects replace params
 func (o *ProjectsReplaceParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
+}
+
+// WithProject adds the project to the projects replace params
+func (o *ProjectsReplaceParams) WithProject(project string) *ProjectsReplaceParams {
+	o.SetProject(project)
+	return o
+}
+
+// SetProject adds the project to the projects replace params
+func (o *ProjectsReplaceParams) SetProject(project string) {
+	o.Project = project
 }
 
 // WithProjectData adds the projectData to the projects replace params
@@ -156,13 +156,13 @@ func (o *ProjectsReplaceParams) WriteToRequest(r runtime.ClientRequest, reg strf
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
+	// path param namespace
+	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 

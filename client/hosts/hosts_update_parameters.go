@@ -66,8 +66,8 @@ type HostsUpdateParams struct {
 
 	/*DockerhostData*/
 	DockerhostData *models.DockerHostData
-	/*ID*/
-	ID string
+	/*Host*/
+	Host string
 	/*Namespace
 	  User or team name.
 
@@ -123,15 +123,15 @@ func (o *HostsUpdateParams) SetDockerhostData(dockerhostData *models.DockerHostD
 	o.DockerhostData = dockerhostData
 }
 
-// WithID adds the id to the hosts update params
-func (o *HostsUpdateParams) WithID(id string) *HostsUpdateParams {
-	o.SetID(id)
+// WithHost adds the host to the hosts update params
+func (o *HostsUpdateParams) WithHost(host string) *HostsUpdateParams {
+	o.SetHost(host)
 	return o
 }
 
-// SetID adds the id to the hosts update params
-func (o *HostsUpdateParams) SetID(id string) {
-	o.ID = id
+// SetHost adds the host to the hosts update params
+func (o *HostsUpdateParams) SetHost(host string) {
+	o.Host = host
 }
 
 // WithNamespace adds the namespace to the hosts update params
@@ -161,8 +161,8 @@ func (o *HostsUpdateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		return err
 	}
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
+	// path param host
+	if err := r.SetPathParam("host", o.Host); err != nil {
 		return err
 	}
 

@@ -62,26 +62,26 @@ for the service trigger delete operation typically these are written to a http.R
 */
 type ServiceTriggerDeleteParams struct {
 
-	/*ID
-	  Trigger identifier expressed as UUID.
-
-	*/
-	ID string
 	/*Namespace
 	  User or team name.
 
 	*/
 	Namespace string
-	/*ProjectID
-	  Project unique identifier expressed as UUID.
+	/*Project
+	  Project unique identifier expressed as UUID or name.
 
 	*/
-	ProjectID string
-	/*ServerID
-	  Server unique identifier expressed as UUID.
+	Project string
+	/*Server
+	  Server unique identifier expressed as UUID or name.
 
 	*/
-	ServerID string
+	Server string
+	/*Trigger
+	  Trigger identifier expressed as UUID or name.
+
+	*/
+	Trigger string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,17 +121,6 @@ func (o *ServiceTriggerDeleteParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the service trigger delete params
-func (o *ServiceTriggerDeleteParams) WithID(id string) *ServiceTriggerDeleteParams {
-	o.SetID(id)
-	return o
-}
-
-// SetID adds the id to the service trigger delete params
-func (o *ServiceTriggerDeleteParams) SetID(id string) {
-	o.ID = id
-}
-
 // WithNamespace adds the namespace to the service trigger delete params
 func (o *ServiceTriggerDeleteParams) WithNamespace(namespace string) *ServiceTriggerDeleteParams {
 	o.SetNamespace(namespace)
@@ -143,26 +132,37 @@ func (o *ServiceTriggerDeleteParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
-// WithProjectID adds the projectID to the service trigger delete params
-func (o *ServiceTriggerDeleteParams) WithProjectID(projectID string) *ServiceTriggerDeleteParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the service trigger delete params
+func (o *ServiceTriggerDeleteParams) WithProject(project string) *ServiceTriggerDeleteParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the service trigger delete params
-func (o *ServiceTriggerDeleteParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the service trigger delete params
+func (o *ServiceTriggerDeleteParams) SetProject(project string) {
+	o.Project = project
 }
 
-// WithServerID adds the serverID to the service trigger delete params
-func (o *ServiceTriggerDeleteParams) WithServerID(serverID string) *ServiceTriggerDeleteParams {
-	o.SetServerID(serverID)
+// WithServer adds the server to the service trigger delete params
+func (o *ServiceTriggerDeleteParams) WithServer(server string) *ServiceTriggerDeleteParams {
+	o.SetServer(server)
 	return o
 }
 
-// SetServerID adds the serverId to the service trigger delete params
-func (o *ServiceTriggerDeleteParams) SetServerID(serverID string) {
-	o.ServerID = serverID
+// SetServer adds the server to the service trigger delete params
+func (o *ServiceTriggerDeleteParams) SetServer(server string) {
+	o.Server = server
+}
+
+// WithTrigger adds the trigger to the service trigger delete params
+func (o *ServiceTriggerDeleteParams) WithTrigger(trigger string) *ServiceTriggerDeleteParams {
+	o.SetTrigger(trigger)
+	return o
+}
+
+// SetTrigger adds the trigger to the service trigger delete params
+func (o *ServiceTriggerDeleteParams) SetTrigger(trigger string) {
+	o.Trigger = trigger
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -173,23 +173,23 @@ func (o *ServiceTriggerDeleteParams) WriteToRequest(r runtime.ClientRequest, reg
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
-
 	// path param namespace
 	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 
-	// path param server_id
-	if err := r.SetPathParam("server_id", o.ServerID); err != nil {
+	// path param server
+	if err := r.SetPathParam("server", o.Server); err != nil {
+		return err
+	}
+
+	// path param trigger
+	if err := r.SetPathParam("trigger", o.Trigger); err != nil {
 		return err
 	}
 

@@ -36,7 +36,7 @@ func (a *Client) ServersOptionsResourcesRead(params *ServersOptionsResourcesRead
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "servers_options_resources_read",
 		Method:             "GET",
-		PathPattern:        "/v1/servers/options/server-size/{id}/",
+		PathPattern:        "/v1/servers/options/server-size/{size}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -98,7 +98,7 @@ func (a *Client) ServersOptionsServerSizeDelete(params *ServersOptionsServerSize
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "servers_options_server_size_delete",
 		Method:             "DELETE",
-		PathPattern:        "/v1/servers/options/server-size/{id}/",
+		PathPattern:        "/v1/servers/options/server-size/{size}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -129,7 +129,7 @@ func (a *Client) ServersOptionsServerSizeReplace(params *ServersOptionsServerSiz
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "servers_options_server_size_replace",
 		Method:             "PUT",
-		PathPattern:        "/v1/servers/options/server-size/{id}/",
+		PathPattern:        "/v1/servers/options/server-size/{size}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -160,7 +160,7 @@ func (a *Client) ServersOptionsServerSizeUpdate(params *ServersOptionsServerSize
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "servers_options_server_size_update",
 		Method:             "PATCH",
-		PathPattern:        "/v1/servers/options/server-size/{id}/",
+		PathPattern:        "/v1/servers/options/server-size/{size}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},

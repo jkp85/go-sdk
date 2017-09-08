@@ -87,16 +87,16 @@ type ServiceTriggerListParams struct {
 
 	*/
 	Ordering *string
-	/*ProjectID
-	  Project unique identifier expressed as UUID.
+	/*Project
+	  Project unique identifier expressed as UUID or name.
 
 	*/
-	ProjectID string
-	/*ServerID
-	  Server unique identifier expressed as UUID.
+	Project string
+	/*Server
+	  Server unique identifier expressed as UUID or name.
 
 	*/
-	ServerID string
+	Server string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -191,26 +191,26 @@ func (o *ServiceTriggerListParams) SetOrdering(ordering *string) {
 	o.Ordering = ordering
 }
 
-// WithProjectID adds the projectID to the service trigger list params
-func (o *ServiceTriggerListParams) WithProjectID(projectID string) *ServiceTriggerListParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the service trigger list params
+func (o *ServiceTriggerListParams) WithProject(project string) *ServiceTriggerListParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the service trigger list params
-func (o *ServiceTriggerListParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the service trigger list params
+func (o *ServiceTriggerListParams) SetProject(project string) {
+	o.Project = project
 }
 
-// WithServerID adds the serverID to the service trigger list params
-func (o *ServiceTriggerListParams) WithServerID(serverID string) *ServiceTriggerListParams {
-	o.SetServerID(serverID)
+// WithServer adds the server to the service trigger list params
+func (o *ServiceTriggerListParams) WithServer(server string) *ServiceTriggerListParams {
+	o.SetServer(server)
 	return o
 }
 
-// SetServerID adds the serverId to the service trigger list params
-func (o *ServiceTriggerListParams) SetServerID(serverID string) {
-	o.ServerID = serverID
+// SetServer adds the server to the service trigger list params
+func (o *ServiceTriggerListParams) SetServer(server string) {
+	o.Server = server
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -290,13 +290,13 @@ func (o *ServiceTriggerListParams) WriteToRequest(r runtime.ClientRequest, reg s
 
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 
-	// path param server_id
-	if err := r.SetPathParam("server_id", o.ServerID); err != nil {
+	// path param server
+	if err := r.SetPathParam("server", o.Server); err != nil {
 		return err
 	}
 

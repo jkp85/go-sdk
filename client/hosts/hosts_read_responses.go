@@ -58,7 +58,7 @@ type HostsReadOK struct {
 }
 
 func (o *HostsReadOK) Error() string {
-	return fmt.Sprintf("[GET /v1/{namespace}/hosts/{id}/][%d] hostsReadOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /v1/{namespace}/hosts/{host}/][%d] hostsReadOK  %+v", 200, o.Payload)
 }
 
 func (o *HostsReadOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type HostsReadNotFound struct {
 }
 
 func (o *HostsReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/{namespace}/hosts/{id}/][%d] hostsReadNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /v1/{namespace}/hosts/{host}/][%d] hostsReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *HostsReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

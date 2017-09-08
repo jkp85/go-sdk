@@ -65,7 +65,7 @@ type UserAvatarUpdateOK struct {
 }
 
 func (o *UserAvatarUpdateOK) Error() string {
-	return fmt.Sprintf("[PATCH /v1/users/{user_id}/avatar/][%d] userAvatarUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/users/{user}/avatar/][%d] userAvatarUpdateOK  %+v", 200, o.Payload)
 }
 
 func (o *UserAvatarUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -94,7 +94,7 @@ type UserAvatarUpdateBadRequest struct {
 }
 
 func (o *UserAvatarUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /v1/users/{user_id}/avatar/][%d] userAvatarUpdateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/users/{user}/avatar/][%d] userAvatarUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *UserAvatarUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -123,7 +123,7 @@ type UserAvatarUpdateNotFound struct {
 }
 
 func (o *UserAvatarUpdateNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /v1/users/{user_id}/avatar/][%d] userAvatarUpdateNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/users/{user}/avatar/][%d] userAvatarUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *UserAvatarUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

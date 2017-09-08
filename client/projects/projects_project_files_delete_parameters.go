@@ -72,11 +72,11 @@ type ProjectsProjectFilesDeleteParams struct {
 
 	*/
 	Namespace string
-	/*ProjectID
+	/*Project
 	  Project unique identifer.
 
 	*/
-	ProjectID string
+	Project string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -138,15 +138,15 @@ func (o *ProjectsProjectFilesDeleteParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
-// WithProjectID adds the projectID to the projects project files delete params
-func (o *ProjectsProjectFilesDeleteParams) WithProjectID(projectID string) *ProjectsProjectFilesDeleteParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the projects project files delete params
+func (o *ProjectsProjectFilesDeleteParams) WithProject(project string) *ProjectsProjectFilesDeleteParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the projects project files delete params
-func (o *ProjectsProjectFilesDeleteParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the projects project files delete params
+func (o *ProjectsProjectFilesDeleteParams) SetProject(project string) {
+	o.Project = project
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -167,8 +167,8 @@ func (o *ProjectsProjectFilesDeleteParams) WriteToRequest(r runtime.ClientReques
 		return err
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 

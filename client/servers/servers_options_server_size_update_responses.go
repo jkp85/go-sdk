@@ -65,7 +65,7 @@ type ServersOptionsServerSizeUpdateOK struct {
 }
 
 func (o *ServersOptionsServerSizeUpdateOK) Error() string {
-	return fmt.Sprintf("[PATCH /v1/servers/options/server-size/{id}/][%d] serversOptionsServerSizeUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/servers/options/server-size/{size}/][%d] serversOptionsServerSizeUpdateOK  %+v", 200, o.Payload)
 }
 
 func (o *ServersOptionsServerSizeUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -94,7 +94,7 @@ type ServersOptionsServerSizeUpdateBadRequest struct {
 }
 
 func (o *ServersOptionsServerSizeUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /v1/servers/options/server-size/{id}/][%d] serversOptionsServerSizeUpdateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/servers/options/server-size/{size}/][%d] serversOptionsServerSizeUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServersOptionsServerSizeUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -123,7 +123,7 @@ type ServersOptionsServerSizeUpdateNotFound struct {
 }
 
 func (o *ServersOptionsServerSizeUpdateNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /v1/servers/options/server-size/{id}/][%d] serversOptionsServerSizeUpdateNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/servers/options/server-size/{size}/][%d] serversOptionsServerSizeUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServersOptionsServerSizeUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

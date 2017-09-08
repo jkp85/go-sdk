@@ -62,11 +62,11 @@ for the users delete operation typically these are written to a http.Request
 */
 type UsersDeleteParams struct {
 
-	/*ID
-	  User identifier expressed as UUID.
+	/*User
+	  User identifier expressed as UUID or username.
 
 	*/
-	ID string
+	User string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -106,15 +106,15 @@ func (o *UsersDeleteParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the users delete params
-func (o *UsersDeleteParams) WithID(id string) *UsersDeleteParams {
-	o.SetID(id)
+// WithUser adds the user to the users delete params
+func (o *UsersDeleteParams) WithUser(user string) *UsersDeleteParams {
+	o.SetUser(user)
 	return o
 }
 
-// SetID adds the id to the users delete params
-func (o *UsersDeleteParams) SetID(id string) {
-	o.ID = id
+// SetUser adds the user to the users delete params
+func (o *UsersDeleteParams) SetUser(user string) {
+	o.User = user
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -125,8 +125,8 @@ func (o *UsersDeleteParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
+	// path param user
+	if err := r.SetPathParam("user", o.User); err != nil {
 		return err
 	}
 

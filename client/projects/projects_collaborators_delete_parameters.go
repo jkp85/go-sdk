@@ -62,21 +62,21 @@ for the projects collaborators delete operation typically these are written to a
 */
 type ProjectsCollaboratorsDeleteParams struct {
 
-	/*ID
+	/*Collaborator
 	  Collaborator unique identifier.
 
 	*/
-	ID string
+	Collaborator string
 	/*Namespace
 	  User or team name.
 
 	*/
 	Namespace string
-	/*ProjectID
+	/*Project
 	  Project unique identifier.
 
 	*/
-	ProjectID string
+	Project string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -116,15 +116,15 @@ func (o *ProjectsCollaboratorsDeleteParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the projects collaborators delete params
-func (o *ProjectsCollaboratorsDeleteParams) WithID(id string) *ProjectsCollaboratorsDeleteParams {
-	o.SetID(id)
+// WithCollaborator adds the collaborator to the projects collaborators delete params
+func (o *ProjectsCollaboratorsDeleteParams) WithCollaborator(collaborator string) *ProjectsCollaboratorsDeleteParams {
+	o.SetCollaborator(collaborator)
 	return o
 }
 
-// SetID adds the id to the projects collaborators delete params
-func (o *ProjectsCollaboratorsDeleteParams) SetID(id string) {
-	o.ID = id
+// SetCollaborator adds the collaborator to the projects collaborators delete params
+func (o *ProjectsCollaboratorsDeleteParams) SetCollaborator(collaborator string) {
+	o.Collaborator = collaborator
 }
 
 // WithNamespace adds the namespace to the projects collaborators delete params
@@ -138,15 +138,15 @@ func (o *ProjectsCollaboratorsDeleteParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
-// WithProjectID adds the projectID to the projects collaborators delete params
-func (o *ProjectsCollaboratorsDeleteParams) WithProjectID(projectID string) *ProjectsCollaboratorsDeleteParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the projects collaborators delete params
+func (o *ProjectsCollaboratorsDeleteParams) WithProject(project string) *ProjectsCollaboratorsDeleteParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the projects collaborators delete params
-func (o *ProjectsCollaboratorsDeleteParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the projects collaborators delete params
+func (o *ProjectsCollaboratorsDeleteParams) SetProject(project string) {
+	o.Project = project
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -157,8 +157,8 @@ func (o *ProjectsCollaboratorsDeleteParams) WriteToRequest(r runtime.ClientReque
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
+	// path param collaborator
+	if err := r.SetPathParam("collaborator", o.Collaborator); err != nil {
 		return err
 	}
 
@@ -167,8 +167,8 @@ func (o *ProjectsCollaboratorsDeleteParams) WriteToRequest(r runtime.ClientReque
 		return err
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 

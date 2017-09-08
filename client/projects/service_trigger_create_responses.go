@@ -58,7 +58,7 @@ type ServiceTriggerCreateCreated struct {
 }
 
 func (o *ServiceTriggerCreateCreated) Error() string {
-	return fmt.Sprintf("[POST /v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/][%d] serviceTriggerCreateCreated  %+v", 201, o.Payload)
+	return fmt.Sprintf("[POST /v1/{namespace}/projects/{project}/servers/{server}/triggers/][%d] serviceTriggerCreateCreated  %+v", 201, o.Payload)
 }
 
 func (o *ServiceTriggerCreateCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type ServiceTriggerCreateBadRequest struct {
 }
 
 func (o *ServiceTriggerCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/][%d] serviceTriggerCreateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /v1/{namespace}/projects/{project}/servers/{server}/triggers/][%d] serviceTriggerCreateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceTriggerCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

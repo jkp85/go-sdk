@@ -67,11 +67,11 @@ type UsersEmailsReadParams struct {
 
 	*/
 	EmailID string
-	/*UserID
-	  User unique identifier expressed as UUID.
+	/*User
+	  User unique identifier expressed as UUID or username.
 
 	*/
-	UserID string
+	User string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -122,15 +122,15 @@ func (o *UsersEmailsReadParams) SetEmailID(emailID string) {
 	o.EmailID = emailID
 }
 
-// WithUserID adds the userID to the users emails read params
-func (o *UsersEmailsReadParams) WithUserID(userID string) *UsersEmailsReadParams {
-	o.SetUserID(userID)
+// WithUser adds the user to the users emails read params
+func (o *UsersEmailsReadParams) WithUser(user string) *UsersEmailsReadParams {
+	o.SetUser(user)
 	return o
 }
 
-// SetUserID adds the userId to the users emails read params
-func (o *UsersEmailsReadParams) SetUserID(userID string) {
-	o.UserID = userID
+// SetUser adds the user to the users emails read params
+func (o *UsersEmailsReadParams) SetUser(user string) {
+	o.User = user
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -146,8 +146,8 @@ func (o *UsersEmailsReadParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		return err
 	}
 
-	// path param user_id
-	if err := r.SetPathParam("user_id", o.UserID); err != nil {
+	// path param user
+	if err := r.SetPathParam("user", o.User); err != nil {
 		return err
 	}
 

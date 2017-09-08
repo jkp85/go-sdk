@@ -66,11 +66,11 @@ type UsersEmailsCreateParams struct {
 
 	/*EmailData*/
 	EmailData *models.EmailData
-	/*UserID
-	  User unique identifier expressed as UUID.
+	/*User
+	  User unique identifier expressed as UUID or username.
 
 	*/
-	UserID string
+	User string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,15 +121,15 @@ func (o *UsersEmailsCreateParams) SetEmailData(emailData *models.EmailData) {
 	o.EmailData = emailData
 }
 
-// WithUserID adds the userID to the users emails create params
-func (o *UsersEmailsCreateParams) WithUserID(userID string) *UsersEmailsCreateParams {
-	o.SetUserID(userID)
+// WithUser adds the user to the users emails create params
+func (o *UsersEmailsCreateParams) WithUser(user string) *UsersEmailsCreateParams {
+	o.SetUser(user)
 	return o
 }
 
-// SetUserID adds the userId to the users emails create params
-func (o *UsersEmailsCreateParams) SetUserID(userID string) {
-	o.UserID = userID
+// SetUser adds the user to the users emails create params
+func (o *UsersEmailsCreateParams) SetUser(user string) {
+	o.User = user
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -148,8 +148,8 @@ func (o *UsersEmailsCreateParams) WriteToRequest(r runtime.ClientRequest, reg st
 		return err
 	}
 
-	// path param user_id
-	if err := r.SetPathParam("user_id", o.UserID); err != nil {
+	// path param user
+	if err := r.SetPathParam("user", o.User); err != nil {
 		return err
 	}
 

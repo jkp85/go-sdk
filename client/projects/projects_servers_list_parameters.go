@@ -87,11 +87,11 @@ type ProjectsServersListParams struct {
 
 	*/
 	Ordering *string
-	/*ProjectID
-	  Project unique identifier expressed as UUID.
+	/*Project
+	  Project unique identifier expressed as UUID or name.
 
 	*/
-	ProjectID string
+	Project string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -186,15 +186,15 @@ func (o *ProjectsServersListParams) SetOrdering(ordering *string) {
 	o.Ordering = ordering
 }
 
-// WithProjectID adds the projectID to the projects servers list params
-func (o *ProjectsServersListParams) WithProjectID(projectID string) *ProjectsServersListParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the projects servers list params
+func (o *ProjectsServersListParams) WithProject(project string) *ProjectsServersListParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the projects servers list params
-func (o *ProjectsServersListParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the projects servers list params
+func (o *ProjectsServersListParams) SetProject(project string) {
+	o.Project = project
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -274,8 +274,8 @@ func (o *ProjectsServersListParams) WriteToRequest(r runtime.ClientRequest, reg 
 
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 

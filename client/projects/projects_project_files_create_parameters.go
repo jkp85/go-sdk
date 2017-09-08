@@ -88,11 +88,11 @@ type ProjectsProjectFilesCreateParams struct {
 
 	*/
 	Path *string
-	/*ProjectID
+	/*Project
 	  Project unique identifier.
 
 	*/
-	ProjectID string
+	Project string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -187,15 +187,15 @@ func (o *ProjectsProjectFilesCreateParams) SetPath(path *string) {
 	o.Path = path
 }
 
-// WithProjectID adds the projectID to the projects project files create params
-func (o *ProjectsProjectFilesCreateParams) WithProjectID(projectID string) *ProjectsProjectFilesCreateParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the projects project files create params
+func (o *ProjectsProjectFilesCreateParams) WithProject(project string) *ProjectsProjectFilesCreateParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the projects project files create params
-func (o *ProjectsProjectFilesCreateParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the projects project files create params
+func (o *ProjectsProjectFilesCreateParams) SetProject(project string) {
+	o.Project = project
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -272,8 +272,8 @@ func (o *ProjectsProjectFilesCreateParams) WriteToRequest(r runtime.ClientReques
 
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 

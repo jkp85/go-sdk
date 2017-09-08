@@ -57,7 +57,7 @@ type UserAvatarDeleteNoContent struct {
 }
 
 func (o *UserAvatarDeleteNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /v1/users/{user_id}/avatar/][%d] userAvatarDeleteNoContent ", 204)
+	return fmt.Sprintf("[DELETE /v1/users/{user}/avatar/][%d] userAvatarDeleteNoContent ", 204)
 }
 
 func (o *UserAvatarDeleteNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -79,7 +79,7 @@ type UserAvatarDeleteNotFound struct {
 }
 
 func (o *UserAvatarDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /v1/users/{user_id}/avatar/][%d] userAvatarDeleteNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[DELETE /v1/users/{user}/avatar/][%d] userAvatarDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *UserAvatarDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -77,11 +77,11 @@ type UsersEmailsListParams struct {
 
 	*/
 	Ordering *string
-	/*UserID
-	  User unique identifier as expressed as UUID.
+	/*User
+	  User unique identifier as expressed as UUID or username.
 
 	*/
-	UserID string
+	User string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -154,15 +154,15 @@ func (o *UsersEmailsListParams) SetOrdering(ordering *string) {
 	o.Ordering = ordering
 }
 
-// WithUserID adds the userID to the users emails list params
-func (o *UsersEmailsListParams) WithUserID(userID string) *UsersEmailsListParams {
-	o.SetUserID(userID)
+// WithUser adds the user to the users emails list params
+func (o *UsersEmailsListParams) WithUser(user string) *UsersEmailsListParams {
+	o.SetUser(user)
 	return o
 }
 
-// SetUserID adds the userId to the users emails list params
-func (o *UsersEmailsListParams) SetUserID(userID string) {
-	o.UserID = userID
+// SetUser adds the user to the users emails list params
+func (o *UsersEmailsListParams) SetUser(user string) {
+	o.User = user
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -221,8 +221,8 @@ func (o *UsersEmailsListParams) WriteToRequest(r runtime.ClientRequest, reg strf
 
 	}
 
-	// path param user_id
-	if err := r.SetPathParam("user_id", o.UserID); err != nil {
+	// path param user
+	if err := r.SetPathParam("user", o.User); err != nil {
 		return err
 	}
 

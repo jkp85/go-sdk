@@ -62,11 +62,11 @@ for the users read operation typically these are written to a http.Request
 */
 type UsersReadParams struct {
 
-	/*ID
-	  Unique identifier expressed as UUID.
+	/*User
+	  Unique identifier expressed as UUID or username.
 
 	*/
-	ID string
+	User string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -106,15 +106,15 @@ func (o *UsersReadParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the users read params
-func (o *UsersReadParams) WithID(id string) *UsersReadParams {
-	o.SetID(id)
+// WithUser adds the user to the users read params
+func (o *UsersReadParams) WithUser(user string) *UsersReadParams {
+	o.SetUser(user)
 	return o
 }
 
-// SetID adds the id to the users read params
-func (o *UsersReadParams) SetID(id string) {
-	o.ID = id
+// SetUser adds the user to the users read params
+func (o *UsersReadParams) SetUser(user string) {
+	o.User = user
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -125,8 +125,8 @@ func (o *UsersReadParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
+	// path param user
+	if err := r.SetPathParam("user", o.User); err != nil {
 		return err
 	}
 

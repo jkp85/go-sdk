@@ -58,7 +58,7 @@ type HostsReplaceOK struct {
 }
 
 func (o *HostsReplaceOK) Error() string {
-	return fmt.Sprintf("[PUT /v1/{namespace}/hosts/{id}/][%d] hostsReplaceOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /v1/{namespace}/hosts/{host}/][%d] hostsReplaceOK  %+v", 200, o.Payload)
 }
 
 func (o *HostsReplaceOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type HostsReplaceBadRequest struct {
 }
 
 func (o *HostsReplaceBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /v1/{namespace}/hosts/{id}/][%d] hostsReplaceBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PUT /v1/{namespace}/hosts/{host}/][%d] hostsReplaceBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *HostsReplaceBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

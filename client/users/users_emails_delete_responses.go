@@ -57,7 +57,7 @@ type UsersEmailsDeleteNoContent struct {
 }
 
 func (o *UsersEmailsDeleteNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /v1/users/{user_id}/emails/{email_id}/][%d] usersEmailsDeleteNoContent ", 204)
+	return fmt.Sprintf("[DELETE /v1/users/{user}/emails/{email_id}/][%d] usersEmailsDeleteNoContent ", 204)
 }
 
 func (o *UsersEmailsDeleteNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -79,7 +79,7 @@ type UsersEmailsDeleteNotFound struct {
 }
 
 func (o *UsersEmailsDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /v1/users/{user_id}/emails/{email_id}/][%d] usersEmailsDeleteNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[DELETE /v1/users/{user}/emails/{email_id}/][%d] usersEmailsDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *UsersEmailsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

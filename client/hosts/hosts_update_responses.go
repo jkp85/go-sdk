@@ -65,7 +65,7 @@ type HostsUpdateOK struct {
 }
 
 func (o *HostsUpdateOK) Error() string {
-	return fmt.Sprintf("[PATCH /v1/{namespace}/hosts/{id}/][%d] hostsUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/{namespace}/hosts/{host}/][%d] hostsUpdateOK  %+v", 200, o.Payload)
 }
 
 func (o *HostsUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -94,7 +94,7 @@ type HostsUpdateBadRequest struct {
 }
 
 func (o *HostsUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /v1/{namespace}/hosts/{id}/][%d] hostsUpdateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/{namespace}/hosts/{host}/][%d] hostsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *HostsUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -123,7 +123,7 @@ type HostsUpdateNotFound struct {
 }
 
 func (o *HostsUpdateNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /v1/{namespace}/hosts/{id}/][%d] hostsUpdateNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/{namespace}/hosts/{host}/][%d] hostsUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *HostsUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
