@@ -57,7 +57,7 @@ type UsersDeleteNoContent struct {
 }
 
 func (o *UsersDeleteNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /v1/users/profiles/{id}/][%d] usersDeleteNoContent ", 204)
+	return fmt.Sprintf("[DELETE /v1/users/profiles/{user}/][%d] usersDeleteNoContent ", 204)
 }
 
 func (o *UsersDeleteNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -79,7 +79,7 @@ type UsersDeleteNotFound struct {
 }
 
 func (o *UsersDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /v1/users/profiles/{id}/][%d] usersDeleteNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[DELETE /v1/users/profiles/{user}/][%d] usersDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *UsersDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

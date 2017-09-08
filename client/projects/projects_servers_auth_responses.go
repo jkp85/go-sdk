@@ -54,7 +54,7 @@ type ProjectsServersAuthOK struct {
 }
 
 func (o *ProjectsServersAuthOK) Error() string {
-	return fmt.Sprintf("[POST /v1/{namespace}/projects/{project_id}/servers/{server_id}/auth/][%d] projectsServersAuthOK ", 200)
+	return fmt.Sprintf("[POST /v1/{namespace}/projects/{project}/servers/{server}/auth/][%d] projectsServersAuthOK ", 200)
 }
 
 func (o *ProjectsServersAuthOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -75,7 +75,7 @@ type ProjectsServersAuthUnauthorized struct {
 }
 
 func (o *ProjectsServersAuthUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /v1/{namespace}/projects/{project_id}/servers/{server_id}/auth/][%d] projectsServersAuthUnauthorized ", 401)
+	return fmt.Sprintf("[POST /v1/{namespace}/projects/{project}/servers/{server}/auth/][%d] projectsServersAuthUnauthorized ", 401)
 }
 
 func (o *ProjectsServersAuthUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

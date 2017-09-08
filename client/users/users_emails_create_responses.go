@@ -58,7 +58,7 @@ type UsersEmailsCreateCreated struct {
 }
 
 func (o *UsersEmailsCreateCreated) Error() string {
-	return fmt.Sprintf("[POST /v1/users/{user_id}/emails/][%d] usersEmailsCreateCreated  %+v", 201, o.Payload)
+	return fmt.Sprintf("[POST /v1/users/{user}/emails/][%d] usersEmailsCreateCreated  %+v", 201, o.Payload)
 }
 
 func (o *UsersEmailsCreateCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type UsersEmailsCreateBadRequest struct {
 }
 
 func (o *UsersEmailsCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /v1/users/{user_id}/emails/][%d] usersEmailsCreateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /v1/users/{user}/emails/][%d] usersEmailsCreateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *UsersEmailsCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

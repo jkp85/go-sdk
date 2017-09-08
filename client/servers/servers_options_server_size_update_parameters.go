@@ -64,13 +64,13 @@ for the servers options server size update operation typically these are written
 */
 type ServersOptionsServerSizeUpdateParams struct {
 
-	/*ID
-	  Server size unique identifier expressed as UUID.
-
-	*/
-	ID string
 	/*ServersizeData*/
 	ServersizeData *models.ServerSizeData
+	/*Size
+	  Server size unique identifier expressed as UUID or name.
+
+	*/
+	Size string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -110,17 +110,6 @@ func (o *ServersOptionsServerSizeUpdateParams) SetHTTPClient(client *http.Client
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the servers options server size update params
-func (o *ServersOptionsServerSizeUpdateParams) WithID(id string) *ServersOptionsServerSizeUpdateParams {
-	o.SetID(id)
-	return o
-}
-
-// SetID adds the id to the servers options server size update params
-func (o *ServersOptionsServerSizeUpdateParams) SetID(id string) {
-	o.ID = id
-}
-
 // WithServersizeData adds the serversizeData to the servers options server size update params
 func (o *ServersOptionsServerSizeUpdateParams) WithServersizeData(serversizeData *models.ServerSizeData) *ServersOptionsServerSizeUpdateParams {
 	o.SetServersizeData(serversizeData)
@@ -132,6 +121,17 @@ func (o *ServersOptionsServerSizeUpdateParams) SetServersizeData(serversizeData 
 	o.ServersizeData = serversizeData
 }
 
+// WithSize adds the size to the servers options server size update params
+func (o *ServersOptionsServerSizeUpdateParams) WithSize(size string) *ServersOptionsServerSizeUpdateParams {
+	o.SetSize(size)
+	return o
+}
+
+// SetSize adds the size to the servers options server size update params
+func (o *ServersOptionsServerSizeUpdateParams) SetSize(size string) {
+	o.Size = size
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ServersOptionsServerSizeUpdateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -140,16 +140,16 @@ func (o *ServersOptionsServerSizeUpdateParams) WriteToRequest(r runtime.ClientRe
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
-
 	if o.ServersizeData == nil {
 		o.ServersizeData = new(models.ServerSizeData)
 	}
 
 	if err := r.SetBodyParam(o.ServersizeData); err != nil {
+		return err
+	}
+
+	// path param size
+	if err := r.SetPathParam("size", o.Size); err != nil {
 		return err
 	}
 

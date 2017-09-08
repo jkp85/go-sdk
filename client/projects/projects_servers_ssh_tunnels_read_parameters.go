@@ -62,26 +62,26 @@ for the projects servers ssh tunnels read operation typically these are written 
 */
 type ProjectsServersSSHTunnelsReadParams struct {
 
-	/*ID
-	  SSH tunnel unique identifier expressed as UUID.
-
-	*/
-	ID string
 	/*Namespace
 	  User or team name.
 
 	*/
 	Namespace string
-	/*ProjectID
-	  Project unique identifier expressed as UUID.
+	/*Project
+	  Project unique identifier expressed as UUID or name.
 
 	*/
-	ProjectID string
-	/*ServerID
-	  Server unique identifier expressed as UUID.
+	Project string
+	/*Server
+	  Server unique identifier expressed as UUID or name.
 
 	*/
-	ServerID string
+	Server string
+	/*Tunnel
+	  SSH tunnel unique identifier expressed as UUID or name.
+
+	*/
+	Tunnel string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -121,17 +121,6 @@ func (o *ProjectsServersSSHTunnelsReadParams) SetHTTPClient(client *http.Client)
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the projects servers ssh tunnels read params
-func (o *ProjectsServersSSHTunnelsReadParams) WithID(id string) *ProjectsServersSSHTunnelsReadParams {
-	o.SetID(id)
-	return o
-}
-
-// SetID adds the id to the projects servers ssh tunnels read params
-func (o *ProjectsServersSSHTunnelsReadParams) SetID(id string) {
-	o.ID = id
-}
-
 // WithNamespace adds the namespace to the projects servers ssh tunnels read params
 func (o *ProjectsServersSSHTunnelsReadParams) WithNamespace(namespace string) *ProjectsServersSSHTunnelsReadParams {
 	o.SetNamespace(namespace)
@@ -143,26 +132,37 @@ func (o *ProjectsServersSSHTunnelsReadParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
-// WithProjectID adds the projectID to the projects servers ssh tunnels read params
-func (o *ProjectsServersSSHTunnelsReadParams) WithProjectID(projectID string) *ProjectsServersSSHTunnelsReadParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the projects servers ssh tunnels read params
+func (o *ProjectsServersSSHTunnelsReadParams) WithProject(project string) *ProjectsServersSSHTunnelsReadParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the projects servers ssh tunnels read params
-func (o *ProjectsServersSSHTunnelsReadParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the projects servers ssh tunnels read params
+func (o *ProjectsServersSSHTunnelsReadParams) SetProject(project string) {
+	o.Project = project
 }
 
-// WithServerID adds the serverID to the projects servers ssh tunnels read params
-func (o *ProjectsServersSSHTunnelsReadParams) WithServerID(serverID string) *ProjectsServersSSHTunnelsReadParams {
-	o.SetServerID(serverID)
+// WithServer adds the server to the projects servers ssh tunnels read params
+func (o *ProjectsServersSSHTunnelsReadParams) WithServer(server string) *ProjectsServersSSHTunnelsReadParams {
+	o.SetServer(server)
 	return o
 }
 
-// SetServerID adds the serverId to the projects servers ssh tunnels read params
-func (o *ProjectsServersSSHTunnelsReadParams) SetServerID(serverID string) {
-	o.ServerID = serverID
+// SetServer adds the server to the projects servers ssh tunnels read params
+func (o *ProjectsServersSSHTunnelsReadParams) SetServer(server string) {
+	o.Server = server
+}
+
+// WithTunnel adds the tunnel to the projects servers ssh tunnels read params
+func (o *ProjectsServersSSHTunnelsReadParams) WithTunnel(tunnel string) *ProjectsServersSSHTunnelsReadParams {
+	o.SetTunnel(tunnel)
+	return o
+}
+
+// SetTunnel adds the tunnel to the projects servers ssh tunnels read params
+func (o *ProjectsServersSSHTunnelsReadParams) SetTunnel(tunnel string) {
+	o.Tunnel = tunnel
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -173,23 +173,23 @@ func (o *ProjectsServersSSHTunnelsReadParams) WriteToRequest(r runtime.ClientReq
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
-
 	// path param namespace
 	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 
-	// path param server_id
-	if err := r.SetPathParam("server_id", o.ServerID); err != nil {
+	// path param server
+	if err := r.SetPathParam("server", o.Server); err != nil {
+		return err
+	}
+
+	// path param tunnel
+	if err := r.SetPathParam("tunnel", o.Tunnel); err != nil {
 		return err
 	}
 

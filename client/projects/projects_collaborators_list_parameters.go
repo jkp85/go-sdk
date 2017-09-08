@@ -82,11 +82,11 @@ type ProjectsCollaboratorsListParams struct {
 
 	*/
 	Ordering *string
-	/*ProjectID
-	  Project unique identifier expressed as UUID.
+	/*Project
+	  Project unique identifier expressed as UUID or name.
 
 	*/
-	ProjectID string
+	Project string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -170,15 +170,15 @@ func (o *ProjectsCollaboratorsListParams) SetOrdering(ordering *string) {
 	o.Ordering = ordering
 }
 
-// WithProjectID adds the projectID to the projects collaborators list params
-func (o *ProjectsCollaboratorsListParams) WithProjectID(projectID string) *ProjectsCollaboratorsListParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the projects collaborators list params
+func (o *ProjectsCollaboratorsListParams) WithProject(project string) *ProjectsCollaboratorsListParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the projects collaborators list params
-func (o *ProjectsCollaboratorsListParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the projects collaborators list params
+func (o *ProjectsCollaboratorsListParams) SetProject(project string) {
+	o.Project = project
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -242,8 +242,8 @@ func (o *ProjectsCollaboratorsListParams) WriteToRequest(r runtime.ClientRequest
 
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 

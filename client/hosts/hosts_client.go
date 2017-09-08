@@ -65,7 +65,7 @@ func (a *Client) HostsDelete(params *HostsDeleteParams, authInfo runtime.ClientA
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "hosts_delete",
 		Method:             "DELETE",
-		PathPattern:        "/v1/{namespace}/hosts/{id}/",
+		PathPattern:        "/v1/{namespace}/hosts/{host}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -123,7 +123,7 @@ func (a *Client) HostsRead(params *HostsReadParams, authInfo runtime.ClientAuthI
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "hosts_read",
 		Method:             "GET",
-		PathPattern:        "/v1/{namespace}/hosts/{id}/",
+		PathPattern:        "/v1/{namespace}/hosts/{host}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -152,7 +152,7 @@ func (a *Client) HostsReplace(params *HostsReplaceParams, authInfo runtime.Clien
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "hosts_replace",
 		Method:             "PUT",
-		PathPattern:        "/v1/{namespace}/hosts/{id}/",
+		PathPattern:        "/v1/{namespace}/hosts/{host}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -181,7 +181,7 @@ func (a *Client) HostsUpdate(params *HostsUpdateParams, authInfo runtime.ClientA
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "hosts_update",
 		Method:             "PATCH",
-		PathPattern:        "/v1/{namespace}/hosts/{id}/",
+		PathPattern:        "/v1/{namespace}/hosts/{host}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},

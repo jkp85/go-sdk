@@ -58,7 +58,7 @@ type ServersOptionsResourcesReadOK struct {
 }
 
 func (o *ServersOptionsResourcesReadOK) Error() string {
-	return fmt.Sprintf("[GET /v1/servers/options/server-size/{id}/][%d] serversOptionsResourcesReadOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /v1/servers/options/server-size/{size}/][%d] serversOptionsResourcesReadOK  %+v", 200, o.Payload)
 }
 
 func (o *ServersOptionsResourcesReadOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type ServersOptionsResourcesReadNotFound struct {
 }
 
 func (o *ServersOptionsResourcesReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/servers/options/server-size/{id}/][%d] serversOptionsResourcesReadNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /v1/servers/options/server-size/{size}/][%d] serversOptionsResourcesReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServersOptionsResourcesReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -36,7 +36,7 @@ func (a *Client) UserAvatarDelete(params *UserAvatarDeleteParams, authInfo runti
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "user_avatar_delete",
 		Method:             "DELETE",
-		PathPattern:        "/v1/users/{user_id}/avatar/",
+		PathPattern:        "/v1/users/{user}/avatar/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -65,7 +65,7 @@ func (a *Client) UserAvatarGet(params *UserAvatarGetParams, authInfo runtime.Cli
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "user_avatar_get",
 		Method:             "GET",
-		PathPattern:        "/v1/users/{user_id}/avatar/",
+		PathPattern:        "/v1/users/{user}/avatar/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -94,7 +94,7 @@ func (a *Client) UserAvatarSet(params *UserAvatarSetParams, authInfo runtime.Cli
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "user_avatar_set",
 		Method:             "POST",
-		PathPattern:        "/v1/users/{user_id}/avatar/",
+		PathPattern:        "/v1/users/{user}/avatar/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"multipart/form-data"},
 		Schemes:            []string{"https"},
@@ -123,7 +123,7 @@ func (a *Client) UserAvatarUpdate(params *UserAvatarUpdateParams, authInfo runti
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "user_avatar_update",
 		Method:             "PATCH",
-		PathPattern:        "/v1/users/{user_id}/avatar/",
+		PathPattern:        "/v1/users/{user}/avatar/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"multipart/form-data"},
 		Schemes:            []string{"https"},
@@ -152,7 +152,7 @@ func (a *Client) UsersAPIKeyList(params *UsersAPIKeyListParams, authInfo runtime
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_api-key_list",
 		Method:             "GET",
-		PathPattern:        "/v1/users/{user_id}/api-key/",
+		PathPattern:        "/v1/users/{user}/api-key/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -181,7 +181,7 @@ func (a *Client) UsersAPIKeyReset(params *UsersAPIKeyResetParams, authInfo runti
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_api-key_reset",
 		Method:             "POST",
-		PathPattern:        "/v1/users/{user_id}/api-key/reset/",
+		PathPattern:        "/v1/users/{user}/api-key/reset/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -200,6 +200,8 @@ func (a *Client) UsersAPIKeyReset(params *UsersAPIKeyResetParams, authInfo runti
 
 /*
 UsersCreate creates new user
+
+Only admin users can create new users. New users have active status by default.
 */
 func (a *Client) UsersCreate(params *UsersCreateParams, authInfo runtime.ClientAuthInfoWriter) (*UsersCreateCreated, error) {
 	// TODO: Validate the params before sending
@@ -239,7 +241,7 @@ func (a *Client) UsersDelete(params *UsersDeleteParams, authInfo runtime.ClientA
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_delete",
 		Method:             "DELETE",
-		PathPattern:        "/v1/users/profiles/{id}/",
+		PathPattern:        "/v1/users/profiles/{user}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -268,7 +270,7 @@ func (a *Client) UsersEmailsCreate(params *UsersEmailsCreateParams, authInfo run
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_emails_create",
 		Method:             "POST",
-		PathPattern:        "/v1/users/{user_id}/emails/",
+		PathPattern:        "/v1/users/{user}/emails/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -297,7 +299,7 @@ func (a *Client) UsersEmailsDelete(params *UsersEmailsDeleteParams, authInfo run
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_emails_delete",
 		Method:             "DELETE",
-		PathPattern:        "/v1/users/{user_id}/emails/{email_id}/",
+		PathPattern:        "/v1/users/{user}/emails/{email_id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -326,7 +328,7 @@ func (a *Client) UsersEmailsList(params *UsersEmailsListParams, authInfo runtime
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_emails_list",
 		Method:             "GET",
-		PathPattern:        "/v1/users/{user_id}/emails/",
+		PathPattern:        "/v1/users/{user}/emails/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -355,7 +357,7 @@ func (a *Client) UsersEmailsRead(params *UsersEmailsReadParams, authInfo runtime
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_emails_read",
 		Method:             "GET",
-		PathPattern:        "/v1/users/{user_id}/emails/{email_id}/",
+		PathPattern:        "/v1/users/{user}/emails/{email_id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -384,7 +386,7 @@ func (a *Client) UsersEmailsReplace(params *UsersEmailsReplaceParams, authInfo r
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_emails_replace",
 		Method:             "PUT",
-		PathPattern:        "/v1/users/{user_id}/emails/{email_id}/",
+		PathPattern:        "/v1/users/{user}/emails/{email_id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -413,7 +415,7 @@ func (a *Client) UsersEmailsUpdate(params *UsersEmailsUpdateParams, authInfo run
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_emails_update",
 		Method:             "PATCH",
-		PathPattern:        "/v1/users/{user_id}/emails/{email_id}/",
+		PathPattern:        "/v1/users/{user}/emails/{email_id}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -471,7 +473,7 @@ func (a *Client) UsersRead(params *UsersReadParams, authInfo runtime.ClientAuthI
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_read",
 		Method:             "GET",
-		PathPattern:        "/v1/users/profiles/{id}/",
+		PathPattern:        "/v1/users/profiles/{user}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -500,7 +502,7 @@ func (a *Client) UsersSSHKeyList(params *UsersSSHKeyListParams, authInfo runtime
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_ssh-key_list",
 		Method:             "GET",
-		PathPattern:        "/v1/users/{user_id}/ssh-key/",
+		PathPattern:        "/v1/users/{user}/ssh-key/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -529,7 +531,7 @@ func (a *Client) UsersSSHKeyReset(params *UsersSSHKeyResetParams, authInfo runti
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_ssh-key_reset",
 		Method:             "POST",
-		PathPattern:        "/v1/users/{user_id}/ssh-key/reset/",
+		PathPattern:        "/v1/users/{user}/ssh-key/reset/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -558,7 +560,7 @@ func (a *Client) UsersUpdate(params *UsersUpdateParams, authInfo runtime.ClientA
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "users_update",
 		Method:             "PATCH",
-		PathPattern:        "/v1/users/profiles/{id}/",
+		PathPattern:        "/v1/users/profiles/{user}/",
 		ProducesMediaTypes: []string{"application/json", "text/html"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},

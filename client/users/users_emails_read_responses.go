@@ -58,7 +58,7 @@ type UsersEmailsReadOK struct {
 }
 
 func (o *UsersEmailsReadOK) Error() string {
-	return fmt.Sprintf("[GET /v1/users/{user_id}/emails/{email_id}/][%d] usersEmailsReadOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /v1/users/{user}/emails/{email_id}/][%d] usersEmailsReadOK  %+v", 200, o.Payload)
 }
 
 func (o *UsersEmailsReadOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type UsersEmailsReadNotFound struct {
 }
 
 func (o *UsersEmailsReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/users/{user_id}/emails/{email_id}/][%d] usersEmailsReadNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /v1/users/{user}/emails/{email_id}/][%d] usersEmailsReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *UsersEmailsReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -71,11 +71,11 @@ type ProjectsCollaboratorsCreateParams struct {
 
 	*/
 	Namespace string
-	/*ProjectID
-	  Project unique identifier expressed as UUID.
+	/*Project
+	  Project unique identifier expressed as UUID or name.
 
 	*/
-	ProjectID string
+	Project string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -137,15 +137,15 @@ func (o *ProjectsCollaboratorsCreateParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
-// WithProjectID adds the projectID to the projects collaborators create params
-func (o *ProjectsCollaboratorsCreateParams) WithProjectID(projectID string) *ProjectsCollaboratorsCreateParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the projects collaborators create params
+func (o *ProjectsCollaboratorsCreateParams) WithProject(project string) *ProjectsCollaboratorsCreateParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the projects collaborators create params
-func (o *ProjectsCollaboratorsCreateParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the projects collaborators create params
+func (o *ProjectsCollaboratorsCreateParams) SetProject(project string) {
+	o.Project = project
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -169,8 +169,8 @@ func (o *ProjectsCollaboratorsCreateParams) WriteToRequest(r runtime.ClientReque
 		return err
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 

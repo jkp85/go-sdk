@@ -58,7 +58,7 @@ type ProjectsServersRunStatsReplaceOK struct {
 }
 
 func (o *ProjectsServersRunStatsReplaceOK) Error() string {
-	return fmt.Sprintf("[PUT /v1/{namespace}/projects/{project_id}/servers/{server_id}/run-stats/{id}/][%d] projectsServersRunStatsReplaceOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /v1/{namespace}/projects/{project}/servers/{server}/run-stats/{id}/][%d] projectsServersRunStatsReplaceOK  %+v", 200, o.Payload)
 }
 
 func (o *ProjectsServersRunStatsReplaceOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type ProjectsServersRunStatsReplaceBadRequest struct {
 }
 
 func (o *ProjectsServersRunStatsReplaceBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /v1/{namespace}/projects/{project_id}/servers/{server_id}/run-stats/{id}/][%d] projectsServersRunStatsReplaceBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PUT /v1/{namespace}/projects/{project}/servers/{server}/run-stats/{id}/][%d] projectsServersRunStatsReplaceBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsServersRunStatsReplaceBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -64,28 +64,28 @@ for the projects servers ssh tunnels replace operation typically these are writt
 */
 type ProjectsServersSSHTunnelsReplaceParams struct {
 
-	/*ID
-	  SSH tunnel unique identifier expressed as UUID.
-
-	*/
-	ID string
 	/*Namespace
 	  User or team name.
 
 	*/
 	Namespace string
-	/*ProjectID
-	  Project unique identifier expressed as UUID.
+	/*Project
+	  Project unique identifier expressed as UUID or name.
 
 	*/
-	ProjectID string
-	/*ServerID
-	  Server unique identifier expressed as UUID.
+	Project string
+	/*Server
+	  Server unique identifier expressed as UUID or name.
 
 	*/
-	ServerID string
+	Server string
 	/*SshtunnelData*/
 	SshtunnelData *models.SSHTunnelData
+	/*Tunnel
+	  SSH tunnel unique identifier expressed as UUID or name.
+
+	*/
+	Tunnel string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -125,17 +125,6 @@ func (o *ProjectsServersSSHTunnelsReplaceParams) SetHTTPClient(client *http.Clie
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the projects servers ssh tunnels replace params
-func (o *ProjectsServersSSHTunnelsReplaceParams) WithID(id string) *ProjectsServersSSHTunnelsReplaceParams {
-	o.SetID(id)
-	return o
-}
-
-// SetID adds the id to the projects servers ssh tunnels replace params
-func (o *ProjectsServersSSHTunnelsReplaceParams) SetID(id string) {
-	o.ID = id
-}
-
 // WithNamespace adds the namespace to the projects servers ssh tunnels replace params
 func (o *ProjectsServersSSHTunnelsReplaceParams) WithNamespace(namespace string) *ProjectsServersSSHTunnelsReplaceParams {
 	o.SetNamespace(namespace)
@@ -147,26 +136,26 @@ func (o *ProjectsServersSSHTunnelsReplaceParams) SetNamespace(namespace string) 
 	o.Namespace = namespace
 }
 
-// WithProjectID adds the projectID to the projects servers ssh tunnels replace params
-func (o *ProjectsServersSSHTunnelsReplaceParams) WithProjectID(projectID string) *ProjectsServersSSHTunnelsReplaceParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the projects servers ssh tunnels replace params
+func (o *ProjectsServersSSHTunnelsReplaceParams) WithProject(project string) *ProjectsServersSSHTunnelsReplaceParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the projects servers ssh tunnels replace params
-func (o *ProjectsServersSSHTunnelsReplaceParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the projects servers ssh tunnels replace params
+func (o *ProjectsServersSSHTunnelsReplaceParams) SetProject(project string) {
+	o.Project = project
 }
 
-// WithServerID adds the serverID to the projects servers ssh tunnels replace params
-func (o *ProjectsServersSSHTunnelsReplaceParams) WithServerID(serverID string) *ProjectsServersSSHTunnelsReplaceParams {
-	o.SetServerID(serverID)
+// WithServer adds the server to the projects servers ssh tunnels replace params
+func (o *ProjectsServersSSHTunnelsReplaceParams) WithServer(server string) *ProjectsServersSSHTunnelsReplaceParams {
+	o.SetServer(server)
 	return o
 }
 
-// SetServerID adds the serverId to the projects servers ssh tunnels replace params
-func (o *ProjectsServersSSHTunnelsReplaceParams) SetServerID(serverID string) {
-	o.ServerID = serverID
+// SetServer adds the server to the projects servers ssh tunnels replace params
+func (o *ProjectsServersSSHTunnelsReplaceParams) SetServer(server string) {
+	o.Server = server
 }
 
 // WithSshtunnelData adds the sshtunnelData to the projects servers ssh tunnels replace params
@@ -180,6 +169,17 @@ func (o *ProjectsServersSSHTunnelsReplaceParams) SetSshtunnelData(sshtunnelData 
 	o.SshtunnelData = sshtunnelData
 }
 
+// WithTunnel adds the tunnel to the projects servers ssh tunnels replace params
+func (o *ProjectsServersSSHTunnelsReplaceParams) WithTunnel(tunnel string) *ProjectsServersSSHTunnelsReplaceParams {
+	o.SetTunnel(tunnel)
+	return o
+}
+
+// SetTunnel adds the tunnel to the projects servers ssh tunnels replace params
+func (o *ProjectsServersSSHTunnelsReplaceParams) SetTunnel(tunnel string) {
+	o.Tunnel = tunnel
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ProjectsServersSSHTunnelsReplaceParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -188,23 +188,18 @@ func (o *ProjectsServersSSHTunnelsReplaceParams) WriteToRequest(r runtime.Client
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
-
 	// path param namespace
 	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 
-	// path param server_id
-	if err := r.SetPathParam("server_id", o.ServerID); err != nil {
+	// path param server
+	if err := r.SetPathParam("server", o.Server); err != nil {
 		return err
 	}
 
@@ -213,6 +208,11 @@ func (o *ProjectsServersSSHTunnelsReplaceParams) WriteToRequest(r runtime.Client
 	}
 
 	if err := r.SetBodyParam(o.SshtunnelData); err != nil {
+		return err
+	}
+
+	// path param tunnel
+	if err := r.SetPathParam("tunnel", o.Tunnel); err != nil {
 		return err
 	}
 

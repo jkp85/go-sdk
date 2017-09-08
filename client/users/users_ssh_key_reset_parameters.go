@@ -62,11 +62,11 @@ for the users ssh key reset operation typically these are written to a http.Requ
 */
 type UsersSSHKeyResetParams struct {
 
-	/*UserID
-	  User unique identifier expressed as UUID.
+	/*User
+	  User unique identifier expressed as UUID or username.
 
 	*/
-	UserID string
+	User string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -106,15 +106,15 @@ func (o *UsersSSHKeyResetParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithUserID adds the userID to the users ssh key reset params
-func (o *UsersSSHKeyResetParams) WithUserID(userID string) *UsersSSHKeyResetParams {
-	o.SetUserID(userID)
+// WithUser adds the user to the users ssh key reset params
+func (o *UsersSSHKeyResetParams) WithUser(user string) *UsersSSHKeyResetParams {
+	o.SetUser(user)
 	return o
 }
 
-// SetUserID adds the userId to the users ssh key reset params
-func (o *UsersSSHKeyResetParams) SetUserID(userID string) {
-	o.UserID = userID
+// SetUser adds the user to the users ssh key reset params
+func (o *UsersSSHKeyResetParams) SetUser(user string) {
+	o.User = user
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -125,8 +125,8 @@ func (o *UsersSSHKeyResetParams) WriteToRequest(r runtime.ClientRequest, reg str
 	}
 	var res []error
 
-	// path param user_id
-	if err := r.SetPathParam("user_id", o.UserID); err != nil {
+	// path param user
+	if err := r.SetPathParam("user", o.User); err != nil {
 		return err
 	}
 

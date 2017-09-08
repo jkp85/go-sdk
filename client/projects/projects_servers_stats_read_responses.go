@@ -58,7 +58,7 @@ type ProjectsServersStatsReadOK struct {
 }
 
 func (o *ProjectsServersStatsReadOK) Error() string {
-	return fmt.Sprintf("[GET /v1/{namespace}/projects/{project_id}/servers/{server_id}/stats/{id}/][%d] projectsServersStatsReadOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /v1/{namespace}/projects/{project}/servers/{server}/stats/{id}/][%d] projectsServersStatsReadOK  %+v", 200, o.Payload)
 }
 
 func (o *ProjectsServersStatsReadOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type ProjectsServersStatsReadNotFound struct {
 }
 
 func (o *ProjectsServersStatsReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/{namespace}/projects/{project_id}/servers/{server_id}/stats/{id}/][%d] projectsServersStatsReadNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /v1/{namespace}/projects/{project}/servers/{server}/stats/{id}/][%d] projectsServersStatsReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectsServersStatsReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

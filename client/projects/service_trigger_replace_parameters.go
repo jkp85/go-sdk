@@ -64,28 +64,28 @@ for the service trigger replace operation typically these are written to a http.
 */
 type ServiceTriggerReplaceParams struct {
 
-	/*ID
-	  Trigger unique identifier.
-
-	*/
-	ID string
 	/*Namespace
 	  User or team name.
 
 	*/
 	Namespace string
-	/*ProjectID
-	  Project unique identifier expressed as UUID.
+	/*Project
+	  Project unique identifier expressed as UUID or name.
 
 	*/
-	ProjectID string
+	Project string
+	/*Server
+	  Server unique identifier expressed as UUID or name.
+
+	*/
+	Server string
 	/*ServerAction*/
 	ServerAction *models.ServerActionData
-	/*ServerID
-	  Server unique identifier expressed as UUID.
+	/*Trigger
+	  Trigger unique identifier.
 
 	*/
-	ServerID string
+	Trigger string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -125,17 +125,6 @@ func (o *ServiceTriggerReplaceParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the service trigger replace params
-func (o *ServiceTriggerReplaceParams) WithID(id string) *ServiceTriggerReplaceParams {
-	o.SetID(id)
-	return o
-}
-
-// SetID adds the id to the service trigger replace params
-func (o *ServiceTriggerReplaceParams) SetID(id string) {
-	o.ID = id
-}
-
 // WithNamespace adds the namespace to the service trigger replace params
 func (o *ServiceTriggerReplaceParams) WithNamespace(namespace string) *ServiceTriggerReplaceParams {
 	o.SetNamespace(namespace)
@@ -147,15 +136,26 @@ func (o *ServiceTriggerReplaceParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
-// WithProjectID adds the projectID to the service trigger replace params
-func (o *ServiceTriggerReplaceParams) WithProjectID(projectID string) *ServiceTriggerReplaceParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the service trigger replace params
+func (o *ServiceTriggerReplaceParams) WithProject(project string) *ServiceTriggerReplaceParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the service trigger replace params
-func (o *ServiceTriggerReplaceParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the service trigger replace params
+func (o *ServiceTriggerReplaceParams) SetProject(project string) {
+	o.Project = project
+}
+
+// WithServer adds the server to the service trigger replace params
+func (o *ServiceTriggerReplaceParams) WithServer(server string) *ServiceTriggerReplaceParams {
+	o.SetServer(server)
+	return o
+}
+
+// SetServer adds the server to the service trigger replace params
+func (o *ServiceTriggerReplaceParams) SetServer(server string) {
+	o.Server = server
 }
 
 // WithServerAction adds the serverAction to the service trigger replace params
@@ -169,15 +169,15 @@ func (o *ServiceTriggerReplaceParams) SetServerAction(serverAction *models.Serve
 	o.ServerAction = serverAction
 }
 
-// WithServerID adds the serverID to the service trigger replace params
-func (o *ServiceTriggerReplaceParams) WithServerID(serverID string) *ServiceTriggerReplaceParams {
-	o.SetServerID(serverID)
+// WithTrigger adds the trigger to the service trigger replace params
+func (o *ServiceTriggerReplaceParams) WithTrigger(trigger string) *ServiceTriggerReplaceParams {
+	o.SetTrigger(trigger)
 	return o
 }
 
-// SetServerID adds the serverId to the service trigger replace params
-func (o *ServiceTriggerReplaceParams) SetServerID(serverID string) {
-	o.ServerID = serverID
+// SetTrigger adds the trigger to the service trigger replace params
+func (o *ServiceTriggerReplaceParams) SetTrigger(trigger string) {
+	o.Trigger = trigger
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -188,18 +188,18 @@ func (o *ServiceTriggerReplaceParams) WriteToRequest(r runtime.ClientRequest, re
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
-
 	// path param namespace
 	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
+		return err
+	}
+
+	// path param server
+	if err := r.SetPathParam("server", o.Server); err != nil {
 		return err
 	}
 
@@ -211,8 +211,8 @@ func (o *ServiceTriggerReplaceParams) WriteToRequest(r runtime.ClientRequest, re
 		return err
 	}
 
-	// path param server_id
-	if err := r.SetPathParam("server_id", o.ServerID); err != nil {
+	// path param trigger
+	if err := r.SetPathParam("trigger", o.Trigger); err != nil {
 		return err
 	}
 

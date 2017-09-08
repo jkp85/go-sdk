@@ -62,16 +62,16 @@ for the projects delete operation typically these are written to a http.Request
 */
 type ProjectsDeleteParams struct {
 
-	/*ID
-	  Project unique identifier expressed as UUID.
-
-	*/
-	ID string
 	/*Namespace
 	  User or team name.
 
 	*/
 	Namespace string
+	/*Project
+	  Project unique identifier expressed as UUID or name.
+
+	*/
+	Project string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -111,17 +111,6 @@ func (o *ProjectsDeleteParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the projects delete params
-func (o *ProjectsDeleteParams) WithID(id string) *ProjectsDeleteParams {
-	o.SetID(id)
-	return o
-}
-
-// SetID adds the id to the projects delete params
-func (o *ProjectsDeleteParams) SetID(id string) {
-	o.ID = id
-}
-
 // WithNamespace adds the namespace to the projects delete params
 func (o *ProjectsDeleteParams) WithNamespace(namespace string) *ProjectsDeleteParams {
 	o.SetNamespace(namespace)
@@ -133,6 +122,17 @@ func (o *ProjectsDeleteParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
+// WithProject adds the project to the projects delete params
+func (o *ProjectsDeleteParams) WithProject(project string) *ProjectsDeleteParams {
+	o.SetProject(project)
+	return o
+}
+
+// SetProject adds the project to the projects delete params
+func (o *ProjectsDeleteParams) SetProject(project string) {
+	o.Project = project
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ProjectsDeleteParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -141,13 +141,13 @@ func (o *ProjectsDeleteParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
+	// path param namespace
+	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 

@@ -64,28 +64,28 @@ for the service trigger update operation typically these are written to a http.R
 */
 type ServiceTriggerUpdateParams struct {
 
-	/*ID
-	  Trigger identifier expressed as UUID.
-
-	*/
-	ID string
 	/*Namespace
 	  User or team name.
 
 	*/
 	Namespace string
-	/*ProjectID
-	  Project unique identifier expressed as UUID.
+	/*Project
+	  Project unique identifier expressed as UUID or name.
 
 	*/
-	ProjectID string
+	Project string
+	/*Server
+	  Server unique identifier expressed as UUID or name.
+
+	*/
+	Server string
 	/*ServerAction*/
 	ServerAction *models.ServerActionData
-	/*ServerID
-	  Server unique identifier expressed as UUID.
+	/*Trigger
+	  Trigger identifier expressed as UUID or name.
 
 	*/
-	ServerID string
+	Trigger string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -125,17 +125,6 @@ func (o *ServiceTriggerUpdateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the service trigger update params
-func (o *ServiceTriggerUpdateParams) WithID(id string) *ServiceTriggerUpdateParams {
-	o.SetID(id)
-	return o
-}
-
-// SetID adds the id to the service trigger update params
-func (o *ServiceTriggerUpdateParams) SetID(id string) {
-	o.ID = id
-}
-
 // WithNamespace adds the namespace to the service trigger update params
 func (o *ServiceTriggerUpdateParams) WithNamespace(namespace string) *ServiceTriggerUpdateParams {
 	o.SetNamespace(namespace)
@@ -147,15 +136,26 @@ func (o *ServiceTriggerUpdateParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
-// WithProjectID adds the projectID to the service trigger update params
-func (o *ServiceTriggerUpdateParams) WithProjectID(projectID string) *ServiceTriggerUpdateParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the service trigger update params
+func (o *ServiceTriggerUpdateParams) WithProject(project string) *ServiceTriggerUpdateParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the service trigger update params
-func (o *ServiceTriggerUpdateParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the service trigger update params
+func (o *ServiceTriggerUpdateParams) SetProject(project string) {
+	o.Project = project
+}
+
+// WithServer adds the server to the service trigger update params
+func (o *ServiceTriggerUpdateParams) WithServer(server string) *ServiceTriggerUpdateParams {
+	o.SetServer(server)
+	return o
+}
+
+// SetServer adds the server to the service trigger update params
+func (o *ServiceTriggerUpdateParams) SetServer(server string) {
+	o.Server = server
 }
 
 // WithServerAction adds the serverAction to the service trigger update params
@@ -169,15 +169,15 @@ func (o *ServiceTriggerUpdateParams) SetServerAction(serverAction *models.Server
 	o.ServerAction = serverAction
 }
 
-// WithServerID adds the serverID to the service trigger update params
-func (o *ServiceTriggerUpdateParams) WithServerID(serverID string) *ServiceTriggerUpdateParams {
-	o.SetServerID(serverID)
+// WithTrigger adds the trigger to the service trigger update params
+func (o *ServiceTriggerUpdateParams) WithTrigger(trigger string) *ServiceTriggerUpdateParams {
+	o.SetTrigger(trigger)
 	return o
 }
 
-// SetServerID adds the serverId to the service trigger update params
-func (o *ServiceTriggerUpdateParams) SetServerID(serverID string) {
-	o.ServerID = serverID
+// SetTrigger adds the trigger to the service trigger update params
+func (o *ServiceTriggerUpdateParams) SetTrigger(trigger string) {
+	o.Trigger = trigger
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -188,18 +188,18 @@ func (o *ServiceTriggerUpdateParams) WriteToRequest(r runtime.ClientRequest, reg
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
-
 	// path param namespace
 	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
+		return err
+	}
+
+	// path param server
+	if err := r.SetPathParam("server", o.Server); err != nil {
 		return err
 	}
 
@@ -211,8 +211,8 @@ func (o *ServiceTriggerUpdateParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 
-	// path param server_id
-	if err := r.SetPathParam("server_id", o.ServerID); err != nil {
+	// path param trigger
+	if err := r.SetPathParam("trigger", o.Trigger); err != nil {
 		return err
 	}
 

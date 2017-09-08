@@ -58,7 +58,7 @@ type UserAvatarSetCreated struct {
 }
 
 func (o *UserAvatarSetCreated) Error() string {
-	return fmt.Sprintf("[POST /v1/users/{user_id}/avatar/][%d] userAvatarSetCreated  %+v", 201, o.Payload)
+	return fmt.Sprintf("[POST /v1/users/{user}/avatar/][%d] userAvatarSetCreated  %+v", 201, o.Payload)
 }
 
 func (o *UserAvatarSetCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -86,7 +86,7 @@ type UserAvatarSetBadRequest struct {
 }
 
 func (o *UserAvatarSetBadRequest) Error() string {
-	return fmt.Sprintf("[POST /v1/users/{user_id}/avatar/][%d] userAvatarSetBadRequest ", 400)
+	return fmt.Sprintf("[POST /v1/users/{user}/avatar/][%d] userAvatarSetBadRequest ", 400)
 }
 
 func (o *UserAvatarSetBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

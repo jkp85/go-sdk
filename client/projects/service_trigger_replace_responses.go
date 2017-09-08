@@ -65,7 +65,7 @@ type ServiceTriggerReplaceOK struct {
 }
 
 func (o *ServiceTriggerReplaceOK) Error() string {
-	return fmt.Sprintf("[PUT /v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/{id}/][%d] serviceTriggerReplaceOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /v1/{namespace}/projects/{project}/servers/{server}/triggers/{trigger}/][%d] serviceTriggerReplaceOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceTriggerReplaceOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -94,7 +94,7 @@ type ServiceTriggerReplaceBadRequest struct {
 }
 
 func (o *ServiceTriggerReplaceBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/{id}/][%d] serviceTriggerReplaceBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PUT /v1/{namespace}/projects/{project}/servers/{server}/triggers/{trigger}/][%d] serviceTriggerReplaceBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceTriggerReplaceBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -123,7 +123,7 @@ type ServiceTriggerReplaceNotFound struct {
 }
 
 func (o *ServiceTriggerReplaceNotFound) Error() string {
-	return fmt.Sprintf("[PUT /v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/{id}/][%d] serviceTriggerReplaceNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PUT /v1/{namespace}/projects/{project}/servers/{server}/triggers/{trigger}/][%d] serviceTriggerReplaceNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceTriggerReplaceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -65,7 +65,7 @@ type ServiceTriggerUpdateOK struct {
 }
 
 func (o *ServiceTriggerUpdateOK) Error() string {
-	return fmt.Sprintf("[PATCH /v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/{id}/][%d] serviceTriggerUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/{namespace}/projects/{project}/servers/{server}/triggers/{trigger}/][%d] serviceTriggerUpdateOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceTriggerUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -94,7 +94,7 @@ type ServiceTriggerUpdateBadRequest struct {
 }
 
 func (o *ServiceTriggerUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/{id}/][%d] serviceTriggerUpdateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/{namespace}/projects/{project}/servers/{server}/triggers/{trigger}/][%d] serviceTriggerUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceTriggerUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -123,7 +123,7 @@ type ServiceTriggerUpdateNotFound struct {
 }
 
 func (o *ServiceTriggerUpdateNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /v1/{namespace}/projects/{project_id}/servers/{server_id}/triggers/{id}/][%d] serviceTriggerUpdateNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/{namespace}/projects/{project}/servers/{server}/triggers/{trigger}/][%d] serviceTriggerUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceTriggerUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

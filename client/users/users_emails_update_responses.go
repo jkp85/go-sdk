@@ -65,7 +65,7 @@ type UsersEmailsUpdateOK struct {
 }
 
 func (o *UsersEmailsUpdateOK) Error() string {
-	return fmt.Sprintf("[PATCH /v1/users/{user_id}/emails/{email_id}/][%d] usersEmailsUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/users/{user}/emails/{email_id}/][%d] usersEmailsUpdateOK  %+v", 200, o.Payload)
 }
 
 func (o *UsersEmailsUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -94,7 +94,7 @@ type UsersEmailsUpdateBadRequest struct {
 }
 
 func (o *UsersEmailsUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /v1/users/{user_id}/emails/{email_id}/][%d] usersEmailsUpdateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/users/{user}/emails/{email_id}/][%d] usersEmailsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *UsersEmailsUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -123,7 +123,7 @@ type UsersEmailsUpdateNotFound struct {
 }
 
 func (o *UsersEmailsUpdateNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /v1/users/{user_id}/emails/{email_id}/][%d] usersEmailsUpdateNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/users/{user}/emails/{email_id}/][%d] usersEmailsUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *UsersEmailsUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

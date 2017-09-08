@@ -72,16 +72,16 @@ type ProjectsServersRunStatsDeleteParams struct {
 
 	*/
 	Namespace string
-	/*ProjectID
-	  Project unique identifier expressed as UUID.
+	/*Project
+	  Project unique identifier expressed as UUID or name.
 
 	*/
-	ProjectID string
-	/*ServerID
-	  Server unique identifier expressed as UUID.
+	Project string
+	/*Server
+	  Server unique identifier expressed as UUID or name.
 
 	*/
-	ServerID string
+	Server string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -143,26 +143,26 @@ func (o *ProjectsServersRunStatsDeleteParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
-// WithProjectID adds the projectID to the projects servers run stats delete params
-func (o *ProjectsServersRunStatsDeleteParams) WithProjectID(projectID string) *ProjectsServersRunStatsDeleteParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the projects servers run stats delete params
+func (o *ProjectsServersRunStatsDeleteParams) WithProject(project string) *ProjectsServersRunStatsDeleteParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the projects servers run stats delete params
-func (o *ProjectsServersRunStatsDeleteParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the projects servers run stats delete params
+func (o *ProjectsServersRunStatsDeleteParams) SetProject(project string) {
+	o.Project = project
 }
 
-// WithServerID adds the serverID to the projects servers run stats delete params
-func (o *ProjectsServersRunStatsDeleteParams) WithServerID(serverID string) *ProjectsServersRunStatsDeleteParams {
-	o.SetServerID(serverID)
+// WithServer adds the server to the projects servers run stats delete params
+func (o *ProjectsServersRunStatsDeleteParams) WithServer(server string) *ProjectsServersRunStatsDeleteParams {
+	o.SetServer(server)
 	return o
 }
 
-// SetServerID adds the serverId to the projects servers run stats delete params
-func (o *ProjectsServersRunStatsDeleteParams) SetServerID(serverID string) {
-	o.ServerID = serverID
+// SetServer adds the server to the projects servers run stats delete params
+func (o *ProjectsServersRunStatsDeleteParams) SetServer(server string) {
+	o.Server = server
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -183,13 +183,13 @@ func (o *ProjectsServersRunStatsDeleteParams) WriteToRequest(r runtime.ClientReq
 		return err
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 
-	// path param server_id
-	if err := r.SetPathParam("server_id", o.ServerID); err != nil {
+	// path param server
+	if err := r.SetPathParam("server", o.Server); err != nil {
 		return err
 	}
 

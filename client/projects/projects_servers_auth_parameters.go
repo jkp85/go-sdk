@@ -67,16 +67,16 @@ type ProjectsServersAuthParams struct {
 
 	*/
 	Namespace string
-	/*ProjectID
-	  Project unique identifier expressed as UUID.
+	/*Project
+	  Project unique identifier expressed as UUID or name.
 
 	*/
-	ProjectID string
-	/*ServerID
-	  Server unique identifier expressed as UUID.
+	Project string
+	/*Server
+	  Server unique identifier expressed as UUID or name.
 
 	*/
-	ServerID string
+	Server string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -127,26 +127,26 @@ func (o *ProjectsServersAuthParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
-// WithProjectID adds the projectID to the projects servers auth params
-func (o *ProjectsServersAuthParams) WithProjectID(projectID string) *ProjectsServersAuthParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the projects servers auth params
+func (o *ProjectsServersAuthParams) WithProject(project string) *ProjectsServersAuthParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the projects servers auth params
-func (o *ProjectsServersAuthParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the projects servers auth params
+func (o *ProjectsServersAuthParams) SetProject(project string) {
+	o.Project = project
 }
 
-// WithServerID adds the serverID to the projects servers auth params
-func (o *ProjectsServersAuthParams) WithServerID(serverID string) *ProjectsServersAuthParams {
-	o.SetServerID(serverID)
+// WithServer adds the server to the projects servers auth params
+func (o *ProjectsServersAuthParams) WithServer(server string) *ProjectsServersAuthParams {
+	o.SetServer(server)
 	return o
 }
 
-// SetServerID adds the serverId to the projects servers auth params
-func (o *ProjectsServersAuthParams) SetServerID(serverID string) {
-	o.ServerID = serverID
+// SetServer adds the server to the projects servers auth params
+func (o *ProjectsServersAuthParams) SetServer(server string) {
+	o.Server = server
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -162,13 +162,13 @@ func (o *ProjectsServersAuthParams) WriteToRequest(r runtime.ClientRequest, reg 
 		return err
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 
-	// path param server_id
-	if err := r.SetPathParam("server_id", o.ServerID); err != nil {
+	// path param server
+	if err := r.SetPathParam("server", o.Server); err != nil {
 		return err
 	}
 

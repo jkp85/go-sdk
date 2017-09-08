@@ -82,16 +82,16 @@ type ProjectsServersSSHTunnelsListParams struct {
 
 	*/
 	Ordering *string
-	/*ProjectID
-	  Project unique identifier expressed as UUID.
+	/*Project
+	  Project unique identifier expressed as UUID or name.
 
 	*/
-	ProjectID string
-	/*ServerID
-	  Server unique identifier expressed as UUID.
+	Project string
+	/*Server
+	  Server unique identifier expressed as UUID or name.
 
 	*/
-	ServerID string
+	Server string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -175,26 +175,26 @@ func (o *ProjectsServersSSHTunnelsListParams) SetOrdering(ordering *string) {
 	o.Ordering = ordering
 }
 
-// WithProjectID adds the projectID to the projects servers ssh tunnels list params
-func (o *ProjectsServersSSHTunnelsListParams) WithProjectID(projectID string) *ProjectsServersSSHTunnelsListParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the projects servers ssh tunnels list params
+func (o *ProjectsServersSSHTunnelsListParams) WithProject(project string) *ProjectsServersSSHTunnelsListParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the projects servers ssh tunnels list params
-func (o *ProjectsServersSSHTunnelsListParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the projects servers ssh tunnels list params
+func (o *ProjectsServersSSHTunnelsListParams) SetProject(project string) {
+	o.Project = project
 }
 
-// WithServerID adds the serverID to the projects servers ssh tunnels list params
-func (o *ProjectsServersSSHTunnelsListParams) WithServerID(serverID string) *ProjectsServersSSHTunnelsListParams {
-	o.SetServerID(serverID)
+// WithServer adds the server to the projects servers ssh tunnels list params
+func (o *ProjectsServersSSHTunnelsListParams) WithServer(server string) *ProjectsServersSSHTunnelsListParams {
+	o.SetServer(server)
 	return o
 }
 
-// SetServerID adds the serverId to the projects servers ssh tunnels list params
-func (o *ProjectsServersSSHTunnelsListParams) SetServerID(serverID string) {
-	o.ServerID = serverID
+// SetServer adds the server to the projects servers ssh tunnels list params
+func (o *ProjectsServersSSHTunnelsListParams) SetServer(server string) {
+	o.Server = server
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -258,13 +258,13 @@ func (o *ProjectsServersSSHTunnelsListParams) WriteToRequest(r runtime.ClientReq
 
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 
-	// path param server_id
-	if err := r.SetPathParam("server_id", o.ServerID); err != nil {
+	// path param server
+	if err := r.SetPathParam("server", o.Server); err != nil {
 		return err
 	}
 

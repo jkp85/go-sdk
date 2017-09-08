@@ -58,7 +58,7 @@ type ProjectsServersRunStatsCreateCreated struct {
 }
 
 func (o *ProjectsServersRunStatsCreateCreated) Error() string {
-	return fmt.Sprintf("[POST /v1/{namespace}/projects/{project_id}/servers/{server_id}/run-stats/][%d] projectsServersRunStatsCreateCreated  %+v", 201, o.Payload)
+	return fmt.Sprintf("[POST /v1/{namespace}/projects/{project}/servers/{server}/run-stats/][%d] projectsServersRunStatsCreateCreated  %+v", 201, o.Payload)
 }
 
 func (o *ProjectsServersRunStatsCreateCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type ProjectsServersRunStatsCreateBadRequest struct {
 }
 
 func (o *ProjectsServersRunStatsCreateBadRequest) Error() string {
-	return fmt.Sprintf("[POST /v1/{namespace}/projects/{project_id}/servers/{server_id}/run-stats/][%d] projectsServersRunStatsCreateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /v1/{namespace}/projects/{project}/servers/{server}/run-stats/][%d] projectsServersRunStatsCreateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsServersRunStatsCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -62,11 +62,11 @@ for the users api key list operation typically these are written to a http.Reque
 */
 type UsersAPIKeyListParams struct {
 
-	/*UserID
-	  User unique identifier expressed as UUID.
+	/*User
+	  User unique identifier expressed as UUID or username.
 
 	*/
-	UserID string
+	User string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -106,15 +106,15 @@ func (o *UsersAPIKeyListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithUserID adds the userID to the users api key list params
-func (o *UsersAPIKeyListParams) WithUserID(userID string) *UsersAPIKeyListParams {
-	o.SetUserID(userID)
+// WithUser adds the user to the users api key list params
+func (o *UsersAPIKeyListParams) WithUser(user string) *UsersAPIKeyListParams {
+	o.SetUser(user)
 	return o
 }
 
-// SetUserID adds the userId to the users api key list params
-func (o *UsersAPIKeyListParams) SetUserID(userID string) {
-	o.UserID = userID
+// SetUser adds the user to the users api key list params
+func (o *UsersAPIKeyListParams) SetUser(user string) {
+	o.User = user
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -125,8 +125,8 @@ func (o *UsersAPIKeyListParams) WriteToRequest(r runtime.ClientRequest, reg strf
 	}
 	var res []error
 
-	// path param user_id
-	if err := r.SetPathParam("user_id", o.UserID); err != nil {
+	// path param user
+	if err := r.SetPathParam("user", o.User); err != nil {
 		return err
 	}
 

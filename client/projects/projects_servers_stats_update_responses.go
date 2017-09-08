@@ -65,7 +65,7 @@ type ProjectsServersStatsUpdateOK struct {
 }
 
 func (o *ProjectsServersStatsUpdateOK) Error() string {
-	return fmt.Sprintf("[PATCH /v1/{namespace}/projects/{project_id}/servers/{server_id}/stats/{id}/][%d] projectsServersStatsUpdateOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/{namespace}/projects/{project}/servers/{server}/stats/{id}/][%d] projectsServersStatsUpdateOK  %+v", 200, o.Payload)
 }
 
 func (o *ProjectsServersStatsUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -94,7 +94,7 @@ type ProjectsServersStatsUpdateBadRequest struct {
 }
 
 func (o *ProjectsServersStatsUpdateBadRequest) Error() string {
-	return fmt.Sprintf("[PATCH /v1/{namespace}/projects/{project_id}/servers/{server_id}/stats/{id}/][%d] projectsServersStatsUpdateBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/{namespace}/projects/{project}/servers/{server}/stats/{id}/][%d] projectsServersStatsUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ProjectsServersStatsUpdateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -123,7 +123,7 @@ type ProjectsServersStatsUpdateNotFound struct {
 }
 
 func (o *ProjectsServersStatsUpdateNotFound) Error() string {
-	return fmt.Sprintf("[PATCH /v1/{namespace}/projects/{project_id}/servers/{server_id}/stats/{id}/][%d] projectsServersStatsUpdateNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PATCH /v1/{namespace}/projects/{project}/servers/{server}/stats/{id}/][%d] projectsServersStatsUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ProjectsServersStatsUpdateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

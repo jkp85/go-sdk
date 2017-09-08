@@ -10,6 +10,7 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // Webhook webhook
@@ -17,19 +18,34 @@ import (
 type Webhook struct {
 
 	// JSON with payload and webhook configurations.
-	Payload string `json:"payload,omitempty"`
+	Payload interface{} `json:"payload,omitempty"`
 
 	// URL for webhook.
-	URL string `json:"url,omitempty"`
+	// Required: true
+	URL *string `json:"url"`
 }
 
 // Validate validates this webhook
 func (m *Webhook) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateURL(formats); err != nil {
+		// prop
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *Webhook) validateURL(formats strfmt.Registry) error {
+
+	if err := validate.Required("url", "body", m.URL); err != nil {
+		return err
+	}
+
 	return nil
 }
 

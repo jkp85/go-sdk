@@ -65,7 +65,7 @@ type ServersOptionsServerSizeReplaceOK struct {
 }
 
 func (o *ServersOptionsServerSizeReplaceOK) Error() string {
-	return fmt.Sprintf("[PUT /v1/servers/options/server-size/{id}/][%d] serversOptionsServerSizeReplaceOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /v1/servers/options/server-size/{size}/][%d] serversOptionsServerSizeReplaceOK  %+v", 200, o.Payload)
 }
 
 func (o *ServersOptionsServerSizeReplaceOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -94,7 +94,7 @@ type ServersOptionsServerSizeReplaceBadRequest struct {
 }
 
 func (o *ServersOptionsServerSizeReplaceBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /v1/servers/options/server-size/{id}/][%d] serversOptionsServerSizeReplaceBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PUT /v1/servers/options/server-size/{size}/][%d] serversOptionsServerSizeReplaceBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServersOptionsServerSizeReplaceBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -123,7 +123,7 @@ type ServersOptionsServerSizeReplaceNotFound struct {
 }
 
 func (o *ServersOptionsServerSizeReplaceNotFound) Error() string {
-	return fmt.Sprintf("[PUT /v1/servers/options/server-size/{id}/][%d] serversOptionsServerSizeReplaceNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[PUT /v1/servers/options/server-size/{size}/][%d] serversOptionsServerSizeReplaceNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServersOptionsServerSizeReplaceNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -58,7 +58,7 @@ type UsersReadOK struct {
 }
 
 func (o *UsersReadOK) Error() string {
-	return fmt.Sprintf("[GET /v1/users/profiles/{id}/][%d] usersReadOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /v1/users/profiles/{user}/][%d] usersReadOK  %+v", 200, o.Payload)
 }
 
 func (o *UsersReadOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -87,7 +87,7 @@ type UsersReadNotFound struct {
 }
 
 func (o *UsersReadNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/users/profiles/{id}/][%d] usersReadNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /v1/users/profiles/{user}/][%d] usersReadNotFound  %+v", 404, o.Payload)
 }
 
 func (o *UsersReadNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -51,7 +51,7 @@ type ProjectsCollaboratorsListOK struct {
 }
 
 func (o *ProjectsCollaboratorsListOK) Error() string {
-	return fmt.Sprintf("[GET /v1/{namespace}/projects/{project_id}/collaborators/][%d] projectsCollaboratorsListOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /v1/{namespace}/projects/{project}/collaborators/][%d] projectsCollaboratorsListOK  %+v", 200, o.Payload)
 }
 
 func (o *ProjectsCollaboratorsListOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -62,11 +62,11 @@ for the hosts read operation typically these are written to a http.Request
 */
 type HostsReadParams struct {
 
-	/*ID
-	  Unique identifier expressed as UUID.
+	/*Host
+	  Unique identifier expressed as UUID or name.
 
 	*/
-	ID string
+	Host string
 	/*Namespace
 	  User or team name.
 
@@ -111,15 +111,15 @@ func (o *HostsReadParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the hosts read params
-func (o *HostsReadParams) WithID(id string) *HostsReadParams {
-	o.SetID(id)
+// WithHost adds the host to the hosts read params
+func (o *HostsReadParams) WithHost(host string) *HostsReadParams {
+	o.SetHost(host)
 	return o
 }
 
-// SetID adds the id to the hosts read params
-func (o *HostsReadParams) SetID(id string) {
-	o.ID = id
+// SetHost adds the host to the hosts read params
+func (o *HostsReadParams) SetHost(host string) {
+	o.Host = host
 }
 
 // WithNamespace adds the namespace to the hosts read params
@@ -141,8 +141,8 @@ func (o *HostsReadParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
+	// path param host
+	if err := r.SetPathParam("host", o.Host); err != nil {
 		return err
 	}
 

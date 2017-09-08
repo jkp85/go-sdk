@@ -62,11 +62,11 @@ for the user avatar delete operation typically these are written to a http.Reque
 */
 type UserAvatarDeleteParams struct {
 
-	/*UserID
-	  User unique identifier expressed as UUID.
+	/*User
+	  User unique identifier expressed as UUID or username.
 
 	*/
-	UserID string
+	User string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -106,15 +106,15 @@ func (o *UserAvatarDeleteParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithUserID adds the userID to the user avatar delete params
-func (o *UserAvatarDeleteParams) WithUserID(userID string) *UserAvatarDeleteParams {
-	o.SetUserID(userID)
+// WithUser adds the user to the user avatar delete params
+func (o *UserAvatarDeleteParams) WithUser(user string) *UserAvatarDeleteParams {
+	o.SetUser(user)
 	return o
 }
 
-// SetUserID adds the userId to the user avatar delete params
-func (o *UserAvatarDeleteParams) SetUserID(userID string) {
-	o.UserID = userID
+// SetUser adds the user to the user avatar delete params
+func (o *UserAvatarDeleteParams) SetUser(user string) {
+	o.User = user
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -125,8 +125,8 @@ func (o *UserAvatarDeleteParams) WriteToRequest(r runtime.ClientRequest, reg str
 	}
 	var res []error
 
-	// path param user_id
-	if err := r.SetPathParam("user_id", o.UserID); err != nil {
+	// path param user
+	if err := r.SetPathParam("user", o.User); err != nil {
 		return err
 	}
 

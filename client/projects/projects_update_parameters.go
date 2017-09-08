@@ -64,16 +64,16 @@ for the projects update operation typically these are written to a http.Request
 */
 type ProjectsUpdateParams struct {
 
-	/*ID
-	  Project unique identifier expressed as UUID.
-
-	*/
-	ID string
 	/*Namespace
 	  User or team name.
 
 	*/
 	Namespace string
+	/*Project
+	  Project unique identifier expressed as UUID or name.
+
+	*/
+	Project string
 	/*ProjectData*/
 	ProjectData *models.ProjectData
 
@@ -115,17 +115,6 @@ func (o *ProjectsUpdateParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the projects update params
-func (o *ProjectsUpdateParams) WithID(id string) *ProjectsUpdateParams {
-	o.SetID(id)
-	return o
-}
-
-// SetID adds the id to the projects update params
-func (o *ProjectsUpdateParams) SetID(id string) {
-	o.ID = id
-}
-
 // WithNamespace adds the namespace to the projects update params
 func (o *ProjectsUpdateParams) WithNamespace(namespace string) *ProjectsUpdateParams {
 	o.SetNamespace(namespace)
@@ -135,6 +124,17 @@ func (o *ProjectsUpdateParams) WithNamespace(namespace string) *ProjectsUpdatePa
 // SetNamespace adds the namespace to the projects update params
 func (o *ProjectsUpdateParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
+}
+
+// WithProject adds the project to the projects update params
+func (o *ProjectsUpdateParams) WithProject(project string) *ProjectsUpdateParams {
+	o.SetProject(project)
+	return o
+}
+
+// SetProject adds the project to the projects update params
+func (o *ProjectsUpdateParams) SetProject(project string) {
+	o.Project = project
 }
 
 // WithProjectData adds the projectData to the projects update params
@@ -156,13 +156,13 @@ func (o *ProjectsUpdateParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
+	// path param namespace
+	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 
-	// path param namespace
-	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 

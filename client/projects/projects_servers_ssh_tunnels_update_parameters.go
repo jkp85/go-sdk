@@ -64,19 +64,19 @@ for the projects servers ssh tunnels update operation typically these are writte
 */
 type ProjectsServersSSHTunnelsUpdateParams struct {
 
-	/*ID*/
-	ID string
 	/*Namespace
 	  User or team name.
 
 	*/
 	Namespace string
-	/*ProjectID*/
-	ProjectID string
-	/*ServerID*/
-	ServerID string
+	/*Project*/
+	Project string
+	/*Server*/
+	Server string
 	/*SshtunnelData*/
 	SshtunnelData *models.SSHTunnelData
+	/*Tunnel*/
+	Tunnel string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -116,17 +116,6 @@ func (o *ProjectsServersSSHTunnelsUpdateParams) SetHTTPClient(client *http.Clien
 	o.HTTPClient = client
 }
 
-// WithID adds the id to the projects servers ssh tunnels update params
-func (o *ProjectsServersSSHTunnelsUpdateParams) WithID(id string) *ProjectsServersSSHTunnelsUpdateParams {
-	o.SetID(id)
-	return o
-}
-
-// SetID adds the id to the projects servers ssh tunnels update params
-func (o *ProjectsServersSSHTunnelsUpdateParams) SetID(id string) {
-	o.ID = id
-}
-
 // WithNamespace adds the namespace to the projects servers ssh tunnels update params
 func (o *ProjectsServersSSHTunnelsUpdateParams) WithNamespace(namespace string) *ProjectsServersSSHTunnelsUpdateParams {
 	o.SetNamespace(namespace)
@@ -138,26 +127,26 @@ func (o *ProjectsServersSSHTunnelsUpdateParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
-// WithProjectID adds the projectID to the projects servers ssh tunnels update params
-func (o *ProjectsServersSSHTunnelsUpdateParams) WithProjectID(projectID string) *ProjectsServersSSHTunnelsUpdateParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the projects servers ssh tunnels update params
+func (o *ProjectsServersSSHTunnelsUpdateParams) WithProject(project string) *ProjectsServersSSHTunnelsUpdateParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the projects servers ssh tunnels update params
-func (o *ProjectsServersSSHTunnelsUpdateParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the projects servers ssh tunnels update params
+func (o *ProjectsServersSSHTunnelsUpdateParams) SetProject(project string) {
+	o.Project = project
 }
 
-// WithServerID adds the serverID to the projects servers ssh tunnels update params
-func (o *ProjectsServersSSHTunnelsUpdateParams) WithServerID(serverID string) *ProjectsServersSSHTunnelsUpdateParams {
-	o.SetServerID(serverID)
+// WithServer adds the server to the projects servers ssh tunnels update params
+func (o *ProjectsServersSSHTunnelsUpdateParams) WithServer(server string) *ProjectsServersSSHTunnelsUpdateParams {
+	o.SetServer(server)
 	return o
 }
 
-// SetServerID adds the serverId to the projects servers ssh tunnels update params
-func (o *ProjectsServersSSHTunnelsUpdateParams) SetServerID(serverID string) {
-	o.ServerID = serverID
+// SetServer adds the server to the projects servers ssh tunnels update params
+func (o *ProjectsServersSSHTunnelsUpdateParams) SetServer(server string) {
+	o.Server = server
 }
 
 // WithSshtunnelData adds the sshtunnelData to the projects servers ssh tunnels update params
@@ -171,6 +160,17 @@ func (o *ProjectsServersSSHTunnelsUpdateParams) SetSshtunnelData(sshtunnelData *
 	o.SshtunnelData = sshtunnelData
 }
 
+// WithTunnel adds the tunnel to the projects servers ssh tunnels update params
+func (o *ProjectsServersSSHTunnelsUpdateParams) WithTunnel(tunnel string) *ProjectsServersSSHTunnelsUpdateParams {
+	o.SetTunnel(tunnel)
+	return o
+}
+
+// SetTunnel adds the tunnel to the projects servers ssh tunnels update params
+func (o *ProjectsServersSSHTunnelsUpdateParams) SetTunnel(tunnel string) {
+	o.Tunnel = tunnel
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *ProjectsServersSSHTunnelsUpdateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -179,23 +179,18 @@ func (o *ProjectsServersSSHTunnelsUpdateParams) WriteToRequest(r runtime.ClientR
 	}
 	var res []error
 
-	// path param id
-	if err := r.SetPathParam("id", o.ID); err != nil {
-		return err
-	}
-
 	// path param namespace
 	if err := r.SetPathParam("namespace", o.Namespace); err != nil {
 		return err
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
 		return err
 	}
 
-	// path param server_id
-	if err := r.SetPathParam("server_id", o.ServerID); err != nil {
+	// path param server
+	if err := r.SetPathParam("server", o.Server); err != nil {
 		return err
 	}
 
@@ -204,6 +199,11 @@ func (o *ProjectsServersSSHTunnelsUpdateParams) WriteToRequest(r runtime.ClientR
 	}
 
 	if err := r.SetBodyParam(o.SshtunnelData); err != nil {
+		return err
+	}
+
+	// path param tunnel
+	if err := r.SetPathParam("tunnel", o.Tunnel); err != nil {
 		return err
 	}
 

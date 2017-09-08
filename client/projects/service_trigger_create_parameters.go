@@ -69,21 +69,21 @@ type ServiceTriggerCreateParams struct {
 
 	*/
 	Namespace string
-	/*ProjectID
-	  Project unique identifier expressed as UUID.
+	/*Project
+	  Project unique identifier expressed as UUID or name.
 
 	*/
-	ProjectID string
+	Project string
+	/*Server
+	  Server unique identifier expressed as UUID or name.
+
+	*/
+	Server string
 	/*ServerAction
 	  Server action.
 
 	*/
 	ServerAction *models.ServerActionData
-	/*ServerID
-	  Server unique identifier expressed as UUID.
-
-	*/
-	ServerID string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -134,15 +134,26 @@ func (o *ServiceTriggerCreateParams) SetNamespace(namespace string) {
 	o.Namespace = namespace
 }
 
-// WithProjectID adds the projectID to the service trigger create params
-func (o *ServiceTriggerCreateParams) WithProjectID(projectID string) *ServiceTriggerCreateParams {
-	o.SetProjectID(projectID)
+// WithProject adds the project to the service trigger create params
+func (o *ServiceTriggerCreateParams) WithProject(project string) *ServiceTriggerCreateParams {
+	o.SetProject(project)
 	return o
 }
 
-// SetProjectID adds the projectId to the service trigger create params
-func (o *ServiceTriggerCreateParams) SetProjectID(projectID string) {
-	o.ProjectID = projectID
+// SetProject adds the project to the service trigger create params
+func (o *ServiceTriggerCreateParams) SetProject(project string) {
+	o.Project = project
+}
+
+// WithServer adds the server to the service trigger create params
+func (o *ServiceTriggerCreateParams) WithServer(server string) *ServiceTriggerCreateParams {
+	o.SetServer(server)
+	return o
+}
+
+// SetServer adds the server to the service trigger create params
+func (o *ServiceTriggerCreateParams) SetServer(server string) {
+	o.Server = server
 }
 
 // WithServerAction adds the serverAction to the service trigger create params
@@ -154,17 +165,6 @@ func (o *ServiceTriggerCreateParams) WithServerAction(serverAction *models.Serve
 // SetServerAction adds the serverAction to the service trigger create params
 func (o *ServiceTriggerCreateParams) SetServerAction(serverAction *models.ServerActionData) {
 	o.ServerAction = serverAction
-}
-
-// WithServerID adds the serverID to the service trigger create params
-func (o *ServiceTriggerCreateParams) WithServerID(serverID string) *ServiceTriggerCreateParams {
-	o.SetServerID(serverID)
-	return o
-}
-
-// SetServerID adds the serverId to the service trigger create params
-func (o *ServiceTriggerCreateParams) SetServerID(serverID string) {
-	o.ServerID = serverID
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -180,8 +180,13 @@ func (o *ServiceTriggerCreateParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 
-	// path param project_id
-	if err := r.SetPathParam("project_id", o.ProjectID); err != nil {
+	// path param project
+	if err := r.SetPathParam("project", o.Project); err != nil {
+		return err
+	}
+
+	// path param server
+	if err := r.SetPathParam("server", o.Server); err != nil {
 		return err
 	}
 
@@ -190,11 +195,6 @@ func (o *ServiceTriggerCreateParams) WriteToRequest(r runtime.ClientRequest, reg
 	}
 
 	if err := r.SetBodyParam(o.ServerAction); err != nil {
-		return err
-	}
-
-	// path param server_id
-	if err := r.SetPathParam("server_id", o.ServerID); err != nil {
 		return err
 	}
 
