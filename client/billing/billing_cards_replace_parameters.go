@@ -17,7 +17,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	models "github.com/IllumiDesk/go-sdk/models"
 )
 
 // NewBillingCardsReplaceParams creates a new BillingCardsReplaceParams object
@@ -153,12 +153,10 @@ func (o *BillingCardsReplaceParams) WriteToRequest(r runtime.ClientRequest, reg 
 	}
 	var res []error
 
-	if o.CardData == nil {
-		o.CardData = new(models.CardDataPutandPatch)
-	}
-
-	if err := r.SetBodyParam(o.CardData); err != nil {
-		return err
+	if o.CardData != nil {
+		if err := r.SetBodyParam(o.CardData); err != nil {
+			return err
+		}
 	}
 
 	// path param id

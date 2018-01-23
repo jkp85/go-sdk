@@ -17,7 +17,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	models "github.com/IllumiDesk/go-sdk/models"
 )
 
 // NewServiceTriggerCreateParams creates a new ServiceTriggerCreateParams object
@@ -190,12 +190,10 @@ func (o *ServiceTriggerCreateParams) WriteToRequest(r runtime.ClientRequest, reg
 		return err
 	}
 
-	if o.ServerAction == nil {
-		o.ServerAction = new(models.ServerActionData)
-	}
-
-	if err := r.SetBodyParam(o.ServerAction); err != nil {
-		return err
+	if o.ServerAction != nil {
+		if err := r.SetBodyParam(o.ServerAction); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

@@ -25,6 +25,35 @@ type Client struct {
 }
 
 /*
+Me as convenience endpoint that is equivalent to g e t v1 users profiles my user id
+*/
+func (a *Client) Me(params *MeParams, authInfo runtime.ClientAuthInfoWriter) (*MeOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewMeParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "me",
+		Method:             "GET",
+		PathPattern:        "/v1/me",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &MeReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*MeOK), nil
+
+}
+
+/*
 UserAvatarDelete deletes avatar
 */
 func (a *Client) UserAvatarDelete(params *UserAvatarDeleteParams, authInfo runtime.ClientAuthInfoWriter) (*UserAvatarDeleteNoContent, error) {
@@ -166,35 +195,6 @@ func (a *Client) UsersAPIKeyList(params *UsersAPIKeyListParams, authInfo runtime
 		return nil, err
 	}
 	return result.(*UsersAPIKeyListOK), nil
-
-}
-
-/*
-UsersAPIKeyReset resets a user s API key
-*/
-func (a *Client) UsersAPIKeyReset(params *UsersAPIKeyResetParams, authInfo runtime.ClientAuthInfoWriter) (*UsersAPIKeyResetCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUsersAPIKeyResetParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "users_api-key_reset",
-		Method:             "POST",
-		PathPattern:        "/v1/users/{user}/api-key/reset/",
-		ProducesMediaTypes: []string{"application/json", "text/html"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &UsersAPIKeyResetReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*UsersAPIKeyResetCreated), nil
 
 }
 

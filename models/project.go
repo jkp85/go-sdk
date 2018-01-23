@@ -38,6 +38,9 @@ type Project struct {
 
 	// Value that states whether project is private or public.
 	Private bool `json:"private,omitempty"`
+
+	// Project team name.
+	Team string `json:"team,omitempty"`
 }
 
 // Validate validates this project

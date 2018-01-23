@@ -25,6 +25,64 @@ type Client struct {
 }
 
 /*
+ProjectCopy copies a project to your own account
+*/
+func (a *Client) ProjectCopy(params *ProjectCopyParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectCopyCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectCopyParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "project_copy",
+		Method:             "POST",
+		PathPattern:        "/v1/{namespace}/projects/project-copy/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProjectCopyReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectCopyCreated), nil
+
+}
+
+/*
+ProjectCopyCheck checks if you are able to copy a project to your account
+*/
+func (a *Client) ProjectCopyCheck(params *ProjectCopyCheckParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectCopyCheckOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectCopyCheckParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "project_copy_check",
+		Method:             "HEAD",
+		PathPattern:        "/v1/{namespace}/projects/project-copy-check/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProjectCopyCheckReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectCopyCheckOK), nil
+
+}
+
+/*
 ProjectsCollaboratorsCreate creates project collaborators
 */
 func (a *Client) ProjectsCollaboratorsCreate(params *ProjectsCollaboratorsCreateParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsCollaboratorsCreateCreated, error) {
@@ -224,6 +282,209 @@ func (a *Client) ProjectsDelete(params *ProjectsDeleteParams, authInfo runtime.C
 		return nil, err
 	}
 	return result.(*ProjectsDeleteNoContent), nil
+
+}
+
+/*
+ProjectsDeploymentDelete deletes a deployment
+*/
+func (a *Client) ProjectsDeploymentDelete(params *ProjectsDeploymentDeleteParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsDeploymentDeleteNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsDeploymentDeleteParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_deployment_delete",
+		Method:             "DELETE",
+		PathPattern:        "/v1/{namespace}/projects/{project}/deployments/{deployment}/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProjectsDeploymentDeleteReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsDeploymentDeleteNoContent), nil
+
+}
+
+/*
+ProjectsDeploymentsCreate creates a new deployment
+*/
+func (a *Client) ProjectsDeploymentsCreate(params *ProjectsDeploymentsCreateParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsDeploymentsCreateCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsDeploymentsCreateParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_deployments_create",
+		Method:             "POST",
+		PathPattern:        "/v1/{namespace}/projects/{project}/deployments/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProjectsDeploymentsCreateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsDeploymentsCreateCreated), nil
+
+}
+
+/*
+ProjectsDeploymentsDeploy deploys an existing model
+*/
+func (a *Client) ProjectsDeploymentsDeploy(params *ProjectsDeploymentsDeployParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsDeploymentsDeployCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsDeploymentsDeployParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_deployments_deploy",
+		Method:             "POST",
+		PathPattern:        "/v1/{namespace}/projects/{project}/deployments/{deployment}/deploy/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProjectsDeploymentsDeployReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsDeploymentsDeployCreated), nil
+
+}
+
+/*
+ProjectsDeploymentsList retrieves deployments
+*/
+func (a *Client) ProjectsDeploymentsList(params *ProjectsDeploymentsListParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsDeploymentsListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsDeploymentsListParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_deployments_list",
+		Method:             "GET",
+		PathPattern:        "/v1/{namespace}/projects/{project}/deployments/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProjectsDeploymentsListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsDeploymentsListOK), nil
+
+}
+
+/*
+ProjectsDeploymentsRead retrieves a deployment
+*/
+func (a *Client) ProjectsDeploymentsRead(params *ProjectsDeploymentsReadParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsDeploymentsReadOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsDeploymentsReadParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_deployments_read",
+		Method:             "GET",
+		PathPattern:        "/v1/{namespace}/projects/{project}/deployments/{deployment}/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProjectsDeploymentsReadReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsDeploymentsReadOK), nil
+
+}
+
+/*
+ProjectsDeploymentsReplace replaces a deployment
+*/
+func (a *Client) ProjectsDeploymentsReplace(params *ProjectsDeploymentsReplaceParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsDeploymentsReplaceOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsDeploymentsReplaceParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_deployments_replace",
+		Method:             "PUT",
+		PathPattern:        "/v1/{namespace}/projects/{project}/deployments/{deployment}/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProjectsDeploymentsReplaceReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsDeploymentsReplaceOK), nil
+
+}
+
+/*
+ProjectsDeploymentsUpdate updates a deployment
+*/
+func (a *Client) ProjectsDeploymentsUpdate(params *ProjectsDeploymentsUpdateParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsDeploymentsUpdateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsDeploymentsUpdateParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_deployments_update",
+		Method:             "PATCH",
+		PathPattern:        "/v1/{namespace}/projects/{project}/deployments/{deployment}/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProjectsDeploymentsUpdateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsDeploymentsUpdateOK), nil
 
 }
 
@@ -1152,6 +1413,35 @@ func (a *Client) ProjectsServersStatsUpdate(params *ProjectsServersStatsUpdatePa
 		return nil, err
 	}
 	return result.(*ProjectsServersStatsUpdateOK), nil
+
+}
+
+/*
+ProjectsServersStatuses retrieves server statuses
+*/
+func (a *Client) ProjectsServersStatuses(params *ProjectsServersStatusesParams, authInfo runtime.ClientAuthInfoWriter) (*ProjectsServersStatusesOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewProjectsServersStatusesParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "projects_servers_statuses",
+		Method:             "GET",
+		PathPattern:        "/v1/{namespace}/projects/{project}/servers/statuses/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ProjectsServersStatusesReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*ProjectsServersStatusesOK), nil
 
 }
 

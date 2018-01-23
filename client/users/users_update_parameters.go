@@ -17,7 +17,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	models "github.com/IllumiDesk/go-sdk/models"
 )
 
 // NewUsersUpdateParams creates a new UsersUpdateParams object
@@ -145,12 +145,10 @@ func (o *UsersUpdateParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.R
 		return err
 	}
 
-	if o.UserData == nil {
-		o.UserData = new(models.UserData)
-	}
-
-	if err := r.SetBodyParam(o.UserData); err != nil {
-		return err
+	if o.UserData != nil {
+		if err := r.SetBodyParam(o.UserData); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

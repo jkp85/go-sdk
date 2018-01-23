@@ -17,7 +17,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	models "github.com/IllumiDesk/go-sdk/models"
 )
 
 // NewProjectsServersRunStatsCreateParams creates a new ProjectsServersRunStatsCreateParams object
@@ -187,12 +187,10 @@ func (o *ProjectsServersRunStatsCreateParams) WriteToRequest(r runtime.ClientReq
 		return err
 	}
 
-	if o.ServerrunstatsData == nil {
-		o.ServerrunstatsData = new(models.ServerRunStatisticsData)
-	}
-
-	if err := r.SetBodyParam(o.ServerrunstatsData); err != nil {
-		return err
+	if o.ServerrunstatsData != nil {
+		if err := r.SetBodyParam(o.ServerrunstatsData); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

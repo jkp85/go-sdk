@@ -19,6 +19,9 @@ type ServerStatistics struct {
 	// Server statistics unique identifier in UUID format.
 	ID string `json:"id,omitempty"`
 
+	// Server name.
+	Server string `json:"server,omitempty"`
+
 	// Size of statistics.
 	Size int64 `json:"size,omitempty"`
 

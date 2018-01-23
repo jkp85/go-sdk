@@ -199,6 +199,64 @@ func (a *Client) BillingCardsUpdate(params *BillingCardsUpdateParams, authInfo r
 }
 
 /*
+BillingInvoiceItemsList gets invoice items for a given invoice
+*/
+func (a *Client) BillingInvoiceItemsList(params *BillingInvoiceItemsListParams, authInfo runtime.ClientAuthInfoWriter) (*BillingInvoiceItemsListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewBillingInvoiceItemsListParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "billing_invoice_items_list",
+		Method:             "GET",
+		PathPattern:        "/v1/{namespace}/billing/invoices/{invoice_id}/invoice-items/",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &BillingInvoiceItemsListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*BillingInvoiceItemsListOK), nil
+
+}
+
+/*
+BillingInvoiceItemsRead gets a specific invoice item
+*/
+func (a *Client) BillingInvoiceItemsRead(params *BillingInvoiceItemsReadParams, authInfo runtime.ClientAuthInfoWriter) (*BillingInvoiceItemsReadOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewBillingInvoiceItemsReadParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "billing_invoice_items_read",
+		Method:             "GET",
+		PathPattern:        "/v1/{namespace}/billing/invoices/{invoice_id}/invoice-items/{id}",
+		ProducesMediaTypes: []string{"application/json", "text/html"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &BillingInvoiceItemsReadReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*BillingInvoiceItemsReadOK), nil
+
+}
+
+/*
 BillingInvoicesList gets invoices
 */
 func (a *Client) BillingInvoicesList(params *BillingInvoicesListParams, authInfo runtime.ClientAuthInfoWriter) (*BillingInvoicesListOK, error) {

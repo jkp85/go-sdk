@@ -40,6 +40,9 @@ type SSHTunnel struct {
 	// Required: true
 	RemotePort *int64 `json:"remote_port"`
 
+	// Server name.
+	Server string `json:"server,omitempty"`
+
 	// SSH tunnel user name.
 	// Required: true
 	Username *string `json:"username"`

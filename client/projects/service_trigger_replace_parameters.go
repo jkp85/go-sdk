@@ -17,7 +17,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	models "github.com/IllumiDesk/go-sdk/models"
 )
 
 // NewServiceTriggerReplaceParams creates a new ServiceTriggerReplaceParams object
@@ -203,12 +203,10 @@ func (o *ServiceTriggerReplaceParams) WriteToRequest(r runtime.ClientRequest, re
 		return err
 	}
 
-	if o.ServerAction == nil {
-		o.ServerAction = new(models.ServerActionData)
-	}
-
-	if err := r.SetBodyParam(o.ServerAction); err != nil {
-		return err
+	if o.ServerAction != nil {
+		if err := r.SetBodyParam(o.ServerAction); err != nil {
+			return err
+		}
 	}
 
 	// path param trigger

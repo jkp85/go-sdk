@@ -17,7 +17,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	models "github.com/IllumiDesk/go-sdk/models"
 )
 
 // NewAuthJwtTokenAuthParams creates a new AuthJwtTokenAuthParams object
@@ -124,12 +124,10 @@ func (o *AuthJwtTokenAuthParams) WriteToRequest(r runtime.ClientRequest, reg str
 	}
 	var res []error
 
-	if o.JwtData == nil {
-		o.JwtData = new(models.JWTData)
-	}
-
-	if err := r.SetBodyParam(o.JwtData); err != nil {
-		return err
+	if o.JwtData != nil {
+		if err := r.SetBodyParam(o.JwtData); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

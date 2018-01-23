@@ -28,6 +28,9 @@ type Server struct {
 	// Date and time when server was created.
 	CreatedAt string `json:"created_at,omitempty"`
 
+	// User that created server.
+	CreatedBy string `json:"created_by,omitempty"`
+
 	// Server endpoint path.
 	Endpoint string `json:"endpoint,omitempty"`
 
@@ -49,6 +52,9 @@ type Server struct {
 	// Server name.
 	// Required: true
 	Name *string `json:"name"`
+
+	// Project name.
+	Project string `json:"project,omitempty"`
 
 	// Server size unique identifier.
 	ServerSize string `json:"server_size,omitempty"`

@@ -21,11 +21,17 @@ type Email struct {
 	// Required: true
 	Address *string `json:"address"`
 
+	// Email unique identifier expressed as UUID.
+	ID string `json:"id,omitempty"`
+
 	// Boolean to determine if email is public or private.
 	Public bool `json:"public,omitempty"`
 
 	// Boolean to determine whether user is suscribed or unsubscribed to out going email campaigns.
 	Unsubscribed bool `json:"unsubscribed,omitempty"`
+
+	// User name for email.
+	User string `json:"user,omitempty"`
 }
 
 // Validate validates this email

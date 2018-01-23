@@ -22,6 +22,9 @@ type ServerRunStatistics struct {
 	// Server run statistics object unique identifier in UUID format.
 	ID string `json:"id,omitempty"`
 
+	// Server name.
+	Server string `json:"server,omitempty"`
+
 	// Size of server.
 	Size int64 `json:"size,omitempty"`
 

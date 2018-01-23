@@ -17,7 +17,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	models "github.com/IllumiDesk/go-sdk/models"
 )
 
 // NewBillingSubscriptionsCreateParams creates a new BillingSubscriptionsCreateParams object
@@ -145,12 +145,10 @@ func (o *BillingSubscriptionsCreateParams) WriteToRequest(r runtime.ClientReques
 		return err
 	}
 
-	if o.SubscriptionData == nil {
-		o.SubscriptionData = new(models.SubscriptionData)
-	}
-
-	if err := r.SetBodyParam(o.SubscriptionData); err != nil {
-		return err
+	if o.SubscriptionData != nil {
+		if err := r.SetBodyParam(o.SubscriptionData); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

@@ -17,7 +17,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	models "github.com/IllumiDesk/go-sdk/models"
 )
 
 // NewAuthRegisterParams creates a new AuthRegisterParams object
@@ -124,12 +124,10 @@ func (o *AuthRegisterParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 	}
 	var res []error
 
-	if o.UserData == nil {
-		o.UserData = new(models.UserData)
-	}
-
-	if err := r.SetBodyParam(o.UserData); err != nil {
-		return err
+	if o.UserData != nil {
+		if err := r.SetBodyParam(o.UserData); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

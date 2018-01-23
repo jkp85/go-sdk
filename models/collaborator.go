@@ -44,6 +44,12 @@ type Collaborator struct {
 	//
 	Permissions []string `json:"permissions"`
 
+	// Collaborator project name.
+	Project string `json:"project,omitempty"`
+
+	// Collaborator user name.
+	User string `json:"user,omitempty"`
+
 	// Collaborator's user name. This must be a valid user name within the
 	// system.
 	//

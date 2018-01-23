@@ -17,7 +17,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	models "github.com/IllumiDesk/go-sdk/models"
 )
 
 // NewProjectsCollaboratorsUpdateParams creates a new ProjectsCollaboratorsUpdateParams object
@@ -171,12 +171,10 @@ func (o *ProjectsCollaboratorsUpdateParams) WriteToRequest(r runtime.ClientReque
 		return err
 	}
 
-	if o.CollaboratorData == nil {
-		o.CollaboratorData = new(models.CollaboratorData)
-	}
-
-	if err := r.SetBodyParam(o.CollaboratorData); err != nil {
-		return err
+	if o.CollaboratorData != nil {
+		if err := r.SetBodyParam(o.CollaboratorData); err != nil {
+			return err
+		}
 	}
 
 	// path param namespace

@@ -63,7 +63,7 @@ for the billing invoices list operation typically these are written to a http.Re
 type BillingInvoicesListParams struct {
 
 	/*Limit
-	  Limite when getting items.
+	  Limit when getting items.
 
 	*/
 	Limit *string

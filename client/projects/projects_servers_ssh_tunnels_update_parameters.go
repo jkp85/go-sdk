@@ -17,7 +17,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	models "github.com/IllumiDesk/go-sdk/models"
 )
 
 // NewProjectsServersSSHTunnelsUpdateParams creates a new ProjectsServersSSHTunnelsUpdateParams object
@@ -194,12 +194,10 @@ func (o *ProjectsServersSSHTunnelsUpdateParams) WriteToRequest(r runtime.ClientR
 		return err
 	}
 
-	if o.SshtunnelData == nil {
-		o.SshtunnelData = new(models.SSHTunnelData)
-	}
-
-	if err := r.SetBodyParam(o.SshtunnelData); err != nil {
-		return err
+	if o.SshtunnelData != nil {
+		if err := r.SetBodyParam(o.SshtunnelData); err != nil {
+			return err
+		}
 	}
 
 	// path param tunnel

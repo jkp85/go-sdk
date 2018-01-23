@@ -17,7 +17,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	models "github.com/IllumiDesk/go-sdk/models"
 )
 
 // NewUsersEmailsCreateParams creates a new UsersEmailsCreateParams object
@@ -140,12 +140,10 @@ func (o *UsersEmailsCreateParams) WriteToRequest(r runtime.ClientRequest, reg st
 	}
 	var res []error
 
-	if o.EmailData == nil {
-		o.EmailData = new(models.EmailData)
-	}
-
-	if err := r.SetBodyParam(o.EmailData); err != nil {
-		return err
+	if o.EmailData != nil {
+		if err := r.SetBodyParam(o.EmailData); err != nil {
+			return err
+		}
 	}
 
 	// path param user

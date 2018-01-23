@@ -17,7 +17,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	models "github.com/IllumiDesk/go-sdk/models"
 )
 
 // NewServersOptionsServerSizeUpdateParams creates a new ServersOptionsServerSizeUpdateParams object
@@ -140,12 +140,10 @@ func (o *ServersOptionsServerSizeUpdateParams) WriteToRequest(r runtime.ClientRe
 	}
 	var res []error
 
-	if o.ServersizeData == nil {
-		o.ServersizeData = new(models.ServerSizeData)
-	}
-
-	if err := r.SetBodyParam(o.ServersizeData); err != nil {
-		return err
+	if o.ServersizeData != nil {
+		if err := r.SetBodyParam(o.ServersizeData); err != nil {
+			return err
+		}
 	}
 
 	// path param size

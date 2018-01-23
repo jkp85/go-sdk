@@ -17,7 +17,7 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/models"
+	models "github.com/IllumiDesk/go-sdk/models"
 )
 
 // NewProjectsServersReplaceParams creates a new ProjectsServersReplaceParams object
@@ -187,12 +187,10 @@ func (o *ProjectsServersReplaceParams) WriteToRequest(r runtime.ClientRequest, r
 		return err
 	}
 
-	if o.ServerData == nil {
-		o.ServerData = new(models.ServerData)
-	}
-
-	if err := r.SetBodyParam(o.ServerData); err != nil {
-		return err
+	if o.ServerData != nil {
+		if err := r.SetBodyParam(o.ServerData); err != nil {
+			return err
+		}
 	}
 
 	if len(res) > 0 {

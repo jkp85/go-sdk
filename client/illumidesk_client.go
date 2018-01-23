@@ -11,16 +11,18 @@ import (
 
 	strfmt "github.com/go-openapi/strfmt"
 
-	"github.com/3Blades/go-sdk/client/auth"
-	"github.com/3Blades/go-sdk/client/billing"
-	"github.com/3Blades/go-sdk/client/hosts"
-	"github.com/3Blades/go-sdk/client/projects"
-	"github.com/3Blades/go-sdk/client/search"
-	"github.com/3Blades/go-sdk/client/servers"
-	"github.com/3Blades/go-sdk/client/users"
+	"github.com/IllumiDesk/go-sdk/client/auth"
+	"github.com/IllumiDesk/go-sdk/client/billing"
+	"github.com/IllumiDesk/go-sdk/client/notifications"
+	"github.com/IllumiDesk/go-sdk/client/operations"
+	"github.com/IllumiDesk/go-sdk/client/projects"
+	"github.com/IllumiDesk/go-sdk/client/search"
+	"github.com/IllumiDesk/go-sdk/client/servers"
+	"github.com/IllumiDesk/go-sdk/client/teams"
+	"github.com/IllumiDesk/go-sdk/client/users"
 )
 
-// Default threeblades HTTP client.
+// Default illumidesk HTTP client.
 var Default = NewHTTPClient(nil)
 
 const (
@@ -35,14 +37,14 @@ const (
 // DefaultSchemes are the default schemes found in Meta (info) section of spec file
 var DefaultSchemes = []string{"https"}
 
-// NewHTTPClient creates a new threeblades HTTP client.
-func NewHTTPClient(formats strfmt.Registry) *Threeblades {
+// NewHTTPClient creates a new illumidesk HTTP client.
+func NewHTTPClient(formats strfmt.Registry) *Illumidesk {
 	return NewHTTPClientWithConfig(formats, nil)
 }
 
-// NewHTTPClientWithConfig creates a new threeblades HTTP client,
+// NewHTTPClientWithConfig creates a new illumidesk HTTP client,
 // using a customizable transport config.
-func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Threeblades {
+func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Illumidesk {
 	// ensure nullable parameters have default
 	if formats == nil {
 		formats = strfmt.Default
@@ -56,22 +58,26 @@ func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Thr
 	return New(transport, formats)
 }
 
-// New creates a new threeblades client
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *Threeblades {
-	cli := new(Threeblades)
+// New creates a new illumidesk client
+func New(transport runtime.ClientTransport, formats strfmt.Registry) *Illumidesk {
+	cli := new(Illumidesk)
 	cli.Transport = transport
 
 	cli.Auth = auth.New(transport, formats)
 
 	cli.Billing = billing.New(transport, formats)
 
-	cli.Hosts = hosts.New(transport, formats)
+	cli.Notifications = notifications.New(transport, formats)
+
+	cli.Operations = operations.New(transport, formats)
 
 	cli.Projects = projects.New(transport, formats)
 
 	cli.Search = search.New(transport, formats)
 
 	cli.Servers = servers.New(transport, formats)
+
+	cli.Teams = teams.New(transport, formats)
 
 	cli.Users = users.New(transport, formats)
 
@@ -117,13 +123,15 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 	return cfg
 }
 
-// Threeblades is a client for threeblades
-type Threeblades struct {
+// Illumidesk is a client for illumidesk
+type Illumidesk struct {
 	Auth *auth.Client
 
 	Billing *billing.Client
 
-	Hosts *hosts.Client
+	Notifications *notifications.Client
+
+	Operations *operations.Client
 
 	Projects *projects.Client
 
@@ -131,26 +139,32 @@ type Threeblades struct {
 
 	Servers *servers.Client
 
+	Teams *teams.Client
+
 	Users *users.Client
 
 	Transport runtime.ClientTransport
 }
 
 // SetTransport changes the transport on the client and all its subresources
-func (c *Threeblades) SetTransport(transport runtime.ClientTransport) {
+func (c *Illumidesk) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
 
 	c.Auth.SetTransport(transport)
 
 	c.Billing.SetTransport(transport)
 
-	c.Hosts.SetTransport(transport)
+	c.Notifications.SetTransport(transport)
+
+	c.Operations.SetTransport(transport)
 
 	c.Projects.SetTransport(transport)
 
 	c.Search.SetTransport(transport)
 
 	c.Servers.SetTransport(transport)
+
+	c.Teams.SetTransport(transport)
 
 	c.Users.SetTransport(transport)
 

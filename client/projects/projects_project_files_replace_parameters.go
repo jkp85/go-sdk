@@ -7,7 +7,6 @@ package projects
 
 import (
 	"net/http"
-	"os"
 	"time"
 
 	"golang.org/x/net/context"
@@ -72,7 +71,7 @@ type ProjectsProjectFilesReplaceParams struct {
 	  File to send, to create new file. This parameter is only used with form data and may include multiple files.
 
 	*/
-	File *os.File
+	File runtime.NamedReadCloser
 	/*ID
 	  File unique identifier.
 
@@ -149,13 +148,13 @@ func (o *ProjectsProjectFilesReplaceParams) SetBase64Data(base64Data *string) {
 }
 
 // WithFile adds the file to the projects project files replace params
-func (o *ProjectsProjectFilesReplaceParams) WithFile(file *os.File) *ProjectsProjectFilesReplaceParams {
+func (o *ProjectsProjectFilesReplaceParams) WithFile(file runtime.NamedReadCloser) *ProjectsProjectFilesReplaceParams {
 	o.SetFile(file)
 	return o
 }
 
 // SetFile adds the file to the projects project files replace params
-func (o *ProjectsProjectFilesReplaceParams) SetFile(file *os.File) {
+func (o *ProjectsProjectFilesReplaceParams) SetFile(file runtime.NamedReadCloser) {
 	o.File = file
 }
 
